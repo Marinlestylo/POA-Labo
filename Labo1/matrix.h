@@ -35,7 +35,7 @@ private:
     void generateMatrix();
     unsigned randomNumber();
 
-    unsigned mod;
+    unsigned int mod;
     size_t row,col;
     unsigned** values;
 };
