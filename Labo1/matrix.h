@@ -9,28 +9,34 @@
 #include <cstdlib>
 #include <ctime>
 
+class Matrix;
 
+std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 
 class Matrix {
 public:
-    Matrix(size_t n,size_t m,unsigned mod);
+    Matrix(size_t row,size_t col,unsigned mod);
+    Matrix(const Matrix &matrix);
     ~Matrix();
+
+    Matrix &operator=(const Matrix &other);
+
+    friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
+
     unsigned int getMod() const;
 
-    size_t getN() const;
+    size_t getRow() const;
 
-    size_t getM() const;
+    size_t getCol() const;
+    unsigned getVal(size_t row,size_t col) const;
     void printMatrix();
-    unsigned getVal(int i,int j){
-        return values[i][j];
-    }
 
 private:
     void generateMatrix();
     unsigned randomNumber();
 
     unsigned mod;
-    size_t n,m;
+    size_t row,col;
     unsigned** values;
 };
 #endif //LABO1_MATRIX_H
