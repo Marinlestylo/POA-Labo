@@ -14,7 +14,7 @@
 class Matrix {
 public:
     Matrix(size_t n,size_t m,unsigned mod);
-
+    ~Matrix();
     unsigned int getMod() const;
 
     size_t getN() const;

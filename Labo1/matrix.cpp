@@ -8,6 +8,10 @@ Matrix::Matrix(size_t n,size_t m,unsigned mod) : n(n),m(m),mod(mod){
     generateMatrix();
 }
 
+Matrix::~Matrix() {
+
+}
+
 void Matrix::generateMatrix() {
     values = new unsigned*[n];
     for (int i = 0; i < n; ++i) {
@@ -19,7 +23,7 @@ void Matrix::generateMatrix() {
 }
 
 unsigned Matrix::randomNumber(){
-    return 2;
+    return rand() % mod;
 }
 
 unsigned int Matrix::getMod() const {
