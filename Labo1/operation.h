@@ -8,7 +8,7 @@
 
 class Operation {
 public:
-    virtual int apply(int a, int b) = 0;
+    virtual unsigned apply(unsigned a, unsigned b) = 0;
 };
 
 

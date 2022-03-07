@@ -10,7 +10,7 @@
 
 class Add : public Operation{
 public:
-    int apply(int a, int b) const;
+    unsigned apply(unsigned a, unsigned b);
 };
 
 

@@ -3,6 +3,6 @@
 //
 
 #include "multiply.h"
-int Multiply::apply(int a, int b) const{
+unsigned Multiply::apply(unsigned a, unsigned b){
     return a * b;
 }

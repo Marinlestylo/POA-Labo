@@ -3,6 +3,6 @@
 //
 
 #include "substract.h"
-int Substract::apply(int a, int b) const{
+unsigned Substract::apply(unsigned a, unsigned b){
     return a - b;
 }

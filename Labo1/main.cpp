@@ -7,6 +7,8 @@ int main() {
     std::cout << matrix << std::endl;
     Matrix matrix1 = matrix;
     std::cout << matrix1 << std::endl;
+    matrix.addItself(matrix1);
+    std::cout << matrix << std::endl;
 
     return 0;
 }

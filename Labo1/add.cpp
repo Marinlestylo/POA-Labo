@@ -3,6 +3,6 @@
 //
 
 #include "add.h"
-int Add::apply(int a, int b) const{
+unsigned Add::apply(unsigned a, unsigned b){
     return a + b;
 }

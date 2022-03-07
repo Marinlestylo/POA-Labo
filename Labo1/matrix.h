@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "operation.h"
 
 class Matrix;
 
@@ -23,17 +24,26 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 
+    Matrix* addItself(const Matrix &matrix);
+
+    Matrix sub(const Matrix &matrix);
+
+    Matrix divide(const Matrix &matrix);
+
     unsigned int getMod() const;
 
     size_t getRow() const;
 
     size_t getCol() const;
+
     unsigned getVal(size_t row,size_t col) const;
-    void printMatrix();
 
 private:
     void generateMatrix();
+
     unsigned randomNumber();
+
+    Matrix* applyOperator(const Matrix &matrix,Operation *op);
 
     unsigned int mod;
     size_t row,col;
