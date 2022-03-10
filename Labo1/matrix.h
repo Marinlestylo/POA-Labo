@@ -46,7 +46,7 @@ public:
 
 private:
     void generateMatrix();
-
+    void deleteValues();
     unsigned randomNumber();
 
     Matrix* applyOperator(const Matrix &matrix,Operation *op);

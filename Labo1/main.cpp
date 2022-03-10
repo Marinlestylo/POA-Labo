@@ -9,11 +9,9 @@ int main() {
     std::cout << matrix1 << std::endl;
     matrix.addItself(matrix1);
     std::cout << matrix << std::endl;
-    Matrix c(matrix);
-    Matrix d = matrix.addStaticNew(matrix1);
-    Matrix* e = matrix.addDynamicNew(matrix1);
-    std::cout << c << std::endl << d << std::endl << *e<< std::endl;
+    matrix.subItself(matrix1);
     std::cout << matrix << std::endl;
+
 
     return 0;
 }

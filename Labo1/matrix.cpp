@@ -23,24 +23,33 @@ Matrix::Matrix(const Matrix &matrix){
 }
 
 Matrix::~Matrix() {
-    delete [] values;
+    deleteValues();
+}
+
+void Matrix::deleteValues() {
+    for (int i = 0; i < row; ++i) {
+        delete[] values[i];
+    }
+    delete[] values;
 }
 
 Matrix &Matrix::operator=(const Matrix &other) {
     this->row = other.getRow();
     this->col = other.getCol();
     this->mod = other.getMod();
-    unsigned ** newValues = new unsigned*[row];
-    for (size_t i = 0; i < row; ++i) {
-        newValues[i] = new unsigned[col];
+    if(this->row != other.getRow() || this->col != other.getCol()){
+        unsigned ** newValues = new unsigned*[row];
+        for (size_t i = 0; i < row; ++i) {
+            newValues[i] = new unsigned[col];
+        }
+        deleteValues();
+        std::swap(values,newValues);
     }
-    std::swap(values,newValues);
     for (size_t i = 0; i < row; ++i) {
         for (size_t j = 0; j < col; ++j) {
             values[i][j] = other.getVal(i,j);
         }
     }
-    delete[] newValues;
     return *this;
 }
 
@@ -71,7 +80,8 @@ void Matrix::generateMatrix() {
 }
 
 void Matrix::addItself(const Matrix &matrix){
-    applyOperator(matrix,new Add());
+    static Add* op = new Add();
+    applyOperator(matrix,op);
 }
 
 Matrix Matrix::addStaticNew(const Matrix &matrix) {
@@ -87,17 +97,19 @@ Matrix *Matrix::addDynamicNew(const Matrix &matrix) {
 }
 
 void Matrix::subItself(const Matrix &matrix) {
+    static Substract* op = new Substract();
     applyOperator(matrix,new Substract());
 }
 void Matrix::multItself(const Matrix &matrix) {
+    static Multiply* op = new Multiply();
     applyOperator(matrix,new Multiply());
 }
 
 Matrix* Matrix::applyOperator(const Matrix &matrix,Operation* op){
-    if(this->getMod() != matrix.getMod()){
-        //TODO Throw exception
-        return nullptr;
+    if(this->mod != matrix.getMod()){
+        throw std::invalid_argument("Les modulos ne sont pas égaux");
     }
+
 
     size_t newRow = std::max(this->getRow(),matrix.getRow());
     size_t newCol = std::max(this->getCol(),matrix.getCol());
@@ -111,15 +123,13 @@ Matrix* Matrix::applyOperator(const Matrix &matrix,Operation* op){
             unsigned a = i >= this->getRow() || j >= this->col ? 0:this->getVal(i,j);
             unsigned b = i >= matrix.getRow() || j >= matrix.getCol() ? 0:matrix
                     .getVal(i,j);
-            newMatrix[i][j] = op->apply(a,b) % mod;
+            newMatrix[i][j] = op->apply(a+mod,b) % mod;
         }
     }
+    deleteValues();
     std::swap(values,newMatrix);
     this->row = newRow;
     this->col = newCol;
-
-    //TODO Delete correctement la matrice newMatrix
-    delete[] newMatrix;
     return this;
 }
 
