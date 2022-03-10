@@ -40,8 +40,8 @@ int main(int argc, char *argv[]) {
     matrix.addItself(matrix1);
     std::cout << matrix << std::endl;
     matrix.subItself(matrix1);
-    std::cout << matrix << std::endl;*/
+    std::cout << matrix << std::endl;
 
-
+*/
     return 0;
 }

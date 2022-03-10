@@ -1,6 +1,12 @@
-//
-// Created by Jonathan on 24.02.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier  : matrix.cpp
+Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
+Date creation   : 10.03.2022
+Description     :
+Compilateur     : Mingw-w64 g++ 8.1.0
+-----------------------------------------------------------------------------------
+*/
 
 #include "matrix.h"
 #include "add.h"
@@ -8,12 +14,16 @@
 #include "multiply.h"
 
 Matrix::Matrix(size_t row,size_t col,unsigned mod) : row(row), col(col), mod(mod){
+    if(mod <= 0){
+        throw std::invalid_argument("Modulos invalide");
+    }
     generateMatrix();
 }
 
 Matrix::Matrix(const Matrix &matrix){
     row = matrix.getRow();
     col = matrix.getCol();
+    mod = matrix.getMod();
     values = new unsigned*[row];
     for (size_t i = 0; i < row; ++i) {
         values[i] = new unsigned[col];
@@ -33,20 +43,17 @@ void Matrix::deleteValues() {
 }
 
 Matrix &Matrix::operator=(const Matrix &other) {
-    this->row = other.getRow();
-    this->col = other.getCol();
-    this->mod = other.getMod();
-    if(this->row != other.getRow() || this->col != other.getCol()){
-        unsigned ** newValues = new unsigned*[row];
-        for (size_t i = 0; i < row; ++i) {
-            newValues[i] = new unsigned[col];
+    if(this != &other){
+        this->row = other.getRow();
+        this->col = other.getCol();
+        this->mod = other.getMod();
+        if(this->row != other.getRow() || this->col != other.getCol()){
+            changeSizeValues(this->row,this->col);
         }
-        deleteValues();
-        std::swap(values,newValues);
-    }
-    for (size_t i = 0; i < row; ++i) {
-        for (size_t j = 0; j < col; ++j) {
-            values[i][j] = other.getVal(i,j);
+        for (size_t i = 0; i < row; ++i) {
+            for (size_t j = 0; j < col; ++j) {
+                values[i][j] = other.getVal(i,j);
+            }
         }
     }
     return *this;
@@ -72,9 +79,10 @@ void Matrix::generateMatrix() {
     }
 }
 
-void Matrix::addItself(const Matrix &matrix){
+Matrix& Matrix::addItself(const Matrix &matrix){
     static Add* op = new Add();
     applyOperator(matrix,op);
+    return *this;
 }
 
 Matrix Matrix::addStaticNew(const Matrix &matrix) {
@@ -89,9 +97,10 @@ Matrix *Matrix::addDynamicNew(const Matrix &matrix) {
     return m;
 }
 
-void Matrix::subItself(const Matrix &matrix) {
+Matrix& Matrix::subItself(const Matrix &matrix) {
     static Substract* op = new Substract();
     applyOperator(matrix,new Substract());
+    return *this;
 }
 Matrix Matrix::subStaticNew(const Matrix &matrix) {
     Matrix m(*this);
@@ -104,9 +113,10 @@ Matrix *Matrix::subDynamicNew(const Matrix &matrix) {
     m->subItself(matrix);
     return m;
 }
-void Matrix::multItself(const Matrix &matrix) {
+Matrix& Matrix::multItself(const Matrix &matrix) {
     static Multiply* op = new Multiply();
     applyOperator(matrix,new Multiply());
+    return *this;
 }
 Matrix Matrix::multStaticNew(const Matrix &matrix) {
     Matrix m(*this);
@@ -121,22 +131,19 @@ Matrix *Matrix::multDynamicNew(const Matrix &matrix) {
 }
 
 void Matrix::changeSizeValues(size_t row,size_t col){
-    if(this->row >= row && this->col >= col)
-        return;
-
-    unsigned** newMatrix = new unsigned*[row];
+    unsigned** newValues = new unsigned*[row];
     for (size_t i = 0; i < row; ++i) {
-        newMatrix[i] = new unsigned[col];
+        newValues[i] = new unsigned[col];
     }
     for (size_t i = 0; i < row; ++i) {
         for (size_t j = 0; j < col; ++j) {
-            newMatrix[i][j] = i >= this->row || j >= this->col ? 0 : values[i][j];
+            newValues[i][j] = i >= this->row || j >= this->col ? 0 : values[i][j];
         }
     }
     deleteValues();
     this->row = row;
     this->col = col;
-    std::swap(values,newMatrix);
+    values = newValues;
 }
 
 Matrix* Matrix::applyOperator(const Matrix &matrix,Operation* op){
@@ -144,7 +151,8 @@ Matrix* Matrix::applyOperator(const Matrix &matrix,Operation* op){
         throw std::invalid_argument("Les modulos ne sont pas égaux");
     }
     if(this->row < matrix.row || this->col < matrix.col)
-        changeSizeValues(matrix.row,matrix.col);
+        changeSizeValues(std::max(this->row, matrix.row),std::max(this->col,matrix
+        .col));
 
     for (size_t i = 0; i < this->row; ++i) {
         for (size_t j = 0; j < this->col; ++j) {
