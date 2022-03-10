@@ -52,6 +52,15 @@ Matrix &Matrix::operator=(const Matrix &other) {
     return *this;
 }
 
+
+
+unsigned Matrix::getVal(size_t row,size_t col) const{
+    if(row >= this->row || col >= this->col){
+        throw std::runtime_error("Vous tentez d'acceder a des index invalides de la matrice");
+    }
+    return values[row][col];
+}
+
 std::ostream &operator<<(std::ostream &os, const Matrix &matrix){
     for (size_t i = 0; i < matrix.getRow(); ++i) {
         for (size_t j = 0; j < matrix.getCol(); ++j) {
