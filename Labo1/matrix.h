@@ -24,11 +24,17 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 
-    Matrix* addItself(const Matrix &matrix);
+    void addItself(const Matrix &matrix);
+    Matrix addStaticNew(const Matrix &matrix);
+    Matrix* addDynamicNew(const Matrix &matrix);
 
-    Matrix sub(const Matrix &matrix);
+    void subItself(const Matrix &matrix);
+    Matrix subStaticNew(const Matrix &matrix);
+    Matrix* subDynamicNew(const Matrix &matrix);
 
-    Matrix divide(const Matrix &matrix);
+    void multItself(const Matrix &matrix);
+    Matrix multStaticNew(const Matrix &matrix);
+    Matrix* multDynamicNew(const Matrix &matrix);
 
     unsigned int getMod() const;
 
