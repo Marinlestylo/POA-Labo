@@ -46,13 +46,14 @@ public:
 
 private:
     void generateMatrix();
+    void changeSizeValues(size_t row,size_t col);
     void deleteValues();
     unsigned randomNumber();
 
     Matrix* applyOperator(const Matrix &matrix,Operation *op);
 
-    unsigned int mod;
     size_t row,col;
+    unsigned int mod;
     unsigned** values;
 };
 #endif //LABO1_MATRIX_H

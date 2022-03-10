@@ -4,7 +4,6 @@
 
 #include "matrix.h"
 #include "add.h"
-#include "operation.h"
 #include "substract.h"
 #include "multiply.h"
 
@@ -53,12 +52,6 @@ Matrix &Matrix::operator=(const Matrix &other) {
     return *this;
 }
 
-
-
-unsigned Matrix::getVal(size_t row,size_t col) const{
-    return values[row][col];
-}
-
 std::ostream &operator<<(std::ostream &os, const Matrix &matrix){
     for (size_t i = 0; i < matrix.getRow(); ++i) {
         for (size_t j = 0; j < matrix.getCol(); ++j) {
@@ -100,43 +93,76 @@ void Matrix::subItself(const Matrix &matrix) {
     static Substract* op = new Substract();
     applyOperator(matrix,new Substract());
 }
+Matrix Matrix::subStaticNew(const Matrix &matrix) {
+    Matrix m(*this);
+    m.subItself(matrix);
+    return m;
+}
+
+Matrix *Matrix::subDynamicNew(const Matrix &matrix) {
+    Matrix* m = new Matrix(*this);
+    m->subItself(matrix);
+    return m;
+}
 void Matrix::multItself(const Matrix &matrix) {
     static Multiply* op = new Multiply();
     applyOperator(matrix,new Multiply());
+}
+Matrix Matrix::multStaticNew(const Matrix &matrix) {
+    Matrix m(*this);
+    m.multItself(matrix);
+    return m;
+}
+
+Matrix *Matrix::multDynamicNew(const Matrix &matrix) {
+    Matrix* m = new Matrix(*this);
+    m->multItself(matrix);
+    return m;
+}
+
+void Matrix::changeSizeValues(size_t row,size_t col){
+    if(this->row >= row && this->col >= col)
+        return;
+
+    unsigned** newMatrix = new unsigned*[row];
+    for (size_t i = 0; i < row; ++i) {
+        newMatrix[i] = new unsigned[col];
+    }
+    for (size_t i = 0; i < row; ++i) {
+        for (size_t j = 0; j < col; ++j) {
+            newMatrix[i][j] = i >= this->row || j >= this->col ? 0 : values[i][j];
+        }
+    }
+    deleteValues();
+    this->row = row;
+    this->col = col;
+    std::swap(values,newMatrix);
 }
 
 Matrix* Matrix::applyOperator(const Matrix &matrix,Operation* op){
     if(this->mod != matrix.getMod()){
         throw std::invalid_argument("Les modulos ne sont pas égaux");
     }
+    if(this->row < matrix.row || this->col < matrix.col)
+        changeSizeValues(matrix.row,matrix.col);
 
-
-    size_t newRow = std::max(this->getRow(),matrix.getRow());
-    size_t newCol = std::max(this->getCol(),matrix.getCol());
-    unsigned** newMatrix = new unsigned*[newRow];
-    for (size_t i = 0; i < newRow; ++i) {
-        newMatrix[i] = new unsigned[newCol];
-    }
-
-    for (int i = 0; i < newRow; ++i) {
-        for (int j = 0; j < newCol; ++j) {
-            unsigned a = i >= this->getRow() || j >= this->col ? 0:this->getVal(i,j);
+    for (size_t i = 0; i < this->row; ++i) {
+        for (size_t j = 0; j < this->col; ++j) {
+            unsigned a = this->getVal(i,j);
             unsigned b = i >= matrix.getRow() || j >= matrix.getCol() ? 0:matrix
                     .getVal(i,j);
-            newMatrix[i][j] = op->apply(a+mod,b) % mod;
+            values[i][j] = op->apply(a+mod,b) % mod;
         }
     }
-    deleteValues();
-    std::swap(values,newMatrix);
-    this->row = newRow;
-    this->col = newCol;
     return this;
 }
 
-
-
 unsigned Matrix::randomNumber(){
     return (unsigned)rand() % mod;
+}
+
+unsigned Matrix::getVal(size_t row,size_t col) const{
+    return values[row][col];
 }
 
 unsigned int Matrix::getMod() const {
