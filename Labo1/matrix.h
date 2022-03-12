@@ -28,7 +28,7 @@ public:
      * @param col taille des colonnes
      * @param mod modules
      */
-    Matrix(size_t row,size_t col,unsigned mod);
+    Matrix(unsigned int row, unsigned int col, unsigned mod);
     /**
      * Constructeur de copie
      * @param matrix matrice à copier
@@ -128,13 +128,13 @@ public:
      * Getter du nombre de lignes
      * @return le nombre de lignes
      */
-    size_t getRow() const;
+	 unsigned int getRow() const;
 
     /**
      * Getter du nombre de colonnes
      * @return le nombre de colonnes
      */
-    size_t getCol() const;
+	 unsigned int getCol() const;
 
     /**
      * Retourne un élément de la matrice
@@ -142,7 +142,7 @@ public:
      * @param col le numéro de la colonne
      * @return l'élément se trouvant aux index passés en paramètre
      */
-    unsigned getVal(size_t row,size_t col) const;
+    unsigned getVal(unsigned int row, unsigned int col) const;
 
 private:
     /**
@@ -155,7 +155,7 @@ private:
      * @param row nouveau nombre de ligne
      * @param col nouveau nombre de colonne
      */
-    void changeSizeValues(size_t row,size_t col);
+    void changeSizeValues(unsigned int row, unsigned int col);
 
     /**
      * Désalloue et détruit le tableau de tableau possédant les valeurs de la matrice
@@ -174,10 +174,9 @@ private:
      * @param op
      * @return
      */
-    Matrix* applyOperator(const Matrix &matrix,Operation *op);
+    Matrix* applyOperator(const Matrix &matrix, Operation *op);
 
-    size_t row,col;
-    unsigned int mod;
+	 unsigned int row, col, mod;
     unsigned** values;
 };
 #endif //LABO1_MATRIX_H

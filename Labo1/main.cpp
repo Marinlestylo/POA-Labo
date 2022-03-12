@@ -5,18 +5,21 @@ int main(int argc, char *argv[]) {
     if(argc != 6){
         throw std::runtime_error("Pas le bon nombre d'argument.");
     }
-    int nbRow1 = std::stoi(argv[1]);
-    int nbCol1 = std::stoi(argv[2]);
-    int nbRow2 = std::stoi(argv[3]);
-    int nbCol2 = std::stoi(argv[4]);
-    int modulus = std::stoi(argv[5]);
+	 int nbRow1 = std::stoi(argv[1]);
+	 int nbCol1 = std::stoi(argv[2]);
+	 int nbRow2 = std::stoi(argv[3]);
+	 int nbCol2 = std::stoi(argv[4]);
+	 int modulus = std::stoi(argv[5]);
     if(nbRow1 < 0 || nbRow2 < 0 || nbCol1 < 0 || nbCol2 < 0 || modulus < 1){
-        throw std::runtime_error("Le nombre de ligne, de colonne doit etre un entier positif et le modulo "
+        throw std::runtime_error("Les nombres de lignes et de colonnes dovent etre "
+											"des entiers positifs ou nuls. Le modulo "
                                  "doit etre un entier plus grand que 0.");
     }
     srand (time(NULL));
-    Matrix matrix1(nbRow1,nbCol1,modulus);
-    Matrix matrix2(nbRow2,nbCol2,modulus);
+    Matrix matrix1((unsigned int) nbRow1,(unsigned int) nbCol1,
+						 (unsigned int) modulus);
+    Matrix matrix2((unsigned int) nbRow2,(unsigned int) nbCol2,
+						 (unsigned int) modulus);
     std::cout << "The modulus is " << modulus << std::endl;
 
     std::cout << "One" << std::endl;
