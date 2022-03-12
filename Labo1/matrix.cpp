@@ -13,9 +13,9 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "substract.h"
 #include "multiply.h"
 
-Matrix::Matrix(unsigned int row,unsigned int col,unsigned mod) : row(row), col(col), mod(mod){
-    if(mod <= 0){
-        throw std::invalid_argument("Modulos invalide");
+Matrix::Matrix(size_t row, size_t col, unsigned mod) : row(row), col(col), mod(mod){
+    if(mod == 0){
+        throw std::runtime_error("Modulo invalide");
     }
     generateMatrix();
 }
@@ -52,7 +52,7 @@ Matrix &Matrix::operator=(const Matrix &other) {
         }
         for (size_t i = 0; i < row; ++i) {
             for (size_t j = 0; j < col; ++j) {
-                values[i][j] = other.getVal((unsigned int)i,(unsigned int)j);
+                values[i][j] = other.getVal(i,j);
             }
         }
     }
@@ -62,7 +62,7 @@ Matrix &Matrix::operator=(const Matrix &other) {
 std::ostream &operator<<(std::ostream &os, const Matrix &matrix){
     for (size_t i = 0; i < matrix.getRow(); ++i) {
         for (size_t j = 0; j < matrix.getCol(); ++j) {
-            os << matrix.getVal((unsigned int)i,(unsigned int)j) << " ";
+            os << matrix.getVal(i,j) << " ";
         }
         os << std::endl;
     }
@@ -130,7 +130,7 @@ Matrix *Matrix::multDynamicNew(const Matrix &matrix) {
     return m;
 }
 
-void Matrix::changeSizeValues(unsigned int row, unsigned int col){
+void Matrix::changeSizeValues(size_t row, size_t col){
     unsigned** newValues = new unsigned*[row];
     for (size_t i = 0; i < row; ++i) {
         newValues[i] = new unsigned[col];
@@ -156,9 +156,9 @@ Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
 
     for (size_t i = 0; i < this->row; ++i) {
         for (size_t j = 0; j < this->col; ++j) {
-            unsigned a = this->getVal((unsigned int)i,(unsigned int)j);
+            unsigned a = this->getVal(i,j);
             unsigned b = i >= matrix.getRow() || j >= matrix.getCol() ? 0:matrix
-                    .getVal((unsigned int)i,(unsigned int)j);
+                    .getVal(i,j);
             values[i][j] = op->apply(a+mod,b) % mod;
         }
     }
@@ -169,7 +169,7 @@ unsigned Matrix::randomNumber(){
     return (unsigned)rand() % mod;
 }
 
-unsigned Matrix::getVal(unsigned int row, unsigned int col) const{
+unsigned Matrix::getVal(size_t row, size_t col) const{
     if(row >= this->row || col >= this->col){
         throw std::runtime_error("Vous tentez d'acceder a des index invalides de la matrice");
     }
@@ -180,10 +180,10 @@ unsigned int Matrix::getMod() const {
     return mod;
 }
 
-unsigned int Matrix::getRow() const {
+size_t Matrix::getRow() const {
     return row;
 }
 
-unsigned int Matrix::getCol() const {
+size_t Matrix::getCol() const {
     return col;
 }

@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 											"des entiers positifs ou nuls. Le modulo "
                                  "doit etre un entier plus grand que 0.");
     }
-    srand (time(NULL));
+    srand ((unsigned int) time(NULL));
     Matrix matrix1((unsigned int) nbRow1,(unsigned int) nbCol1,
 						 (unsigned int) modulus);
     Matrix matrix2((unsigned int) nbRow2,(unsigned int) nbCol2,
