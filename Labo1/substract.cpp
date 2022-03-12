@@ -1,6 +1,12 @@
-//
-// Created by Jonathan on 03.03.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier  : substract.cpp
+Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
+Date creation   : 10.03.2022
+Description     : Fichier contenant l'implémentation de la classe substract.
+Compilateur     : Mingw-w64 g++ 8.1.0
+-----------------------------------------------------------------------------------
+*/
 
 #include "substract.h"
 unsigned Substract::apply(unsigned a, unsigned b){

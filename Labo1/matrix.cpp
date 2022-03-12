@@ -3,7 +3,7 @@
 Nom du fichier  : matrix.cpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 10.03.2022
-Description     :
+Description     : Fichier contenant l'implémentation de la classe Matrix.
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
@@ -148,7 +148,7 @@ void Matrix::changeSizeValues(size_t row, size_t col){
 
 Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
     if(this->mod != matrix.getMod()){
-        throw std::invalid_argument("Les modulos ne sont pas égaux");
+        throw std::invalid_argument("Les modulos ne sont pas egaux");
     }
     if(this->row < matrix.row || this->col < matrix.col)
         changeSizeValues(std::max(this->row, matrix.row),std::max(this->col,matrix

@@ -3,7 +3,16 @@
 Nom du fichier  : matrix.h
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 10.03.2022
-Description     :
+Description     : Classe permettant de modéliser des matrices de tailles diverses.
+                  Il est possible de leur appliquer plusieurs opérations:
+                  (L'addition, la soustraction ainsi que la multiplication).
+                  Chaque opération peut se faire de 3 manières. Soit en modifiant
+                  la matrice sur laquelle l'opération est invoquée. Soit en
+                  renvoyant par valeur une nouvelle matrice allouée statiquement.
+                  Soit en retournant un pointeur sur un nouvelle matrice allouée
+                  dynamiquement.
+                  Il est également possible d'afficher une matrice dans la console
+                  via l'opérateur d'écriture de flux "<<".
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
