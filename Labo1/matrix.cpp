@@ -99,7 +99,7 @@ Matrix *Matrix::addDynamicNew(const Matrix &matrix) {
 
 Matrix& Matrix::subItself(const Matrix &matrix) {
     static Substract* op = new Substract();
-    applyOperator(matrix,new Substract());
+    applyOperator(matrix,op);
     return *this;
 }
 Matrix Matrix::subStaticNew(const Matrix &matrix) {
@@ -115,7 +115,7 @@ Matrix *Matrix::subDynamicNew(const Matrix &matrix) {
 }
 Matrix& Matrix::multItself(const Matrix &matrix) {
     static Multiply* op = new Multiply();
-    applyOperator(matrix,new Multiply());
+    applyOperator(matrix,op);
     return *this;
 }
 Matrix Matrix::multStaticNew(const Matrix &matrix) {
