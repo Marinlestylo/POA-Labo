@@ -165,7 +165,7 @@ Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
     return this;
 }
 
-unsigned Matrix::randomNumber(){
+unsigned Matrix::randomNumber() const{
     return (unsigned)rand() % mod;
 }
 

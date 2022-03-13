@@ -44,6 +44,9 @@ public:
      */
     Matrix(const Matrix &matrix);
 
+	 /**
+	  * Destructeur de la classe Matrix
+	  */
     ~Matrix();
 
     /**
@@ -174,7 +177,7 @@ private:
     /**
      * Génère un nombre aléatoire
      */
-    unsigned randomNumber();
+    unsigned randomNumber() const;
 
     /**
      * Applique une opération passée en paramètre à tous les éléments de deux
