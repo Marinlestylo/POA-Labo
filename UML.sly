@@ -75,7 +75,7 @@
       </method>
       <method isAbstract="false" isStatic="false" name="deleteValues" returnType="void" view="DEFAULT" visibility="PRIVATE"/>
       <method isAbstract="false" isStatic="false" name="randomNumber_const" returnType="void" view="DEFAULT" visibility="PRIVATE"/>
-      <method isAbstract="false" isStatic="false" name="applyOperator" returnType="Matrix*" view="DEFAULT" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="applyOperator" returnType="Matrix*" view="DEFAULT" visibility="PRIVATE">
         <variable const="false" name="matrix" type="const_Matrix_&amp;"/>
         <variable const="false" name="op" type="Opration*"/>
       </method>
