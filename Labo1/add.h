@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Nom du fichier  : add.h
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
-Date creation   : 10.03.2022
+Date creation   : 03.03.2022
 Description     : Fichier contenant la déclaration de la classe add. Cette
                   dernière redéfini la méthode "apply" afin de permettre de faire
                   une addition entre deux matrices.

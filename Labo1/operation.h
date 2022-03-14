@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Nom du fichier  : operation.h
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
-Date creation   : 10.03.2022
+Date creation   : 03.03.2022
 Description     : Fichier contenant la déclaration de la classe opération ainsi
                   que de sa méthode "apply" qui permettra d'effectuer une opération
                   sur des matrices. La méthode "apply" devra être redéfinie dans

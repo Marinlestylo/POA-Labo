@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Nom du fichier  : matrix.h
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
-Date creation   : 10.03.2022
+Date creation   : 03.03.2022
 Description     : Classe permettant de modéliser des matrices de tailles diverses.
                   Il est possible de leur appliquer plusieurs opérations:
                   (L'addition, la soustraction ainsi que la multiplication).
@@ -77,14 +77,14 @@ public:
      * @param matrix matrice à additionner
      * @return la matrice modifiée après l'addition
      */
-    Matrix addStaticNew(const Matrix &matrix);
+    Matrix addStaticNew(const Matrix &matrix) const;
 
     /**
      * Addition entre deux matrices, crée une nouvelle matrice résultant du calcul
      * @param matrix matrice à additionner
      * @return un pointeur sur la matrice modifiée après l'addition
      */
-    Matrix* addDynamicNew(const Matrix &matrix);
+    Matrix* addDynamicNew(const Matrix &matrix) const;
 
     /**
      * Soustraction entre deux matrices, modifie la matrice depuis laquelle la
@@ -99,14 +99,14 @@ public:
      * @param matrix matrice à soustraire
      * @return la matrice modifiée après la soustraction
      */
-    Matrix subStaticNew(const Matrix &matrix);
+    Matrix subStaticNew(const Matrix &matrix) const;
     /**
      * Soustraction entre deux matrices, crée une nouvelle matrice résultant du
      * calcul
      * @param matrix matrice à soustraire
      * @return un pointeur sur la matrice modifiée après la soustraction
      */
-    Matrix* subDynamicNew(const Matrix &matrix);
+    Matrix* subDynamicNew(const Matrix &matrix) const;
 
     /**
      * Multiplication entre deux matrices, modifie la matrice depuis laquelle la
@@ -121,14 +121,14 @@ public:
      * @param matrix matrice à multiplier
      * @return la matrice modifiée après la multiplication
      */
-    Matrix multStaticNew(const Matrix &matrix);
+    Matrix multStaticNew(const Matrix &matrix) const;
     /**
      * Multiplication entre deux matrices, crée une nouvelle matrice résultant du
      * calcul
      * @param matrix matrice à multiplier
      * @return un pointeur sur la matrice modifiée après la multiplication
      */
-    Matrix* multDynamicNew(const Matrix &matrix);
+    Matrix* multDynamicNew(const Matrix &matrix) const;
 
     /**
      * Getter du module

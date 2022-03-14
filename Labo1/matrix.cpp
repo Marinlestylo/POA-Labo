@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Nom du fichier  : matrix.cpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
-Date creation   : 10.03.2022
+Date creation   : 03.03.2022
 Description     : Fichier contenant l'implémentation de la classe Matrix.
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
@@ -85,13 +85,13 @@ Matrix& Matrix::addItself(const Matrix &matrix){
     return *this;
 }
 
-Matrix Matrix::addStaticNew(const Matrix &matrix) {
+Matrix Matrix::addStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
     m.addItself(matrix);
     return m;
 }
 
-Matrix *Matrix::addDynamicNew(const Matrix &matrix) {
+Matrix *Matrix::addDynamicNew(const Matrix &matrix) const{
     Matrix* m = new Matrix(*this);
     m->addItself(matrix);
     return m;
@@ -102,29 +102,29 @@ Matrix& Matrix::subItself(const Matrix &matrix) {
     applyOperator(matrix,op);
     return *this;
 }
-Matrix Matrix::subStaticNew(const Matrix &matrix) {
+Matrix Matrix::subStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
     m.subItself(matrix);
     return m;
 }
 
-Matrix *Matrix::subDynamicNew(const Matrix &matrix) {
+Matrix *Matrix::subDynamicNew(const Matrix &matrix) const{
     Matrix* m = new Matrix(*this);
     m->subItself(matrix);
     return m;
 }
-Matrix& Matrix::multItself(const Matrix &matrix) {
+Matrix& Matrix::multItself(const Matrix &matrix){
     static Multiply* op = new Multiply();
     applyOperator(matrix,op);
     return *this;
 }
-Matrix Matrix::multStaticNew(const Matrix &matrix) {
+Matrix Matrix::multStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
     m.multItself(matrix);
     return m;
 }
 
-Matrix *Matrix::multDynamicNew(const Matrix &matrix) {
+Matrix *Matrix::multDynamicNew(const Matrix &matrix) const{
     Matrix* m = new Matrix(*this);
     m->multItself(matrix);
     return m;
