@@ -148,7 +148,8 @@ void Matrix::changeSizeValues(size_t row, size_t col){
 
 Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
     if(this->mod != matrix.getMod()){
-        throw std::invalid_argument("Les modulos ne sont pas egaux");
+        throw std::invalid_argument("Les modulos des deux matrices ne sont pas "
+                                    "egaux");
     }
     if(this->row < matrix.row || this->col < matrix.col)
         changeSizeValues(std::max(this->row, matrix.row),std::max(this->col,matrix
@@ -159,7 +160,7 @@ Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
             unsigned a = this->getVal(i,j);
             unsigned b = i >= matrix.getRow() || j >= matrix.getCol() ? 0:matrix
                     .getVal(i,j);
-            values[i][j] = op->apply(a+mod,b) % mod;
+            values[i][j] = floorMod(op->apply(a,b), mod);
         }
     }
     return this;
@@ -167,6 +168,11 @@ Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
 
 unsigned Matrix::randomNumber() const{
     return (unsigned)rand() % mod;
+}
+
+unsigned Matrix::floorMod(long long a,unsigned b) const{
+    a %= (long long)b;
+    return unsigned (a < 0 ? a + (long long)b : a);
 }
 
 unsigned Matrix::getVal(size_t row, size_t col) const{

@@ -60,6 +60,7 @@ int main(int argc, char *argv[]) {
 
     std::cout << "One * Two" << std::endl;
     std::cout << matrix1.multStaticNew(matrix2) << std::endl;
+    test();
     return 0;
 }
 
@@ -79,9 +80,13 @@ void test(){
 	Matrix noColMatrix(0, 0 ,5);
 	std::cout << "Matrice sans colonne :" << std::endl << noColMatrix << std::endl;
 
+    std::cout << "Creation d'une matrice avec un modulo valant 0" << std::endl;
 
-	/*std::cout << "Creation d'une matrice avec un modulo valant 0" << std::endl;
-	Matrix zeroModuloMat(2, 3 ,0);*/
+    try{
+        Matrix zeroModuloMat(2, 3 ,0);
+    } catch(const std::runtime_error& e){
+        std::cout << "Opération invalide" << std::endl << std::endl;
+    }
 
 	std::cout << "Creation de la matrice \"une\" de taille 2x3 avec 5 comme "
 					 "modulo" << std::endl;
@@ -144,11 +149,23 @@ void test(){
 	one = Matrix(2, 3 ,5);
 	std::cout << "Matrice une :" << std::endl << one << std::endl;
 
-	/*std::cout << "Operation sur des matrices ayant differents modulos" << std::endl;
-	std::cout << "\"une\" + \"trois\"" << std::endl;
-	one.addStaticNew(three);
+    std::cout << "Operation sur des matrices ayant differents modulos" << std::endl;
+    std::cout << "\"une\" + \"trois\"" << std::endl;
+    try{
+        one.addStaticNew(three);
+    } catch(const std::invalid_argument& e){
+        std::cout << "Opération invalide" << std::endl << std::endl;
+    }
 	std::cout << "\"une\" - \"trois\"" << std::endl;
-	one.subDynamicNew(three);
+    try{
+        one.subDynamicNew(three);
+    } catch(const std::invalid_argument& e){
+        std::cout << "Opération invalide" << std::endl;
+    }
 	std::cout << "\"une\" * \"trois\"" << std::endl;
-	one.multItself(three);*/
+    try{
+        one.multItself(three);
+    } catch(const std::invalid_argument& e){
+        std::cout << "Opération invalide" << std::endl;
+    }
 }

@@ -17,7 +17,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 
 class Operation {
 public:
-    virtual unsigned apply(unsigned a, unsigned b) = 0;
+    virtual long long apply(long long a, long long b) = 0;
 };
 
 

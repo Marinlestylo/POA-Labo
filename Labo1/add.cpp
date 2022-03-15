@@ -9,6 +9,6 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 */
 
 #include "add.h"
-unsigned Add::apply(unsigned a, unsigned b){
+long long Add::apply(long long a, long long b){
     return a + b;
 }

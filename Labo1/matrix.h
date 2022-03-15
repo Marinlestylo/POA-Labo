@@ -180,6 +180,14 @@ private:
     unsigned randomNumber() const;
 
     /**
+     * Effectue un floormod entre 2 valeurs passées en paramètres
+     * @param a
+     * @param b
+     * @return le modulo des deux paramètres
+     */
+    unsigned floorMod(long long a,unsigned b) const;
+
+    /**
      * Applique une opération passée en paramètre à tous les éléments de deux
      * matrices.
      * @param matrix
@@ -189,7 +197,7 @@ private:
     Matrix* applyOperator(const Matrix &matrix, Operation *op);
 
 	 size_t row, col;
-	 unsigned int mod;
-    unsigned** values;
+     unsigned int mod;
+     unsigned** values;
 };
 #endif //LABO1_MATRIX_H
