@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : add.h
+Nom du fichier  : multiply.cpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Fichier contenant l'implémentation de la classe multiply.
