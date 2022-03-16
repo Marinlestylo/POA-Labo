@@ -47,12 +47,11 @@ void Matrix::deleteValues() {
 
 Matrix &Matrix::operator=(const Matrix &other) {
     if(this != &other){
+
+        changeSizeValues(other.row,other.col);
         this->row = other.row;
         this->col = other.col;
         this->mod = other.mod;
-        if(this->row != other.row || this->col != other.col){
-            changeSizeValues(this->row,this->col);
-        }
         for (size_t i = 0; i < row; ++i) {
             for (size_t j = 0; j < col; ++j) {
                 values[i][j] = other.getVal(i,j);
@@ -167,7 +166,10 @@ Matrix *Matrix::multDynamicNew(const Matrix &matrix) const{
 }
 
 void Matrix::changeSizeValues(size_t row, size_t col){
-    unsigned** newValues = new unsigned*[row];
+    if(this->row == row && this->col == col) {
+        return;
+    }
+        unsigned** newValues = new unsigned*[row];
     for (size_t i = 0; i < row; ++i) {
         newValues[i] = new unsigned[col];
     }
@@ -187,8 +189,7 @@ Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
         throw std::invalid_argument("Les modulos des deux matrices ne sont pas "
                                     "egaux");
     }
-    if(this->row < matrix.row || this->col < matrix.col)
-        changeSizeValues(std::max(this->row, matrix.row),std::max(this->col,matrix.col));
+    changeSizeValues(std::max(this->row, matrix.row),std::max(this->col,matrix.col));
 
     for (size_t i = 0; i < this->row; ++i) {
         for (size_t j = 0; j < this->col; ++j) {
