@@ -106,13 +106,17 @@ void test(){
 	std::cout << "Addition des matrices \"une\" et \"deux\"" << std::endl;
 	std::cout << "Addition retournant par valeurs" << std::endl <<
 	one.addStaticNew(two) << std::endl;
+
+	Matrix *dynamic1 = one.addDynamicNew(two);
 	std::cout << "Addition retournant par pointeur" << std::endl <<
-	*(one.addDynamicNew(two)) << std::endl;
+	*dynamic1 << std::endl;
+	delete(dynamic1);
+
 	std::cout << "Addition modifiant la premiere matrice" << std::endl;
 	one.addItself(two);
 	std::cout << one << std::endl << std::endl;
 
-	std::cout << "Re-creation de la matrice \"une\" de taille 2x3 avec 5 comme "
+	std::cout << "Re-initialisation de la matrice \"une\" de taille 2x3 avec 5 comme "
 					 "modulo" << std::endl;
 	one = Matrix(2, 3 ,5);
 	std::cout << "Matrice une :" << std::endl << one << std::endl;
@@ -122,13 +126,16 @@ void test(){
 	std::endl;
 	std::cout << "Soustraction retournant par valeurs" << std::endl <<
 				 one.subStaticNew(two) << std::endl;
+
+	Matrix *dynamic2 = one.subDynamicNew(two);
 	std::cout << "Soustraction retournant par pointeur" << std::endl <<
-				 *(one.subDynamicNew(two)) << std::endl;
+				 *dynamic2 << std::endl;
+	delete(dynamic2);
 	std::cout << "Soustraction modifiant la premiere matrice" << std::endl;
 	one.subItself(two);
 	std::cout << one << std::endl << std::endl;
 
-	std::cout << "Re-creation de la matrice \"une\" de taille 2x3 avec 5 comme "
+	std::cout << "Re-initialisation de la matrice \"une\" de taille 2x3 avec 5 comme "
 					 "modulo" << std::endl;
 	one = Matrix(2, 3 ,5);
 	std::cout << "Matrice une :" << std::endl << one << std::endl;
@@ -138,13 +145,15 @@ void test(){
 				 std::endl;
 	std::cout << "Multiplication retournant par valeurs" << std::endl <<
 				 one.multStaticNew(two) << std::endl;
+	Matrix *dynamic3 = one.multDynamicNew(two);
 	std::cout << "Multiplication retournant par pointeur" << std::endl <<
-				 *(one.multDynamicNew(two)) << std::endl;
+				 *dynamic3 << std::endl;
+	delete(dynamic3);
 	std::cout << "Multiplication modifiant la premiere matrice" << std::endl;
 	one.multItself(two);
 	std::cout << one << std::endl << std::endl;
 
-	std::cout << "Re-creation de la matrice \"une\" de taille 2x3 avec 5 comme "
+	std::cout << "Re-initialisation de la matrice \"une\" de taille 2x3 avec 5 comme "
 					 "modulo" << std::endl;
 	one = Matrix(2, 3 ,5);
 	std::cout << "Matrice une :" << std::endl << one << std::endl;
@@ -154,7 +163,7 @@ void test(){
     try{
         one.addStaticNew(three);
     } catch(const std::invalid_argument& e){
-        std::cout << "Operation invalide" << std::endl << std::endl;
+        std::cout << "Operation invalide" << std::endl;
     }
 	std::cout << "\"une\" - \"trois\"" << std::endl;
     try{
