@@ -32,21 +32,23 @@ std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 class Matrix {
 public:
     /**
-     * Constructeur de la classe matrix
+     * Constructeur de la classe matrix.
+     * Une exception (runtime_error) est lancée si le modulo vaut 0
      * @param row taille des lignes
      * @param col taille des colonnes
      * @param mod modules
      */
     Matrix(size_t row, size_t col, unsigned mod);
+
     /**
      * Constructeur de copie
      * @param matrix matrice à copier
      */
     Matrix(const Matrix &matrix);
 
-	 /**
-	  * Destructeur de la classe Matrix
-	  */
+    /**
+     * Destructeur de la classe Matrix
+     */
     ~Matrix();
 
     /**
@@ -67,68 +69,81 @@ public:
     /**
      * Addition entre deux matrices, modifie la matrice depuis laquelle la fonction
      * est appelée.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à additionner
      * @return une référance sur la matrice modifiée après l'addition
      */
-    Matrix& addItself(const Matrix &matrix);
+    Matrix &addItself(const Matrix &matrix);
 
     /**
-     * Addition entre deux matrices, crée une nouvelle matrice résultant du calcul
+     * Addition entre deux matrices, crée une nouvelle matrice résultant du calcul.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à additionner
      * @return la matrice modifiée après l'addition
      */
     Matrix addStaticNew(const Matrix &matrix) const;
 
     /**
-     * Addition entre deux matrices, crée une nouvelle matrice résultant du calcul
+     * Addition entre deux matrices, crée une nouvelle matrice résultant du calcul.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à additionner
      * @return un pointeur sur la matrice modifiée après l'addition
      */
-    Matrix* addDynamicNew(const Matrix &matrix) const;
+    Matrix *addDynamicNew(const Matrix &matrix) const;
 
     /**
      * Soustraction entre deux matrices, modifie la matrice depuis laquelle la
      * fonction est appelée.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à soustraire
      * @return une référance sur la matrice modifiée après la soustraction
      */
-    Matrix& subItself(const Matrix &matrix);
+    Matrix &subItself(const Matrix &matrix);
+
     /**
      * Soustraction entre deux matrices, crée une nouvelle matrice résultant du
-     * calcul
+     * calcul.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à soustraire
      * @return la matrice modifiée après la soustraction
      */
     Matrix subStaticNew(const Matrix &matrix) const;
+
     /**
      * Soustraction entre deux matrices, crée une nouvelle matrice résultant du
-     * calcul
+     * calcul.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à soustraire
      * @return un pointeur sur la matrice modifiée après la soustraction
      */
-    Matrix* subDynamicNew(const Matrix &matrix) const;
+    Matrix *subDynamicNew(const Matrix &matrix) const;
 
     /**
      * Multiplication entre deux matrices, modifie la matrice depuis laquelle la
      * fonction est appelée.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à soustraire
      * @return une référance sur la matrice modifiée après la soustraction
      */
-    Matrix& multItself(const Matrix &matrix);
+    Matrix &multItself(const Matrix &matrix);
+
     /**
      * Multiplication entre deux matrices, crée une nouvelle matrice résultant du
-     * calcul
+     * calcul.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à multiplier
      * @return la matrice modifiée après la multiplication
      */
     Matrix multStaticNew(const Matrix &matrix) const;
+
     /**
      * Multiplication entre deux matrices, crée une nouvelle matrice résultant du
-     * calcul
+     * calcul.
+     * Cette méthode peut throw une exception invalid_argument.
      * @param matrix matrice à multiplier
      * @return un pointeur sur la matrice modifiée après la multiplication
      */
-    Matrix* multDynamicNew(const Matrix &matrix) const;
+    Matrix *multDynamicNew(const Matrix &matrix) const;
 
 private:
     /**
@@ -165,10 +180,11 @@ private:
      * @param op
      * @return
      */
-    Matrix* applyOperator(const Matrix &matrix, Operation *op);
+    Matrix *applyOperator(const Matrix &matrix, Operation *op);
 
-	 size_t row, col;
-     unsigned int mod;
-     unsigned** values;
+    size_t row, col;
+    unsigned int mod;
+    unsigned **values;
 };
+
 #endif //LABO1_MATRIX_H
