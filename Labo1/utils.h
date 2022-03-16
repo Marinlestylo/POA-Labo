@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Nom du fichier  : utils.h
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
-Date creation   : 03.03.2022
+Date creation   : 09.03.2022
 Description     : Fichier contenant la déclaration de fonctions utils. Ce dernier
                   défini des fonctions telles que floorMod (inspirée du
                   java) et randomNumber permettant de générer un entier.

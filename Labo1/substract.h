@@ -17,7 +17,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 
 class Substract : public Operation{
 public:
-    long long apply(long long a, long long b);
+    long long apply(unsigned a, unsigned b);
 };
 
 

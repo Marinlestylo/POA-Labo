@@ -85,7 +85,7 @@ void test(){
     try{
         Matrix zeroModuloMat(2, 3 ,0);
     } catch(const std::runtime_error& e){
-        std::cout << "Operation invalide" << std::endl << std::endl;
+        std::cout << e.what() << std::endl << std::endl;
     }
 
 	std::cout << "Creation de la matrice \"une\" de taille 2x3 avec 5 comme "
@@ -107,11 +107,9 @@ void test(){
 	std::cout << "Addition retournant par valeurs" << std::endl <<
 	one.addStaticNew(two) << std::endl;
 
-	Matrix *dynamic1 = one.addDynamicNew(two);
+    Matrix* oneAddDynamic = one.addDynamicNew(two);
 	std::cout << "Addition retournant par pointeur" << std::endl <<
-	*dynamic1 << std::endl;
-	delete(dynamic1);
-
+	*oneAddDynamic << std::endl;
 	std::cout << "Addition modifiant la premiere matrice" << std::endl;
 	one.addItself(two);
 	std::cout << one << std::endl << std::endl;
@@ -127,10 +125,9 @@ void test(){
 	std::cout << "Soustraction retournant par valeurs" << std::endl <<
 				 one.subStaticNew(two) << std::endl;
 
-	Matrix *dynamic2 = one.subDynamicNew(two);
-	std::cout << "Soustraction retournant par pointeur" << std::endl <<
-				 *dynamic2 << std::endl;
-	delete(dynamic2);
+    Matrix* oneSubDynamic = one.subDynamicNew(two);
+    std::cout << "Soustraction retournant par pointeur" << std::endl <<
+				 *oneSubDynamic << std::endl;
 	std::cout << "Soustraction modifiant la premiere matrice" << std::endl;
 	one.subItself(two);
 	std::cout << one << std::endl << std::endl;
@@ -145,10 +142,10 @@ void test(){
 				 std::endl;
 	std::cout << "Multiplication retournant par valeurs" << std::endl <<
 				 one.multStaticNew(two) << std::endl;
-	Matrix *dynamic3 = one.multDynamicNew(two);
-	std::cout << "Multiplication retournant par pointeur" << std::endl <<
-				 *dynamic3 << std::endl;
-	delete(dynamic3);
+
+    Matrix* oneMultDynamic = one.multDynamicNew(two);
+    std::cout << "Multiplication retournant par pointeur" << std::endl <<
+				 *oneMultDynamic << std::endl;
 	std::cout << "Multiplication modifiant la premiere matrice" << std::endl;
 	one.multItself(two);
 	std::cout << one << std::endl << std::endl;
@@ -163,18 +160,19 @@ void test(){
     try{
         one.addStaticNew(three);
     } catch(const std::invalid_argument& e){
-        std::cout << "Operation invalide" << std::endl;
     }
 	std::cout << "\"une\" - \"trois\"" << std::endl;
     try{
         one.subDynamicNew(three);
     } catch(const std::invalid_argument& e){
-        std::cout << "Operation invalide" << std::endl;
     }
 	std::cout << "\"une\" * \"trois\"" << std::endl;
     try{
         one.multItself(three);
     } catch(const std::invalid_argument& e){
-        std::cout << "Operation invalide" << std::endl;
+        std::cout << e.what() << std::endl;
     }
+    delete oneSubDynamic;
+    delete oneAddDynamic;
+    delete oneMultDynamic;
 }

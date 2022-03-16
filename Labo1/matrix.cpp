@@ -22,9 +22,9 @@ Matrix::Matrix(size_t row, size_t col, unsigned mod) : row(row), col(col), mod(m
 }
 
 Matrix::Matrix(const Matrix &matrix){
-    row = matrix.getRow();
-    col = matrix.getCol();
-    mod = matrix.getMod();
+    row = matrix.row;
+    col = matrix.col;
+    mod = matrix.mod;
     values = new unsigned*[row];
     for (size_t i = 0; i < row; ++i) {
         values[i] = new unsigned[col];
@@ -36,6 +36,8 @@ Matrix::~Matrix() {
     deleteValues();
 }
 
+
+
 void Matrix::deleteValues() {
     for (size_t i = 0; i < row; ++i) {
         delete[] values[i];
@@ -45,10 +47,10 @@ void Matrix::deleteValues() {
 
 Matrix &Matrix::operator=(const Matrix &other) {
     if(this != &other){
-        this->row = other.getRow();
-        this->col = other.getCol();
-        this->mod = other.getMod();
-        if(this->row != other.getRow() || this->col != other.getCol()){
+        this->row = other.row;
+        this->col = other.col;
+        this->mod = other.mod;
+        if(this->row != other.row || this->col != other.col){
             changeSizeValues(this->row,this->col);
         }
         for (size_t i = 0; i < row; ++i) {
@@ -61,8 +63,8 @@ Matrix &Matrix::operator=(const Matrix &other) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Matrix &matrix){
-    for (size_t i = 0; i < matrix.getRow(); ++i) {
-        for (size_t j = 0; j < matrix.getCol(); ++j) {
+    for (size_t i = 0; i < matrix.row; ++i) {
+        for (size_t j = 0; j < matrix.col; ++j) {
             os << matrix.getVal(i,j) << " ";
         }
         os << std::endl;
@@ -75,7 +77,7 @@ void Matrix::generateMatrix() {
     for (size_t i = 0; i < row; ++i) {
         values[i] = new unsigned[col];
         for (size_t j = 0; j < col; ++j) {
-            values[i][j] = randomNumber(mod);
+            values[i][j] = Utils::randomNumber(mod);
         }
     }
 }
@@ -88,13 +90,24 @@ Matrix& Matrix::addItself(const Matrix &matrix){
 
 Matrix Matrix::addStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
-    m.addItself(matrix);
+    try{
+        m.addItself(matrix);
+    } catch(const std::invalid_argument& e){
+        std::cout << e.what() << std::endl;
+        throw;
+    }
     return m;
 }
 
 Matrix *Matrix::addDynamicNew(const Matrix &matrix) const{
     Matrix* m = new Matrix(*this);
-    m->addItself(matrix);
+    try{
+        m->addItself(matrix);
+    } catch(const std::invalid_argument& e){
+        std::cout << e.what()<< std::endl;
+        delete m;
+        throw;
+    }
     return m;
 }
 
@@ -105,13 +118,24 @@ Matrix& Matrix::subItself(const Matrix &matrix) {
 }
 Matrix Matrix::subStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
-    m.subItself(matrix);
+    try{
+        m.subItself(matrix);
+    } catch(const std::invalid_argument& e){
+        std::cout << e.what()<< std::endl;
+        throw;
+    }
     return m;
 }
 
 Matrix *Matrix::subDynamicNew(const Matrix &matrix) const{
     Matrix* m = new Matrix(*this);
-    m->subItself(matrix);
+    try{
+        m->subItself(matrix);
+    } catch(const std::invalid_argument& e){
+        std::cout << e.what()<< std::endl;
+        delete m;
+        throw;
+    }
     return m;
 }
 Matrix& Matrix::multItself(const Matrix &matrix){
@@ -121,13 +145,24 @@ Matrix& Matrix::multItself(const Matrix &matrix){
 }
 Matrix Matrix::multStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
-    m.multItself(matrix);
+    try{
+        m.multItself(matrix);
+    } catch(const std::invalid_argument& e){
+        std::cout << e.what()<< std::endl;
+        throw;
+    }
     return m;
 }
 
 Matrix *Matrix::multDynamicNew(const Matrix &matrix) const{
     Matrix* m = new Matrix(*this);
-    m->multItself(matrix);
+    try{
+        m->multItself(matrix);
+    } catch(const std::invalid_argument& e){
+        std::cout << e.what()<< std::endl;
+        delete m;
+        throw;
+    }
     return m;
 }
 
@@ -138,7 +173,7 @@ void Matrix::changeSizeValues(size_t row, size_t col){
     }
     for (size_t i = 0; i < row; ++i) {
         for (size_t j = 0; j < col; ++j) {
-            newValues[i][j] = i >= this->row || j >= this->col ? 0 : values[i][j];
+            newValues[i][j] = this->getVal(i,j);
         }
     }
     deleteValues();
@@ -148,20 +183,17 @@ void Matrix::changeSizeValues(size_t row, size_t col){
 }
 
 Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
-    if(this->mod != matrix.getMod()){
+    if(this->mod != matrix.mod){
         throw std::invalid_argument("Les modulos des deux matrices ne sont pas "
                                     "egaux");
     }
     if(this->row < matrix.row || this->col < matrix.col)
-        changeSizeValues(std::max(this->row, matrix.row),std::max(this->col,matrix
-        .col));
+        changeSizeValues(std::max(this->row, matrix.row),std::max(this->col,matrix.col));
 
     for (size_t i = 0; i < this->row; ++i) {
         for (size_t j = 0; j < this->col; ++j) {
-            unsigned a = this->getVal(i,j);
-            unsigned b = i >= matrix.getRow() || j >= matrix.getCol() ? 0:matrix
-                    .getVal(i,j);
-            values[i][j] = floorMod(op->apply(a,b), mod);
+            values[i][j] = Utils::floorMod(op->apply(this->getVal(i,j), matrix
+            .getVal(i,j)),mod);
         }
     }
     return this;
@@ -169,19 +201,7 @@ Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
 
 unsigned Matrix::getVal(size_t row, size_t col) const{
     if(row >= this->row || col >= this->col){
-        throw std::runtime_error("Vous tentez d'acceder a des index invalides de la matrice");
+        return 0;
     }
     return values[row][col];
-}
-
-unsigned int Matrix::getMod() const {
-    return mod;
-}
-
-size_t Matrix::getRow() const {
-    return row;
-}
-
-size_t Matrix::getCol() const {
-    return col;
 }

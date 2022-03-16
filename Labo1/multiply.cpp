@@ -9,6 +9,6 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 */
 
 #include "multiply.h"
-long long Multiply::apply(long long a, long long b){
-    return a * b;
+long long Multiply::apply(unsigned a, unsigned b){
+    return (long long) a * (long long) b;
 }

@@ -130,37 +130,21 @@ public:
      */
     Matrix* multDynamicNew(const Matrix &matrix) const;
 
-    /**
-     * Getter du module
-     * @return le module de la matrice
-     */
-    unsigned int getMod() const;
-
-    /**
-     * Getter du nombre de lignes
-     * @return le nombre de lignes
-     */
-	 size_t getRow() const;
-
-    /**
-     * Getter du nombre de colonnes
-     * @return le nombre de colonnes
-     */
-	 size_t getCol() const;
-
-    /**
-     * Retourne un élément de la matrice
-     * @param row le numéro de la ligne
-     * @param col le numéro de la colonne
-     * @return l'élément se trouvant aux index passés en paramètre
-     */
-    unsigned getVal(size_t row, size_t col) const;
-
 private:
     /**
      * Génère une matrice possédant des valeurs aléatoires
      */
     void generateMatrix();
+
+
+    /**
+     * Retourne un élément de la matrice, renvoi 0 si les index sont en dehors de
+     * la matrice
+     * @param row le numéro de la ligne
+     * @param col le numéro de la colonne
+     * @return l'élément se trouvant aux index passés en paramètre
+     */
+    unsigned getVal(size_t row, size_t col) const;
 
     /**
      * Change la taille de la matrice
