@@ -103,6 +103,11 @@ void test(){
 	Matrix three(2, 3 ,7);
 	std::cout << "Matrice trois :" << std::endl << three << std::endl;
 
+	std::cout << "Creation de la matrice \"quatre\" copiant la matrice \"une\""<<
+				 std::endl;
+	Matrix four(one);
+	std::cout << "Matrice quatre :" << std::endl << four << std::endl;
+
 	std::cout << "Addition des matrices \"une\" et \"deux\"" << std::endl;
 	std::cout << "Addition retournant par valeurs" << std::endl <<
 	one.addStaticNew(two) << std::endl;
