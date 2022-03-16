@@ -81,8 +81,8 @@ void Matrix::generateMatrix() {
 }
 
 Matrix& Matrix::addItself(const Matrix &matrix){
-    static Add* op = new Add();
-    applyOperator(matrix,op);
+    static Add* add = new Add();
+    applyOperator(matrix,add);
     return *this;
 }
 
@@ -99,8 +99,8 @@ Matrix *Matrix::addDynamicNew(const Matrix &matrix) const{
 }
 
 Matrix& Matrix::subItself(const Matrix &matrix) {
-    static Substract* op = new Substract();
-    applyOperator(matrix,op);
+    static Substract* sub = new Substract();
+    applyOperator(matrix,sub);
     return *this;
 }
 Matrix Matrix::subStaticNew(const Matrix &matrix) const{
@@ -115,8 +115,8 @@ Matrix *Matrix::subDynamicNew(const Matrix &matrix) const{
     return m;
 }
 Matrix& Matrix::multItself(const Matrix &matrix){
-    static Multiply* op = new Multiply();
-    applyOperator(matrix,op);
+    static Multiply* mult = new Multiply();
+    applyOperator(matrix,mult);
     return *this;
 }
 Matrix Matrix::multStaticNew(const Matrix &matrix) const{
