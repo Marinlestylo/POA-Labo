@@ -89,12 +89,7 @@ Matrix& Matrix::addItself(const Matrix &matrix){
 
 Matrix Matrix::addStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
-    try{
-        m.addItself(matrix);
-    } catch(const std::invalid_argument& e){
-        std::cout << e.what() << std::endl;
-        throw;
-    }
+	 m.addItself(matrix);
     return m;
 }
 
@@ -103,7 +98,6 @@ Matrix *Matrix::addDynamicNew(const Matrix &matrix) const{
     try{
         m->addItself(matrix);
     } catch(const std::invalid_argument& e){
-        std::cout << e.what()<< std::endl;
         delete m;
         throw;
     }
@@ -117,12 +111,7 @@ Matrix& Matrix::subItself(const Matrix &matrix) {
 }
 Matrix Matrix::subStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
-    try{
-        m.subItself(matrix);
-    } catch(const std::invalid_argument& e){
-        std::cout << e.what()<< std::endl;
-        throw;
-    }
+	 m.subItself(matrix);
     return m;
 }
 
@@ -131,7 +120,6 @@ Matrix *Matrix::subDynamicNew(const Matrix &matrix) const{
     try{
         m->subItself(matrix);
     } catch(const std::invalid_argument& e){
-        std::cout << e.what()<< std::endl;
         delete m;
         throw;
     }
@@ -144,12 +132,7 @@ Matrix& Matrix::multItself(const Matrix &matrix){
 }
 Matrix Matrix::multStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
-    try{
-        m.multItself(matrix);
-    } catch(const std::invalid_argument& e){
-        std::cout << e.what()<< std::endl;
-        throw;
-    }
+	 m.multItself(matrix);
     return m;
 }
 
@@ -158,7 +141,6 @@ Matrix *Matrix::multDynamicNew(const Matrix &matrix) const{
     try{
         m->multItself(matrix);
     } catch(const std::invalid_argument& e){
-        std::cout << e.what()<< std::endl;
         delete m;
         throw;
     }

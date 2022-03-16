@@ -60,7 +60,6 @@ int main(int argc, char *argv[]) {
 
     std::cout << "One * Two" << std::endl;
     std::cout << matrix1.multStaticNew(matrix2) << std::endl;
-    test();
     return 0;
 }
 
@@ -165,11 +164,13 @@ void test(){
     try{
         one.addStaticNew(three);
     } catch(const std::invalid_argument& e){
+		 std::cout << e.what() << std::endl;
     }
 	std::cout << "\"une\" - \"trois\"" << std::endl;
     try{
         one.subDynamicNew(three);
     } catch(const std::invalid_argument& e){
+		 std::cout << e.what() << std::endl;
     }
 	std::cout << "\"une\" * \"trois\"" << std::endl;
     try{
