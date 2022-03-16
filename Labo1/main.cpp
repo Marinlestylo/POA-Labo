@@ -85,7 +85,7 @@ void test(){
     try{
         Matrix zeroModuloMat(2, 3 ,0);
     } catch(const std::runtime_error& e){
-        std::cout << "Opération invalide" << std::endl << std::endl;
+        std::cout << "Operation invalide" << std::endl << std::endl;
     }
 
 	std::cout << "Creation de la matrice \"une\" de taille 2x3 avec 5 comme "
@@ -154,18 +154,18 @@ void test(){
     try{
         one.addStaticNew(three);
     } catch(const std::invalid_argument& e){
-        std::cout << "Opération invalide" << std::endl << std::endl;
+        std::cout << "Operation invalide" << std::endl << std::endl;
     }
 	std::cout << "\"une\" - \"trois\"" << std::endl;
     try{
         one.subDynamicNew(three);
     } catch(const std::invalid_argument& e){
-        std::cout << "Opération invalide" << std::endl;
+        std::cout << "Operation invalide" << std::endl;
     }
 	std::cout << "\"une\" * \"trois\"" << std::endl;
     try{
         one.multItself(three);
     } catch(const std::invalid_argument& e){
-        std::cout << "Opération invalide" << std::endl;
+        std::cout << "Operation invalide" << std::endl;
     }
 }

@@ -12,6 +12,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "add.h"
 #include "substract.h"
 #include "multiply.h"
+#include "utils.h"
 
 Matrix::Matrix(size_t row, size_t col, unsigned mod) : row(row), col(col), mod(mod){
     if(mod == 0){
@@ -74,7 +75,7 @@ void Matrix::generateMatrix() {
     for (size_t i = 0; i < row; ++i) {
         values[i] = new unsigned[col];
         for (size_t j = 0; j < col; ++j) {
-            values[i][j] = randomNumber();
+            values[i][j] = randomNumber(mod);
         }
     }
 }
@@ -164,15 +165,6 @@ Matrix* Matrix::applyOperator(const Matrix &matrix, Operation* op){
         }
     }
     return this;
-}
-
-unsigned Matrix::randomNumber() const{
-    return (unsigned)rand() % mod;
-}
-
-unsigned Matrix::floorMod(long long a,unsigned b) const{
-    a %= (long long)b;
-    return unsigned (a < 0 ? a + (long long)b : a);
 }
 
 unsigned Matrix::getVal(size_t row, size_t col) const{
