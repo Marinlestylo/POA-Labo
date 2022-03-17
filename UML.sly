@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
 <classDiagram>
   <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="Matrix Reloaded">
-    <inheritance id="60425">
-      <child>59232</child>
+    <inheritance id="60427">
+      <child>59234</child>
       <parent>59231</parent>
     </inheritance>
     <inheritance id="60426">
       <child>59233</child>
       <parent>59231</parent>
     </inheritance>
-    <inheritance id="60427">
-      <child>59234</child>
+    <inheritance id="60425">
+      <child>59232</child>
       <parent>59231</parent>
     </inheritance>
-    <entity entityType="CLASS" id="59234" isAbstract="false" name="Multiply" visibility="PUBLIC">
-      <method isAbstract="false" isStatic="false" name="apply" returnType="long_long" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="a" type="unsigned"/>
-        <variable const="false" name="b" type="unsigned"/>
+    <entity entityType="CLASS" id="60331" isAbstract="false" name="Utils" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="true" name="randomNumber" returnType="unsigned" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="mod" type="unsigned"/>
       </method>
-    </entity>
-    <entity entityType="CLASS" id="59233" isAbstract="false" name="Substract" visibility="PUBLIC">
-      <method isAbstract="false" isStatic="false" name="apply" returnType="long_long" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="a" type="unsigned"/>
-        <variable const="false" name="b" type="unsigned"/>
-      </method>
-    </entity>
-    <entity entityType="CLASS" id="59232" isAbstract="false" name="Add" visibility="PUBLIC">
-      <method isAbstract="false" isStatic="false" name="apply" returnType="long_long" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="a" type="unsigned"/>
-        <variable const="false" name="b" type="unsigned"/>
-      </method>
-    </entity>
-    <entity entityType="CLASS" id="59231" isAbstract="true" name="Operation" visibility="PUBLIC">
-      <method isAbstract="true" isStatic="false" name="apply" returnType="long_long" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="a" type="unsigned"/>
+      <method isAbstract="false" isStatic="true" name="floorMod" returnType="unsigned" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="a" type="long_long"/>
         <variable const="false" name="b" type="unsigned"/>
       </method>
     </entity>
@@ -51,7 +36,7 @@
         <variable const="false" name="mod" type="unsigned"/>
       </method>
       <method is-constructor="true" isAbstract="false" isStatic="false" name="Matrix" returnType="" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="matrix" type="const_Matrix_&amp;"/>
+        <variable const="false" name="other" type="const_Matrix_&amp;"/>
       </method>
       <method is-constructor="true" isAbstract="false" isStatic="false" name="~Matrix" returnType="" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="operator=" returnType="Matrix_&amp;" view="DEFAULT" visibility="PUBLIC">
@@ -102,76 +87,118 @@
         <variable const="false" name="matrix" type="const_Matrix_&amp;"/>
         <variable const="false" name="op" type="Opration*"/>
       </method>
-    </entity>
-    <entity entityType="CLASS" id="60331" isAbstract="false" name="Utils" visibility="PUBLIC">
-      <method isAbstract="false" isStatic="true" name="randomNumber" returnType="unsigned" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="mod" type="unsigned"/>
+      <method isAbstract="false" isStatic="false" name="replaceValues" returnType="void" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="other" type="const_matrix_&amp;"/>
       </method>
-      <method isAbstract="false" isStatic="true" name="floorMod" returnType="unsigned" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="a" type="long_long"/>
+    </entity>
+    <entity entityType="CLASS" id="59231" isAbstract="true" name="Operation" visibility="PUBLIC">
+      <method isAbstract="true" isStatic="false" name="apply" returnType="long_long" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="a" type="unsigned"/>
+        <variable const="false" name="b" type="unsigned"/>
+      </method>
+    </entity>
+    <entity entityType="CLASS" id="59232" isAbstract="false" name="Add" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="apply" returnType="long_long" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="a" type="unsigned"/>
+        <variable const="false" name="b" type="unsigned"/>
+      </method>
+    </entity>
+    <entity entityType="CLASS" id="59233" isAbstract="false" name="Substract" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="apply" returnType="long_long" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="a" type="unsigned"/>
+        <variable const="false" name="b" type="unsigned"/>
+      </method>
+    </entity>
+    <entity entityType="CLASS" id="59234" isAbstract="false" name="Multiply" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="apply" returnType="long_long" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="a" type="unsigned"/>
         <variable const="false" name="b" type="unsigned"/>
       </method>
     </entity>
   </diagramElements>
   <umlView grid="10" name="Main view" open="true">
-    <relationView color="-12566464" relationId="60427">
+    <relationView color="-12566464" relationId="60425">
       <line>
         <point>
-          <x>1081</x>
-          <y>551</y>
+          <x>541</x>
+          <y>561</y>
         </point>
         <point>
-          <x>1081</x>
-          <y>511</y>
+          <x>541</x>
+          <y>521</y>
         </point>
         <point>
-          <x>791</x>
-          <y>511</y>
+          <x>831</x>
+          <y>521</y>
         </point>
         <point>
-          <x>791</x>
-          <y>441</y>
+          <x>831</x>
+          <y>451</y>
         </point>
       </line>
     </relationView>
     <relationView color="-12566464" relationId="60426">
       <line>
         <point>
-          <x>791</x>
-          <y>551</y>
+          <x>831</x>
+          <y>561</y>
         </point>
         <point>
-          <x>791</x>
-          <y>441</y>
+          <x>831</x>
+          <y>451</y>
         </point>
       </line>
     </relationView>
-    <relationView color="-12566464" relationId="60425">
+    <relationView color="-12566464" relationId="60427">
       <line>
         <point>
-          <x>501</x>
-          <y>551</y>
+          <x>1121</x>
+          <y>561</y>
         </point>
         <point>
-          <x>501</x>
-          <y>511</y>
+          <x>1121</x>
+          <y>521</y>
         </point>
         <point>
-          <x>791</x>
-          <y>511</y>
+          <x>831</x>
+          <y>521</y>
         </point>
         <point>
-          <x>791</x>
-          <y>441</y>
+          <x>831</x>
+          <y>451</y>
         </point>
       </line>
     </relationView>
-    <componentView color="-2079" componentID="60331" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="59234" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>650</x>
-        <y>50</y>
-        <w>300</w>
-        <h>85</h>
+        <x>980</x>
+        <y>560</y>
+        <w>280</w>
+        <h>70</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="59233" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>690</x>
+        <y>560</y>
+        <w>280</w>
+        <h>70</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="59232" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>400</x>
+        <y>560</y>
+        <w>280</w>
+        <h>70</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="59231" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>690</x>
+        <y>380</y>
+        <w>280</w>
+        <h>70</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="59230" displayAttributes="true" displayDefault="true" displayMethods="true">
@@ -179,39 +206,15 @@
         <x>200</x>
         <y>50</y>
         <w>430</w>
-        <h>445</h>
+        <h>460</h>
       </geometry>
     </componentView>
-    <componentView color="-2079" componentID="59231" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="60331" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
         <x>650</x>
-        <y>370</y>
-        <w>280</w>
-        <h>70</h>
-      </geometry>
-    </componentView>
-    <componentView color="-2079" componentID="59232" displayAttributes="true" displayDefault="true" displayMethods="true">
-      <geometry>
-        <x>360</x>
-        <y>550</y>
-        <w>280</w>
-        <h>70</h>
-      </geometry>
-    </componentView>
-    <componentView color="-2079" componentID="59233" displayAttributes="true" displayDefault="true" displayMethods="true">
-      <geometry>
-        <x>650</x>
-        <y>550</y>
-        <w>280</w>
-        <h>70</h>
-      </geometry>
-    </componentView>
-    <componentView color="-2079" componentID="59234" displayAttributes="true" displayDefault="true" displayMethods="true">
-      <geometry>
-        <x>940</x>
-        <y>550</y>
-        <w>280</w>
-        <h>70</h>
+        <y>50</y>
+        <w>300</w>
+        <h>85</h>
       </geometry>
     </componentView>
     <note color="-2079" content="La fonction amie ne devrait pas être dans la classe Matrix">
