@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : add.h
+Nom du fichier  : add.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Fichier contenant la déclaration de la classe add. Cette
@@ -10,10 +10,10 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO1_ADD_H
-#define LABO1_ADD_H
+#ifndef LABO1_ADD_HPP
+#define LABO1_ADD_HPP
 
-#include "operation.h"
+#include "operation.hpp"
 
 
 class Add : public Operation{
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif //LABO1_ADD_H
+#endif //LABO1_ADD_HPP

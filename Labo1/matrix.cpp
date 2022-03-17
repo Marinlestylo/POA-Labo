@@ -8,11 +8,11 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#include "matrix.h"
-#include "add.h"
-#include "substract.h"
-#include "multiply.h"
-#include "utils.h"
+#include "matrix.hpp"
+#include "add.hpp"
+#include "substract.hpp"
+#include "multiply.hpp"
+#include "utils.hpp"
 
 Matrix::Matrix(size_t row, size_t col, unsigned mod) : row(row), col(col), mod(mod){
     if(mod == 0){
@@ -21,15 +21,15 @@ Matrix::Matrix(size_t row, size_t col, unsigned mod) : row(row), col(col), mod(m
     generateMatrix();
 }
 
-Matrix::Matrix(const Matrix &matrix){
-    row = matrix.row;
-    col = matrix.col;
-    mod = matrix.mod;
+Matrix::Matrix(const Matrix &other){
+    row = other.row;
+    col = other.col;
+    mod = other.mod;
     values = new unsigned*[row];
     for (size_t i = 0; i < row; ++i) {
         values[i] = new unsigned[col];
     }
-    *this = matrix;
+    replaceValues(other);
 }
 
 Matrix::~Matrix() {
@@ -45,6 +45,14 @@ void Matrix::deleteValues() {
     delete[] values;
 }
 
+void Matrix::replaceValues(const Matrix &other){
+    for (size_t i = 0; i < row; ++i) {
+        for (size_t j = 0; j < col; ++j) {
+            values[i][j] = other.getVal(i,j);
+        }
+    }
+}
+
 Matrix &Matrix::operator=(const Matrix &other) {
     if(this != &other){
 
@@ -52,11 +60,7 @@ Matrix &Matrix::operator=(const Matrix &other) {
         this->row = other.row;
         this->col = other.col;
         this->mod = other.mod;
-        for (size_t i = 0; i < row; ++i) {
-            for (size_t j = 0; j < col; ++j) {
-                values[i][j] = other.getVal(i,j);
-            }
-        }
+        replaceValues(other);
     }
     return *this;
 }

@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : utils.h
+Nom du fichier  : utils.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 09.03.2022
 Description     : Fichier contenant la déclaration de fonctions utils. Ce dernier
@@ -10,8 +10,8 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO1_UTILS_H
-#define LABO1_UTILS_H
+#ifndef LABO1_UTILS_HPP
+#define LABO1_UTILS_HPP
 
 #include <cstdlib>
 class Utils {
@@ -32,4 +32,4 @@ public:
      */
     unsigned static floorMod(long long a, unsigned b);
 };
-#endif //LABO1_UTILS_H
+#endif //LABO1_UTILS_HPP

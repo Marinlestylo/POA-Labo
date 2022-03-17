@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : multiply.h
+Nom du fichier  : multiply.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Fichier contenant la déclaration de la classe multiply. Cette
@@ -9,10 +9,10 @@ Description     : Fichier contenant la déclaration de la classe multiply. Cette
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
-#ifndef LABO1_MULTIPLY_H
-#define LABO1_MULTIPLY_H
+#ifndef LABO1_MULTIPLY_HPP
+#define LABO1_MULTIPLY_HPP
 
-#include "operation.h"
+#include "operation.hpp"
 
 class Multiply : public Operation{
 public:
@@ -21,4 +21,4 @@ public:
 
 
 
-#endif //LABO1_MULTIPLY_H
+#endif //LABO1_MULTIPLY_HPP

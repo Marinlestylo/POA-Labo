@@ -8,7 +8,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#include "multiply.h"
+#include "multiply.hpp"
 long long Multiply::apply(unsigned a, unsigned b){
     return (long long) a * (long long) b;
 }

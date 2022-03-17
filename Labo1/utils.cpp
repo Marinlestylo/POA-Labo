@@ -8,7 +8,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#include "utils.h"
+#include "utils.hpp"
 
 unsigned Utils::randomNumber(unsigned mod) {
     return (unsigned)rand() % mod;

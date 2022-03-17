@@ -8,7 +8,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#include "substract.h"
+#include "substract.hpp"
 long long Substract::apply(unsigned a, unsigned b){
     return (long long) a - (long long) b;
 }

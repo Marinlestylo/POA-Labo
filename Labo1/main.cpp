@@ -9,7 +9,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 #include <iostream>
-#include "matrix.h"
+#include "matrix.hpp"
 
 void test();
 
@@ -60,6 +60,8 @@ int main(int argc, char *argv[]) {
 
     std::cout << "One * Two" << std::endl;
     std::cout << matrix1.multStaticNew(matrix2) << std::endl;
+
+    test();
     return 0;
 }
 

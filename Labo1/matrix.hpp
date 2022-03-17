@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : matrix.h
+Nom du fichier  : matrix.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Classe permettant de modéliser des matrices de tailles diverses.
@@ -17,13 +17,13 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO1_MATRIX_H
-#define LABO1_MATRIX_H
+#ifndef LABO1_MATRIX_HPP
+#define LABO1_MATRIX_HPP
 
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "operation.h"
+#include "operation.hpp"
 
 class Matrix;
 
@@ -42,9 +42,9 @@ public:
 
     /**
      * Constructeur de copie
-     * @param matrix matrice à copier
+     * @param other matrice à copier
      */
-    Matrix(const Matrix &matrix);
+    Matrix(const Matrix &other);
 
     /**
      * Destructeur de la classe Matrix
@@ -182,9 +182,16 @@ private:
      */
     Matrix *applyOperator(const Matrix &matrix, Operation *op);
 
+    /**
+      * Remplace les valuers de la matrice actuelle par les valeurs de la matrice
+      * passée en paramètre.
+      * @param other
+      */
+    void replaceValues(const Matrix &other);
+
     size_t row, col;
     unsigned int mod;
     unsigned **values;
 };
 
-#endif //LABO1_MATRIX_H
+#endif //LABO1_MATRIX_HPP
