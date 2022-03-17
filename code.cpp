@@ -9,7 +9,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 #include <iostream>
-#include "matrix.h"
+#include "matrix.hpp"
 
 void test();
 
@@ -60,10 +60,10 @@ int main(int argc, char *argv[]) {
 
     std::cout << "One * Two" << std::endl;
     std::cout << matrix1.multStaticNew(matrix2) << std::endl;
+
+    test();
     return 0;
 }
-
-
 
 
 
@@ -133,10 +133,10 @@ void test(){
 	std::cout << "Soustraction retournant par valeurs" << std::endl <<
 				 one.subStaticNew(two) << std::endl;
 
-    
-	
-	
-	Matrix* oneSubDynamic = one.subDynamicNew(two);
+
+
+
+    Matrix* oneSubDynamic = one.subDynamicNew(two);
     std::cout << "Soustraction retournant par pointeur" << std::endl <<
 				 *oneSubDynamic << std::endl;
 	std::cout << "Soustraction modifiant la premiere matrice" << std::endl;
@@ -207,7 +207,7 @@ void test(){
 
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : matrix.h
+Nom du fichier  : matrix.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Classe permettant de modéliser des matrices de tailles diverses.
@@ -224,13 +224,13 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO1_MATRIX_H
-#define LABO1_MATRIX_H
+#ifndef LABO1_MATRIX_HPP
+#define LABO1_MATRIX_HPP
 
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "operation.h"
+#include "operation.hpp"
 
 class Matrix;
 
@@ -249,9 +249,9 @@ public:
 
     /**
      * Constructeur de copie
-     * @param matrix matrice à copier
+     * @param other matrice à copier
      */
-    Matrix(const Matrix &matrix);
+    Matrix(const Matrix &other);
 
     /**
      * Destructeur de la classe Matrix
@@ -390,19 +390,19 @@ private:
      */
     Matrix *applyOperator(const Matrix &matrix, Operation *op);
 
+    /**
+      * Remplace les valuers de la matrice actuelle par les valeurs de la matrice
+      * passée en paramètre.
+      * @param other
+      */
+    void replaceValues(const Matrix &other);
+
     size_t row, col;
     unsigned int mod;
     unsigned **values;
 };
 
-#endif //LABO1_MATRIX_H
-
-
-
-
-
-
-
+#endif //LABO1_MATRIX_HPP
 
 
 
@@ -422,11 +422,11 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#include "matrix.h"
-#include "add.h"
-#include "substract.h"
-#include "multiply.h"
-#include "utils.h"
+#include "matrix.hpp"
+#include "add.hpp"
+#include "substract.hpp"
+#include "multiply.hpp"
+#include "utils.hpp"
 
 Matrix::Matrix(size_t row, size_t col, unsigned mod) : row(row), col(col), mod(mod){
     if(mod == 0){
@@ -435,15 +435,15 @@ Matrix::Matrix(size_t row, size_t col, unsigned mod) : row(row), col(col), mod(m
     generateMatrix();
 }
 
-Matrix::Matrix(const Matrix &matrix){
-    row = matrix.row;
-    col = matrix.col;
-    mod = matrix.mod;
+Matrix::Matrix(const Matrix &other){
+    row = other.row;
+    col = other.col;
+    mod = other.mod;
     values = new unsigned*[row];
     for (size_t i = 0; i < row; ++i) {
         values[i] = new unsigned[col];
     }
-    *this = matrix;
+    replaceValues(other);
 }
 
 Matrix::~Matrix() {
@@ -459,6 +459,14 @@ void Matrix::deleteValues() {
     delete[] values;
 }
 
+void Matrix::replaceValues(const Matrix &other){
+    for (size_t i = 0; i < row; ++i) {
+        for (size_t j = 0; j < col; ++j) {
+            values[i][j] = other.getVal(i,j);
+        }
+    }
+}
+
 Matrix &Matrix::operator=(const Matrix &other) {
     if(this != &other){
 
@@ -466,18 +474,10 @@ Matrix &Matrix::operator=(const Matrix &other) {
         this->row = other.row;
         this->col = other.col;
         this->mod = other.mod;
-        for (size_t i = 0; i < row; ++i) {
-            for (size_t j = 0; j < col; ++j) {
-                values[i][j] = other.getVal(i,j);
-            }
-        }
+        replaceValues(other);
     }
     return *this;
 }
-
-
-
-
 
 
 
@@ -550,7 +550,6 @@ Matrix& Matrix::multItself(const Matrix &matrix){
     applyOperator(matrix,mult);
     return *this;
 }
-
 Matrix Matrix::multStaticNew(const Matrix &matrix) const{
     Matrix m(*this);
 	 m.multItself(matrix);
@@ -619,9 +618,10 @@ unsigned Matrix::getVal(size_t row, size_t col) const{
 
 
 
+
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : operation.h
+Nom du fichier  : operation.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Fichier contenant la déclaration de la classe opération ainsi
@@ -632,8 +632,8 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO1_OPERATION_H
-#define LABO1_OPERATION_H
+#ifndef LABO1_OPERATION_HPP
+#define LABO1_OPERATION_HPP
 
 
 class Operation {
@@ -642,12 +642,11 @@ public:
 };
 
 
-#endif //LABO1_OPERATION_H
-
+#endif //LABO1_OPERATION_HPP
 
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : add.h
+Nom du fichier  : add.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Fichier contenant la déclaration de la classe add. Cette
@@ -657,10 +656,10 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO1_ADD_H
-#define LABO1_ADD_H
+#ifndef LABO1_ADD_HPP
+#define LABO1_ADD_HPP
 
-#include "operation.h"
+#include "operation.hpp"
 
 
 class Add : public Operation{
@@ -669,8 +668,7 @@ public:
 };
 
 
-#endif //LABO1_ADD_H
-
+#endif //LABO1_ADD_HPP
 
 /*
 -----------------------------------------------------------------------------------
@@ -682,15 +680,17 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#include "add.h"
+#include "add.hpp"
 long long Add::apply(unsigned a, unsigned b){
     return (long long) a + (long long) b;
 }
 
 
+
+
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : substract.h
+Nom du fichier  : substract.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Fichier contenant la déclaration de la classe substract. Cette
@@ -700,10 +700,10 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO1_SUBSTRACT_H
-#define LABO1_SUBSTRACT_H
+#ifndef LABO1_SUBSTRACT_HPP
+#define LABO1_SUBSTRACT_HPP
 
-#include "operation.h"
+#include "operation.hpp"
 
 class Substract : public Operation{
 public:
@@ -711,7 +711,7 @@ public:
 };
 
 
-#endif //LABO1_SUBSTRACT_H
+#endif //LABO1_SUBSTRACT_HPP
 
 
 /*
@@ -724,14 +724,14 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#include "substract.h"
+#include "substract.hpp"
 long long Substract::apply(unsigned a, unsigned b){
     return (long long) a - (long long) b;
 }
 
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : multiply.h
+Nom du fichier  : multiply.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 03.03.2022
 Description     : Fichier contenant la déclaration de la classe multiply. Cette
@@ -740,10 +740,10 @@ Description     : Fichier contenant la déclaration de la classe multiply. Cette
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
-#ifndef LABO1_MULTIPLY_H
-#define LABO1_MULTIPLY_H
+#ifndef LABO1_MULTIPLY_HPP
+#define LABO1_MULTIPLY_HPP
 
-#include "operation.h"
+#include "operation.hpp"
 
 class Multiply : public Operation{
 public:
@@ -752,7 +752,7 @@ public:
 
 
 
-#endif //LABO1_MULTIPLY_H
+#endif //LABO1_MULTIPLY_HPP
 
 
 
@@ -767,14 +767,14 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#include "multiply.h"
+#include "multiply.hpp"
 long long Multiply::apply(unsigned a, unsigned b){
     return (long long) a * (long long) b;
 }
 
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : utils.h
+Nom du fichier  : utils.hpp
 Auteur(s)       : Alexandre Jaquier, Jonathan Friedli
 Date creation   : 09.03.2022
 Description     : Fichier contenant la déclaration de fonctions utils. Ce dernier
@@ -784,8 +784,8 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO1_UTILS_H
-#define LABO1_UTILS_H
+#ifndef LABO1_UTILS_HPP
+#define LABO1_UTILS_HPP
 
 #include <cstdlib>
 class Utils {
@@ -806,7 +806,26 @@ public:
      */
     unsigned static floorMod(long long a, unsigned b);
 };
-#endif //LABO1_UTILS_H
+#endif //LABO1_UTILS_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 -----------------------------------------------------------------------------------
 Nom du fichier  : utils.cpp
@@ -816,11 +835,13 @@ Description     : Fichier contenant l'implémentation de fonctions utilitaires.
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
-#include "utils.h"
+
+#include "utils.hpp"
 
 unsigned Utils::randomNumber(unsigned mod) {
     return (unsigned)rand() % mod;
 }
+
 
 unsigned Utils::floorMod(long long a, unsigned b) {
     a %= (long long)b;
