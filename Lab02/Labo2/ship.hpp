@@ -9,7 +9,12 @@ public:
     virtual ~Ship();
     /* à compléter */
     virtual std::ostream& toStream(std::ostream& os) const;
+    unsigned maxSpeed() const;
+
+protected:
+    Ship(const std::string& modele, unsigned weight, unsigned speed);
 private:
-    /* à compléter */
+    std::string nickname, modele;
+    unsigned weigth, speed;
 };
 #endif /* SHIP_HPP */
