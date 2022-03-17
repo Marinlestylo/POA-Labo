@@ -3,4 +3,4 @@ project(Labo1)
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wconversion -Wsign-conversion -pedantic")
 
-add_executable(Labo1 main.cpp)
+add_executable(Labo1 main.cpp ship.cpp ship.h)
