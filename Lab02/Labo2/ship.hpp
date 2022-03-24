@@ -10,26 +10,14 @@ public:
     /* à compléter */
     virtual std::ostream& toStream(std::ostream& os) const;
     unsigned maxSpeed() const;
-    virtual double getConsomation(double distance, unsigned speed) const;
+    virtual double getConsomation(double distance, unsigned speed, unsigned weight) const;
     void setNickname(const std::string& name);
 
-    static const std::string &getModele();
 
-    static void setModele(const std::string &modele);
-
-    static unsigned int getWeight();
-
-    static void setWeight(unsigned int weight);
-
-    static unsigned int getSpeed();
-
-    static void setSpeed(unsigned int speed);
 
 protected:
-    Ship(const std::string& modele, unsigned weight, unsigned speed);
+    Ship();
 private:
     std::string nickname;
-    static std::string modele;
-    static unsigned weight, speed;
 };
 #endif /* SHIP_HPP */

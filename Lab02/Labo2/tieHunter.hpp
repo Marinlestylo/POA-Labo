@@ -9,9 +9,15 @@
 
 class tieHunter : public Ship {
 public:
-    tieHunter();
+    static const std::string &getModele();
+
+    static unsigned int getWeight();
+
+    static unsigned int getSpeed();
+
 private:
-    tieHunter(const std::string& modele = "[TIE/LN #1]", unsigned weight = 6, unsigned speed = 100);
+    const static std::string modele;
+    const static unsigned weight, speed;
 };
 
 
