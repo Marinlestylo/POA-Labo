@@ -7,7 +7,7 @@
 
 #include "ship.hpp"
 
-class tieHunter : public Ship {
+class TieHunter : public Ship {
 public:
     static const std::string &getModele();
 

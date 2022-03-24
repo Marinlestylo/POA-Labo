@@ -15,9 +15,9 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "squadron.hpp"
 
 int main() {
-    tieHunter blackLeader;
+    TieHunter blackLeader;
     blackLeader.setNickname("Black leader");
-    tieHunter blackTwo;
+    TieHunter blackTwo;
     Shuttle shuttle(23.4); // 23.4 tonnes de marchandises
     Squadron squad("Black Squadron");
     squad += blackLeader;

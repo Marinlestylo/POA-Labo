@@ -3,19 +3,19 @@
 //
 
 #include "tieHunter.hpp"
-const unsigned tieHunter::speed = 100; // L'unité est MGLT
-const unsigned tieHunter::weight = 6; // L'unité est tonne
-const std::string tieHunter::modele = " [TIE/LN #1]";
+const unsigned TieHunter::speed = 100; // L'unité est MGLT
+const unsigned TieHunter::weight = 6; // L'unité est tonne
+const std::string TieHunter::modele = " [TIE/LN #1]";
 
-const std::string &tieHunter::getModele() {
+const std::string &TieHunter::getModele() {
     return modele;
 }
 
-unsigned int tieHunter::getWeight() {
+unsigned int TieHunter::getWeight() {
     return weight;
 }
 
-unsigned int tieHunter::getSpeed() {
+unsigned int TieHunter::getSpeed() {
     return speed;
 }
 

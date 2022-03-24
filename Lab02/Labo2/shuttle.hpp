@@ -8,6 +8,18 @@
 #include "transporter.hpp"
 
 class Shuttle : public Transporter {
+public:
+    Shuttle(double load);
+    static const std::string &getModele();
+
+    static unsigned int getWeight();
+
+    static unsigned int getSpeed();
+
+private:
+    double load;
+    const static std::string modele;
+    const static unsigned weight, speed;
 
 };
 
