@@ -7,8 +7,11 @@
 
 #include "ship.hpp"
 
-class TIE : public Ship {
-
+class tieHunter : public Ship {
+public:
+    tieHunter();
+private:
+    tieHunter(const std::string& modele = "[TIE/LN #1]", unsigned weight = 6, unsigned speed = 100);
 };
 
 

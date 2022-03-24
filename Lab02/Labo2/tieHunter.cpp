@@ -3,3 +3,7 @@
 //
 
 #include "tieHunter.hpp"
+
+tieHunter::tieHunter(const std::string &modele, unsigned int weight, unsigned int speed) {
+    Ship()
+}
