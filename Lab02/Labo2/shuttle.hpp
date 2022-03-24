@@ -16,11 +16,12 @@ public:
 
     static unsigned int getSpeed();
 
+protected:
+    double getConsomation(double distance, unsigned int speed) const override;
+
 private:
-    double load;
     const static std::string modele;
     const static unsigned weight, speed;
-
 };
 
 

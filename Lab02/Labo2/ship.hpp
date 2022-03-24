@@ -10,13 +10,10 @@ public:
     /* à compléter */
     virtual std::ostream& toStream(std::ostream& os) const;
     unsigned maxSpeed() const;
-    virtual double getConsomation(double distance, unsigned speed, unsigned weight) const;
     void setNickname(const std::string& name);
-
-
-
 protected:
     Ship();
+    virtual double getConsomation(double distance, unsigned speed, unsigned weight) const;
 private:
     std::string nickname;
 };

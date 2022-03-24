@@ -8,6 +8,17 @@
 #include "transporter.hpp"
 
 class Dreadnought : public Transporter {
+public:
+    Dreadnought(double load);
+    static const std::string &getModele();
+
+    static unsigned int getWeight();
+
+    static unsigned int getSpeed();
+
+private:
+    const static std::string modele;
+    const static unsigned weight, speed;
 
 };
 

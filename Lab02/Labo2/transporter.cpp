@@ -3,3 +3,8 @@
 //
 
 #include "transporter.hpp"
+Transporter::Transporter(double load) : load(load){}
+
+double Transporter::getLoad() const {
+    return load;
+}
