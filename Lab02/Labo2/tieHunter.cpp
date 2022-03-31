@@ -1,24 +1,36 @@
-//
-// Created by Jonathan on 17.03.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier : tieHunter.cpp
+Auteur(s)      : Alexandre Jaquier et Jonathan Friedli
+Date creation  : 17.03.2022
+Description    : Implémentation de la classe tieHunter héritant de Ship.
+Compilateur    : Mingw-w64 g++ 8.1.0
+-----------------------------------------------------------------------------------
+*/
 
 #include "tieHunter.hpp"
+
 const unsigned TieHunter::speed = 100; // L'unité est MGLT
 const double TieHunter::weight = 6; // L'unité est tonne
-const std::string TieHunter::modele = " [TIE/LN #1]";
+const std::string TieHunter::modele = "TIE/LN";
+unsigned int TieHunter::counter = 0;
 
-const std::string& TieHunter::getModele() const{
-    return modele;
+TieHunter::TieHunter(){
+	id = ++counter;
 }
 
-double TieHunter::getWeight() const{
-    return weight;
+const std::string& TieHunter::getModele() const {
+	return modele;
 }
 
-unsigned int TieHunter::getSpeed() const{
-    return speed;
+unsigned int TieHunter::getId() const{
+	return id;
 }
 
-TieHunter::TieHunter() {}
+double TieHunter::getWeight() const {
+	return weight;
+}
 
-
+unsigned int TieHunter::getSpeed() const {
+	return speed;
+}

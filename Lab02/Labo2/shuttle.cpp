@@ -1,17 +1,31 @@
-//
-// Created by Jonathan on 17.03.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier : shuttle.cpp
+Auteur(s)      : Alexandre Jaquier et Jonathan Friedli
+Date creation  : 17.03.2022
+Description    : Implémentation de la classe shuttle.
+Compilateur    : Mingw-w64 g++ 8.1.0
+-----------------------------------------------------------------------------------
+*/
 
 #include "shuttle.hpp"
-const unsigned Shuttle::speed = 100; // L'unité est MGLT
-const unsigned Shuttle::weight = 6; // L'unité est tonne
-const double Shuttle::maxLoad = 80; // L'unité est tonne
-const std::string Shuttle::modele = " [ Lambda-class shuttle #1]";
 
-Shuttle::Shuttle(double load) : Transporter(load){}
+const unsigned Shuttle::speed = 54; // L'unité est MGLT
+const unsigned Shuttle::weight = 360; // L'unité est tonne
+const double Shuttle::maxLoad = 80; // L'unité est tonne
+const std::string Shuttle::modele = "Lambda-class shuttle";
+unsigned int Shuttle::counter = 0;
+
+Shuttle::Shuttle(double load) : Transporter(load, maxLoad){
+	id = ++counter;
+}
 
 const std::string &Shuttle::getModele() const{
     return modele;
+}
+
+unsigned int Shuttle::getId() const{
+	return id;
 }
 
 double Shuttle::getWeight() const{
@@ -25,4 +39,3 @@ unsigned int Shuttle::getSpeed() const{
 double Shuttle::getMaxLoad() const{
     return maxLoad;
 }
-

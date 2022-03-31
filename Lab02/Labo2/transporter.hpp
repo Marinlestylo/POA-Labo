@@ -1,6 +1,13 @@
-//
-// Created by Jonathan on 17.03.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier : transporter.hpp
+Auteur(s)      : Alexandre Jaquier et Jonathan Friedli
+Date creation  : 17.03.2022
+Description    : Déclaration de la classe Transporter héritant de Ship et
+                 modélisant des vaisseaux transportant des cargaisons.
+Compilateur    : Mingw-w64 g++ 8.1.0
+-----------------------------------------------------------------------------------
+*/
 
 #ifndef LABO1_TRANSPORTER_HPP
 #define LABO1_TRANSPORTER_HPP
@@ -9,15 +16,19 @@
 
 class Transporter : public Ship {
 public:
-    double getLoad() const;
-    void setLoad(double load);
-    virtual double getMaxLoad() const = 0;
-    std::ostream& toStream(std::ostream& os) const;
 
-protected:
-    Transporter(double currentLoad);
+	Transporter(double currentLoad, double maxLoad);
+
+	double getLoad() const;
+
+	void setLoad(double load);
+
+	virtual double getMaxLoad() const = 0;
+
+	std::ostream& toStream(std::ostream& os) const override;
+
 private:
-    double currentLoad;
+	double currentLoad;
 };
 
 

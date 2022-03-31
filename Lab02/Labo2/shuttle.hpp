@@ -1,6 +1,12 @@
-//
-// Created by Jonathan on 17.03.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier : shuttle.hpp
+Auteur(s)      : Alexandre Jaquier et Jonathan Friedli
+Date creation  : 17.03.2022
+Description    : Déclaration de la classe shuttle héritant de Transporter.
+Compilateur    : Mingw-w64 g++ 8.1.0
+-----------------------------------------------------------------------------------
+*/
 
 #ifndef LABO1_SHUTTLE_HPP
 #define LABO1_SHUTTLE_HPP
@@ -9,19 +15,25 @@
 
 class Shuttle : public Transporter {
 public:
-    Shuttle(double load);
-    const std::string &getModele() const;
 
-    double getWeight() const;
+	explicit Shuttle(double load);
 
-    unsigned int getSpeed() const;
+	const std::string& getModele() const override;
 
-    double getMaxLoad() const;
+	unsigned int getId() const override;
+
+	double getWeight() const override;
+
+	unsigned int getSpeed() const override;
+
+	double getMaxLoad() const override;
 
 private:
-    const static std::string modele;
-    const static unsigned weight, speed;
-    const static double maxLoad;
+	const static std::string modele;
+	const static unsigned weight, speed;
+	const static double maxLoad;
+	static unsigned int counter;
+	unsigned int id;
 };
 
 
