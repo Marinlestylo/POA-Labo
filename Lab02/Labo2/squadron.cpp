@@ -5,7 +5,7 @@
 #include "Squadron.hpp"
 #include <math.h>
 
-/*Squadron::Squadron(std::string name){
+Squadron::Squadron(std::string name){
     this->name = name;
     leader = nullptr;
     listHead = nullptr;
@@ -131,4 +131,4 @@ std::ostream &operator<<(std::ostream &os, Squadron &squadron){
         os << member->valeur << std::endl;
     }
     return os;
-}*/
+}

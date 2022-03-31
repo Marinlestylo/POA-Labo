@@ -16,6 +16,8 @@ public:
 
     unsigned int getSpeed() const;
 
+    double getMaxLoad() const;
+
 private:
     const static std::string modele;
     const static unsigned weight, speed;

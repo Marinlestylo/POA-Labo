@@ -12,3 +12,7 @@ double Transporter::getLoad() const {
 void Transporter::setLoad(double load) {
     currentLoad = load;
 }
+
+std::ostream &Transporter::toStream(std::ostream &os) const {
+    return Ship::toStream(os) << "  cargo : " << getLoad() << " tons (max : " << getMaxLoad() << ")";
+}

@@ -11,6 +11,8 @@ class Transporter : public Ship {
 public:
     double getLoad() const;
     void setLoad(double load);
+    virtual double getMaxLoad() const = 0;
+    std::ostream& toStream(std::ostream& os) const;
 
 protected:
     Transporter(double currentLoad);

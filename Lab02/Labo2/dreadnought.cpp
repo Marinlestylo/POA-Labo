@@ -5,7 +5,7 @@
 #include "dreadnought.hpp"
 const unsigned Dreadnought::speed = 100; // L'unité est MGLT
 const unsigned Dreadnought::weight = 6; // L'unité est tonne
-const std::string Dreadnought::modele = " [TIE/LN #1]";
+const std::string Dreadnought::modele = " [Super-class Star Destroyer #1]";
 const double Dreadnought::maxLoad = 250000;
 
 Dreadnought::Dreadnought(double load) : Transporter(load){}
@@ -20,4 +20,8 @@ double Dreadnought::getWeight() const{
 
 unsigned int Dreadnought::getSpeed() const{
     return speed;
+}
+
+double Dreadnought::getMaxLoad() const{
+    return maxLoad;
 }

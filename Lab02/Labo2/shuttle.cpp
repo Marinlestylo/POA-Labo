@@ -6,7 +6,7 @@
 const unsigned Shuttle::speed = 100; // L'unité est MGLT
 const unsigned Shuttle::weight = 6; // L'unité est tonne
 const double Shuttle::maxLoad = 80; // L'unité est tonne
-const std::string Shuttle::modele = " [TIE/LN #1]";
+const std::string Shuttle::modele = " [ Lambda-class shuttle #1]";
 
 Shuttle::Shuttle(double load) : Transporter(load){}
 
@@ -22,4 +22,7 @@ unsigned int Shuttle::getSpeed() const{
     return speed;
 }
 
+double Shuttle::getMaxLoad() const{
+    return maxLoad;
+}
 

@@ -15,7 +15,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "squadron.hpp"
 
 int main() {
-    TieHunter black;
+    Shuttle black(18);
     std::cout << black <<std::endl;
     /*TieHunter blackLeader;
     blackLeader.setNickname("Black leader");

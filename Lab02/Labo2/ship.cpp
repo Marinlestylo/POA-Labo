@@ -17,7 +17,7 @@ std::ostream &operator<<(std::ostream &os, const Ship &ship){
 
 std::ostream &Ship::toStream(std::ostream &os) const {
     return os << (nickname.empty() ? "" : nickname + " ") << (getModele()) + "\n" << "  weight : "
-    << getWeight() << " tons\n  max speed : " << std::setprecision(2) << getSpeed() << " MGLT";
+    << getWeight() << " tons\n  max speed : " << std::setprecision(2) << getSpeed() << " MGLT\n";
 }
 
 Ship::Ship(){
