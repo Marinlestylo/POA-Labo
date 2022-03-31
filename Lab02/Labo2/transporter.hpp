@@ -9,11 +9,13 @@
 
 class Transporter : public Ship {
 public:
-    Transporter(double load);
-private:
-double load;
-public:
     double getLoad() const;
+    void setLoad(double load);
+
+protected:
+    Transporter(double currentLoad);
+private:
+    double currentLoad;
 };
 
 

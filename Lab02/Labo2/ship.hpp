@@ -11,6 +11,7 @@ public:
     virtual std::ostream& toStream(std::ostream& os) const;
     unsigned maxSpeed() const;
     void setNickname(const std::string& name);
+    unsigned getWeight();
 protected:
     Ship();
     virtual double getConsomation(double distance, unsigned speed, unsigned weight) const;

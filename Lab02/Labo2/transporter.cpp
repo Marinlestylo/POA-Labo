@@ -3,8 +3,12 @@
 //
 
 #include "transporter.hpp"
-Transporter::Transporter(double load) : load(load){}
+Transporter::Transporter(double currentLoad) : currentLoad(currentLoad){}
 
 double Transporter::getLoad() const {
-    return load;
+    return currentLoad;
+}
+
+void Transporter::setLoad(double load) {
+    currentLoad = load;
 }
