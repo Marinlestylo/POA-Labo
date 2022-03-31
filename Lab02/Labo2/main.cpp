@@ -32,7 +32,7 @@ int main() {
 	std::cout << black << std::endl;
 	std::cout << black2 << std::endl;
 
-	Dreadnought black3(1445448);
+	Dreadnought black3(144448);
 	Dreadnought black4(23.4);
 	std::cout << black3 << std::endl;
 	std::cout << black4 << std::endl;

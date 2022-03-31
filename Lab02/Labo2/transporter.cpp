@@ -12,7 +12,7 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #include <iomanip>
 
 Transporter::Transporter(double currentLoad, double maxLoad) {
-	if(currentLoad >= maxLoad){
+	if (currentLoad >= maxLoad) {
 		throw std::invalid_argument("Vous tentez de creer un vaisseau avec une trop "
 											 "grosse cargaison !");
 	}
@@ -29,6 +29,6 @@ void Transporter::setLoad(double load) {
 
 std::ostream& Transporter::toStream(std::ostream& os) const {
 	return Ship::toStream(os) << "  cargo : " << std::setprecision(1)
-										<< getLoad() <<" tons (max : "
-										<< getMaxLoad() << ")\n";
+									  << getLoad() << " tons (max : "
+									  << getMaxLoad() << ")\n";
 }

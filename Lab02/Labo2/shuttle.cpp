@@ -16,26 +16,26 @@ const double Shuttle::maxLoad = 80; // L'unité est tonne
 const std::string Shuttle::modele = "Lambda-class shuttle";
 unsigned int Shuttle::counter = 0;
 
-Shuttle::Shuttle(double load) : Transporter(load, maxLoad){
+Shuttle::Shuttle(double load) : Transporter(load, maxLoad) {
 	id = ++counter;
 }
 
-const std::string &Shuttle::getModele() const{
-    return modele;
+const std::string& Shuttle::getModele() const {
+	return modele;
 }
 
-unsigned int Shuttle::getId() const{
+unsigned int Shuttle::getId() const {
 	return id;
 }
 
-double Shuttle::getWeight() const{
-    return weight + getLoad();
+double Shuttle::getWeight() const {
+	return weight + getLoad();
 }
 
-unsigned int Shuttle::getSpeed() const{
-    return speed;
+unsigned int Shuttle::getSpeed() const {
+	return speed;
 }
 
-double Shuttle::getMaxLoad() const{
-    return maxLoad;
+double Shuttle::getMaxLoad() const {
+	return maxLoad;
 }

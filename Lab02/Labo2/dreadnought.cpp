@@ -16,26 +16,26 @@ const std::string Dreadnought::modele = "Super-class Star Destroyer";
 const double Dreadnought::maxLoad = 250000;
 unsigned int Dreadnought::counter = 0;
 
-Dreadnought::Dreadnought(double load) : Transporter(load, maxLoad){
+Dreadnought::Dreadnought(double load) : Transporter(load, maxLoad) {
 	id = ++counter;
 }
 
-const std::string &Dreadnought::getModele() const{
-    return modele;
+const std::string& Dreadnought::getModele() const {
+	return modele;
 }
 
 unsigned int Dreadnought::getId() const {
 	return id;
 }
 
-double Dreadnought::getWeight() const{
-    return weight + getLoad();
+double Dreadnought::getWeight() const {
+	return weight + getLoad();
 }
 
-unsigned int Dreadnought::getSpeed() const{
-    return speed;
+unsigned int Dreadnought::getSpeed() const {
+	return speed;
 }
 
-double Dreadnought::getMaxLoad() const{
-    return maxLoad;
+double Dreadnought::getMaxLoad() const {
+	return maxLoad;
 }

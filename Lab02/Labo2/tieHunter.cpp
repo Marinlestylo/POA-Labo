@@ -15,7 +15,7 @@ const double TieHunter::weight = 6; // L'unité est tonne
 const std::string TieHunter::modele = "TIE/LN";
 unsigned int TieHunter::counter = 0;
 
-TieHunter::TieHunter(){
+TieHunter::TieHunter() {
 	id = ++counter;
 }
 
@@ -23,7 +23,7 @@ const std::string& TieHunter::getModele() const {
 	return modele;
 }
 
-unsigned int TieHunter::getId() const{
+unsigned int TieHunter::getId() const {
 	return id;
 }
 

@@ -19,18 +19,18 @@ TieInterceptor::TieInterceptor() {
 	id = ++counter;
 }
 
-const std::string &TieInterceptor::getModele() const{
-    return modele;
+const std::string& TieInterceptor::getModele() const {
+	return modele;
 }
 
 unsigned int TieInterceptor::getId() const {
 	return id;
 }
 
-double TieInterceptor::getWeight() const{
-    return weight;
+double TieInterceptor::getWeight() const {
+	return weight;
 }
 
-unsigned int TieInterceptor::getSpeed() const{
-    return speed;
+unsigned int TieInterceptor::getSpeed() const {
+	return speed;
 }
