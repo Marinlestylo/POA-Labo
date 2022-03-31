@@ -4,21 +4,28 @@
 
 #include "ship.hpp"
 #include <cmath>
+#include <iostream>
+#include <iomanip>
 
 Ship::~Ship() {
 
 }
 
+std::ostream &operator<<(std::ostream &os, const Ship &ship){
+    return ship.toStream(os);
+}
+
 std::ostream &Ship::toStream(std::ostream &os) const {
-    return os;
+    return os << (nickname.empty() ? "" : nickname + " ") << (getModele()) + "\n" << "  weight : "
+    << getWeight() << " tons\n  max speed : " << std::setprecision(2) << getSpeed() << " MGLT";
 }
 
 Ship::Ship(){
 }
 
 // TODO: exception si vitesse trop élevée ?
-double Ship::getConsomation(double distance, unsigned speed, unsigned weight) const {
-    return cbrt(weight) * log10(weight * speed) * log10(distance + 1);
+double Ship::getConsomation(double distance, unsigned speed) const {
+    return cbrt(getWeight()) * log10(getWeight() * speed) * log10(distance + 1);
 }
 
 void Ship::setNickname(const std::string& name) {

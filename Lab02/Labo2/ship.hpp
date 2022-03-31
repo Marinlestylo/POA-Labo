@@ -7,14 +7,17 @@ class Ship
 {
 public:
     virtual ~Ship();
-    /* à compléter */
     virtual std::ostream& toStream(std::ostream& os) const;
-    unsigned maxSpeed() const;
+    //virtual unsigned maxSpeed() const = 0;
     void setNickname(const std::string& name);
-    unsigned getWeight();
-protected:
+    virtual double getWeight() const = 0;
+    virtual const std::string &getModele() const = 0;
+    virtual unsigned int getSpeed() const = 0;
+
     Ship();
-    virtual double getConsomation(double distance, unsigned speed, unsigned weight) const;
+protected:
+
+    virtual double getConsomation(double distance, unsigned speed) const;
 private:
     std::string nickname;
 };

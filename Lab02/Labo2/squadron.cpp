@@ -5,7 +5,7 @@
 #include "Squadron.hpp"
 #include <math.h>
 
-Squadron::Squadron(std::string name){
+/*Squadron::Squadron(std::string name){
     this->name = name;
     leader = nullptr;
     listHead = nullptr;
@@ -82,7 +82,7 @@ unsigned Squadron::getMaxSpeed() const{
     unsigned speed = 0;
     Maillon* tmp = listHead;
     while (tmp != nullptr){
-        speed = std::min(speed, tmp->valeur.maxSpeed());
+        speed = std::min(speed, tmp->valeur.getSpeed());
         tmp = tmp->suivant;
     }
 }
@@ -123,7 +123,7 @@ Squadron operator-(const Squadron &squadron, const Ship &ship){
 std::ostream &operator<<(std::ostream &os, Squadron &squadron){
     size_t i = 0;
     Ship* leader = squadron.leader;
-    os << "-- Leader"
+    os << "-- Leader";
     Squadron::Maillon* member = squadron.listHead;
     if (leader != nullptr)
         os << squadron.leader;
@@ -131,4 +131,4 @@ std::ostream &operator<<(std::ostream &os, Squadron &squadron){
         os << member->valeur << std::endl;
     }
     return os;
-}
+}*/

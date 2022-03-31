@@ -10,14 +10,12 @@
 class Shuttle : public Transporter {
 public:
     Shuttle(double load);
-    static const std::string &getModele();
+    const std::string &getModele() const;
 
-    double getWeight();
+    double getWeight() const;
 
-    static unsigned int getSpeed();
+    unsigned int getSpeed() const;
 
-protected:
-    double getConsomation(double distance, unsigned int speed) const override;
 
 private:
     const static std::string modele;

@@ -10,19 +10,16 @@ const std::string Shuttle::modele = " [TIE/LN #1]";
 
 Shuttle::Shuttle(double load) : Transporter(load){}
 
-const std::string &Shuttle::getModele() {
+const std::string &Shuttle::getModele() const{
     return modele;
 }
 
-double Shuttle::getWeight() {
+double Shuttle::getWeight() const{
     return weight + getLoad();
 }
 
-unsigned int Shuttle::getSpeed() {
+unsigned int Shuttle::getSpeed() const{
     return speed;
 }
 
-double Shuttle::getConsomation(double distance, unsigned int speed) const {
-    return Ship::getConsomation(distance, speed, weight + Transporter::getLoad());
-}
 

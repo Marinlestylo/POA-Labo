@@ -9,15 +9,18 @@
 
 class TieHunter : public Ship {
 public:
-    static const std::string &getModele();
+    const std::string &getModele() const;
 
-    static unsigned int getWeight();
+    double getWeight() const;
 
-    static unsigned int getSpeed();
+    unsigned int getSpeed() const;
+
+    TieHunter();
 
 private:
     const static std::string modele;
-    const static unsigned weight, speed;
+    const static unsigned speed;
+    const static double weight;
 };
 
 
