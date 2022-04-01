@@ -28,22 +28,23 @@ public:
     Squadron(const Squadron &other);
 
     void setLeader(Ship& ship);
-    Squadron& addShipFromSquadron(const Ship& ship);
+    Squadron& addShipFromSquadron(Ship& ship);
     Squadron& removeShipFromSquadron(const Ship& ship);
     Ship& getShip(size_t i) const;
     unsigned getMaxSpeed() const;
     Squadron removeShip(const Ship& ship) const;
-    Squadron addShip(const Ship& ship) const;
+    Squadron addShip(Ship& ship) const;
 
     bool containShip(const Ship& ship) const;
 
-    Squadron &operator+=(const Ship& ship);
+    Squadron &operator+=(Ship& ship);
     Squadron &operator-=(const Ship &ship);
     Ship& operator[](size_t i) const;
 
 private:
     Ship* leader;
     Maillon* listHead;
+    Maillon* listTail;
     std::string name;
 };
 
