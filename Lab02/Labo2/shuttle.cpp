@@ -11,7 +11,7 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #include "shuttle.hpp"
 
 const unsigned Shuttle::speed = 54; // L'unité est MGLT
-const unsigned Shuttle::weight = 360; // L'unité est tonne
+const double Shuttle::weight = 360; // L'unité est tonne
 const double Shuttle::maxLoad = 80; // L'unité est tonne
 const std::string Shuttle::modele = "Lambda-class shuttle";
 unsigned int Shuttle::counter = 0;

@@ -14,9 +14,6 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 
 Ship::Ship() {}
 
-// TODO: Destructeur par défaut ?
-Ship::~Ship() {}
-
 std::ostream& operator<<(std::ostream& os, const Ship& ship) {
 	return ship.toStream(os);
 }

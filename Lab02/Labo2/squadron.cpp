@@ -5,66 +5,85 @@
 #include "Squadron.hpp"
 #include <math.h>
 
-Squadron::Squadron(std::string name){
+using namespace std;
+
+Squadron::Squadron(string name) {
     this->name = name;
     leader = nullptr;
     listHead = nullptr;
-    listTail = nullptr;
+    listTail = listHead;
 }
 
-Squadron::Squadron(const Squadron& other){
-    listHead = other.listHead;
+Squadron::Squadron(const Squadron &other) {
     leader = other.leader;
-    listTail = other.listTail;
+    listHead = new Maillon{other.listHead->valeur, nullptr};
+    Maillon *toCopy = other.listHead;
+    Maillon *maillon = listHead;
+    while (toCopy != nullptr) {
+        maillon->suivant = new Maillon{toCopy->valeur, nullptr};
+        toCopy = toCopy->suivant;
+        maillon = maillon->suivant;
+    }
+    listTail = maillon;
 }
 
-void Squadron::setLeader(Ship& leader){
-    if(this->leader != nullptr){
-        const Ship& s = *this->leader;
-        addShipFromSquadron(*this->leader);
+Squadron::~Squadron() {
+    Maillon *tmp = listHead;
+    Maillon *toDelete = listHead;
+    while (tmp != nullptr) {
+        tmp = tmp->suivant;
+        delete toDelete;
+        toDelete = tmp;
     }
+}
+
+
+void Squadron::setLeader(Ship &leader) {
+    addShipFromSquadron(leader);
     this->leader = &leader;
 }
 
-Squadron Squadron::addShip(Ship& ship) const{
+Squadron Squadron::addShip(Ship &ship) const {
     Squadron newSquadron(*this);
     newSquadron.addShipFromSquadron(ship);
     return newSquadron;
 }
 
-Squadron Squadron::removeShip(const Ship& ship) const{
+Squadron Squadron::removeShip(const Ship &ship) const {
     Squadron newSquadron(*this);
     newSquadron.removeShipFromSquadron(ship);
     return newSquadron;
 }
 
-Squadron& Squadron::addShipFromSquadron(Ship& ship){
-    if(this->containShip(ship))
-        return *this;
+Squadron &Squadron::addShipFromSquadron(Ship &ship) {
+    Maillon *tmp = listHead;
+    while (tmp != nullptr) {
+        if (&tmp->valeur == &ship) {
+            return *this;
+        }
+        tmp = tmp->suivant;
+    }
 
-    Maillon* newMaillon = new Maillon{ship, nullptr};
-    if(listHead == nullptr){
+    Maillon *newMaillon = new Maillon{ship, nullptr};
+    if (listHead == nullptr) {
         listHead = newMaillon;
-    } else{
+    } else {
         listTail->suivant = newMaillon;
     }
     listTail = newMaillon;
     return *this;
 }
 
-Squadron& Squadron::removeShipFromSquadron(const Ship& ship){
-    if(listHead == nullptr)
-        return *this;
-
-    Maillon* toRemove = listHead;
-    Maillon* tmp = listHead;
-    while(toRemove != nullptr){
-        if(&(toRemove->valeur) == &ship){
-            if(toRemove == listHead){
+Squadron &Squadron::removeShipFromSquadron(const Ship &ship) {
+    Maillon *toRemove = listHead;
+    Maillon *tmp = listHead;
+    while (toRemove != nullptr) {
+        if (&(toRemove->valeur) == &ship) {
+            if (toRemove == listHead) {
                 listHead = toRemove->suivant;
-            } else if(toRemove == listTail){
+            } else if (toRemove == listTail) {
                 listTail = tmp;
-            }else{
+            } else {
                 tmp->suivant = toRemove->suivant;
             }
             delete toRemove;
@@ -76,71 +95,98 @@ Squadron& Squadron::removeShipFromSquadron(const Ship& ship){
     return *this;
 }
 
-Ship& Squadron::getShip(size_t i) const{
-    if(listHead == nullptr)
-        throw std::runtime_error("Le Squadron ne contient pas de vaisseau");
-    Maillon * tmp = listHead;
+Ship &Squadron::getShip(size_t i) {
+    Maillon *tmp = listHead;
     size_t counter = 0;
-    while(tmp->suivant != nullptr && counter++ != i){
+    while (tmp->suivant != nullptr && counter++ != i) {
         tmp = tmp->suivant;
     }
-    if(counter == i+1){
-        return (Ship&)*tmp;
+    if (counter == i + 1) {
+        return tmp->valeur;
     }
-    throw std::runtime_error("Le Squadron ne contient pas ce vaisseau");
+    throw runtime_error("Le Squadron ne contient pas ce vaisseau");
 }
 
-unsigned Squadron::getMaxSpeed() const{
-    unsigned speed = 0;
-    Maillon* tmp = listHead;
-    while (tmp != nullptr){
-        speed = std::min(speed, tmp->valeur.getSpeed());
+const Ship &Squadron::getShip(size_t i) const {
+    Maillon *tmp = listHead;
+    size_t counter = 0;
+    while (tmp->suivant != nullptr && counter++ != i) {
+        tmp = tmp->suivant;
+    }
+    if (counter == i + 1) {
+        return tmp->valeur;
+    }
+    throw runtime_error("Le Squadron ne contient pas ce vaisseau");
+}
+
+void Squadron::squadronInfos(unsigned &speed, double &weight) const {
+    Maillon *tmp = listHead;
+    if (tmp != nullptr)
+        speed = tmp->valeur.getSpeed();
+    while (tmp != nullptr) {
+        speed = min(speed, tmp->valeur.getSpeed());
+        weight += tmp->valeur.getWeight();
         tmp = tmp->suivant;
     }
 }
 
-Squadron& Squadron::operator+=(Ship &ship){
+Squadron &Squadron::operator+=(Ship &ship) {
     addShipFromSquadron(ship);
 }
-Squadron& Squadron::operator-=(const Ship &ship){
+
+Squadron &Squadron::operator-=(const Ship &ship) {
     removeShipFromSquadron(ship);
 }
 
-bool Squadron::containShip(const Ship& ship) const{
-    if(listHead == nullptr)
+/*
+bool Squadron::containShip(const Ship &ship) const {
+    if (listHead == nullptr)
         return false;
-    Maillon* tmp = listHead;
-    while (tmp != nullptr){
-        if(&(tmp->valeur) == &ship){
+    Maillon *tmp = listHead;
+    while (tmp != nullptr) {
+        if (&(tmp->valeur) == &ship) {
             return true;
         }
         tmp = tmp->suivant;
     }
     return false;
-}
+}*/
 
-Ship& Squadron::operator[](size_t i) const{
+Ship &Squadron::operator[](size_t i) {
     return getShip(i);
 }
 
-Squadron operator+(const Squadron &squadron, Ship &ship){
+const Ship &Squadron::operator[](size_t i) const {
+    return getShip(i);
+}
+
+
+Squadron operator+(const Squadron &squadron, Ship &ship) {
     return squadron.addShip(ship);
 }
 
-Squadron operator-(const Squadron &squadron, const Ship &ship){
+Squadron operator-(const Squadron &squadron, const Ship &ship) {
     return squadron.removeShip(ship);
 }
 
-std::ostream &operator<<(std::ostream &os, Squadron &squadron){
-    const Ship* leader = squadron.leader;
-    os << "\n-- Leader\n";
-    Squadron::Maillon* member = squadron.listHead;
-    if (leader != nullptr)
-        os << *squadron.leader;
-    os << "\n-- Member\n";
-    while(member != nullptr){
-        if(&member->valeur != leader)
-        os << member->valeur << std::endl;
+ostream &operator<<(ostream &os, Squadron &squadron) {
+    unsigned maxSpeed;
+    double squadronWeight;
+    squadron.squadronInfos(maxSpeed, squadronWeight);
+    os << "Squadron: " << squadron.name << endl;
+    os << " max speed: " << maxSpeed << " MGLT" << endl;
+    os << " total weight: " << squadronWeight << " tons" << endl;
+
+
+    os << endl << "-- Leader" << endl;
+    Squadron::Maillon *member = squadron.listHead;
+    if (squadron.leader != nullptr)
+        os << *squadron.leader << endl;
+
+    os << "-- Members" << endl;
+    while (member != nullptr) {
+        if (&member->valeur != squadron.leader)
+            os << member->valeur << endl;
         member = member->suivant;
     }
     return os;

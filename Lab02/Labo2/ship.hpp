@@ -23,7 +23,7 @@ public:
 
 	Ship();
 
-	virtual ~Ship();
+	virtual ~Ship() = default;
 
 	virtual std::ostream& toStream(std::ostream& os) const;
 
