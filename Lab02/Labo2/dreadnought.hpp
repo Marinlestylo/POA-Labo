@@ -20,8 +20,6 @@ public:
 
 	const std::string& getModele() const override;
 
-	unsigned int getId() const override;
-
 	double getWeight() const override;
 
 	unsigned int getSpeed() const override;
@@ -34,7 +32,6 @@ private:
 	const static unsigned long long weight;
 	const static double maxLoad;
 	static unsigned int counter;
-	unsigned int id;
 };
 
 

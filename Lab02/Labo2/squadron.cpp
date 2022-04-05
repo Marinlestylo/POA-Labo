@@ -131,11 +131,11 @@ void Squadron::squadronInfos(unsigned &speed, double &weight) const {
 }
 
 Squadron &Squadron::operator+=(Ship &ship) {
-    addShipFromSquadron(ship);
+    return addShipFromSquadron(ship);
 }
 
 Squadron &Squadron::operator-=(const Ship &ship) {
-    removeShipFromSquadron(ship);
+    return removeShipFromSquadron(ship);
 }
 
 /*

@@ -15,16 +15,10 @@ const double TieInterceptor::weight = 5; // L'unité est tonne
 const std::string TieInterceptor::modele = "TIE/IN";
 unsigned int TieInterceptor::counter = 0;
 
-TieInterceptor::TieInterceptor() {
-	id = ++counter;
-}
+TieInterceptor::TieInterceptor() : Ship(++counter){}
 
 const std::string& TieInterceptor::getModele() const {
 	return modele;
-}
-
-unsigned int TieInterceptor::getId() const {
-	return id;
 }
 
 double TieInterceptor::getWeight() const {

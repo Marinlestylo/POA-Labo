@@ -11,7 +11,7 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #include "transporter.hpp"
 #include <iomanip>
 
-Transporter::Transporter(double currentLoad, double maxLoad) {
+Transporter::Transporter(unsigned int id, double currentLoad, double maxLoad) : Ship(id){
 	if (currentLoad >= maxLoad) {
 		throw std::invalid_argument("Vous tentez de creer un vaisseau avec une trop "
 											 "grosse cargaison !");

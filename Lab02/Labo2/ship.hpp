@@ -21,7 +21,7 @@ std::ostream& operator<<(std::ostream& os, const Ship& ship);
 class Ship {
 public:
 
-	Ship();
+	Ship(unsigned int id);
 
 	virtual ~Ship() = default;
 
@@ -33,8 +33,6 @@ public:
 
 	virtual const std::string& getModele() const = 0;
 
-	virtual unsigned int getId() const = 0;
-
 	virtual unsigned int getSpeed() const = 0;
 
 	virtual double getConsomation(double distance, unsigned speed) const;
@@ -43,6 +41,7 @@ private:
 	std::string getIdentity() const;
 
 	std::string nickname;
+    unsigned int id;
 };
 
 #endif /* SHIP_HPP */

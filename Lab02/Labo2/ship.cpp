@@ -12,7 +12,7 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #include <cmath>
 #include <iomanip>
 
-Ship::Ship() {}
+Ship::Ship(unsigned int id) : id(id) {}
 
 std::ostream& operator<<(std::ostream& os, const Ship& ship) {
 	return ship.toStream(os);
@@ -36,7 +36,7 @@ void Ship::setNickname(const std::string& name) {
 
 //TODO: demander si y'a moyen de faire + clean
 std::string Ship::getIdentity() const {
-	return "[" + getModele() + " #" + std::to_string(getId()) + "]";
+	return "[" + getModele() + " #" + std::to_string(id) + "]";
 }
 
 

@@ -17,7 +17,7 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 class Transporter : public Ship {
 public:
 
-	Transporter(double currentLoad, double maxLoad);
+	Transporter(unsigned int id, double currentLoad, double maxLoad);
 
 	double getLoad() const;
 
