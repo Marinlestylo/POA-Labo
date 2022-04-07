@@ -25,7 +25,6 @@ std::ostream& Ship::toStream(std::ostream& os) const {
 				 << " tons\n  max speed : " << getSpeed() << " MGLT\n";
 }
 
-// TODO: exception si vitesse trop élevée ?
 double Ship::getConsomation(double distance, unsigned speed) const {
 	return cbrt(getWeight()) * log10(getWeight() * speed) * log10(distance + 1);
 }
@@ -34,7 +33,6 @@ void Ship::setNickname(const std::string& name) {
 	nickname = name;
 }
 
-//TODO: demander si y'a moyen de faire + clean
 std::string Ship::getIdentity() const {
 	return "[" + getModele() + " #" + std::to_string(id) + "]";
 }
