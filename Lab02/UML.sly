@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
+<classDiagram>
+  <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="Squadron">
+    <entity entityType="ENUM" id="66104" name="Enum"/>
+    <entity entityType="ENUM" id="65829" name="Enum"/>
+    <entity entityType="CLASS" id="65690" isAbstract="false" name="Dreadnought" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="65689" isAbstract="false" name="Shuttle" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="65688" isAbstract="false" name="Transporter" visibility="PUBLIC">
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Transporter" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="id" type="unsigned"/>
+        <variable const="false" name="currentLoad" type="double"/>
+        <variable const="false" name="maxLoad" type="double"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="getLoad_const" returnType="double" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="setLoad" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="load" type="double"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="getMaxLoad_const" returnType="double" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="toStream_const" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
+    <entity entityType="CLASS" id="65687" isAbstract="false" name="TieInterceptor" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="65686" isAbstract="false" name="TieHunter" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="65685" isAbstract="true" name="Ship" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="nickname" type="string" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="unsigned" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="true" isStatic="false" name="Ship" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="id" type="unsigned"/>
+      </method>
+      <method isAbstract="true" isStatic="false" name="~Ship" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="toStream_const" returnType="ostream&amp;" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="os" type="ostream&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="setNickname" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="name" type="const_string_&amp;"/>
+      </method>
+      <method isAbstract="true" isStatic="false" name="getWeight_const" returnType="double" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="true" isStatic="false" name="getModele_const" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="true" isStatic="false" name="getSpeed_const" returnType="unsigned" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="true" isStatic="false" name="getConsomation_const" returnType="double" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="p" type="double"/>
+      </method>
+    </entity>
+  </diagramElements>
+  <umlView grid="10" name="Main view" open="true">
+    <componentView color="-2079" componentID="65685" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>590</x>
+        <y>80</y>
+        <w>400</w>
+        <h>205</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="65686" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>350</x>
+        <y>370</y>
+        <w>150</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="65687" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>520</x>
+        <y>370</y>
+        <w>150</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="65688" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>780</x>
+        <y>330</y>
+        <w>410</w>
+        <h>130</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="65689" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>750</x>
+        <y>480</y>
+        <w>150</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="65690" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>970</x>
+        <y>480</y>
+        <w>150</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+    <note color="-2079" content="La classe ship a une surcharge de l'opérateur d'écriture dans un flux">
+      <noteGeometry>
+        <x>430</x>
+        <y>100</y>
+        <w>100</w>
+        <h>90</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="65685">
+        <point>
+          <x>531</x>
+          <y>131</y>
+        </point>
+        <point>
+          <x>591</x>
+          <y>141</y>
+        </point>
+      </noteLine>
+    </note>
+  </umlView>
+</classDiagram>
