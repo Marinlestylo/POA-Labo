@@ -17,7 +17,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "squadron.hpp"
 
 int main() {
-	TieHunter a;
+	/*TieHunter a;
 	TieHunter b;
 	TieInterceptor c;
 	TieInterceptor d;
@@ -36,14 +36,21 @@ int main() {
 	Dreadnought black4(23.4);
 	std::cout << black3 << std::endl;
 	std::cout << black4 << std::endl;
-	/*TieHunter blackLeader;
+	*/
+
+    TieHunter blackLeader;
 	blackLeader.setNickname("Black leader");
 	TieHunter blackTwo;
 	Shuttle shuttle(23.4); // 23.4 tonnes de marchandises
 	Squadron squad("Black Squadron");
-	squad += blackLeader;
+
+    squad += blackLeader;
 	squad += blackTwo;
 	squad += shuttle;
-	squad.setLeader(blackLeader);
-	std::cout << squad << std::endl;*/
+    squad.setLeader(blackLeader);
+    Squadron kek(squad);
+	std::cout << squad << std::endl << std::endl;
+
+    std::cout << kek << std::endl;
+
 }

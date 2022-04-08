@@ -1,7 +1,3 @@
-//
-// Created by Jonathan on 17.03.2022.
-//
-
 #ifndef LABO1_SQUADRON_HPP
 #define LABO1_SQUADRON_HPP
 
@@ -9,40 +5,80 @@
 
 class Squadron;
 
-std::ostream &operator<<(std::ostream &os, Squadron &squadron);
+std::ostream &operator<<(std::ostream &os, const Squadron &squadron);
 
 Squadron operator+(const Squadron &squadron, Ship &ship);
 
 Squadron operator-(const Squadron &squadron, Ship &ship);
 
+/**
+* Classe permettant de modéliser une escadrille contenant des
+* vaisseaux et potentiellement un chef.
+*/
 class Squadron {
     struct Maillon {
-        Ship &valeur;
+        Ship *valeur;
         Maillon *suivant;
     };
 
-    friend std::ostream &operator<<(std::ostream &os, Squadron &squadron);
-
-    friend Squadron operator+(const Squadron &squadron, Ship &ship);
-
-    friend Squadron operator-(const Squadron &squadron, const Ship &ship);
+    friend std::ostream &operator<<(std::ostream &os, const Squadron &squadron);
 
 public:
-    Squadron(std::string name);
+    /**
+     * Constructeur de la classe Squadron
+     * @param name nom de l'escadrille
+     */
+    Squadron(const std::string& name);
 
+    /**
+    * Constructeur par copie de la classe Squadron
+    * @param other escadrille à copier
+    */
     Squadron(const Squadron &other);
 
+    /**
+    * Déstructeur de la classe Squadron
+    */
     ~Squadron();
 
-    void setLeader(Ship &ship);
+    /**
+    * TODO Voir s'il faut l'implémenter
+    * @param other
+    * @return
+    */
+    Squadron &operator=(const Squadron& other);
 
+    /**
+    * Méthode permettant de définir le chef de l'escadrille, si le vaisseau ne fait
+    * pas parti des membres de l'escadrille il y est ajouté
+    * @param leader chef de l'escadrille
+    */
+    void setLeader(Ship &leader);
+
+    /**
+     * Méthode permettant de rajouter un vaisseau dans l'escadrille
+     * @param ship
+     * @return une référence sur l'escadrille
+     */
     Squadron &addShipFromSquadron(Ship &ship);
 
+    /**
+     * Méthode permettant de retirer un vaisseau de l'escadrille
+     * @param ship
+     * @return une référence sur l'escadrille
+     */
     Squadron &removeShipFromSquadron(const Ship &ship);
 
+    /**
+     * Méthode permettant de récupérer un vaisseau de l'escadrille
+     * @throws runtime_error si le paramètre est en dehors des index de la liste
+     * @param i index du vaisseau dans la liste
+     * @return une référence constante sur le vaisseau récupéré
+     */
     const Ship &getShip(size_t i) const;
 
-    Ship &getShip(size_t i);
+    //Ship &getShip(size_t i);
+    //Ship &operator[](size_t i);
 
     void squadronInfos(unsigned& speed, double& weight) const;
 
@@ -54,10 +90,19 @@ public:
 
     Squadron &operator-=(const Ship &ship);
 
-    Ship &operator[](size_t i);
+    double getConsommation(double distance, unsigned vitesse) const;
+
+    /**
+     * Opérateur permettant de récupérer un vaisseau de l'escadrille
+     * @throws runtime_error si le paramètre est en dehors des index de la liste
+     * @param i index du vaisseau dans la liste
+     * @return une référence constante sur le vaisseau récupéré
+     */
     const Ship &operator[](size_t i) const;
 
 private:
+
+    void initVariables(const std::string& newName, Ship *newLeader,Ship* newHead);
     Ship *leader;
     Maillon *listHead;
     Maillon *listTail;

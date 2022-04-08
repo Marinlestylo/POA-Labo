@@ -66,6 +66,8 @@ public:
 
     /**
      * Calcule la consommation d'un vaisseau compte tenu de sa vitesse, de la distance du trajet et de son chargement
+     * @throws runtime_error si la vitesse voulue n'est pas atteignable par le
+     * vaisseau
      * @param distance Distance parcourue en millions de km
      * @param speed Vitesse à laquelle le vaisseau avance
      * @return La consomation en tonne

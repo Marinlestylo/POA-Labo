@@ -26,7 +26,10 @@ std::ostream& Ship::toStream(std::ostream& os) const {
 }
 
 double Ship::getConsomation(double distance, unsigned speed) const {
-	return cbrt(getWeight()) * log10(getWeight() * speed) * log10(distance + 1);
+    if(speed > this->getSpeed()){
+        throw std::runtime_error("La vitesse n'est pas atteignalble");
+    }
+	return cbrt(getWeight())/2 * log10(getWeight() * speed) * log10(distance + 1);
 }
 
 void Ship::setNickname(const std::string& name) {
