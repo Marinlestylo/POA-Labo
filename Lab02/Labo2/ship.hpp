@@ -2,6 +2,7 @@
 #define SHIP_HPP
 
 #include <ostream>
+#include "shipCharacteristic.hpp"
 
 class Ship;
 
@@ -22,67 +23,58 @@ std::ostream& operator<<(std::ostream& os, const Ship& ship);
 class Ship {
 public:
 
-    /**
-     * Constructeur de la classe vaisseau
-     * @param id id du vaisseau
-     */
-	explicit Ship(unsigned int id);
+	/**
+	 * Constructeur de la classe vaisseau
+	 * @param id id du vaisseau
+	 */
+	explicit Ship(unsigned int id, ShipCharacteristic* characteristic);
 
-    /**
-     * Destructeur de la classe vaisseau
-     */
+	/**
+	 * Destructeur de la classe vaisseau
+	 */
 	virtual ~Ship() = default;
 
-    /**
-     * Permet d'afficher les informations d'un vaisseau dans un flux
-     * @param os flux dans lequel nous écrivons
-     * @return une référence sur le flux modifié
-     */
+	/**
+	 * Permet d'afficher les informations d'un vaisseau dans un flux
+	 * @param os flux dans lequel nous écrivons
+	 * @return une référence sur le flux modifié
+	 */
 	virtual std::ostream& toStream(std::ostream& os) const;
 
-    /**
-     * Permet de modifier le nickname du vaisseau
-     * @param name nouveau nom
-     */
+	/**
+	 * Permet de modifier le nickname du vaisseau
+	 * @param name nouveau nom
+	 */
 	void setNickname(const std::string& name);
 
-    /**
-     * Renvoie le poids du vaisseau en tonne
-     * @return le poids en tonne
-     */
-	virtual double getWeight() const = 0;
+	/**
+	 * Renvoie le poids du vaisseau en tonne
+	 * @return le poids en tonne
+	 */
+	virtual double getWeight() const;
 
-    /**
-     * Renvoie le type de modèle du vaisseau
-     * @return le modèle
-     */
-	virtual const std::string& getModele() const = 0;
+	unsigned int getMaxSpeed() const;
 
-    /**
-     * Renvoie la vitesse du vaisseau en MGLT
-     * @return la vitesse en MGLT
-     */
-	virtual unsigned int getSpeed() const = 0;
-
-    /**
-     * Calcule la consommation d'un vaisseau compte tenu de sa vitesse, de la distance du trajet et de son chargement
-     * @throws runtime_error si la vitesse voulue n'est pas atteignable par le
-     * vaisseau
-     * @param distance Distance parcourue en millions de km
-     * @param speed Vitesse à laquelle le vaisseau avance
-     * @return La consomation en tonne
-     */
+	/**
+	 * Calcule la consommation d'un vaisseau compte tenu de sa vitesse, de la distance du trajet et de son chargement
+	 * @throws runtime_error si la vitesse voulue n'est pas atteignable par le
+	 * vaisseau
+	 * @param distance Distance parcourue en millions de km
+	 * @param speed Vitesse à laquelle le vaisseau avance
+	 * @return La consomation en tonne
+	 */
 	double getConsomation(double distance, unsigned speed) const;
 
 private:
-    /**
-     * Construit un string représentant l'identité du vaisseau sous la forme "[<modèle> #<id>]"
-     * @return l'identité du vaisseau
-     */
+	/**
+	 * Construit un string représentant l'identité du vaisseau sous la forme "[<modèle> #<id>]"
+	 * @return l'identité du vaisseau
+	 */
 	std::string getIdentity() const;
 
 	std::string nickname;
-    unsigned int id;
+	unsigned int id;
+	const ShipCharacteristic* characteristic;
 };
 
 #endif /* SHIP_HPP */

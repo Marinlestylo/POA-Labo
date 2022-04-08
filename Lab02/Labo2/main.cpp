@@ -17,12 +17,13 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "squadron.hpp"
 
 int main() {
-	/*TieHunter a;
+	TieHunter a;
 	TieHunter b;
+
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;/*
 	TieInterceptor c;
 	TieInterceptor d;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
 	std::cout << c << std::endl;
 	std::cout << d << std::endl;
 
@@ -36,7 +37,7 @@ int main() {
 	Dreadnought black4(23.4);
 	std::cout << black3 << std::endl;
 	std::cout << black4 << std::endl;
-	*/
+	/*
 
     TieHunter blackLeader;
 	blackLeader.setNickname("Black leader");
@@ -52,5 +53,5 @@ int main() {
 	std::cout << squad << std::endl << std::endl;
 
     std::cout << kek << std::endl;
-
+*/
 }

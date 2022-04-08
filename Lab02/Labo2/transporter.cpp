@@ -11,9 +11,11 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #include "transporter.hpp"
 #include <iomanip>
 
-// TODO: ESSAYER DE MODIF CA, il a dit que c'était un peu deg
-Transporter::Transporter(unsigned int id, double currentLoad, double maxLoad) : Ship(id){
-	if (currentLoad >= maxLoad) {
+Transporter::Transporter(
+	unsigned int id, double currentLoad, CargoCharacteristic* characteristic) :
+	Ship(id, characteristic) {
+
+	if (currentLoad >= characteristic->getMaxLoad()) {
 		throw std::invalid_argument("Vous tentez de creer un vaisseau avec une trop "
 											 "grosse cargaison !");
 	}
@@ -25,11 +27,15 @@ double Transporter::getLoad() const {
 }
 
 void Transporter::setLoad(double load) {
+	if (currentLoad >= characteristic->getMaxLoad()) {
+		throw std::invalid_argument("Vous tentez de creer un vaisseau avec une trop "
+											 "grosse cargaison !");
+	}
 	currentLoad = load;
 }
 
 std::ostream& Transporter::toStream(std::ostream& os) const {
 	return Ship::toStream(os) << "  cargo : " << std::setprecision(1)
-									  << getLoad() << " tons (max : "
-									  << getMaxLoad() << ")\n";
+									  << currentLoad << " tons (max : "
+									  << characteristic->getMaxLoad() << ")\n";
 }

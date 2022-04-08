@@ -10,21 +10,8 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 
 #include "tieInterceptor.hpp"
 
-const unsigned TieInterceptor::speed = 110; // L'unité est MGLT
-const double TieInterceptor::weight = 5; // L'unité est tonne
-const std::string TieInterceptor::modele = "TIE/IN";
-unsigned int TieInterceptor::counter = 0;
+ShipCharacteristic TieInterceptor::characteristic(
+	"TIE/IN", 110, 5
+);
 
-TieInterceptor::TieInterceptor() : Ship(++counter){}
-
-const std::string& TieInterceptor::getModele() const {
-	return modele;
-}
-
-double TieInterceptor::getWeight() const {
-	return weight;
-}
-
-unsigned int TieInterceptor::getSpeed() const {
-	return speed;
-}
+TieInterceptor::TieInterceptor() : Ship(characteristic.nextId(), &characteristic) {}

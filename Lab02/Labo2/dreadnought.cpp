@@ -10,26 +10,21 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 
 #include "dreadnought.hpp"
 
-const unsigned int Dreadnought::speed = 40; // L'unité est MGLT
+/*const unsigned int Dreadnought::speed = 40; // L'unité est MGLT
 const unsigned long long Dreadnought::weight = 9000000000; // L'unité est tonne
 const std::string Dreadnought::modele = "Super-class Star Destroyer";
 const double Dreadnought::maxLoad = 250000;
-unsigned int Dreadnought::counter = 0;
+unsigned int Dreadnought::counter = 0;*/
 
-Dreadnought::Dreadnought(double load) : Transporter(++counter, load, maxLoad) {}
+CargoCharacteristic Dreadnought::characteristic(
+	"Lambda-class shuttle", 40, 9000000000, 250000
+);
 
-const std::string& Dreadnought::getModele() const {
-	return modele;
-}
+Dreadnought::Dreadnought(double load) : Transporter(
+	characteristic.nextId(), load, &characteristic
+), load(load) {}
+
 
 double Dreadnought::getWeight() const {
-	return weight + getLoad();
-}
-
-unsigned int Dreadnought::getSpeed() const {
-	return speed;
-}
-
-double Dreadnought::getMaxLoad() const {
-	return maxLoad;
+	return characteristic.getWeight() + load;
 }

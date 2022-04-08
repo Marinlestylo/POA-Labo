@@ -12,25 +12,18 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #define LABO1_SHUTTLE_HPP
 
 #include "transporter.hpp"
+#include "cargoCharacteristic.hpp"
 
 class Shuttle : public Transporter {
 public:
 
 	explicit Shuttle(double load);
 
-	const std::string& getModele() const override;
-
 	double getWeight() const override;
 
-	unsigned int getSpeed() const override;
-
-	double getMaxLoad() const override;
-
 private:
-	const static std::string modele;
-	const static unsigned speed;
-	const static double maxLoad,weight;
-	static unsigned int counter;
+	double load;
+	static CargoCharacteristic characteristic;
 };
 
 

@@ -18,20 +18,11 @@ public:
 
 	explicit Dreadnought(double load);
 
-	const std::string& getModele() const override;
-
 	double getWeight() const override;
 
-	unsigned int getSpeed() const override;
-
-	double getMaxLoad() const override;
-
 private:
-	const static std::string modele;
-	const static unsigned int speed;
-	const static unsigned long long weight;
-	const static double maxLoad;
-	static unsigned int counter;
+	double load;
+	static CargoCharacteristic characteristic;
 };
 
 

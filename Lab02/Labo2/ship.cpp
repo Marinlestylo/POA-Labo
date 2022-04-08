@@ -12,7 +12,8 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #include <cmath>
 #include <iomanip>
 
-Ship::Ship(unsigned int id) : id(id) {}
+Ship::Ship(unsigned int id, ShipCharacteristic* characteristic) :
+	id(id), characteristic(characteristic) {}
 
 std::ostream& operator<<(std::ostream& os, const Ship& ship) {
 	return ship.toStream(os);
@@ -22,14 +23,14 @@ std::ostream& Ship::toStream(std::ostream& os) const {
 	return os << (nickname.empty() ? "" : (nickname + " ")) << (getIdentity()) + "\n"
 				 << "  weight : "
 				 << std::fixed << std::setprecision(2) << getWeight()
-				 << " tons\n  max speed : " << getSpeed() << " MGLT\n";
+				 << " tons\n  max speed : " << characteristic->getMaxSpeed() << " MGLT\n";
 }
 
 double Ship::getConsomation(double distance, unsigned speed) const {
-    if(speed > this->getSpeed()){
-        throw std::runtime_error("La vitesse n'est pas atteignalble");
-    }
-	return cbrt(getWeight())/2 * log10(getWeight() * speed) * log10(distance + 1);
+	if (speed > characteristic->getMaxSpeed()) {
+		throw std::runtime_error("La vitesse n'est pas atteignalble");
+	}
+	return cbrt(getWeight()) / 2 * log10(getWeight() * speed) * log10(distance + 1);
 }
 
 void Ship::setNickname(const std::string& name) {
@@ -37,7 +38,15 @@ void Ship::setNickname(const std::string& name) {
 }
 
 std::string Ship::getIdentity() const {
-	return "[" + getModele() + " #" + std::to_string(id) + "]";
+	return "[" + characteristic->getModele() + " #" + std::to_string(id) + "]";
+}
+
+double Ship::getWeight() const {
+	return 0;
+}
+
+unsigned int Ship::getMaxSpeed() const {
+	return characteristic->getMaxSpeed();
 }
 
 

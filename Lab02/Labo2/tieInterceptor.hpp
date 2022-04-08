@@ -18,17 +18,9 @@ public:
 
 	TieInterceptor();
 
-	const std::string& getModele() const override;
-
-	double getWeight() const override;
-
-	unsigned int getSpeed() const override;
-
 private:
-	const static std::string modele;
-	const static unsigned speed;
-	const static double weight;
-	static unsigned int counter;
+
+	static ShipCharacteristic characteristic;
 };
 
 
