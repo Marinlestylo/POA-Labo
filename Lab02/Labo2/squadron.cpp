@@ -145,9 +145,9 @@ void Squadron::squadronInfos(unsigned &speed, double &weight) const {
 
     Maillon *tmp = listHead;
     if (tmp != nullptr)
-        speed = tmp->valeur->getSpeed();
+        speed = tmp->valeur->getMaxSpeed();
     while (tmp != nullptr) {
-        speed = min(speed, tmp->valeur->getSpeed());
+        speed = min(speed, tmp->valeur->getMaxSpeed());
         weight += tmp->valeur->getWeight();
         tmp = tmp->suivant;
     }
@@ -176,15 +176,15 @@ Squadron operator-(const Squadron &squadron, const Ship &ship) {
 
 double Squadron::getConsommation(double distance, unsigned int vitesse) const {
     Maillon* ship = this->listHead;
-    double consommation = 0;
-    double maxSpeed;
-    squadronInfos()
+    double totalWeight;
+    unsigned maxSpeed;
+    squadronInfos(maxSpeed,totalWeight);
 
     while(ship != nullptr){
-        consommation += ship->valeur->getConsomation(distance,vitesse);
+        totalWeight += ship->valeur->getConsomation(distance,vitesse);
         ship = ship->suivant;
     }
-    return consommation;
+    return totalWeight;
 }
 
 ostream &operator<<(ostream &os, const Squadron &squadron) {
