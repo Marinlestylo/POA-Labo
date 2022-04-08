@@ -63,7 +63,7 @@ public:
 	 * @param speed Vitesse à laquelle le vaisseau avance
 	 * @return La consomation en tonne
 	 */
-	double getConsomation(double distance, unsigned speed) const;
+	double getConsumption(double distance, unsigned speed) const;
 
 private:
 	/**

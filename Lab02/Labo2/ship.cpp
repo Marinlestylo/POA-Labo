@@ -26,7 +26,7 @@ std::ostream& Ship::toStream(std::ostream& os) const {
 				 << " tons\n  max speed : " << characteristic->getMaxSpeed() << " MGLT\n";
 }
 
-double Ship::getConsomation(double distance, unsigned speed) const {
+double Ship::getConsumption(double distance, unsigned speed) const {
 	if (speed > characteristic->getMaxSpeed()) {
 		throw std::runtime_error("La vitesse n'est pas atteignalble");
 	}
@@ -42,7 +42,7 @@ std::string Ship::getIdentity() const {
 }
 
 double Ship::getWeight() const {
-	return 0;
+	return characteristic->getWeight();
 }
 
 unsigned int Ship::getMaxSpeed() const {

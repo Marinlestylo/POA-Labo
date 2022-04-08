@@ -17,7 +17,7 @@ const double Dreadnought::maxLoad = 250000;
 unsigned int Dreadnought::counter = 0;*/
 
 CargoCharacteristic Dreadnought::characteristic(
-	"Lambda-class shuttle", 40, 9000000000, 250000
+	"Super-class Star Destroyer", 40, 9000000000, 250000
 );
 
 Dreadnought::Dreadnought(double load) : Transporter(

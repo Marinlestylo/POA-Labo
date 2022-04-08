@@ -21,7 +21,7 @@ int main() {
 	TieHunter b;
 
 	std::cout << a << std::endl;
-	std::cout << b << std::endl;/*
+	std::cout << b << std::endl;
 	TieInterceptor c;
 	TieInterceptor d;
 	std::cout << c << std::endl;

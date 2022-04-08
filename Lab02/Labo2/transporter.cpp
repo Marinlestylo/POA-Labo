@@ -19,6 +19,7 @@ Transporter::Transporter(
 		throw std::invalid_argument("Vous tentez de creer un vaisseau avec une trop "
 											 "grosse cargaison !");
 	}
+	this->characteristic = characteristic;
 	this->currentLoad = currentLoad;
 }
 

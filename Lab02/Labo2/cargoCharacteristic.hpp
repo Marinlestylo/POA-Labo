@@ -8,12 +8,13 @@
 
 #include "shipCharacteristic.hpp"
 
-class CargoCharacteristic : public ShipCharacteristic{
+class CargoCharacteristic : public ShipCharacteristic {
 public:
-	explicit CargoCharacteristic(const std::string& modele, unsigned maxSpeed,
-										  double weight, double maxLoad);
+	CargoCharacteristic(const std::string& modele, unsigned maxSpeed,
+							  double weight, double maxLoad);
 
 	double getMaxLoad() const;
+
 private:
 	double maxLoad;
 };

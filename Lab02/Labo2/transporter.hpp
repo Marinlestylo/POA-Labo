@@ -34,12 +34,6 @@ public:
 	void setLoad(double load);
 
 	/**
-	 * Renvoie le poids maximal de cargaison que le vaisseau peut supporter
-	 * @return poids maximal
-	 */
-	virtual double getMaxLoad() const = 0;
-
-	/**
 	 * Redéfinition de la fonction toStream. Elle affiche les informations du vaisseau dans un flux
 	 * @param os flux d'écriture dans lequel on écrit
 	 * @return Une référence sur le flux modifié
