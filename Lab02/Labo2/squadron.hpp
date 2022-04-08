@@ -51,9 +51,9 @@ public:
     /**
     * Méthode permettant de définir le chef de l'escadrille, si le vaisseau ne fait
     * pas parti des membres de l'escadrille il y est ajouté
-    * @param leader chef de l'escadrille
+    * @param newLeader chef de l'escadrille
     */
-    void setLeader(Ship &leader);
+    void setLeader(Ship &newLeader);
 
     /**
      * Méthode permettant de rajouter un vaisseau dans l'escadrille
@@ -90,7 +90,7 @@ public:
 
     Squadron &operator-=(const Ship &ship);
 
-    double getConsommation(double distance, unsigned vitesse) const;
+    double getConsommation(double distance, unsigned speed) const;
 
     /**
      * Opérateur permettant de récupérer un vaisseau de l'escadrille

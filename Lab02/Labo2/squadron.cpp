@@ -48,9 +48,9 @@ Squadron& Squadron::operator=(const Squadron& other){
     return *this;
 }
 
-void Squadron::setLeader(Ship &leader) {
-    addShipFromSquadron(leader);
-    this->leader = &leader;
+void Squadron::setLeader(Ship &newLeader) {
+    addShipFromSquadron(newLeader);
+    this->leader = &newLeader;
 }
 
 /**
@@ -109,23 +109,6 @@ Squadron &Squadron::removeShipFromSquadron(const Ship &ship) {
     }
     return *this;
 }
-/* TODO MODIFIER OU ENLEVER
-Ship &Squadron::getShip(size_t i) {
-    Maillon *tmp = listHead;
-    size_t counter = 0;
-    while (tmp->suivant != nullptr && counter++ != i) {
-        tmp = tmp->suivant;
-    }
-    if (counter == i + 1) {
-        return *tmp->valeur;
-    }
-    throw runtime_error("Le Squadron ne contient pas ce vaisseau");
-}*/
-/* TODO MODIFIER OU ENLEVER
-Ship &Squadron::operator[](size_t i) {
-    return getShip(i);
-}*/
-
 
 const Ship &Squadron::getShip(size_t i) const {
     Maillon *tmp = listHead;
@@ -174,17 +157,24 @@ Squadron operator-(const Squadron &squadron, const Ship &ship) {
     return squadron.removeShip(ship);
 }
 
-double Squadron::getConsommation(double distance, unsigned int vitesse) const {
-    Maillon* ship = this->listHead;
-    double totalWeight;
+double Squadron::getConsommation(double distance, unsigned int speed) const {
     unsigned maxSpeed;
-    squadronInfos(maxSpeed,totalWeight);
+    double totalWeight;
+    squadronInfos(maxSpeed, totalWeight);
+    if(speed > maxSpeed){
+        throw std::invalid_argument("Ce squadron ne peut pas atteindre une telle "
+                                    "speed");
+    }
+
+    Maillon* ship = this->listHead;
+    double consumption = 0;
+
 
     while(ship != nullptr){
-        totalWeight += ship->valeur->getConsomation(distance,vitesse);
+        consumption += ship->valeur->getConsumption(distance, speed);
         ship = ship->suivant;
     }
-    return totalWeight;
+    return consumption;
 }
 
 ostream &operator<<(ostream &os, const Squadron &squadron) {
