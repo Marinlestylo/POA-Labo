@@ -12,9 +12,11 @@ Squadron operator+(const Squadron &squadron, Ship &ship);
 Squadron operator-(const Squadron &squadron, Ship &ship);
 
 /**
-* Classe permettant de modéliser une escadrille contenant des
-* vaisseaux et potentiellement un chef.
-*/
+ * Classe permettant de modéliser une escadrille contenant des
+ * vaisseaux et potentiellement un chef.
+ * @author Alexandre Jaquier
+ * @author Jonathan Friedli
+ */
 class Squadron {
     struct Maillon {
         Ship *valeur;
@@ -43,7 +45,7 @@ public:
 
     /**
     * Opérateur d'affectation de l'escadrille, copie tous les vaisseaux ainsi que
-     * le nom et le chef d'escadrille
+    * le nom et le chef d'escadrille
     * @param other
     * @return
     */
@@ -78,17 +80,50 @@ public:
      */
     const Ship &getShip(size_t i) const;
 
+    /**
+     * Méthode permettant de récupérer différentes informations sur l'escadrille
+     * @param speed vitesse de l'escadrille
+     * @param weight poids de l'escadrille
+     */
     void squadronInfos(unsigned& speed, double& weight) const;
 
+    /**
+     * Méthode retournant une nouvelle escadrille contenant les vaisseaux de
+     * l'escadrille appelée et enlevant le vaisseau passé en paramètre
+     * @param ship vaisseau à enlever de l'escadrille
+     * @return une nouvelle escadrille
+     */
     Squadron removeShip(const Ship &ship) const;
 
+    /**
+     * Méthode retournant une nouvelle escadrille contenant les vaisseaux de
+     * l'escadrille appelée et ajoutant le vaisseau passé en paramètre
+     * @param ship vaisseau à ajouter à l'escadrille
+     * @return une nouvelle escadrille
+     */
     Squadron addShip(Ship &ship) const;
 
+    /**
+     * Opérateur permettant de rajouter un vaisseau dans l'escadrille
+     * @param ship vaisseau à ajouter
+     * @return une référence sur l'escadrille
+     */
     Squadron &operator+=(Ship &ship);
 
+    /**
+     * Opérateur permettant de retirer un vaisseau de l'escadrille
+     * @param ship vaisseau à retirer
+     * @return une référence sur l'escadrille
+     */
     Squadron &operator-=(const Ship &ship);
 
-    double getConsommation(double distance, unsigned speed) const;
+    /**
+     * Méthode permettant de récupérer la consommation de l'escadrille
+     * @param distance distance parcourue
+     * @param speed vitesse de l'escadrille
+     * @return la consommation de l'escadrille
+     */
+    double getConsumption(double distance, unsigned speed) const;
 
     /**
      * Opérateur permettant de récupérer un vaisseau de l'escadrille
@@ -99,7 +134,9 @@ public:
     const Ship &operator[](size_t i) const;
 
 private:
-
+    /**
+     * Méthode permettant d'initialiser les paramètres de l'escadrille
+     */
     void initVariables(const std::string& newName, Ship *newLeader,Ship* newHead);
     Ship *leader;
     Maillon *listHead;

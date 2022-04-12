@@ -13,7 +13,6 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "tieInterceptor.hpp"
 #include "dreadnought.hpp"
 #include "shuttle.hpp"
-#include "transporter.hpp"
 #include "squadron.hpp"
 
 void testShips(){
@@ -32,8 +31,9 @@ void testShips(){
     dreadnought.setNickname("Dreadnought");
     std::cout << dreadnought << std::endl;
 
-    std::cout << "Formule de consommation pour tieHunter :" << std::endl;
-    std::cout << tieHunter.getConsumption(100,100) << std::endl;
+    std::cout << "Formule de consommation pour DreadNought avec une cargaison de "
+                 "taille 40, la distance et la vitesse sont de 20 :" << std::endl;
+    std::cout << dreadnought.getConsumption(20,20) << std::endl;
 
     // Les méthodes non constantes ne peuvent pas être appelées sur une instance
     // constantes.
@@ -92,9 +92,12 @@ void test(){
     std::cout << squad1 << std::endl;
 
 
-    std::cout << "Test de la formule de consommation (cf. test de la consommation "
-                 "du vaisseau tieHunter)" << std::endl;
-    std::cout << squad1.getConsommation(100,100) << std::endl;
+    std::cout << "Test de la formule de consommation (avec une distance et une "
+                 "vitesse de 100)" << std::endl;
+    std::cout << "Consommation de l'éscadrille ne contenant qu'un TieHunter : "
+    <<squad1.getConsumption(100, 100) << std::endl;
+    std::cout << "Consommation d'un TieHunter : " << tieHunter.getConsumption(100,
+                                                                             100) << std::endl;
     //TODO le calcul est arrondi c'est chelou
     std::cout << squad1 << std::endl;
 
@@ -127,7 +130,6 @@ int main() {
 	std::cout << squad << std::endl << std::endl;
 
     test();
+
     return EXIT_SUCCESS;
 }
-
-

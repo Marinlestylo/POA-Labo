@@ -127,10 +127,10 @@ void Squadron::squadronInfos(unsigned &speed, double &weight) const {
     weight = 0;
 
     Maillon *tmp = listHead;
-    if (tmp != nullptr)
-        speed = tmp->valeur->getMaxSpeed();
     while (tmp != nullptr) {
-        speed = min(speed, tmp->valeur->getMaxSpeed());
+        if(speed > tmp->valeur->getMaxSpeed() || speed == 0){
+            speed = tmp->valeur->getMaxSpeed();
+        }
         weight += tmp->valeur->getWeight();
         tmp = tmp->suivant;
     }
@@ -157,18 +157,17 @@ Squadron operator-(const Squadron &squadron, const Ship &ship) {
     return squadron.removeShip(ship);
 }
 
-double Squadron::getConsommation(double distance, unsigned int speed) const {
+double Squadron::getConsumption(double distance, unsigned int speed) const {
     unsigned maxSpeed;
     double totalWeight;
     squadronInfos(maxSpeed, totalWeight);
-    if(speed > maxSpeed){
+    if(speed > maxSpeed || distance < 0){
         throw std::invalid_argument("Ce squadron ne peut pas atteindre une telle "
-                                    "vitesse");
+                                    "vitesse ou une telle distance");
     }
 
     Maillon* ship = this->listHead;
     double consumption = 0;
-
 
     while(ship != nullptr){
         consumption += ship->valeur->getConsumption(distance, speed);

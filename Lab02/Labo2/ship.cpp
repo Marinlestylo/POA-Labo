@@ -27,8 +27,9 @@ std::ostream& Ship::toStream(std::ostream& os) const {
 }
 
 double Ship::getConsumption(double distance, unsigned speed) const {
-	if (speed > characteristic->getMaxSpeed()) {
-		throw std::runtime_error("La vitesse n'est pas atteignalble");
+	if (speed > characteristic->getMaxSpeed() || distance < 0) {
+		throw std::invalid_argument("La vitesse ou la distance n'est pas "
+                                    "atteignable");
 	}
 	return cbrt(getWeight()) / 2 * log10(getWeight() * speed) * log10(distance + 1);
 }

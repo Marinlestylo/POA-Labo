@@ -28,9 +28,9 @@ double Transporter::getLoad() const {
 }
 
 void Transporter::setLoad(double load) {
-	if (currentLoad >= characteristic->getMaxLoad()) {
-		throw std::invalid_argument("Vous tentez de creer un vaisseau avec une trop "
-											 "grosse cargaison !");
+	if (currentLoad >= characteristic->getMaxLoad() || load < 0) {
+		throw std::invalid_argument("Vous tentez de creer un vaisseau avec "
+                                    "cargaison invalide !");
 	}
 	currentLoad = load;
 }
