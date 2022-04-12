@@ -10,7 +10,7 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 
 #include "shuttle.hpp"
 
-CargoCharacteristic Shuttle::characteristic(
+TransporterCharacteristic Shuttle::characteristic(
 	"Lambda-class shuttle", 54, 360, 80
 );
 

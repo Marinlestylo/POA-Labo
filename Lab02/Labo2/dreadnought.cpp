@@ -16,7 +16,7 @@ const std::string Dreadnought::modele = "Super-class Star Destroyer";
 const double Dreadnought::maxLoad = 250000;
 unsigned int Dreadnought::counter = 0;*/
 
-CargoCharacteristic Dreadnought::characteristic(
+TransporterCharacteristic Dreadnought::characteristic(
 	"Super-class Star Destroyer", 40, 9000000000, 250000
 );
 

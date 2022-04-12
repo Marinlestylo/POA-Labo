@@ -12,15 +12,10 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #include <iomanip>
 
 Transporter::Transporter(
-	unsigned int id, double currentLoad, CargoCharacteristic* characteristic) :
+	unsigned int id, double currentLoad, TransporterCharacteristic* characteristic) :
 	Ship(id, characteristic) {
-
-	if (currentLoad >= characteristic->getMaxLoad()) {
-		throw std::invalid_argument("Vous tentez de creer un vaisseau avec une trop "
-											 "grosse cargaison !");
-	}
+	setLoad(currentLoad);
 	this->characteristic = characteristic;
-	this->currentLoad = currentLoad;
 }
 
 double Transporter::getLoad() const {
@@ -29,8 +24,8 @@ double Transporter::getLoad() const {
 
 void Transporter::setLoad(double load) {
 	if (currentLoad >= characteristic->getMaxLoad() || load < 0) {
-		throw std::invalid_argument("Vous tentez de creer un vaisseau avec "
-                                    "cargaison invalide !");
+		throw std::invalid_argument("Vous tentez de mettre une cargaison trop lourde"
+											 " dans ce vaisseau !");
 	}
 	currentLoad = load;
 }

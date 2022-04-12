@@ -12,7 +12,7 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 #define LABO1_SHUTTLE_HPP
 
 #include "transporter.hpp"
-#include "cargoCharacteristic.hpp"
+#include "transporterCharacteristic.hpp"
 
 class Shuttle : public Transporter {
 public:
@@ -23,7 +23,7 @@ public:
 
 private:
 	double load;
-	static CargoCharacteristic characteristic;
+	static TransporterCharacteristic characteristic;
 };
 
 

@@ -26,6 +26,8 @@ public:
 	/**
 	 * Constructeur de la classe vaisseau
 	 * @param id id du vaisseau
+	 * @param characteristic pointeur sur les caractéristique du vaisseau telles
+	 * que la vitesse maximum ou le modèle
 	 */
 	explicit Ship(unsigned int id, ShipCharacteristic* characteristic);
 

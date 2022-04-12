@@ -1,7 +1,3 @@
-//
-// Created by Jonathan on 08.04.2022.
-//
-
 #include "shipCharacteristic.hpp"
 
 ShipCharacteristic::ShipCharacteristic(const std::string& modele, unsigned maxSpeed,

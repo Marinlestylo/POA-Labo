@@ -22,7 +22,7 @@ public:
 
 private:
 	double load;
-	static CargoCharacteristic characteristic;
+	static TransporterCharacteristic characteristic;
 };
 
 

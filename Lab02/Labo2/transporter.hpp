@@ -2,7 +2,7 @@
 #define LABO1_TRANSPORTER_HPP
 
 #include "ship.hpp"
-#include "cargoCharacteristic.hpp"
+#include "transporterCharacteristic.hpp"
 
 /**
  * Déclaration de la classe Transporter héritant de Ship et modélisant des vaisseaux transportant des cargaisons.
@@ -13,12 +13,13 @@ class Transporter : public Ship {
 public:
 
 	/**
-	 * Constructeur de la classe Transporteur
+	 * Constructeur de la classe Transporter
 	 * @param id id du vaisseau
-	 * @param currentLoad poids de la cargaison courante
-	 * @param maxLoad poids maximal du vaisseau
+	 * @param currentLoad poids de la cargaison
+	 * @param characteristic Pointeur sur les caractéristique d'un vaisseau pouvant
+	 * transporter une cargaison
 	 */
-	Transporter(unsigned int id, double currentLoad, CargoCharacteristic*
+	Transporter(unsigned int id, double currentLoad, TransporterCharacteristic*
 	characteristic);
 
 	/**
@@ -42,7 +43,7 @@ public:
 
 private:
 	double currentLoad;
-	CargoCharacteristic* characteristic;
+	TransporterCharacteristic* characteristic;
 };
 
 
