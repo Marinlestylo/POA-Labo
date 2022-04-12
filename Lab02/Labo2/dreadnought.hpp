@@ -1,23 +1,27 @@
-/*
------------------------------------------------------------------------------------
-Nom du fichier : dreadnought.hpp
-Auteur(s)      : Alexandre Jaquier et Jonathan Friedli
-Date creation  : 17.03.2022
-Description    : Déclaration de la classe dreadnought héritant de Transporter.
-Compilateur    : Mingw-w64 g++ 8.1.0
------------------------------------------------------------------------------------
-*/
-
 #ifndef LABO1_DREADNOUGHT_HPP
 #define LABO1_DREADNOUGHT_HPP
 
 #include "transporter.hpp"
 
+
+/**
+ * Déclaration de la classe Dreadnought héritant de Transporter.
+ * @authors Alexandre Jaquier et Jonathan Friedli
+ * @date 17.03.2022
+ */
 class Dreadnought : public Transporter {
 public:
 
+	/**
+	 * Constructeur de la classe Dreadnought
+	 * @param load poids de la cargaison
+	 */
 	explicit Dreadnought(double load);
 
+	/**
+	 * Renvoie le poids du vaisseau + le poids de sa cargaison
+	 * @return le poids total
+	 */
 	double getWeight() const override;
 
 private:

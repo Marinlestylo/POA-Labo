@@ -1,24 +1,27 @@
-/*
------------------------------------------------------------------------------------
-Nom du fichier : shuttle.hpp
-Auteur(s)      : Alexandre Jaquier et Jonathan Friedli
-Date creation  : 17.03.2022
-Description    : Déclaration de la classe shuttle héritant de Transporter.
-Compilateur    : Mingw-w64 g++ 8.1.0
------------------------------------------------------------------------------------
-*/
-
 #ifndef LABO1_SHUTTLE_HPP
 #define LABO1_SHUTTLE_HPP
 
 #include "transporter.hpp"
 #include "transporterCharacteristic.hpp"
 
+/**
+ * Déclaration de la classe shuttle héritant de Transporter.
+ * @authors Alexandre Jaquier et Jonathan Friedli
+ * @date 17.03.2022
+ */
 class Shuttle : public Transporter {
 public:
 
+	/**
+	 * Constructeur de la classe Shuttle
+	 * @param load poids de la cargaison
+	 */
 	explicit Shuttle(double load);
 
+	/**
+	 * Renvoie le poids du vaisseau + celui de sa cargaison
+	 * @return le poids total
+	 */
 	double getWeight() const override;
 
 private:
