@@ -71,14 +71,11 @@ public:
 
     /**
      * Méthode permettant de récupérer un vaisseau de l'escadrille
-     * @throws runtime_error si le paramètre est en dehors des index de la liste
+     * @throws out_of_range si le paramètre est en dehors des index de la liste
      * @param i index du vaisseau dans la liste
      * @return une référence constante sur le vaisseau récupéré
      */
     const Ship &getShip(size_t i) const;
-
-    //Ship &getShip(size_t i);
-    //Ship &operator[](size_t i);
 
     void squadronInfos(unsigned& speed, double& weight) const;
 
@@ -94,7 +91,7 @@ public:
 
     /**
      * Opérateur permettant de récupérer un vaisseau de l'escadrille
-     * @throws runtime_error si le paramètre est en dehors des index de la liste
+     * @throws out_of_range si le paramètre est en dehors des index de la liste
      * @param i index du vaisseau dans la liste
      * @return une référence constante sur le vaisseau récupéré
      */

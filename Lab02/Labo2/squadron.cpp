@@ -113,13 +113,13 @@ Squadron &Squadron::removeShipFromSquadron(const Ship &ship) {
 const Ship &Squadron::getShip(size_t i) const {
     Maillon *tmp = listHead;
     size_t counter = 0;
-    while (tmp->suivant != nullptr && counter++ != i) {
+    while (counter++ != i && tmp->suivant != nullptr) {
         tmp = tmp->suivant;
     }
     if (counter == i + 1) {
         return *tmp->valeur;
     }
-    throw runtime_error("Le Squadron ne contient pas ce vaisseau");
+    throw out_of_range("Le Squadron ne contient pas ce vaisseau");
 }
 
 void Squadron::squadronInfos(unsigned &speed, double &weight) const {
@@ -163,7 +163,7 @@ double Squadron::getConsommation(double distance, unsigned int speed) const {
     squadronInfos(maxSpeed, totalWeight);
     if(speed > maxSpeed){
         throw std::invalid_argument("Ce squadron ne peut pas atteindre une telle "
-                                    "speed");
+                                    "vitesse");
     }
 
     Maillon* ship = this->listHead;
