@@ -42,7 +42,8 @@ public:
     ~Squadron();
 
     /**
-    * TODO Voir s'il faut l'implémenter
+    * Opérateur d'affectation de l'escadrille, copie tous les vaisseaux ainsi que
+     * le nom et le chef d'escadrille
     * @param other
     * @return
     */
