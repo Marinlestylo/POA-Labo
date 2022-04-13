@@ -21,6 +21,11 @@ public:
     ShipCharacteristic(const std::string &modele, unsigned maxSpeed, double weight);
 
     /**
+     * Destructeur de la classe ShipCharacteristic
+     */
+    virtual ~ShipCharacteristic() = default;
+
+    /**
      * Renvoie le modèle du vaisseau
      * @return le modèle
      */
