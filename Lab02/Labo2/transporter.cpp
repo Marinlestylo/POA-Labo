@@ -22,7 +22,7 @@ void Transporter::setLoad(double load) {
 }
 
 std::ostream &Transporter::toStream(std::ostream &os) const {
-    return Ship::toStream(os) << "  cargo : " << std::setprecision(1)
+    return Ship::toStream(os) << std::endl <<"  cargo : " << std::setprecision(1)
                               << currentLoad << " tons (max : "
                               << characteristic->getMaxLoad() << ")";
 }

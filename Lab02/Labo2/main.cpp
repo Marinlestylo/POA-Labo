@@ -141,21 +141,15 @@ int main() {
     blackLeader.setNickname("Black leader");
     TieHunter blackTwo;
     Shuttle shuttle(23.4); // 23.4 tonnes de marchandises
-    Dreadnought d(55555);
-    std::cout << blackLeader << std::endl;
-    std::cout << blackTwo << std::endl;
-    std::cout << shuttle << std::endl;
-    std::cout << d << std::endl;
 
-    /*Squadron squad("Black Squadron");
-/*
+    Squadron squad("Black Squadron");
     squad += blackLeader;
     squad += blackTwo;
     squad += shuttle;
     squad.setLeader(blackLeader);
     std::cout << squad << std::endl << std::endl;
 
-    test();*/
+    test();
 
     return EXIT_SUCCESS;
 }

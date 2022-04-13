@@ -9,7 +9,7 @@ Squadron::Squadron(const string &name) {
 
 Squadron::Squadron(const Squadron &other) {
     initVariables(other.name, other.leader, other.listHead->valeur);
-    Maillon *toCopy = other.listHead->suivant;
+    Link *toCopy = other.listHead->suivant;
     while (toCopy != nullptr) {
         addShipToSquadron(*toCopy->valeur);
         toCopy = toCopy->suivant;
@@ -17,8 +17,8 @@ Squadron::Squadron(const Squadron &other) {
 }
 
 Squadron::~Squadron() {
-    Maillon *tmp = listHead;
-    Maillon *toDelete = listHead;
+    Link *tmp = listHead;
+    Link *toDelete = listHead;
     while (tmp != nullptr) {
         tmp = tmp->suivant;
         delete toDelete;
@@ -29,15 +29,15 @@ Squadron::~Squadron() {
 void Squadron::initVariables(const string &newName, Ship *newLeader, Ship *newHead) {
     this->name = newName;
     this->leader = newLeader;
-    this->listHead = newHead == nullptr ? nullptr : new Maillon{newHead, nullptr};
+    this->listHead = newHead == nullptr ? nullptr : new Link{newHead, nullptr};
 }
 
 Squadron &Squadron::operator=(const Squadron &other) {
     if (this == &other) {
         return *this;
     }
-    Maillon *toDelete = listHead;
-    Maillon *tmp = toDelete->suivant;
+    Link *toDelete = listHead;
+    Link *tmp = toDelete->suivant;
 
     while (toDelete != nullptr) {
         delete toDelete;
@@ -71,8 +71,8 @@ Squadron Squadron::removeShip(const Ship &ship) const {
 }
 
 Squadron &Squadron::addShipToSquadron(Ship &ship) {
-    Maillon *tmp = listHead;
-    Maillon *newMaillon = new Maillon{&ship, nullptr};
+    Link *tmp = listHead;
+    Link *newMaillon = new Link{&ship, nullptr};
     if (tmp == nullptr) {
         listHead = newMaillon;
         return *this;
@@ -91,8 +91,8 @@ Squadron &Squadron::addShipToSquadron(Ship &ship) {
 }
 
 Squadron &Squadron::removeShipFromSquadron(const Ship &ship) {
-    Maillon *toRemove = listHead;
-    Maillon *tmp = listHead;
+    Link *toRemove = listHead;
+    Link *tmp = listHead;
     while (toRemove != nullptr) {
         if (toRemove->valeur == &ship) {
             if (toRemove == listHead) {
@@ -110,7 +110,7 @@ Squadron &Squadron::removeShipFromSquadron(const Ship &ship) {
 }
 
 const Ship &Squadron::getShip(size_t i) const {
-    Maillon *tmp = listHead;
+    Link *tmp = listHead;
     size_t counter = 0;
     while (counter++ != i && tmp->suivant != nullptr) {
         tmp = tmp->suivant;
@@ -125,7 +125,7 @@ void Squadron::squadronInfos(unsigned &speed, double &weight) const {
     speed = 0;
     weight = 0;
 
-    Maillon *tmp = listHead;
+    Link *tmp = listHead;
     while (tmp != nullptr) {
         if (speed > tmp->valeur->getMaxSpeed() || speed == 0) {
             speed = tmp->valeur->getMaxSpeed();
@@ -165,7 +165,7 @@ double Squadron::getConsumption(double distance, unsigned int speed) const {
                                     "vitesse ou une telle distance");
     }
 
-    Maillon *ship = this->listHead;
+    Link *ship = this->listHead;
     double consumption = 0;
 
     while (ship != nullptr) {
@@ -185,7 +185,7 @@ ostream &operator<<(ostream &os, const Squadron &squadron) {
     os << " total weight: " << squadronWeight << " tons" << endl;
 
     os << endl << "-- Leader" << endl;
-    Squadron::Maillon *member = squadron.listHead;
+    Squadron::Link *member = squadron.listHead;
     if (squadron.leader != nullptr)
         os << *squadron.leader << endl << endl;
 

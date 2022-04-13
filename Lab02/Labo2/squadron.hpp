@@ -18,9 +18,9 @@ Squadron operator-(const Squadron &squadron, Ship &ship);
  * @author Jonathan Friedli
  */
 class Squadron {
-    struct Maillon {
+    struct Link {
         Ship *valeur;
-        Maillon *suivant;
+        Link *suivant;
     };
 
     friend std::ostream &operator<<(std::ostream &os, const Squadron &squadron);
@@ -140,7 +140,7 @@ private:
     void initVariables(const std::string &newName, Ship *newLeader, Ship *newHead);
 
     Ship *leader;
-    Maillon *listHead;
+    Link *listHead;
     std::string name;
 };
 
