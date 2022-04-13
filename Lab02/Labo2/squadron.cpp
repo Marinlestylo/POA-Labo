@@ -72,9 +72,8 @@ Squadron Squadron::removeShip(const Ship &ship) const {
 
 Squadron &Squadron::addShipToSquadron(Ship &ship) {
     Link *tmp = listHead;
-    Link *newMaillon = new Link{&ship, nullptr};
     if (tmp == nullptr) {
-        listHead = newMaillon;
+        listHead = new Link{&ship, nullptr};
         return *this;
     }
     while (tmp != nullptr) {
@@ -86,7 +85,7 @@ Squadron &Squadron::addShipToSquadron(Ship &ship) {
         }
         tmp = tmp->next;
     }
-    tmp->next = newMaillon;
+    tmp->next = new Link{&ship, nullptr};
     return *this;
 }
 
