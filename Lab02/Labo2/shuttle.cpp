@@ -5,5 +5,5 @@ TransporterCharacteristic Shuttle::characteristic(
 );
 
 Shuttle::Shuttle(double load) : Transporter(
-	characteristic.nextId(), load, &characteristic
+	load, &characteristic
 ){}

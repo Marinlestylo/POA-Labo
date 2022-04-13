@@ -2,8 +2,10 @@
 #include <cmath>
 #include <iomanip>
 
-Ship::Ship(unsigned int id, ShipCharacteristic* characteristic) :
-	id(id), characteristic(characteristic) {}
+Ship::Ship(ShipCharacteristic* characteristic) :
+	 characteristic(characteristic) {
+    id = characteristic->nextId();
+}
 
 std::ostream& operator<<(std::ostream& os, const Ship& ship) {
 	return ship.toStream(os);
@@ -29,7 +31,8 @@ void Ship::setNickname(const std::string& name) {
 }
 
 std::string Ship::getIdentity() const {
-	return "[" + characteristic->getModele() + " #" + std::to_string(id) + "]";
+	return "[" + characteristic->getModele() + " #" + std::to_string
+    (id) + "]";
 }
 
 double Ship::getWeight() const {

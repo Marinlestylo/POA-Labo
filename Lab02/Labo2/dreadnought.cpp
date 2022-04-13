@@ -5,5 +5,5 @@ TransporterCharacteristic Dreadnought::characteristic(
 );
 
 Dreadnought::Dreadnought(double load) : Transporter(
-	characteristic.nextId(), load, &characteristic
+	load, &characteristic
 ){}

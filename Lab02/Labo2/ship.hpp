@@ -25,11 +25,10 @@ class Ship {
 protected :
 	/**
 	 * Constructeur de la classe vaisseau
-	 * @param id id du vaisseau
 	 * @param characteristic pointeur sur les caractéristique du vaisseau telles
 	 * que la vitesse maximum ou le modèle
 	 */
-    Ship(unsigned int id, ShipCharacteristic* characteristic);
+    explicit Ship(ShipCharacteristic* characteristic);
 public:
 	/**
 	 * Destructeur de la classe vaisseau
@@ -73,9 +72,8 @@ private:
 	 * @return l'identité du vaisseau
 	 */
 	std::string getIdentity() const;
-
+    unsigned int id;
 	std::string nickname;
-	unsigned int id;
 	const ShipCharacteristic* characteristic;
 };
 

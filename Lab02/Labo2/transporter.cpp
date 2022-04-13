@@ -3,8 +3,8 @@
 #include <iostream>
 
 Transporter::Transporter(
-	unsigned int id, double currentLoad, TransporterCharacteristic* characteristic) :
-	Ship(id, characteristic) {
+	double currentLoad, TransporterCharacteristic* characteristic) :
+	Ship(characteristic) {
     this->characteristic = characteristic;
     setLoad(currentLoad);
 }

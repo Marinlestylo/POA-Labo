@@ -13,12 +13,11 @@ class Transporter : public Ship {
 protected:
 	/**
 	 * Constructeur de la classe Transporter
-	 * @param id id du vaisseau
 	 * @param currentLoad poids de la cargaison
 	 * @param characteristic Pointeur sur les caractéristique d'un vaisseau pouvant
 	 * transporter une cargaison
 	 */
-	Transporter(unsigned int id, double currentLoad, TransporterCharacteristic*
+	Transporter(double currentLoad, TransporterCharacteristic*
 	characteristic);
 public:
 	/**
