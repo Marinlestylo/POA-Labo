@@ -18,14 +18,7 @@ public:
 	 */
 	explicit Dreadnought(double load);
 
-	/**
-	 * Renvoie le poids du vaisseau + le poids de sa cargaison
-	 * @return le poids total
-	 */
-	double getWeight() const override;
-
 private:
-	double load;
 	static TransporterCharacteristic characteristic;
 };
 

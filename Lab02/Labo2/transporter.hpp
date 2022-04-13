@@ -41,6 +41,12 @@ public:
 	 */
 	std::ostream& toStream(std::ostream& os) const override;
 
+    /**
+	 * Renvoie le poids du vaisseau + celui de sa cargaison
+	 * @return le poids total
+	 */
+    double getWeight() const override;
+
 private:
 	double currentLoad;
 	TransporterCharacteristic* characteristic;

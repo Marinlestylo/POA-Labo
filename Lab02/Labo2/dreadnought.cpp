@@ -6,9 +6,4 @@ TransporterCharacteristic Dreadnought::characteristic(
 
 Dreadnought::Dreadnought(double load) : Transporter(
 	characteristic.nextId(), load, &characteristic
-), load(load) {}
-
-
-double Dreadnought::getWeight() const {
-	return characteristic.getWeight() + load;
-}
+){}
