@@ -23,10 +23,10 @@ void testShips() {
     Dreadnought dreadnought(40);
     TieInterceptor tieInterceptor;
     TieHunter tieHunter;
-    std::cout << shuttle << std::endl <<
-              dreadnought << std::endl <<
-              tieInterceptor << std::endl <<
-              tieHunter << std::endl;
+    std::cout << shuttle << std::endl << std::endl <<
+              dreadnought << std::endl << std::endl <<
+              tieInterceptor << std::endl << std::endl <<
+              tieHunter << std::endl << std::endl;
     std::cout << "Changement de nom pour Dreadnought :" << std::endl;
     dreadnought.setNickname("Dreadnought");
     std::cout << dreadnought << std::endl;
@@ -44,6 +44,8 @@ void testShips() {
 }
 
 void test() {
+    testShips();
+
     std::cout << std::endl << "--------------------- Tests des Squadrons "
                               "---------------------" << std::endl << std::endl;
 
@@ -63,10 +65,10 @@ void test() {
     Dreadnought dreadnought(40);
     TieInterceptor tieInterceptor;
     TieHunter tieHunter;
-    std::cout << shuttle << std::endl <<
-              dreadnought << std::endl <<
-              tieInterceptor << std::endl <<
-              tieHunter << std::endl;
+    std::cout << shuttle << std::endl << std::endl <<
+              dreadnought << std::endl << std::endl <<
+              tieInterceptor << std::endl << std::endl <<
+              tieHunter << std::endl << std::endl;
 
     std::cout << "Ajout des vaisseaux dans le squadron1" << std::endl;
     squad1.addShipToSquadron(shuttle);
@@ -107,10 +109,10 @@ void test() {
     std::cout << "Consommation d'un TieHunter : " << tieHunter.getConsumption(100,
                                                                               100)
               << std::endl;
-    std::cout << squad1 << std::endl;
+    std::cout << squad1 << std::endl << std::endl;
 
     std::cout << "Affichage du vaisseau 0 via la méthode get" << std::endl;
-    std::cout << squad1.getShip(0) << std::endl;
+    std::cout << squad1.getShip(0) << std::endl << std::endl;
 
     std::cout << "Affichage d'un vaisseau en dehors des index limites via la "
                  "méthode get" << std::endl << std::endl;
@@ -132,8 +134,6 @@ void test() {
     } catch (std::invalid_argument &e) {
         std::cout << e.what() << std::endl;
     }
-
-    testShips();
 }
 
 int main() {

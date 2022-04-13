@@ -46,10 +46,8 @@ Squadron &Squadron::operator=(const Squadron &other) {
             tmp = tmp->suivant;
         }
     }
-
-    leader = other.leader;
-    listHead = new Maillon{other.listHead->valeur, nullptr};
-    tmp = other.listHead;
+    initVariables(other.name, other.leader, other.listHead->valeur);
+    tmp = other.listHead->suivant;
     while (tmp != nullptr) {
         addShipToSquadron(*tmp->valeur);
         tmp = tmp->suivant;
@@ -189,12 +187,12 @@ ostream &operator<<(ostream &os, const Squadron &squadron) {
     os << endl << "-- Leader" << endl;
     Squadron::Maillon *member = squadron.listHead;
     if (squadron.leader != nullptr)
-        os << *squadron.leader << endl;
+        os << *squadron.leader << endl << endl;
 
     os << "-- Members" << endl;
     while (member != nullptr) {
         if (member->valeur != squadron.leader)
-            os << *member->valeur << endl;
+            os << *member->valeur << endl << endl;
         member = member->suivant;
     }
     return os;

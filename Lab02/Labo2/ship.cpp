@@ -16,7 +16,7 @@ std::ostream &Ship::toStream(std::ostream &os) const {
               << "  weight : "
               << std::fixed << std::setprecision(2) << getWeight()
               << " tons\n  max speed : " << characteristic->getMaxSpeed()
-              << " MGLT\n";
+              << " MGLT";
 }
 
 double Ship::getConsumption(double distance, unsigned speed) const {
