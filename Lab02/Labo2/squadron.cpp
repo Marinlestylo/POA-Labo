@@ -8,11 +8,11 @@ Squadron::Squadron(const string &name) {
 }
 
 Squadron::Squadron(const Squadron &other) {
-    initVariables(other.name, other.leader, other.listHead->valeur);
-    Link *toCopy = other.listHead->suivant;
+    initVariables(other.name, other.leader, other.listHead->value);
+    Link *toCopy = other.listHead->next;
     while (toCopy != nullptr) {
-        addShipToSquadron(*toCopy->valeur);
-        toCopy = toCopy->suivant;
+        addShipToSquadron(*toCopy->value);
+        toCopy = toCopy->next;
     }
 }
 
@@ -20,7 +20,7 @@ Squadron::~Squadron() {
     Link *tmp = listHead;
     Link *toDelete = listHead;
     while (tmp != nullptr) {
-        tmp = tmp->suivant;
+        tmp = tmp->next;
         delete toDelete;
         toDelete = tmp;
     }
@@ -37,20 +37,20 @@ Squadron &Squadron::operator=(const Squadron &other) {
         return *this;
     }
     Link *toDelete = listHead;
-    Link *tmp = toDelete->suivant;
+    Link *tmp = toDelete->next;
 
     while (toDelete != nullptr) {
         delete toDelete;
         toDelete = tmp;
         if (tmp != nullptr) {
-            tmp = tmp->suivant;
+            tmp = tmp->next;
         }
     }
-    initVariables(other.name, other.leader, other.listHead->valeur);
-    tmp = other.listHead->suivant;
+    initVariables(other.name, other.leader, other.listHead->value);
+    tmp = other.listHead->next;
     while (tmp != nullptr) {
-        addShipToSquadron(*tmp->valeur);
-        tmp = tmp->suivant;
+        addShipToSquadron(*tmp->value);
+        tmp = tmp->next;
     }
     return *this;
 }
@@ -78,15 +78,15 @@ Squadron &Squadron::addShipToSquadron(Ship &ship) {
         return *this;
     }
     while (tmp != nullptr) {
-        if (tmp->valeur == &ship) {
+        if (tmp->value == &ship) {
             return *this;
         }
-        if (tmp->suivant == nullptr) {
+        if (tmp->next == nullptr) {
             break;
         }
-        tmp = tmp->suivant;
+        tmp = tmp->next;
     }
-    tmp->suivant = newMaillon;
+    tmp->next = newMaillon;
     return *this;
 }
 
@@ -94,29 +94,29 @@ Squadron &Squadron::removeShipFromSquadron(const Ship &ship) {
     Link *toRemove = listHead;
     Link *tmp = listHead;
     while (toRemove != nullptr) {
-        if (toRemove->valeur == &ship) {
+        if (toRemove->value == &ship) {
             if (toRemove == listHead) {
-                listHead = toRemove->suivant;
+                listHead = toRemove->next;
             } else {
-                tmp->suivant = toRemove->suivant;
+                tmp->next = toRemove->next;
             }
             delete toRemove;
             break;
         }
         tmp = toRemove;
-        toRemove = toRemove->suivant;
+        toRemove = toRemove->next;
     }
     return *this;
 }
 
-const Ship &Squadron::getShip(size_t i) const {
+const Ship &Squadron::getShip(size_t index) const {
     Link *tmp = listHead;
     size_t counter = 0;
-    while (counter++ != i && tmp->suivant != nullptr) {
-        tmp = tmp->suivant;
+    while (counter++ != index && tmp->next != nullptr) {
+        tmp = tmp->next;
     }
-    if (counter == i + 1) {
-        return *tmp->valeur;
+    if (counter == index + 1) {
+        return *tmp->value;
     }
     throw out_of_range("Le Squadron ne contient pas de vaisseau à cet index");
 }
@@ -127,11 +127,11 @@ void Squadron::squadronInfos(unsigned &speed, double &weight) const {
 
     Link *tmp = listHead;
     while (tmp != nullptr) {
-        if (speed > tmp->valeur->getMaxSpeed() || speed == 0) {
-            speed = tmp->valeur->getMaxSpeed();
+        if (speed > tmp->value->getMaxSpeed() || speed == 0) {
+            speed = tmp->value->getMaxSpeed();
         }
-        weight += tmp->valeur->getWeight();
-        tmp = tmp->suivant;
+        weight += tmp->value->getWeight();
+        tmp = tmp->next;
     }
 }
 
@@ -169,32 +169,37 @@ double Squadron::getConsumption(double distance, unsigned int speed) const {
     double consumption = 0;
 
     while (ship != nullptr) {
-        consumption += ship->valeur->getConsumption(distance, speed);
-        ship = ship->suivant;
+        consumption += ship->value->getConsumption(distance, speed);
+        ship = ship->next;
     }
     return consumption;
 }
 
 ostream &operator<<(ostream &os, const Squadron &squadron) {
+    return squadron.toStream(os);
+}
+
+std::ostream &Squadron::toStream(std::ostream &os) const{
     unsigned maxSpeed;
     double squadronWeight;
-    squadron.squadronInfos(maxSpeed, squadronWeight);
+    squadronInfos(maxSpeed, squadronWeight);
 
-    os << "Squadron: " << squadron.name << endl;
+    os << "Squadron: " << name << endl;
     os << " max speed: " << maxSpeed << " MGLT" << endl;
     os << " total weight: " << squadronWeight << " tons" << endl;
 
     os << endl << "-- Leader" << endl;
-    Squadron::Link *member = squadron.listHead;
-    if (squadron.leader != nullptr)
-        os << *squadron.leader << endl << endl;
+    Squadron::Link *member = listHead;
+    if (leader != nullptr)
+        os << *leader << endl << endl;
 
     os << "-- Members" << endl;
     while (member != nullptr) {
-        if (member->valeur != squadron.leader)
-            os << *member->valeur << endl << endl;
-        member = member->suivant;
+        if (member->value != leader)
+            os << *member->value << endl << endl;
+        member = member->next;
     }
     return os;
 }
+
 

@@ -5,10 +5,28 @@
 
 class Squadron;
 
+/**
+ * Opérateur de flux de l'escadrille
+ * @param os flux d'écriture
+ * @param squadron escadrille à écrire
+ * @return flux d'écriture
+ */
 std::ostream &operator<<(std::ostream &os, const Squadron &squadron);
 
+/**
+ * Opérateur plus de l'escadrille
+ * @param squadron escadrille où ajouter un vaisseau
+ * @param ship vaisseau à ajouter
+ * @return une copie de l'escadrille avec le vaisseau ajouté
+ */
 Squadron operator+(const Squadron &squadron, Ship &ship);
 
+/**
+ * Opérateur moins de l'escadrille
+ * @param squadron escadrille où enlever un vaisseau
+ * @param ship vaisseau à enlever
+ * @return une copie de l'escadrille avec le vaisseau enlevé
+ */
 Squadron operator-(const Squadron &squadron, Ship &ship);
 
 /**
@@ -19,11 +37,9 @@ Squadron operator-(const Squadron &squadron, Ship &ship);
  */
 class Squadron {
     struct Link {
-        Ship *valeur;
-        Link *suivant;
+        Ship *value;
+        Link *next;
     };
-
-    friend std::ostream &operator<<(std::ostream &os, const Squadron &squadron);
 
 public:
     /**
@@ -75,10 +91,10 @@ public:
     /**
      * Méthode permettant de récupérer un vaisseau de l'escadrille
      * @throws out_of_range si le paramètre est en dehors des index de la liste
-     * @param i index du vaisseau dans la liste
+     * @param index index du vaisseau dans la liste
      * @return une référence constante sur le vaisseau récupéré
      */
-    const Ship &getShip(size_t i) const;
+    const Ship &getShip(size_t index) const;
 
     /**
      * Méthode permettant de récupérer différentes informations sur l'escadrille
@@ -132,6 +148,13 @@ public:
      * @return une référence constante sur le vaisseau récupéré
      */
     const Ship &operator[](size_t i) const;
+
+    /**
+     * Permet d'afficher les informations d'une escadrille dans un flux
+     * @param os flux dans lequel nous écrivons
+     * @return une référence sur le flux modifié
+     */
+    std::ostream &toStream(std::ostream &os) const;
 
 private:
     /**
