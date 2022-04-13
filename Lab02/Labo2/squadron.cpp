@@ -1,5 +1,5 @@
-#include "Squadron.hpp"
-#include <math.h>
+#include "squadron.hpp"
+#include <cmath>
 
 using namespace std;
 

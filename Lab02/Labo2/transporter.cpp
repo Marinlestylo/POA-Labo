@@ -1,13 +1,3 @@
-/*
------------------------------------------------------------------------------------
-Nom du fichier : transporter.cpp
-Auteur(s)      : Alexandre Jaquier et Jonathan Friedli
-Date creation  : 17.03.2022
-Description    : Implémentation de la classe Transporter.
-Compilateur    : Mingw-w64 g++ 8.1.0
------------------------------------------------------------------------------------
-*/
-
 #include "transporter.hpp"
 #include <iomanip>
 #include <iostream>
