@@ -10,8 +10,7 @@
  * @date 17.03.2022
  */
 class Transporter : public Ship {
-public:
-
+protected:
 	/**
 	 * Constructeur de la classe Transporter
 	 * @param id id du vaisseau
@@ -21,7 +20,7 @@ public:
 	 */
 	Transporter(unsigned int id, double currentLoad, TransporterCharacteristic*
 	characteristic);
-
+public:
 	/**
 	 * Renvoie le poids de la cargaison courrante
 	 * @return le poids de la cargaison

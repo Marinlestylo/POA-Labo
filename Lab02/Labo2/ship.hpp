@@ -21,16 +21,16 @@ std::ostream& operator<<(std::ostream& os, const Ship& ship);
  * @date 17.03.2022
  */
 class Ship {
-public:
 
+protected :
 	/**
 	 * Constructeur de la classe vaisseau
 	 * @param id id du vaisseau
 	 * @param characteristic pointeur sur les caractéristique du vaisseau telles
 	 * que la vitesse maximum ou le modèle
 	 */
-	Ship(unsigned int id, ShipCharacteristic* characteristic);
-
+    Ship(unsigned int id, ShipCharacteristic* characteristic);
+public:
 	/**
 	 * Destructeur de la classe vaisseau
 	 */
