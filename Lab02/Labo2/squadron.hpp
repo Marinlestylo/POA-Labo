@@ -63,7 +63,7 @@ public:
      * @param ship
      * @return une référence sur l'escadrille
      */
-    Squadron &addShipFromSquadron(Ship &ship);
+    Squadron &addShipToSquadron(Ship &ship);
 
     /**
      * Méthode permettant de retirer un vaisseau de l'escadrille

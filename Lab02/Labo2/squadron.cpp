@@ -11,7 +11,7 @@ Squadron::Squadron(const Squadron &other) {
     initVariables(other.name,other.leader,other.listHead->valeur);
     Maillon *toCopy = other.listHead->suivant;
     while (toCopy != nullptr) {
-        addShipFromSquadron(*toCopy->valeur);
+        addShipToSquadron(*toCopy->valeur);
         toCopy = toCopy->suivant;
     }
 }
@@ -51,20 +51,20 @@ Squadron& Squadron::operator=(const Squadron& other){
     listHead = new Maillon{other.listHead->valeur, nullptr};
     tmp = other.listHead;
     while (tmp != nullptr) {
-        addShipFromSquadron(*tmp->valeur);
+        addShipToSquadron(*tmp->valeur);
         tmp = tmp->suivant;
     }
     return *this;
 }
 
 void Squadron::setLeader(Ship &newLeader) {
-    addShipFromSquadron(newLeader);
+    addShipToSquadron(newLeader);
     this->leader = &newLeader;
 }
 
 Squadron Squadron::addShip(Ship &ship) const {
     Squadron newSquadron(*this);
-    return newSquadron.addShipFromSquadron(ship);
+    return newSquadron.addShipToSquadron(ship);
     ;
 }
 
@@ -73,7 +73,7 @@ Squadron Squadron::removeShip(const Ship &ship) const {
     return newSquadron.removeShipFromSquadron(ship);
 }
 
-Squadron &Squadron::addShipFromSquadron(Ship &ship) {
+Squadron &Squadron::addShipToSquadron(Ship &ship) {
     Maillon *tmp = listHead;
     Maillon *newMaillon = new Maillon{&ship, nullptr};
     if(tmp == nullptr){
@@ -139,7 +139,7 @@ void Squadron::squadronInfos(unsigned &speed, double &weight) const {
 }
 
 Squadron &Squadron::operator+=(Ship &ship) {
-    return addShipFromSquadron(ship);
+    return addShipToSquadron(ship);
 }
 
 Squadron &Squadron::operator-=(const Ship &ship) {

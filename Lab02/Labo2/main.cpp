@@ -67,8 +67,8 @@ void test(){
               tieHunter << std::endl;
 
     std::cout << "Ajout des vaisseaux dans le squadron1" << std::endl;
-    squad1.addShipFromSquadron(shuttle);
-    squad1.addShipFromSquadron(dreadnought);
+    squad1.addShipToSquadron(shuttle);
+    squad1.addShipToSquadron(dreadnought);
 
     std::cout << squad1 << std::endl;
 
@@ -76,8 +76,8 @@ void test(){
     Squadron squad2(squad1);
     std::cout << squad2 << std::endl;
 
-    squad1.addShipFromSquadron(tieInterceptor);
-    squad1.addShipFromSquadron(tieHunter);
+    squad1.addShipToSquadron(tieInterceptor);
+    squad1.addShipToSquadron(tieHunter);
 
     std::cout << "Test de l'opérateur d'affectation" << std::endl;
     squad2 = squad1;
