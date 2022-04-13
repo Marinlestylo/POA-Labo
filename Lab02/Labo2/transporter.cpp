@@ -15,8 +15,9 @@ Compilateur    : Mingw-w64 g++ 8.1.0
 Transporter::Transporter(
 	unsigned int id, double currentLoad, TransporterCharacteristic* characteristic) :
 	Ship(id, characteristic) {
-	setLoad(currentLoad);
-	this->characteristic = characteristic;
+    this->characteristic = characteristic;
+    setLoad(currentLoad);
+
 }
 
 double Transporter::getLoad() const {
@@ -24,8 +25,8 @@ double Transporter::getLoad() const {
 }
 
 void Transporter::setLoad(double load) {
-    //std::cout << characteristic->getMaxLoad() << std::endl;
-	if (load > characteristic->getMaxLoad() || load < 0) {
+    std::cout << "alo" << this->characteristic->getMaxLoad() << std::endl;
+	if (load > this->characteristic->getMaxLoad() || load < 0) {
 		throw std::invalid_argument("Vous tentez de mettre une cargaison trop lourde"
 											 " dans ce vaisseau !");
 	}
