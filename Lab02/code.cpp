@@ -203,6 +203,8 @@ int main() {
 
 /* --------------------------------------------------------------------------------------*/
 
+
+
 #ifndef LABO1_SQUADRON_HPP
 #define LABO1_SQUADRON_HPP
 
@@ -338,6 +340,9 @@ public:
      */
     Squadron &operator-=(const Ship &ship);
 
+
+
+
     /**
      * Méthode permettant de récupérer la consommation de l'escadrille
      * @param distance distance parcourue
@@ -375,6 +380,7 @@ private:
 
 #endif //LABO1_SQUADRON_HPP
 
+/* --------------------------------------------------------------------------------------*/
 
 #include "squadron.hpp"
 #include <cmath>
@@ -403,6 +409,8 @@ Squadron::~Squadron() {
         toDelete = tmp;
     }
 }
+
+
 
 void Squadron::initVariables(const string &newName, Ship *newLeader, Ship *newHead) {
     this->name = newName;
@@ -466,6 +474,12 @@ Squadron &Squadron::addShipToSquadron(Ship &ship) {
     tmp->next = new Link{&ship, nullptr};
     return *this;
 }
+
+
+
+
+
+
 
 Squadron &Squadron::removeShipFromSquadron(const Ship &ship) {
     Link *toRemove = listHead;
@@ -533,6 +547,9 @@ Squadron operator-(const Squadron &squadron, const Ship &ship) {
     return squadron.removeShip(ship);
 }
 
+
+
+
 double Squadron::getConsumption(double distance, unsigned int speed) const {
     unsigned maxSpeed;
     double totalWeight;
@@ -579,6 +596,8 @@ std::ostream &Squadron::toStream(std::ostream &os) const{
     return os;
 }
 
+/* --------------------------------------------------------------------------------------*/
+
 
 #ifndef SHIP_HPP
 #define SHIP_HPP
@@ -589,13 +608,16 @@ std::ostream &Squadron::toStream(std::ostream &os) const{
 class Ship;
 
 /**
- * Surcharge de l'opérateur d'écriture dans un flux afin d'y écrire les informations d'un vaisseau. Fait appel à la
+ * Surcharge de l'opérateur d'écriture dans un flux afin d'y écrire les informations 
+ * d'un vaisseau. Fait appel à la
  * méthode toStream
  * @param os flux dans lequel on écrit
  * @param ship Vaisseaux dont nous allons afficher les informations
  * @return une référence sur l'opérateur de flux
  */
 std::ostream &operator<<(std::ostream &os, const Ship &ship);
+
+
 
 /**
  * Classe modélisant toutes sorte de vaisseaux spatiaux.
@@ -644,7 +666,8 @@ public:
     unsigned int getMaxSpeed() const;
 
     /**
-     * Calcule la consommation d'un vaisseau compte tenu de sa vitesse, de la distance du trajet et de son chargement
+     * Calcule la consommation d'un vaisseau compte tenu de sa vitesse, de la distance du trajet 
+	 * et de son chargement
      * @throws invalid_argument si la vitesse voulue n'est pas atteignable par le
      * vaisseau ou la distance est négative
      * @param distance Distance parcourue en millions de km
@@ -664,10 +687,9 @@ private:
     std::string nickname;
     const ShipCharacteristic *characteristic;
 };
-
 #endif /* SHIP_HPP */
 
-
+/* --------------------------------------------------------------------------------------*/
 #include "ship.hpp"
 #include <cmath>
 #include <iomanip>
@@ -714,6 +736,7 @@ unsigned int Ship::getMaxSpeed() const {
     return characteristic->getMaxSpeed();
 }
 
+/* --------------------------------------------------------------------------------------*/
 
 #ifndef LABO1_TRANSPORTER_HPP
 #define LABO1_TRANSPORTER_HPP
@@ -722,12 +745,18 @@ unsigned int Ship::getMaxSpeed() const {
 #include "transporterCharacteristic.hpp"
 
 /**
- * Déclaration de la classe Transporter héritant de Ship et modélisant des vaisseaux transportant des cargaisons.
+ * Déclaration de la classe Transporter héritant de Ship et modélisant des vaisseaux transportant
+ * des cargaisons.
  * @authors Alexandre Jaquier et Jonathan Friedli
  * @date 17.03.2022
  */
 class Transporter : public Ship {
 protected:
+
+
+
+
+
     /**
      * Constructeur de la classe Transporter
      * @param currentLoad poids de la cargaison en tonne
@@ -770,6 +799,7 @@ private:
 
 #endif //LABO1_TRANSPORTER_HPP
 
+/* --------------------------------------------------------------------------------------*/
 
 
 #include "transporter.hpp"
@@ -795,6 +825,7 @@ void Transporter::setLoad(double load) {
     currentLoad = load;
 }
 
+
 std::ostream &Transporter::toStream(std::ostream &os) const {
     return Ship::toStream(os) << std::endl <<"  cargo : " << std::setprecision(1)
                               << currentLoad << " tons (max : "
@@ -805,6 +836,7 @@ double Transporter::getWeight() const {
     return characteristic->getWeight() + currentLoad;
 }
 
+/* --------------------------------------------------------------------------------------*/
 
 #ifndef LABO1_TIEHUNTER_HPP
 #define LABO1_TIEHUNTER_HPP
@@ -831,6 +863,7 @@ private:
 
 #endif //LABO1_TIEHUNTER_HPP
 
+/* --------------------------------------------------------------------------------------*/
 
 #include "tieHunter.hpp"
 
@@ -839,6 +872,8 @@ ShipCharacteristic TieHunter::characteristic(
 );
 
 TieHunter::TieHunter() : Ship(&characteristic) {}
+
+/* --------------------------------------------------------------------------------------*/
 
 #ifndef LABO1_TIEINTERCEPTOR_HPP
 #define LABO1_TIEINTERCEPTOR_HPP
@@ -852,20 +887,16 @@ TieHunter::TieHunter() : Ship(&characteristic) {}
  */
 class TieInterceptor : public Ship {
 public:
-
     /**
      * Constructeur de la classe TieInterceptor
      */
     TieInterceptor();
-
 private:
-
     static ShipCharacteristic characteristic;
 };
-
-
 #endif //LABO1_TIEINTERCEPTOR_HPP
 
+/* --------------------------------------------------------------------------------------*/
 
 #include "tieInterceptor.hpp"
 
@@ -874,6 +905,8 @@ ShipCharacteristic TieInterceptor::characteristic(
 );
 
 TieInterceptor::TieInterceptor() : Ship(&characteristic) {}
+
+/* --------------------------------------------------------------------------------------*/
 
 #ifndef LABO1_DREADNOUGHT_HPP
 #define LABO1_DREADNOUGHT_HPP
@@ -902,6 +935,7 @@ private:
 
 #endif //LABO1_DREADNOUGHT_HPP
 
+/* --------------------------------------------------------------------------------------*/
 
 #include "dreadnought.hpp"
 
@@ -912,6 +946,8 @@ TransporterCharacteristic Dreadnought::characteristic(
 Dreadnought::Dreadnought(double load) : Transporter(
         load, &characteristic
 ) {}
+
+/* --------------------------------------------------------------------------------------*/
 
 #ifndef LABO1_SHUTTLE_HPP
 #define LABO1_SHUTTLE_HPP
@@ -927,6 +963,7 @@ Dreadnought::Dreadnought(double load) : Transporter(
 class Shuttle : public Transporter {
 public:
 
+
     /**
      * Constructeur de la classe Shuttle
      * @param load poids de la cargaison en tonne
@@ -940,6 +977,7 @@ private:
 
 #endif //LABO1_SHUTTLE_HPP
 
+/* --------------------------------------------------------------------------------------*/
 
 #include "shuttle.hpp"
 
@@ -951,6 +989,7 @@ Shuttle::Shuttle(double load) : Transporter(
         load, &characteristic
 ) {}
 
+/* --------------------------------------------------------------------------------------*/
 
 #ifndef LABO1_SHIPCHARACTERISTIC_HPP
 #define LABO1_SHIPCHARACTERISTIC_HPP
@@ -991,11 +1030,16 @@ public:
      */
     unsigned int getMaxSpeed() const;
 
+
+
+
     /**
      * Renvoie le poids du vaisseau en tonne
      * @return le poids en tonne
      */
     double getWeight() const;
+
+
 
     /**
      * Permet de générer un id dépendant du type du vaisseau
@@ -1014,6 +1058,8 @@ private:
 
 #endif //LABO1_SHIPCHARACTERISTIC_HPP
 
+
+/* --------------------------------------------------------------------------------------*/
 
 #include "shipCharacteristic.hpp"
 
@@ -1037,6 +1083,8 @@ unsigned int ShipCharacteristic::nextId() {
     return counter++;
 }
 
+/* --------------------------------------------------------------------------------------*/
+
 
 #ifndef LABO1_TRANSPORTERCHARACTERISTIC_HPP
 #define LABO1_TRANSPORTERCHARACTERISTIC_HPP
@@ -1050,6 +1098,10 @@ unsigned int ShipCharacteristic::nextId() {
  */
 class TransporterCharacteristic : public ShipCharacteristic {
 public:
+
+
+
+
 	/**
 	 * Constructeur de la classe TransporterCharacteristic
 	 * @param modele Modèle du vaisseau
@@ -1059,6 +1111,8 @@ public:
 	 */
 	TransporterCharacteristic(const std::string& modele, unsigned maxSpeed,
 									  double weight, double maxLoad);
+
+
 
 	/**
 	 * Renvoie le poids maximal de la cargaison en tonne
@@ -1072,6 +1126,9 @@ private:
 
 
 #endif //LABO1_TRANSPORTERCHARACTERISTIC_HPP
+
+
+/* --------------------------------------------------------------------------------------*/
 
 
 #include "transporterCharacteristic.hpp"
