@@ -27,7 +27,7 @@ Squadron operator+(const Squadron &squadron, Ship &ship);
  * @param ship vaisseau à enlever
  * @return une copie de l'escadrille avec le vaisseau enlevé
  */
-Squadron operator-(const Squadron &squadron, Ship &ship);
+Squadron operator-(const Squadron &squadron, const Ship &ship);
 
 /**
  * Classe permettant de modéliser une escadrille contenant des

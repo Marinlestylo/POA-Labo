@@ -15,6 +15,9 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "shuttle.hpp"
 #include "squadron.hpp"
 
+/**
+ * Permet de tester les fonctionnalités liées aux vaisseaux
+ */
 void testShips() {
     std::cout << std::endl << "--------------------- Tests des Vaisseaux "
                               "---------------------" << std::endl << std::endl;
@@ -39,12 +42,28 @@ void testShips() {
     // constantes.
     std::cout << "Tests des ships constants :" << std::endl;
     const Dreadnought constantShip(40);
+	 //constantShip.setLoad(466);
+	 // impossible d'appeler cette fonction
     std::cout << constantShip << std::endl;
 
+	 std::cout << "Tests des transporters :" << std::endl;
+	try {
+		Shuttle shut(100);
+	} catch (std::invalid_argument &e) {
+		std::cout << e.what() << std::endl;
+	}
+	Dreadnought dread(155);
+	try {
+		dread.setLoad(100444444);
+	} catch (std::invalid_argument &e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
-void test() {
-    testShips();
+/**
+ * Permet de tester les fonctionnalités liées aux squadrons
+ */
+void testSquadron() {
 
     std::cout << std::endl << "--------------------- Tests des Squadrons "
                               "---------------------" << std::endl << std::endl;
@@ -55,10 +74,13 @@ void test() {
 
     std::cout << "Creation d'un Squadron constant" << std::endl;
 
+
     // Les méthodes non constantes ne peuvent pas être appelées sur une instance
     // constantes.
-    const Squadron squadStat("teststatique");
+    const Squadron squadStat("testsConst");
+	 // squadStat.addShipToSquadron()
     std::cout << squadStat << std::endl;
+
 
     std::cout << "Creation de vaisseaux" << std::endl;
     Shuttle shuttle(20);
@@ -83,10 +105,18 @@ void test() {
     squad1.addShipToSquadron(tieInterceptor);
     squad1.addShipToSquadron(tieHunter);
 
-    std::cout << "Test de l'opérateur d'affectation" << std::endl;
+    std::cout << "Test de l'operateur d'affectation" << std::endl;
     squad2 = squad1;
     std::cout << "Squad 1" << std::endl << squad1 << std::endl;
     std::cout << "Squad 2" << std::endl << squad2 << std::endl;
+
+	std::cout << "Test de l'operateur d'addition" << std::endl;
+	TieHunter add;
+	std::cout << "Squad 2 avec add" << std::endl << squad2 + add << std::endl;
+
+	std::cout << "Test de l'operateur de soustraction" << std::endl;
+	std::cout << "Squad 2 avec add" << std::endl << (squad2 - shuttle) <<
+	std::endl;
 
     std::cout << "Test de la suppression des vaisseaux (shuttle est enlevé 2X)" <<
               std::endl;
@@ -101,21 +131,28 @@ void test() {
     squad1.setLeader(tieHunter);
     std::cout << squad1 << std::endl;
 
+	std::cout << "Choix du chef du squadron1 avec un vaisseau qui n'en fait pas "
+					 "partie"	<< std::endl;
+	TieHunter notMember;
+	squad1.setLeader(notMember);
+
+	std::cout << squad1 << std::endl;
+
 
     std::cout << "Test de la formule de consommation (avec une distance et une "
                  "vitesse de 100)" << std::endl;
-    std::cout << "Consommation de l'éscadrille ne contenant qu'un TieHunter : "
+    std::cout << "Consommation de l'escadrille ne contenant qu'un TieHunter : "
               << squad1.getConsumption(100, 100) << std::endl;
     std::cout << "Consommation d'un TieHunter : " << tieHunter.getConsumption(100,
                                                                               100)
               << std::endl;
     std::cout << squad1 << std::endl << std::endl;
 
-    std::cout << "Affichage du vaisseau 0 via la méthode get" << std::endl;
+    std::cout << "Affichage du vaisseau 0 via la methode get" << std::endl;
     std::cout << squad1.getShip(0) << std::endl << std::endl;
 
     std::cout << "Affichage d'un vaisseau en dehors des index limites via la "
-                 "méthode get" << std::endl << std::endl;
+                 "methode get" << std::endl << std::endl;
     try {
         squad1.getShip(5);
     } catch (std::out_of_range &e) {
@@ -149,7 +186,8 @@ int main() {
     squad.setLeader(blackLeader);
     std::cout << squad << std::endl << std::endl;
 
-    test();
+	 // testShips();
+    // testSquadron();
 
     return EXIT_SUCCESS;
 }

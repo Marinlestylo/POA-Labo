@@ -117,7 +117,7 @@ const Ship &Squadron::getShip(size_t index) const {
     if (counter == index + 1) {
         return *tmp->value;
     }
-    throw out_of_range("Le Squadron ne contient pas de vaisseau à cet index");
+    throw out_of_range("Le Squadron ne contient pas de vaisseau a cet index");
 }
 
 void Squadron::squadronInfos(unsigned &speed, double &weight) const {
