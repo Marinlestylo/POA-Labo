@@ -30,7 +30,7 @@ public:
      * Constructeur de la classe Squadron
      * @param name nom de l'escadrille
      */
-    Squadron(const std::string& name);
+    explicit Squadron(const std::string& name);
 
     /**
     * Constructeur par copie de la classe Squadron
@@ -140,7 +140,6 @@ private:
     void initVariables(const std::string& newName, Ship *newLeader,Ship* newHead);
     Ship *leader;
     Maillon *listHead;
-    Maillon *listTail;
     std::string name;
 };
 

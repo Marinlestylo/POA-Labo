@@ -30,20 +30,29 @@ void Squadron::initVariables(const string& newName, Ship *newLeader,Ship* newHea
     this->name = newName;
     this->leader = newLeader;
     this->listHead = newHead == nullptr ? nullptr : new Maillon{newHead,nullptr};
-    this->listTail = listHead;
-
 }
 
 Squadron& Squadron::operator=(const Squadron& other){
     if(this == &other){
         return *this;
     }
+    Maillon* toDelete = listHead;
+    Maillon *tmp = toDelete->suivant;
+
+    while (toDelete != nullptr){
+        delete toDelete;
+        toDelete = tmp;
+        if(tmp != nullptr){
+            tmp = tmp->suivant;
+        }
+    }
+
     leader = other.leader;
     listHead = new Maillon{other.listHead->valeur, nullptr};
-    Maillon *toCopy = other.listHead;
-    while (toCopy != nullptr) {
-        addShipFromSquadron(*toCopy->valeur);
-        toCopy = toCopy->suivant;
+    tmp = other.listHead;
+    while (tmp != nullptr) {
+        addShipFromSquadron(*tmp->valeur);
+        tmp = tmp->suivant;
     }
     return *this;
 }
@@ -53,39 +62,34 @@ void Squadron::setLeader(Ship &newLeader) {
     this->leader = &newLeader;
 }
 
-/**
- *
- * @param ship
- * @return
- */
 Squadron Squadron::addShip(Ship &ship) const {
     Squadron newSquadron(*this);
-    newSquadron.addShipFromSquadron(ship);
-    return newSquadron;
+    return newSquadron.addShipFromSquadron(ship);
+    ;
 }
 
 Squadron Squadron::removeShip(const Ship &ship) const {
     Squadron newSquadron(*this);
-    newSquadron.removeShipFromSquadron(ship);
-    return newSquadron;
+    return newSquadron.removeShipFromSquadron(ship);
 }
 
 Squadron &Squadron::addShipFromSquadron(Ship &ship) {
     Maillon *tmp = listHead;
+    Maillon *newMaillon = new Maillon{&ship, nullptr};
+    if(tmp == nullptr){
+        listHead = newMaillon;
+        return *this;
+    }
     while (tmp != nullptr) {
         if (tmp->valeur == &ship) {
             return *this;
         }
+        if (tmp->suivant == nullptr) {
+            break;
+        }
         tmp = tmp->suivant;
     }
-
-    Maillon *newMaillon = new Maillon{&ship, nullptr};
-    if (listHead == nullptr) {
-        listHead = newMaillon;
-    } else {
-        listTail->suivant = newMaillon;
-    }
-    listTail = newMaillon;
+    tmp->suivant = newMaillon;
     return *this;
 }
 
@@ -96,8 +100,6 @@ Squadron &Squadron::removeShipFromSquadron(const Ship &ship) {
         if (toRemove->valeur == &ship) {
             if (toRemove == listHead) {
                 listHead = toRemove->suivant;
-            } else if (toRemove == listTail) {
-                listTail = tmp;
             } else {
                 tmp->suivant = toRemove->suivant;
             }

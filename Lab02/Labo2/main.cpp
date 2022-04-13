@@ -69,13 +69,20 @@ void test(){
     std::cout << "Ajout des vaisseaux dans le squadron1" << std::endl;
     squad1.addShipFromSquadron(shuttle);
     squad1.addShipFromSquadron(dreadnought);
-    squad1.addShipFromSquadron(tieInterceptor);
-    squad1.addShipFromSquadron(tieHunter);
+
     std::cout << squad1 << std::endl;
 
     std::cout << "Test du constructeur de copie (squad2)" << std::endl;
     Squadron squad2(squad1);
     std::cout << squad2 << std::endl;
+
+    squad1.addShipFromSquadron(tieInterceptor);
+    squad1.addShipFromSquadron(tieHunter);
+
+    std::cout << "Test de l'opérateur d'affectation" << std::endl;
+    squad2 = squad1;
+    std::cout << "Squad 1" << std::endl << squad1 << std::endl;
+    std::cout << "Squad 2" << std::endl << squad2 << std::endl;
 
     std::cout << "Test de la suppression des vaisseaux (shuttle est enlevé 2X)" <<
     std::endl;
@@ -85,7 +92,6 @@ void test(){
     squad1.removeShipFromSquadron(tieInterceptor);
     squad1.removeShipFromSquadron(tieHunter);
     std::cout << squad1 << std::endl;
-
 
     std::cout << "Choix du chef du squadron1 -> tieHunter" << std::endl;
     squad1.setLeader(tieHunter);
