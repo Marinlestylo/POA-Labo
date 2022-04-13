@@ -29,7 +29,7 @@ public:
 	 * @param characteristic pointeur sur les caractéristique du vaisseau telles
 	 * que la vitesse maximum ou le modèle
 	 */
-	explicit Ship(unsigned int id, ShipCharacteristic* characteristic);
+	Ship(unsigned int id, ShipCharacteristic* characteristic);
 
 	/**
 	 * Destructeur de la classe vaisseau

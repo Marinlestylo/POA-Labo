@@ -39,6 +39,8 @@ void testShips(){
     // constantes.
     std::cout << "Tests des ships constants :" << std::endl;
     const Dreadnought constantShip(40);
+    std::cout << constantShip << std::endl;
+
 }
 
 void test(){
@@ -104,19 +106,30 @@ void test(){
     <<squad1.getConsumption(100, 100) << std::endl;
     std::cout << "Consommation d'un TieHunter : " << tieHunter.getConsumption(100,
                                                                              100) << std::endl;
-    //TODO le calcul est arrondi c'est chelou
     std::cout << squad1 << std::endl;
 
     std::cout << "Affichage du vaisseau 0 via la méthode get" << std::endl;
     std::cout << squad1.getShip(0) << std::endl;
 
     std::cout << "Affichage d'un vaisseau en dehors des index limites via la "
-                 "méthode get" << std::endl;
+                 "méthode get" << std::endl<< std::endl;
     try {
         squad1.getShip(5);
     } catch (std::out_of_range &e) {
-        std::cout << "Une erreur out_of_range à bien été lancée" << std::endl
-        << std::endl;
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << "Consommation d'un squadron avec une distance ou une vitesse "
+                 "invalide" << std::endl;
+    try {
+        squad1.getConsumption(-1,10);
+    } catch (std::invalid_argument &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try {
+        squad1.getConsumption(1,1000000);
+    } catch (std::invalid_argument &e) {
+        std::cout << e.what() << std::endl;
     }
 
     testShips();
@@ -127,21 +140,15 @@ int main() {
 	blackLeader.setNickname("Black leader");
 	TieHunter blackTwo;
 	Shuttle shuttle(23.4); // 23.4 tonnes de marchandises
-    Dreadnought d(5.6);
-	//Squadron squad("Black Squadron");
-    std::cout << blackLeader << std::endl;
-    std::cout << blackTwo << std::endl;
-    std::cout << shuttle << std::endl;
-    std::cout << d << std::endl;
-    //std::cout << sq << std::endl;
+	Squadron squad("Black Squadron");
 
-    /*squad += blackLeader;
+    squad += blackLeader;
 	squad += blackTwo;
 	squad += shuttle;
     squad.setLeader(blackLeader);
-	std::cout << squad << std::endl << std::endl;*/
+	std::cout << squad << std::endl << std::endl;
 
-    //test();
+    test();
 
     return EXIT_SUCCESS;
 }

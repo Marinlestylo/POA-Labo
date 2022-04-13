@@ -17,7 +17,6 @@ Transporter::Transporter(
 	Ship(id, characteristic) {
     this->characteristic = characteristic;
     setLoad(currentLoad);
-
 }
 
 double Transporter::getLoad() const {
@@ -25,7 +24,6 @@ double Transporter::getLoad() const {
 }
 
 void Transporter::setLoad(double load) {
-    std::cout << "alo" << this->characteristic->getMaxLoad() << std::endl;
 	if (load > this->characteristic->getMaxLoad() || load < 0) {
 		throw std::invalid_argument("Vous tentez de mettre une cargaison trop lourde"
 											 " dans ce vaisseau !");
