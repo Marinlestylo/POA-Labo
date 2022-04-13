@@ -13,7 +13,7 @@ class Transporter : public Ship {
 protected:
     /**
      * Constructeur de la classe Transporter
-     * @param currentLoad poids de la cargaison
+     * @param currentLoad poids de la cargaison en tonne
      * @param characteristic Pointeur sur les caractéristique d'un vaisseau pouvant
      * transporter une cargaison
      */
@@ -21,14 +21,14 @@ protected:
 
 public:
     /**
-     * Renvoie le poids de la cargaison courrante
-     * @return le poids de la cargaison
+     * Renvoie le poids de la cargaison courrante en tonne
+     * @return le poids de la cargaison en tonne
      */
     double getLoad() const;
 
     /**
      * Permet de mettre à jours le poids de la cargaison
-     * @param load nouveau poids
+     * @param load nouveau poids en tonne
      */
     void setLoad(double load);
 
@@ -40,8 +40,8 @@ public:
     std::ostream &toStream(std::ostream &os) const override;
 
     /**
-	 * Renvoie le poids du vaisseau + celui de sa cargaison
-	 * @return le poids total
+	 * Renvoie le poids du vaisseau + celui de sa cargaison en tonne
+	 * @return le poids total en tonne
 	 */
     double getWeight() const override;
 

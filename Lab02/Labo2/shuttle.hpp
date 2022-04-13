@@ -14,7 +14,7 @@ public:
 
     /**
      * Constructeur de la classe Shuttle
-     * @param load poids de la cargaison
+     * @param load poids de la cargaison en tonne
      */
     explicit Shuttle(double load);
 

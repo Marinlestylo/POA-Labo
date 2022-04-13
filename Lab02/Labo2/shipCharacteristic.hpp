@@ -15,8 +15,8 @@ public:
     /**
      * Constructeur de la classe ShipCharacteristic
      * @param modele modele du vaisseau
-     * @param maxSpeed Vitesse maximale
-     * @param weight poids du vaisseau
+     * @param maxSpeed Vitesse maximale en MGLT
+     * @param weight poids du vaisseau en tonne
      */
     ShipCharacteristic(const std::string &modele, unsigned maxSpeed, double weight);
 
@@ -27,14 +27,14 @@ public:
     const std::string &getModele() const;
 
     /**
-     * Renvoie la vitesse max du vaisseau
-     * @return la vitesse max
+     * Renvoie la vitesse max du vaisseau en MGLT
+     * @return la vitesse max en MGLT
      */
     unsigned int getMaxSpeed() const;
 
     /**
-     * Renvoie le poids du vaisseau
-     * @return le poids
+     * Renvoie le poids du vaisseau en tonne
+     * @return le poids en tonne
      */
     double getWeight() const;
 

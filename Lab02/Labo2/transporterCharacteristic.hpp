@@ -13,16 +13,16 @@ public:
 	/**
 	 * Constructeur de la classe TransporterCharacteristic
 	 * @param modele Modèle du vaisseau
-	 * @param maxSpeed Vitesse max du vaisseau
-	 * @param weight Poids du vaisseau
-	 * @param maxLoad Poids maximal de la cargaison
+	 * @param maxSpeed Vitesse max du vaisseau en MGLT
+	 * @param weight Poids du vaisseau en tonne
+	 * @param maxLoad Poids maximal de la cargaison en tonne
 	 */
 	TransporterCharacteristic(const std::string& modele, unsigned maxSpeed,
 									  double weight, double maxLoad);
 
 	/**
-	 * Renvoie le poids maximal de la cargaison
-	 * @return le poids max
+	 * Renvoie le poids maximal de la cargaison en tonne
+	 * @return le poids max en tonne
 	 */
 	double getMaxLoad() const;
 

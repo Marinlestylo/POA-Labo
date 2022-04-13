@@ -55,6 +55,10 @@ public:
      */
     virtual double getWeight() const;
 
+    /**
+     * Renvoie la vitesse maximale du vaisseau
+     * @return la vitesse en MGLT
+     */
     unsigned int getMaxSpeed() const;
 
     /**
@@ -62,7 +66,7 @@ public:
      * @throws invalid_argument si la vitesse voulue n'est pas atteignable par le
      * vaisseau ou la distance est négative
      * @param distance Distance parcourue en millions de km
-     * @param speed Vitesse à laquelle le vaisseau avance
+     * @param speed Vitesse à laquelle le vaisseau avance en MGLT
      * @return La consomation en tonne
      */
     double getConsumption(double distance, unsigned speed) const;

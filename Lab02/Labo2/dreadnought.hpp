@@ -14,7 +14,7 @@ public:
 
     /**
      * Constructeur de la classe Dreadnought
-     * @param load poids de la cargaison
+     * @param load poids de la cargaison en tonne
      */
     explicit Dreadnought(double load);
 
