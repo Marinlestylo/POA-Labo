@@ -11,13 +11,13 @@
 class TieHunter : public Ship {
 public:
 
-	/**
-	 * Constructeur de la classe TieHunter
-	 */
-	TieHunter();
+    /**
+     * Constructeur de la classe TieHunter
+     */
+    TieHunter();
 
 private:
-	static ShipCharacteristic characteristic;
+    static ShipCharacteristic characteristic;
 };
 
 

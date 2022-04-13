@@ -30,7 +30,7 @@ public:
      * Constructeur de la classe Squadron
      * @param name nom de l'escadrille
      */
-    explicit Squadron(const std::string& name);
+    explicit Squadron(const std::string &name);
 
     /**
     * Constructeur par copie de la classe Squadron
@@ -49,7 +49,7 @@ public:
     * @param other
     * @return
     */
-    Squadron &operator=(const Squadron& other);
+    Squadron &operator=(const Squadron &other);
 
     /**
     * Méthode permettant de définir le chef de l'escadrille, si le vaisseau ne fait
@@ -85,7 +85,7 @@ public:
      * @param speed vitesse de l'escadrille
      * @param weight poids de l'escadrille
      */
-    void squadronInfos(unsigned& speed, double& weight) const;
+    void squadronInfos(unsigned &speed, double &weight) const;
 
     /**
      * Méthode retournant une nouvelle escadrille contenant les vaisseaux de
@@ -137,7 +137,8 @@ private:
     /**
      * Méthode permettant d'initialiser les paramètres de l'escadrille
      */
-    void initVariables(const std::string& newName, Ship *newLeader,Ship* newHead);
+    void initVariables(const std::string &newName, Ship *newLeader, Ship *newHead);
+
     Ship *leader;
     Maillon *listHead;
     std::string name;

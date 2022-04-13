@@ -1,21 +1,21 @@
 #include "shipCharacteristic.hpp"
 
-ShipCharacteristic::ShipCharacteristic(const std::string& modele, unsigned maxSpeed,
-													double weight) : modele(modele), maxSpeed
-													(maxSpeed), weight(weight), counter(0) {}
+ShipCharacteristic::ShipCharacteristic(const std::string &modele, unsigned maxSpeed,
+                                       double weight) : modele(modele), maxSpeed
+        (maxSpeed), weight(weight), counter(0) {}
 
-const std::string& ShipCharacteristic::getModele() const {
-	return modele;
+const std::string &ShipCharacteristic::getModele() const {
+    return modele;
 }
 
 unsigned int ShipCharacteristic::getMaxSpeed() const {
-	return maxSpeed;
+    return maxSpeed;
 }
 
 double ShipCharacteristic::getWeight() const {
-	return weight;
+    return weight;
 }
 
 unsigned int ShipCharacteristic::nextId() {
-	return counter++;
+    return counter++;
 }

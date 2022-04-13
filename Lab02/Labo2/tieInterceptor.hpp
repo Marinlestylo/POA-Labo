@@ -11,14 +11,14 @@
 class TieInterceptor : public Ship {
 public:
 
-	/**
-	 * Constructeur de la classe TieInterceptor
-	 */
-	TieInterceptor();
+    /**
+     * Constructeur de la classe TieInterceptor
+     */
+    TieInterceptor();
 
 private:
 
-	static ShipCharacteristic characteristic;
+    static ShipCharacteristic characteristic;
 };
 
 

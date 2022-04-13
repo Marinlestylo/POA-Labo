@@ -12,14 +12,14 @@
 class Shuttle : public Transporter {
 public:
 
-	/**
-	 * Constructeur de la classe Shuttle
-	 * @param load poids de la cargaison
-	 */
-	explicit Shuttle(double load);
+    /**
+     * Constructeur de la classe Shuttle
+     * @param load poids de la cargaison
+     */
+    explicit Shuttle(double load);
 
 private:
-	static TransporterCharacteristic characteristic;
+    static TransporterCharacteristic characteristic;
 };
 
 

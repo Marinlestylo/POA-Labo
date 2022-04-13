@@ -15,7 +15,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include "shuttle.hpp"
 #include "squadron.hpp"
 
-void testShips(){
+void testShips() {
     std::cout << std::endl << "--------------------- Tests des Vaisseaux "
                               "---------------------" << std::endl << std::endl;
     std::cout << "Creation et affichage de vaisseaux" << std::endl;
@@ -25,7 +25,7 @@ void testShips(){
     TieHunter tieHunter;
     std::cout << shuttle << std::endl <<
               dreadnought << std::endl <<
-              tieInterceptor<< std::endl<<
+              tieInterceptor << std::endl <<
               tieHunter << std::endl;
     std::cout << "Changement de nom pour Dreadnought :" << std::endl;
     dreadnought.setNickname("Dreadnought");
@@ -33,7 +33,7 @@ void testShips(){
 
     std::cout << "Formule de consommation pour DreadNought avec une cargaison de "
                  "taille 40, la distance et la vitesse sont de 20 :" << std::endl;
-    std::cout << dreadnought.getConsumption(20,20) << std::endl;
+    std::cout << dreadnought.getConsumption(20, 20) << std::endl;
 
     // Les méthodes non constantes ne peuvent pas être appelées sur une instance
     // constantes.
@@ -43,7 +43,7 @@ void testShips(){
 
 }
 
-void test(){
+void test() {
     std::cout << std::endl << "--------------------- Tests des Squadrons "
                               "---------------------" << std::endl << std::endl;
 
@@ -65,7 +65,7 @@ void test(){
     TieHunter tieHunter;
     std::cout << shuttle << std::endl <<
               dreadnought << std::endl <<
-              tieInterceptor<< std::endl<<
+              tieInterceptor << std::endl <<
               tieHunter << std::endl;
 
     std::cout << "Ajout des vaisseaux dans le squadron1" << std::endl;
@@ -87,7 +87,7 @@ void test(){
     std::cout << "Squad 2" << std::endl << squad2 << std::endl;
 
     std::cout << "Test de la suppression des vaisseaux (shuttle est enlevé 2X)" <<
-    std::endl;
+              std::endl;
     squad1.removeShipFromSquadron(shuttle);
     squad1.removeShipFromSquadron(shuttle);
     squad1.removeShipFromSquadron(dreadnought);
@@ -103,16 +103,17 @@ void test(){
     std::cout << "Test de la formule de consommation (avec une distance et une "
                  "vitesse de 100)" << std::endl;
     std::cout << "Consommation de l'éscadrille ne contenant qu'un TieHunter : "
-    <<squad1.getConsumption(100, 100) << std::endl;
+              << squad1.getConsumption(100, 100) << std::endl;
     std::cout << "Consommation d'un TieHunter : " << tieHunter.getConsumption(100,
-                                                                             100) << std::endl;
+                                                                              100)
+              << std::endl;
     std::cout << squad1 << std::endl;
 
     std::cout << "Affichage du vaisseau 0 via la méthode get" << std::endl;
     std::cout << squad1.getShip(0) << std::endl;
 
     std::cout << "Affichage d'un vaisseau en dehors des index limites via la "
-                 "méthode get" << std::endl<< std::endl;
+                 "méthode get" << std::endl << std::endl;
     try {
         squad1.getShip(5);
     } catch (std::out_of_range &e) {
@@ -122,12 +123,12 @@ void test(){
     std::cout << "Consommation d'un squadron avec une distance ou une vitesse "
                  "invalide" << std::endl;
     try {
-        squad1.getConsumption(-1,10);
+        squad1.getConsumption(-1, 10);
     } catch (std::invalid_argument &e) {
         std::cout << e.what() << std::endl;
     }
     try {
-        squad1.getConsumption(1,1000000);
+        squad1.getConsumption(1, 1000000);
     } catch (std::invalid_argument &e) {
         std::cout << e.what() << std::endl;
     }
@@ -137,16 +138,16 @@ void test(){
 
 int main() {
     TieHunter blackLeader;
-	blackLeader.setNickname("Black leader");
-	TieHunter blackTwo;
-	Shuttle shuttle(23.4); // 23.4 tonnes de marchandises
-	Squadron squad("Black Squadron");
+    blackLeader.setNickname("Black leader");
+    TieHunter blackTwo;
+    Shuttle shuttle(23.4); // 23.4 tonnes de marchandises
+    Squadron squad("Black Squadron");
 
     squad += blackLeader;
-	squad += blackTwo;
-	squad += shuttle;
+    squad += blackTwo;
+    squad += shuttle;
     squad.setLeader(blackLeader);
-	std::cout << squad << std::endl << std::endl;
+    std::cout << squad << std::endl << std::endl;
 
     test();
 

@@ -12,44 +12,44 @@
  */
 class ShipCharacteristic {
 public:
-	/**
-	 * Constructeur de la classe ShipCharacteristic
-	 * @param modele modele du vaisseau
-	 * @param maxSpeed Vitesse maximale
-	 * @param weight poids du vaisseau
-	 */
-	ShipCharacteristic(const std::string& modele, unsigned maxSpeed, double weight);
+    /**
+     * Constructeur de la classe ShipCharacteristic
+     * @param modele modele du vaisseau
+     * @param maxSpeed Vitesse maximale
+     * @param weight poids du vaisseau
+     */
+    ShipCharacteristic(const std::string &modele, unsigned maxSpeed, double weight);
 
-	/**
-	 * Renvoie le modèle du vaisseau
-	 * @return le modèle
-	 */
-	const std::string& getModele() const;
+    /**
+     * Renvoie le modèle du vaisseau
+     * @return le modèle
+     */
+    const std::string &getModele() const;
 
-	/**
-	 * Renvoie la vitesse max du vaisseau
-	 * @return la vitesse max
-	 */
-	unsigned int getMaxSpeed() const;
+    /**
+     * Renvoie la vitesse max du vaisseau
+     * @return la vitesse max
+     */
+    unsigned int getMaxSpeed() const;
 
-	/**
-	 * Renvoie le poids du vaisseau
-	 * @return le poids
-	 */
-	double getWeight() const;
+    /**
+     * Renvoie le poids du vaisseau
+     * @return le poids
+     */
+    double getWeight() const;
 
-	/**
-	 * Permet de générer un id dépendant du type du vaisseau
-	 * @return le prochain id utilisable
-	 */
-	unsigned int nextId();
+    /**
+     * Permet de générer un id dépendant du type du vaisseau
+     * @return le prochain id utilisable
+     */
+    unsigned int nextId();
 
 
 private:
-	const std::string modele;
-	const unsigned maxSpeed;
-	const double weight;
-	unsigned int counter;
+    const std::string modele;
+    const unsigned maxSpeed;
+    const double weight;
+    unsigned int counter;
 };
 
 

@@ -12,14 +12,14 @@
 class Dreadnought : public Transporter {
 public:
 
-	/**
-	 * Constructeur de la classe Dreadnought
-	 * @param load poids de la cargaison
-	 */
-	explicit Dreadnought(double load);
+    /**
+     * Constructeur de la classe Dreadnought
+     * @param load poids de la cargaison
+     */
+    explicit Dreadnought(double load);
 
 private:
-	static TransporterCharacteristic characteristic;
+    static TransporterCharacteristic characteristic;
 };
 
 

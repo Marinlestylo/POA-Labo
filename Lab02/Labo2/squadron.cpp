@@ -3,12 +3,12 @@
 
 using namespace std;
 
-Squadron::Squadron(const string& name) {
+Squadron::Squadron(const string &name) {
     initVariables(name, nullptr, nullptr);
 }
 
 Squadron::Squadron(const Squadron &other) {
-    initVariables(other.name,other.leader,other.listHead->valeur);
+    initVariables(other.name, other.leader, other.listHead->valeur);
     Maillon *toCopy = other.listHead->suivant;
     while (toCopy != nullptr) {
         addShipToSquadron(*toCopy->valeur);
@@ -26,23 +26,23 @@ Squadron::~Squadron() {
     }
 }
 
-void Squadron::initVariables(const string& newName, Ship *newLeader,Ship* newHead) {
+void Squadron::initVariables(const string &newName, Ship *newLeader, Ship *newHead) {
     this->name = newName;
     this->leader = newLeader;
-    this->listHead = newHead == nullptr ? nullptr : new Maillon{newHead,nullptr};
+    this->listHead = newHead == nullptr ? nullptr : new Maillon{newHead, nullptr};
 }
 
-Squadron& Squadron::operator=(const Squadron& other){
-    if(this == &other){
+Squadron &Squadron::operator=(const Squadron &other) {
+    if (this == &other) {
         return *this;
     }
-    Maillon* toDelete = listHead;
+    Maillon *toDelete = listHead;
     Maillon *tmp = toDelete->suivant;
 
-    while (toDelete != nullptr){
+    while (toDelete != nullptr) {
         delete toDelete;
         toDelete = tmp;
-        if(tmp != nullptr){
+        if (tmp != nullptr) {
             tmp = tmp->suivant;
         }
     }
@@ -64,8 +64,7 @@ void Squadron::setLeader(Ship &newLeader) {
 
 Squadron Squadron::addShip(Ship &ship) const {
     Squadron newSquadron(*this);
-    return newSquadron.addShipToSquadron(ship);
-    ;
+    return newSquadron.addShipToSquadron(ship);;
 }
 
 Squadron Squadron::removeShip(const Ship &ship) const {
@@ -76,7 +75,7 @@ Squadron Squadron::removeShip(const Ship &ship) const {
 Squadron &Squadron::addShipToSquadron(Ship &ship) {
     Maillon *tmp = listHead;
     Maillon *newMaillon = new Maillon{&ship, nullptr};
-    if(tmp == nullptr){
+    if (tmp == nullptr) {
         listHead = newMaillon;
         return *this;
     }
@@ -130,7 +129,7 @@ void Squadron::squadronInfos(unsigned &speed, double &weight) const {
 
     Maillon *tmp = listHead;
     while (tmp != nullptr) {
-        if(speed > tmp->valeur->getMaxSpeed() || speed == 0){
+        if (speed > tmp->valeur->getMaxSpeed() || speed == 0) {
             speed = tmp->valeur->getMaxSpeed();
         }
         weight += tmp->valeur->getWeight();
@@ -163,15 +162,15 @@ double Squadron::getConsumption(double distance, unsigned int speed) const {
     unsigned maxSpeed;
     double totalWeight;
     squadronInfos(maxSpeed, totalWeight);
-    if(speed > maxSpeed || distance < 0){
+    if (speed > maxSpeed || distance < 0) {
         throw std::invalid_argument("Ce squadron ne peut pas atteindre une telle "
                                     "vitesse ou une telle distance");
     }
 
-    Maillon* ship = this->listHead;
+    Maillon *ship = this->listHead;
     double consumption = 0;
 
-    while(ship != nullptr){
+    while (ship != nullptr) {
         consumption += ship->valeur->getConsumption(distance, speed);
         ship = ship->suivant;
     }
