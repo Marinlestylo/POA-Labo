@@ -137,7 +137,7 @@
         <variable const="false" name="load" type="double"/>
       </method>
     </entity>
-    <entity entityType="CLASS" id="65688" isAbstract="false" name="Transporter" visibility="PUBLIC">
+    <entity entityType="CLASS" id="65688" isAbstract="true" name="Transporter" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="currentLoad" type="double" visibility="PRIVATE"/>
       <method is-constructor="true" isAbstract="false" isStatic="false" name="Transporter" returnType="" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="currentLoad" type="double"/>
@@ -741,6 +741,24 @@
         <point>
           <x>161</x>
           <y>431</y>
+        </point>
+      </noteLine>
+    </note>
+    <note color="-2079" content="Link est une classe interne et privée">
+      <noteGeometry>
+        <x>1060</x>
+        <y>60</y>
+        <w>100</w>
+        <h>60</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="69789">
+        <point>
+          <x>1141</x>
+          <y>121</y>
+        </point>
+        <point>
+          <x>941</x>
+          <y>211</y>
         </point>
       </noteLine>
     </note>
