@@ -12,7 +12,7 @@ template<typename T> class Array {
 public:
     Array(const unsigned short size){
         this->size = size;
-        data = 
+        data =
     };
     Array(const Array& o){
 
