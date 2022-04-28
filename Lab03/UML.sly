@@ -1,45 +1,35 @@
 <?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
 <classDiagram>
   <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="River">
+    <entity entityType="CLASS" id="65685" isAbstract="true" name="Container" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
+    </entity>
+    <entity entityType="CLASS" id="65686" isAbstract="true" name="Person" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
+      <method isAbstract="true" isStatic="false" name="canDrive" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
+    <entity entityType="CLASS" id="65687" isAbstract="false" name="Boat" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="canGo" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="move" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="load" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="unload" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="isListValid" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
+    <entity entityType="CLASS" id="65688" isAbstract="false" name="BONK" visibility="PUBLIC"/>
     <entity entityType="CLASS" id="65689" isAbstract="false" name="Controller" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="turn" type="unsigned" visibility="PRIVATE"/>
       <method isAbstract="false" isStatic="false" name="showMenu" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="display" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="nextTurn" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
-    <entity entityType="CLASS" id="65688" isAbstract="false" name="BONK" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="65687" isAbstract="false" name="Boat" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="65686" isAbstract="true" name="Person" visibility="PUBLIC">
-      <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
-      <method isAbstract="true" isStatic="false" name="canDrive" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
-    </entity>
-    <entity entityType="CLASS" id="65685" isAbstract="true" name="Container" visibility="PUBLIC">
-      <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
-    </entity>
   </diagramElements>
   <umlView grid="10" name="Main view" open="true">
-    <componentView color="-2079" componentID="65685" displayAttributes="true" displayDefault="true" displayMethods="true">
-      <geometry>
-        <x>230</x>
-        <y>80</y>
-        <w>150</w>
-        <h>70</h>
-      </geometry>
-    </componentView>
-    <componentView color="-2079" componentID="65686" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="65689" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
         <x>590</x>
-        <y>80</y>
+        <y>260</y>
         <w>150</w>
-        <h>85</h>
-      </geometry>
-    </componentView>
-    <componentView color="-2079" componentID="65687" displayAttributes="true" displayDefault="true" displayMethods="true">
-      <geometry>
-        <x>150</x>
-        <y>210</y>
-        <w>150</w>
-        <h>55</h>
+        <h>115</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="65688" displayAttributes="true" displayDefault="true" displayMethods="true">
@@ -50,12 +40,28 @@
         <h>55</h>
       </geometry>
     </componentView>
-    <componentView color="-2079" componentID="65689" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="65687" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>150</x>
+        <y>210</y>
+        <w>150</w>
+        <h>130</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="65686" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
         <x>590</x>
-        <y>260</y>
+        <y>80</y>
         <w>150</w>
-        <h>115</h>
+        <h>85</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="65685" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>230</x>
+        <y>80</y>
+        <w>150</w>
+        <h>70</h>
       </geometry>
     </componentView>
   </umlView>
