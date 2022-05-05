@@ -23,13 +23,13 @@ void Controller::initVariables() {
 		new Child("paul", 1),
 		new Child("pierre", 1),
 		new Child("julie", 0),
-		new Child("Marie-jeanne", 0),
+		new Child("marie-jeanne", 0),
 		new Policeman("policier"),
 		new Thief("voleur")
 	};
 	turn = 0;
-	leftBank = new Bank("Gauche", people);
-	rightBank = new Bank("Droite", *(new std::list<Person*>()));
+	leftBank = new Bank("gauche", people);
+	rightBank = new Bank("droite", *(new std::list<Person*>()));
 	boat = new Boat(leftBank);
 }
 
@@ -62,8 +62,10 @@ void Controller::parseInput(std::string input) {
 				std::cout << "Au revoir";
 				exit(0);
 			case 'm':
-				//moveBoat();
-				std::cout << "m" << std::endl;
+				if(boat->getBank() == leftBank)
+					boat->moveBoat(rightBank);
+				else
+					boat->moveBoat(leftBank);
 				break;
 			case 'h':
 				showMenu();

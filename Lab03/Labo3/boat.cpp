@@ -5,12 +5,30 @@
 #include <iostream>
 #include "boat.hpp"
 
-Boat::Boat(Bank *bank) : Container("Bateau", std::list<Person *>()), bank(bank) {
+const std::string Boat::RIVER =
+	"==============================================================================";
+
+Boat::Boat(Bank* current) : Container("Bateau", std::list<Person *>()),
+									 currentBank(current) { }
+
+void Boat::showContainer() const {
+	if(currentBank->getName() == "gauche"){
+		std::cout << Container::getName() << " : " << "< ";
+		Container::showContainer();
+		std::cout << " >" << std::endl << RIVER << std::endl;
+	} else{
+		std::cout << std::endl << RIVER << std::endl << Container::getName()
+		<< " : " << "< ";
+		Container::showContainer();
+		std::cout << " >";
+	}
+}
+
+void Boat::moveBoat(Bank* bank) {
+	currentBank = bank;
 
 }
 
-void Boat::showContainer() const {
-	std::cout << Container::getName() << " : " << "< ";
-	Container::showContainer();
-	std::cout << " >";
+Bank* Boat::getBank() const {
+	return currentBank;
 }

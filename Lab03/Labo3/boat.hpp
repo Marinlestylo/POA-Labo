@@ -10,14 +10,17 @@
 
 class Boat : public Container {
 public:
-    explicit Boat(Bank *bank);
-    void moveBoat();
+    explicit Boat(Bank* current);
+    void moveBoat(Bank *bank);
     /**
      * method that print the boat on the screen and all the people on the boat
      */
 	 void showContainer() const override;
+
+	 Bank* getBank() const;
 private:
-    Bank* bank;
+    Bank* currentBank;
+	 static const std::string RIVER;
 };
 
 
