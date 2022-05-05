@@ -19,6 +19,8 @@ void Controller::initVariables() {
     this->people = {
         new Parent("mere",0),
         new Parent("pere",1),
+        new Child("fille",0),
+        new Child("garcon",1),
         new Policeman("policier"),
         new Thief("voleur")
     };
