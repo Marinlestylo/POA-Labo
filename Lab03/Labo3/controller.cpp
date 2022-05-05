@@ -7,12 +7,14 @@
 using namespace std;
 
 Controller::Controller() {
-initVariables();
+    initVariables();
 }
 
 void Controller::initVariables() {
     turn = 0;
-
+    leftBank = new Bank("Gauche", people);
+    rightBank = new Bank("Droite", people);
+    boat = new Boat(leftBank);
 }
 
 void Controller::nextTurn() {

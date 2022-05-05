@@ -3,3 +3,7 @@
 //
 
 #include "boat.hpp"
+
+Boat::Boat(Bank *bank) : Container("Bateau", std::list<Person *>()), bank(bank) {
+
+}

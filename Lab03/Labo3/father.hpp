@@ -10,7 +10,7 @@
 
 class Father : public Person {
     Father(const std::string& name);
-    bool canDrive() override
+    bool canDrive() override;
 };
 
 

@@ -83,8 +83,8 @@ public:
 
 private:
     int turn;
-    Bank leftBank,rightBank;
-    Boat boat;
+    Bank* leftBank, *rightBank;
+    Boat* boat;
     std::list<Person*> people;
 
 };

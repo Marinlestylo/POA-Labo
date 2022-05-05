@@ -10,9 +10,8 @@
 
 class Boat : public Container {
 public:
-    Boat(const Bank &bank);
+    explicit Boat(Bank *bank);
     void moveBoat();
-
     /**
      * method that print the boat on the screen and all the people on the boat
      */

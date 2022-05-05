@@ -5,7 +5,7 @@
 #ifndef LABO3_CONTAINER_HPP
 #define LABO3_CONTAINER_HPP
 
-#include "Person.hpp"
+#include "person.hpp"
 #include <string>
 #include <list>
 
@@ -16,8 +16,10 @@ public:
     /**
      * Pure virtual destructor.
      */
-    virtual ~Container() = 0;
+    virtual ~Container() = default;
+
 private:
+
     std::string name;
     std::list<Person*> people;
 };

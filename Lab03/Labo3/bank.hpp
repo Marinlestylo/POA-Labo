@@ -8,6 +8,8 @@
 #include "container.hpp"
 
 class Bank : public Container {
+public:
+    Bank(std::string name, std::list<Person *> people);
 
 };
 
