@@ -3,3 +3,11 @@
 //
 
 #include "person.hpp"
+
+Person::Person(const std::string& name) {
+    this->name = name;
+}
+
+bool Person::canDrive() {
+    return false;
+}

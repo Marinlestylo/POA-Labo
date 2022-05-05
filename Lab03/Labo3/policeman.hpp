@@ -9,6 +9,7 @@
 #include "person.hpp"
 
 class Policeman : public Person {
+public:
     Policeman(const std::string & name);
     bool canDrive() override;
 

@@ -4,6 +4,7 @@
 
 #include "controller.hpp"
 #include <iostream>
+
 using namespace std;
 
 Controller::Controller() {
@@ -11,6 +12,12 @@ Controller::Controller() {
 }
 
 void Controller::initVariables() {
+    this->people = {
+        new Parent("mere",0),
+        new Parent("pere",1),
+        new Policeman("policier"),
+        new Thief("voleur")
+    };
     turn = 0;
     leftBank = new Bank("Gauche", people);
     rightBank = new Bank("Droite", people);

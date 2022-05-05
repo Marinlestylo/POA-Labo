@@ -3,3 +3,4 @@
 //
 
 #include "thief.hpp"
+Thief::Thief(const std::string& name) : Person(name) {}

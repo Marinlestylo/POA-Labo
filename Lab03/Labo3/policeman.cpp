@@ -3,3 +3,8 @@
 //
 
 #include "policeman.hpp"
+Policeman::Policeman(const std::string& name) : Person(name) {}
+
+bool Policeman::canDrive() {
+    return true;
+}

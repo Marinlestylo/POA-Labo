@@ -10,7 +10,9 @@
 class Person {
 public:
     Person(const std::string& name);
+    std::string getName() const;
     virtual bool canDrive();
+
 private:
     std::string name;
 };

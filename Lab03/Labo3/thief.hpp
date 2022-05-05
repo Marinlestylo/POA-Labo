@@ -9,6 +9,7 @@
 #include "person.hpp"
 
 class Thief : public Person {
+public:
     Thief(const std::string& name);
 
 };
