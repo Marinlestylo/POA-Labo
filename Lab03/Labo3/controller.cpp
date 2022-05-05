@@ -7,7 +7,12 @@
 using namespace std;
 
 Controller::Controller() {
+initVariables();
+}
+
+void Controller::initVariables() {
     turn = 0;
+
 }
 
 void Controller::nextTurn() {

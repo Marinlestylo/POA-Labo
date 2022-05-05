@@ -5,8 +5,9 @@
 #ifndef LABO3_BANK_HPP
 #define LABO3_BANK_HPP
 
+#include "container.hpp"
 
-class Bank {
+class Bank : public Container {
 
 };
 

@@ -3,4 +3,4 @@ project(Labo3)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Labo3 main.cpp person.cpp person.hpp bank.cpp bank.hpp boat.cpp boat.hpp controller.cpp controller.hpp container.cpp container.hpp)
+add_executable(Labo3 main.cpp person.cpp person.hpp bank.cpp bank.hpp boat.cpp boat.hpp controller.cpp controller.hpp container.cpp container.hpp policeman.cpp policeman.hpp thief.cpp thief.hpp father.cpp father.hpp mother.cpp mother.hpp son.cpp son.hpp daughter.cpp daughter.hpp)

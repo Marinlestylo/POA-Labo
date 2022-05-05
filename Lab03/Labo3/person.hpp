@@ -5,9 +5,14 @@
 #ifndef LABO3_PERSON_HPP
 #define LABO3_PERSON_HPP
 
+#include "string"
 
 class Person {
-
+public:
+    Person(const std::string& name);
+    virtual bool canDrive();
+private:
+    std::string name;
 };
 
 

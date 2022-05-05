@@ -7,10 +7,24 @@
 
 
 #include "container.hpp"
+#include "bank.hpp"
+#include "boat.hpp"
+#include <list>
 
 class Controller {
 public:
+    /**
+     * Constructor for the controller.
+     */
     Controller();
+
+    /**
+     * Creates a new boat and a two new banks. Also creates all the people in the
+     * game
+     */
+    void initVariables();
+
+
     /**
      * method that display the shore and the boat
      */
@@ -49,6 +63,7 @@ private:
     int turn;
     Bank leftBank,rightBank;
     Boat boat;
+    std::list<Person*> people;
 
 };
 
