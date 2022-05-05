@@ -5,6 +5,7 @@
 #ifndef LABO3_CONTAINER_HPP
 #define LABO3_CONTAINER_HPP
 
+#include "Person.hpp"
 
 class Container {
 

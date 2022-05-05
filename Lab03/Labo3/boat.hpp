@@ -5,8 +5,12 @@
 #ifndef LABO3_BOAT_HPP
 #define LABO3_BOAT_HPP
 
-
 class Boat {
+public:
+    void moveBoat();
+    void printBoat();
+private:
+    Person passenger[2];
 
 };
 
