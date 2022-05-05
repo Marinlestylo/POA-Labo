@@ -5,7 +5,7 @@
 #ifndef LABO3_CONTROLLER_HPP
 #define LABO3_CONTROLLER_HPP
 
-
+#include <string>
 #include "container.hpp"
 #include "bank.hpp"
 #include "boat.hpp"
@@ -14,10 +14,9 @@
 class Controller {
 public:
     /**
-     * Constructor for the controller.
+     * Constructeur par défaut de la classe Controller
      */
-    Controller();
-
+    explicit Controller();
     /**
      * Creates a new boat and a two new banks. Also creates all the people in the
      * game
@@ -43,6 +42,9 @@ public:
     */
     void showMenu();
 
+    /**
+     * Incrémente le compteur de tour
+     */
     void nextTurn();
 
     /**
@@ -56,9 +58,29 @@ public:
      * h - menu
      * r - reset
     */
-    void parseInput(char input);
+    void parseInput(std::string input);
+
+    /**
+     * Permet de remttre le jeu dans son état initiale afin de le recommencer
+     */
     void reset();
+
+    /**
+     * Affiche l'état du jeu
+     */
     void showBoard();
+
+    /**
+     * Lance la boucle de jeu
+     */
+    void gameLoop();
+
+    /**
+     * Récupère l'input du joueur
+     * @return input du joueur
+     */
+    void userInput();
+
 private:
     int turn;
     Bank leftBank,rightBank;

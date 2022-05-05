@@ -20,6 +20,13 @@ void Controller::nextTurn() {
 }
 
 void Controller::showMenu() {
+    cout << "p : afficher" << endl;
+    cout << "e <nom>: embarquer <nom>" << endl;
+    cout << "d <nom>: debarquer <nom>" << endl;
+    cout << "m : deplacer bateau" << endl;
+    cout << "r : reinitialiser" << endl;
+    cout << "q : quitter" << endl;
+    cout << "h : menu" << endl;
 
 }
 
@@ -38,34 +45,54 @@ void Controller::showBoard() {
  * h - menu
  * r - reset
 */
-void Controller::parseInput(char input) {
+void Controller::parseInput(string input) {
 
-    switch (input) {
+    switch (input[0]) {
         case 'p':
-            printShore();
-            printBoat();
+            //printShore();
+            //printBoat();
+            cout << "p" << endl;
             break;
         case 'e':
-            embark();
+            //embark();
+            cout << "e" << endl;
             break;
         case 'd':
-            disembark();
+            //disembark();
+            cout << "d" << endl;
             break;
         case 'q':
-            quit();
-            break;
+            cout << "Au revoir";
+            exit(0);
         case 'm':
-            moveBoat();
+            //moveBoat();
+            cout << "m" << endl;
             break;
         case 'h':
             showMenu();
             break;
         case 'r':
-            reset();
+            //reset();
+            cout << "r" << endl;
             break;
         default:
             cout << "Invalid input" << endl;
             break;
     }
+}
+
+void Controller::display() {
+
+}
+
+void Controller::reset() {
+
+}
+
+void Controller::userInput() {
+    std::string input;
+    cout << "Veuillez entrer votre input (Tapez \"h\" pour obtenir de l'aide): " << endl;
+    getline(cin, input);
+    parseInput(input);
 }
 

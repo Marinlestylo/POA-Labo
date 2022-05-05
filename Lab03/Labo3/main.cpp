@@ -1,6 +1,9 @@
 #include <iostream>
+#include "controller.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Controller c;
+    while(1){
+        c.userInput();
+    }
 }
