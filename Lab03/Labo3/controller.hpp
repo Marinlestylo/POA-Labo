@@ -87,11 +87,12 @@ public:
     void userInput();
 
 private:
+    void printMenuLine(const std::string& command, const std::string& info);
     int turn;
     Bank* leftBank, *rightBank;
     Boat* boat;
     std::list<Person*> people;
-
+    static const std::string ERROR_MESSAGE;
 };
 
 

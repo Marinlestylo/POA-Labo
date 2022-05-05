@@ -4,8 +4,12 @@
 
 #include "controller.hpp"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
+
+const string Controller::ERROR_MESSAGE = "Input invalide ! (Tapez \"h\" pour obtenir de l'aide) : ";
+
 
 Controller::Controller() {
     initVariables();
@@ -29,14 +33,13 @@ void Controller::nextTurn() {
 }
 
 void Controller::showMenu() {
-    cout << "p : afficher" << endl;
-    cout << "e <nom>: embarquer <nom>" << endl;
-    cout << "d <nom>: debarquer <nom>" << endl;
-    cout << "m : deplacer bateau" << endl;
-    cout << "r : reinitialiser" << endl;
-    cout << "q : quitter" << endl;
-    cout << "h : menu" << endl;
-
+    printMenuLine("p", "afficher");
+    printMenuLine("e <nom>", "embarquer <nom>");
+    printMenuLine("d <nom>", "debarquer <nom>");
+    printMenuLine("m", "deplacer bateau");
+    printMenuLine("r", "reinitialiser");
+    printMenuLine("q", "quitter");
+    printMenuLine("h", "menu");
 }
 
 void Controller::showBoard() {
@@ -55,38 +58,45 @@ void Controller::showBoard() {
  * r - reset
 */
 void Controller::parseInput(string input) {
-
-    switch (input[0]) {
-        case 'p':
-            //printShore();
-            //printBoat();
-            cout << "p" << endl;
-            break;
-        case 'e':
-            //embark();
-            cout << "e" << endl;
-            break;
-        case 'd':
-            //disembark();
-            cout << "d" << endl;
-            break;
-        case 'q':
-            cout << "Au revoir";
-            exit(0);
-        case 'm':
-            //moveBoat();
-            cout << "m" << endl;
-            break;
-        case 'h':
-            showMenu();
-            break;
-        case 'r':
-            //reset();
-            cout << "r" << endl;
-            break;
-        default:
-            cout << "Invalid input" << endl;
-            break;
+    if(input.size() == 1){
+        switch (input[0]) {
+            case 'p':
+                //printShore();
+                //printBoat();
+                cout << "p" << endl;
+                break;
+            case 'q':
+                cout << "Au revoir";
+                exit(0);
+            case 'm':
+                //moveBoat();
+                cout << "m" << endl;
+                break;
+            case 'h':
+                showMenu();
+                break;
+            case 'r':
+                //reset();
+                cout << "r" << endl;
+                break;
+            default:
+                cout << ERROR_MESSAGE << endl;
+                break;
+        }
+    }else{
+        switch (input[0]) {
+            case 'e':
+                //embark();
+                cout << "e" << endl;
+                break;
+            case 'd':
+                //disembark();
+                cout << "d" << endl;
+                break;
+            default:
+                cout << ERROR_MESSAGE << endl;
+                break;
+        }
     }
 }
 
@@ -100,8 +110,12 @@ void Controller::reset() {
 
 void Controller::userInput() {
     std::string input;
-    cout << "Veuillez entrer votre input (Tapez \"h\" pour obtenir de l'aide): " << endl;
+    cout << "Veuillez entrer votre input :" << endl;
     getline(cin, input);
     parseInput(input);
+}
+
+void Controller::printMenuLine(const string &command, const string &info) {
+    cout << std::setw(8) << left << command << ": " << info << endl;
 }
 
