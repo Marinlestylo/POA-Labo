@@ -11,3 +11,7 @@ Person::Person(const std::string& name) {
 bool Person::canDrive() {
     return false;
 }
+
+const std::string &Person::getName() {
+    return name;
+}

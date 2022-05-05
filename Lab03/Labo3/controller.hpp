@@ -88,6 +88,7 @@ public:
 
 private:
     void printMenuLine(const std::string& command, const std::string& info);
+    bool compareStringToPerson(const std::string& s);
     int turn;
     Bank* leftBank, *rightBank;
     Boat* boat;

@@ -85,20 +85,27 @@ void Controller::parseInput(string input) {
                 cout << ERROR_MESSAGE << endl;
                 break;
         }
-    }else{
-        switch (input[0]) {
-            case 'e':
-                //embark();
-                cout << "e" << endl;
-                break;
-            case 'd':
-                //disembark();
-                cout << "d" << endl;
-                break;
-            default:
-                cout << ERROR_MESSAGE << endl;
-                break;
-        }
+    }else if(input.substr(0, 1) =="e "){
+    /*
+    case 'e':
+        //embark();
+        cout << "e" << endl;
+        break;
+    case 'd':
+        //disembark();
+        cout << "d" << endl;
+        break;*/
+    }
+}
+
+bool checkInputWithParam(const string & input, const string & command){
+    return input.substr(0, 1) =="e " &&
+}
+
+bool Controller::compareStringToPerson(const string &s) {
+    std::list<Person*>::iterator it;
+    for (it = people.begin(); it != people.end(); ++it){
+        std::cout << it.;
     }
 }
 

@@ -12,6 +12,7 @@ public:
     Person(const std::string& name);
     std::string getName() const;
     virtual bool canDrive();
+    const std::string& getName();
 
 private:
     std::string name;
