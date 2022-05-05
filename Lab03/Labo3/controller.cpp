@@ -8,6 +8,8 @@
 
 const std::string Controller::ERROR_MESSAGE = "Input invalide ! (Tapez \"h\" pour "
 															 "obtenir de l'aide) : ";
+const std::string Controller::SEPARATOR =
+	"------------------------------------------------------------------------------";
 
 
 Controller::Controller() {
@@ -49,24 +51,12 @@ void Controller::showBoard() {
 
 }
 
-/**
- * method that parse the input and call the corresponding method
- * possible inputs:
- * p - print the shore and the boat
- * e <name> embark person in boat
- * d <name> disembark person from boat
- * q - quit
- * m - move boat
- * h - menu
- * r - reset
-*/
 void Controller::parseInput(std::string input) {
+	// On check d'abord tous les inputs de longueur 1
 	if (input.size() == 1) {
 		switch (input[0]) {
 			case 'p':
-				//printShore();
-				//printBoat();
-				std::cout << "p" << std::endl;
+				display();
 				break;
 			case 'q':
 				std::cout << "Au revoir";
@@ -86,6 +76,7 @@ void Controller::parseInput(std::string input) {
 				std::cout << ERROR_MESSAGE << std::endl;
 				break;
 		}
+		// On check maintenant les inputs plus "complexes"
 	} else if (checkInputWithParam(input, "e ")) {
 		//embark();
 		std::cout << "e" << std::endl;
@@ -98,6 +89,13 @@ void Controller::parseInput(std::string input) {
 }
 
 void Controller::display() {
+	std::cout << SEPARATOR << std::endl;
+	leftBank->showContainer();
+	std::cout << std::endl;
+	boat->showContainer();
+	std::cout << std::endl;
+	rightBank->showContainer();
+	std::cout << std::endl << SEPARATOR << std::endl;
 }
 
 void Controller::reset() {

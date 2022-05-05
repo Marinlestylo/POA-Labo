@@ -18,6 +18,10 @@ public:
      */
     virtual ~Container() = default;
 
+	 virtual void showContainer() const;
+
+	 const std::string & getName() const;
+
 private:
 
     std::string name;

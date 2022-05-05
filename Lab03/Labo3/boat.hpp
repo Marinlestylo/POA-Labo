@@ -15,7 +15,7 @@ public:
     /**
      * method that print the boat on the screen and all the people on the boat
      */
-    void printBoat();
+	 void showContainer() const override;
 private:
     Bank* bank;
 };

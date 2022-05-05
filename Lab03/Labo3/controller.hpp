@@ -24,8 +24,7 @@ public:
 	explicit Controller();
 
 	/**
-	 * Creates a new boat and a two new banks. Also creates all the people in the
-	 * game
+	 * Crée le bateau, les deux rives ainsi que tous les personnages.
 	 */
 	void initVariables();
 
@@ -98,7 +97,7 @@ private:
 	Bank* leftBank, * rightBank;
 	Boat* boat;
 	std::list<Person*> people;
-	static const std::string ERROR_MESSAGE;
+	static const std::string ERROR_MESSAGE, SEPARATOR;
 };
 
 
