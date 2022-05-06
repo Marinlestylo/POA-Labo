@@ -13,6 +13,7 @@ public:
     Person(const std::string& name);
     virtual bool canDrive();
     const std::string& getName();
+    virtual bool isSafe(const std::list<Person*>& people);
 
 private:
     std::string name;

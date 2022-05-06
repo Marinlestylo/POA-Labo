@@ -11,6 +11,7 @@
 class Thief : public Person {
 public:
     Thief(const std::string& name, Person& goodWith);
+    bool isSafe(const std::list<Person *> &people) override;
 private:
     Person* goodWith;
 };
