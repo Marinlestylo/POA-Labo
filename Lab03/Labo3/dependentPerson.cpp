@@ -25,5 +25,7 @@ bool DependentPerson::isSafe(const std::list<Person *> &people) {
             isSafe = false;
         }
     }
+    if(!isSafe)
+        getErrorMessage();
     return isSafe;
 }

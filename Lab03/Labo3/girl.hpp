@@ -10,6 +10,7 @@
 class Girl : public DependentPerson{
 public:
     Girl(const std::string& name,Person& goodWith, Person& badWith);
+    std::string getErrorMessage() override;
 
 };
 

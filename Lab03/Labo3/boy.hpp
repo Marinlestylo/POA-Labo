@@ -9,6 +9,7 @@
 class Boy : public DependentPerson {
 public:
     Boy(const std::string& name, Person& goodWith, Person& badWith);
+    std::string getErrorMessage() override;
 };
 
 

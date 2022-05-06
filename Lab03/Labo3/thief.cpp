@@ -23,5 +23,10 @@ bool Thief::isSafe(const std::list<Person *> &people) {
             return true;
         }
     }
+    getErrorMessage();
     return false;
+}
+
+std::string Thief::getErrorMessage() {
+    return "voleur sans policier";
 }
