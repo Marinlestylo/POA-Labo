@@ -62,7 +62,7 @@ void Controller::parseInput(std::string input) {
 				std::cout << "Au revoir";
 				exit(0);
 			case 'm':
-				if(boat->getBank() == leftBank)
+				if(boat->isDockedOnthisBank(leftBank))
 					boat->moveBoat(rightBank);
 				else
 					boat->moveBoat(leftBank);

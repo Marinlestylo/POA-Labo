@@ -11,7 +11,11 @@
 class Boat : public Container {
 public:
     explicit Boat(Bank* current);
+
     void moveBoat(Bank *bank);
+
+	 bool isDockedOnthisBank(Bank* bank) const;
+
     /**
      * method that print the boat on the screen and all the people on the boat
      */

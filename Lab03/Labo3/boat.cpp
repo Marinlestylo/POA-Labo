@@ -32,3 +32,7 @@ void Boat::moveBoat(Bank* bank) {
 Bank* Boat::getBank() const {
 	return currentBank;
 }
+
+bool Boat::isDockedOnthisBank(Bank* bank) const {
+	return bank == currentBank;
+}
