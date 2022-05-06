@@ -16,7 +16,7 @@ public:
 
     Person* contains(Person* person);
     /**
-     * Pure virtual destructor.
+     * Destructeur virtuel pure.
      */
     virtual ~Container() = default;
 
@@ -25,6 +25,10 @@ public:
 	 const std::string & getName() const;
 
 	 void emptyContainer();
+
+	 void addPerson(Person* p);
+
+	 void removePerson(Person* p);
 
 private:
 

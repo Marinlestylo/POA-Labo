@@ -70,8 +70,7 @@ void Controller::parseInput(std::string input) {
 				showMenu();
 				break;
 			case 'r':
-				//reset();
-				std::cout << "r" << std::endl;
+				reset();
 				break;
 			default:
 				std::cout << ERROR_MESSAGE << std::endl;
@@ -100,7 +99,13 @@ void Controller::display() {
 }
 
 void Controller::reset() {
-
+	rightBank->emptyContainer();
+	leftBank->emptyContainer();
+	boat->emptyContainer();
+	for(Person* p : people){
+		leftBank->addPerson(p);
+	}
+	boat->moveBoat(leftBank);
 }
 
 void Controller::userInput() {

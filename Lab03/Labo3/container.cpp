@@ -30,3 +30,11 @@ void Container::emptyContainer() {
 		people.pop_front();
 	}
 }
+
+void Container::addPerson(Person* p) {
+	people.push_back(p);
+}
+
+void Container::removePerson(Person* p) {
+	people.remove(p);
+}
