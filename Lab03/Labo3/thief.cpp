@@ -3,4 +3,7 @@
 //
 
 #include "thief.hpp"
-Thief::Thief(const std::string& name) : Person(name) {}
+
+Thief::Thief(const std::string& name, Person& goodWith) : Person(name) {
+    this->goodWith = &goodWith;
+}

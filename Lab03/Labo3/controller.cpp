@@ -19,12 +19,12 @@ Controller::Controller() {
 void Controller::initVariables() {
     Driver* mother = new Driver("mere");
     Driver* father = new Driver("pere");
-    DependentPeople* paul = new DependentPeople("paul",father,mother);
-    DependentPeople* pierre = new DependentPeople("pierre",father,mother);
-    DependentPeople* julie = new DependentPeople("julie",mother,father);
-    DependentPeople* jeanne =  new DependentPeople("marie-jeanne",mother,father);
+    Boy* paul = new Boy("paul", *father, *mother);
+    Boy* pierre = new Boy("pierre", *father, *mother);
+    Girl* julie = new Girl("julie", *mother, *father);
+    Girl* jeanne =  new Girl("marie-jeanne", *mother, *father);
     Driver * policeman = new Driver("policier");
-    Thief * thief = new Thief("voleur");
+    Thief * thief = new Thief("voleur", *policeman);
     this->people = {paul, pierre, julie, jeanne, policeman, thief};
 	turn = 0;
 	leftBank = new Bank("gauche", people);

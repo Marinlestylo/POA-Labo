@@ -10,8 +10,9 @@
 
 class Thief : public Person {
 public:
-    Thief(const std::string& name);
-
+    Thief(const std::string& name, Person& goodWith);
+private:
+    Person* goodWith;
 };
 
 

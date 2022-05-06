@@ -11,15 +11,11 @@
 class Person {
 public:
     Person(const std::string& name);
-    std::string getName() const;
-
     virtual bool canDrive();
     const std::string& getName();
 
 private:
     std::string name;
-    std::list<Person> goodWith;
-    std::list<Person> badWith;
 };
 
 

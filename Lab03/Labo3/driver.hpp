@@ -10,7 +10,8 @@
 
 class Driver : public Person {
 public:
-    Driver(const std::string & name);
+    explicit Driver(const std::string & name);
+    bool canDrive() override;
 };
 
 
