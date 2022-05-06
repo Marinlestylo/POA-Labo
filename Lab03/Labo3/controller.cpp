@@ -25,7 +25,7 @@ void Controller::initVariables() {
     Girl* jeanne =  new Girl("marie-jeanne", *mother, *father);
     Driver * policeman = new Driver("policier");
     Thief * thief = new Thief("voleur", *policeman);
-    this->people = {paul, pierre, julie, jeanne, policeman, thief};
+    this->people = {mother,father,paul, pierre, julie, jeanne, policeman, thief};
 	turn = 0;
 	leftBank = new Bank("gauche", people);
 	rightBank = new Bank("droite", *(new std::list<Person*>()));
