@@ -46,3 +46,7 @@ Bank* Boat::getBank() const {
 bool Boat::isDockedOnthisBank(Bank* bank) const {
 	return bank == currentBank;
 }
+
+bool Boat::isFull() const {
+	return Container::getPeople()->size() == 2;
+}

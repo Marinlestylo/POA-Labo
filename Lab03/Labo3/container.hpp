@@ -30,6 +30,10 @@ public:
 
 	 void removePerson(Person* p);
 
+	 bool isMember(Person* p) const;
+
+	 bool isContainerSafe();
+
 protected:
 	std::list<Person*>* getPeople() const;
 

@@ -87,6 +87,8 @@ public:
 	 */
 	void userInput();
 
+	void embark(Person* p);
+
 private:
 	void printMenuLine(const std::string& command, const std::string& info);
 

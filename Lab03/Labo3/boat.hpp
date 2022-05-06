@@ -22,6 +22,8 @@ public:
 	 void showContainer() const override;
 
 	 Bank* getBank() const;
+
+	 bool isFull() const;
 private:
     Bank* currentBank;
 	 static const std::string RIVER;

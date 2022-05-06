@@ -79,7 +79,6 @@ void Controller::parseInput(std::string input) {
 		// On check maintenant les inputs plus "complexes"
 	} else if (checkInputWithParam(input, "e ")) {
 		//embark();
-		std::cout << "e" << std::endl;
 	} else if (checkInputWithParam(input, "d ")){
 		//disembark();
 		std::cout << "d" << std::endl;
@@ -121,8 +120,10 @@ void Controller::printMenuLine(const std::string& command, const std::string& in
 
 bool Controller::compareStringToPerson(const std::string& s) {
 	for (Person* p: people) {
-		if (p->getName() == s)
+		if (p->getName() == s){
+			embark(p);
 			return true;
+		}
 	}
 	return false;
 }
@@ -132,5 +133,18 @@ bool Controller::checkInputWithParam(const std::string& input,
 	std::string a = input.substr(0, 2);
 	return a == command &&
 				compareStringToPerson(input.substr(2));
+}
+
+void Controller::embark(Person* p) {
+	if(boat->isFull()){
+		std::cout << "Le bateau est déjà plein" << std::endl;
+	}else if(boat->getBank()->isMember(p)){
+		boat->addPerson(p);
+		boat->getBank()->removePerson(p);
+		if(!(boat->getBank()->isContainerSafe() && boat->isContainerSafe())){
+			boat->removePerson(p);
+			boat->getBank()->removePerson(p);
+		}
+	}
 }
 

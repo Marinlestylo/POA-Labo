@@ -42,3 +42,16 @@ void Container::removePerson(Person* p) {
 std::list<Person*>* Container::getPeople() const {
 	return (std::list<Person*>*) &people;
 }
+
+bool Container::isMember(Person* p) const {
+	return std::find(people.begin(), people.end(), p) != people.end();
+}
+
+bool Container::isContainerSafe() {
+	for(Person* p : people){
+		if(!p->isSafe(people)){
+			return false;
+		}
+	}
+	return true;
+}

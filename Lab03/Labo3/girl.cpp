@@ -10,5 +10,5 @@ DependentPerson(name,goodWith,badWith) {
 }
 
 std::string Girl::getErrorMessage() {
-    return getName() + " sans sa mère avec son père";
+    return getName() + " sans sa mere avec son pere";
 }

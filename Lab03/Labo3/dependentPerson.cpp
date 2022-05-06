@@ -2,6 +2,7 @@
 // Created by Alexandre Jaquier on 05.05.2022.
 //
 
+#include <iostream>
 #include "dependentPerson.hpp"
 
 DependentPerson::DependentPerson(const std::string &name, Person& goodWith,
@@ -26,6 +27,6 @@ bool DependentPerson::isSafe(const std::list<Person *> &people) {
         }
     }
     if(!isSafe)
-        getErrorMessage();
+        std::cout << getErrorMessage() << std::endl;
     return isSafe;
 }
