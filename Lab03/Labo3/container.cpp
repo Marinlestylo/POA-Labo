@@ -5,8 +5,14 @@
 #include <iostream>
 #include "container.hpp"
 
-Container::Container(std::string name, std::list<Person *> people) : name(std::move(name)), people(std::move(people)) {
+Container::Container(std::string name, std::list<Person *> people) : name(std::move(name)), people(std::move(people)) {}
 
+Person * Container::contains(Person *person) {
+    Person* found = nullptr;
+    if(std::find(people.begin(), people.end(), person) != people.end()) {
+        found = person;
+    }
+    return found;
 }
 
 void Container::showContainer() const {

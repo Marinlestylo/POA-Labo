@@ -9,9 +9,8 @@
 #include "container.hpp"
 #include "bank.hpp"
 #include "person.hpp"
-#include "parent.hpp"
-#include "child.hpp"
-#include "policeman.hpp"
+#include "dependentPeople.hpp"
+#include "driver.hpp"
 #include "thief.hpp"
 #include "boat.hpp"
 #include <list>

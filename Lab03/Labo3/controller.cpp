@@ -17,16 +17,15 @@ Controller::Controller() {
 }
 
 void Controller::initVariables() {
-	this->people = {
-		new Parent("mere", 0),
-		new Parent("pere", 1),
-		new Child("paul", 1),
-		new Child("pierre", 1),
-		new Child("julie", 0),
-		new Child("marie-jeanne", 0),
-		new Policeman("policier"),
-		new Thief("voleur")
-	};
+    Driver* mother = new Driver("mere");
+    Driver* father = new Driver("pere");
+    DependentPeople* paul = new DependentPeople("paul",father,mother);
+    DependentPeople* pierre = new DependentPeople("pierre",father,mother);
+    DependentPeople* julie = new DependentPeople("julie",mother,father);
+    DependentPeople* jeanne =  new DependentPeople("marie-jeanne",mother,father);
+    Driver * policeman = new Driver("policier");
+    Thief * thief = new Thief("voleur");
+    this->people = {paul, pierre, julie, jeanne, policeman, thief};
 	turn = 0;
 	leftBank = new Bank("gauche", people);
 	rightBank = new Bank("droite", *(new std::list<Person*>()));

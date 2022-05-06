@@ -7,12 +7,14 @@
 
 #include "person.hpp"
 #include <string>
+#include <algorithm>
 #include <list>
 
 class Container {
 public:
     Container(std::string name, std::list<Person*> people);
 
+    Person* contains(Person* person);
     /**
      * Pure virtual destructor.
      */
