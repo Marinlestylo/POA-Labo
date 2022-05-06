@@ -30,6 +30,9 @@ public:
 
 	 void removePerson(Person* p);
 
+protected:
+	std::list<Person*>* getPeople() const;
+
 private:
 
     std::string name;

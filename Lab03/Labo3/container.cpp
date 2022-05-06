@@ -38,3 +38,7 @@ void Container::addPerson(Person* p) {
 void Container::removePerson(Person* p) {
 	people.remove(p);
 }
+
+std::list<Person*>* Container::getPeople() const {
+	return (std::list<Person*>*) &people;
+}

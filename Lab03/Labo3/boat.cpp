@@ -25,6 +25,16 @@ void Boat::showContainer() const {
 }
 
 void Boat::moveBoat(Bank* bank) {
+	bool hasDriver = false;
+	for(Person* p : *Container::getPeople()){
+		if(p->canDrive()){
+			hasDriver = true;
+		}
+	}
+	if(!hasDriver){
+		std::cout << "Il n'y a pas de conducteur dans le bateau" << std::endl;
+		return;
+	}
 	currentBank = bank;
 
 }
