@@ -22,6 +22,8 @@ public:
 
 	 const std::string & getName() const;
 
+	 void emptyContainer();
+
 private:
 
     std::string name;

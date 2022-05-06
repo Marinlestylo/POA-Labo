@@ -18,3 +18,9 @@ void Container::showContainer() const {
 const std::string& Container::getName() const {
 	return name;
 }
+
+void Container::emptyContainer() {
+	while(!people.empty()){
+		people.pop_front();
+	}
+}
