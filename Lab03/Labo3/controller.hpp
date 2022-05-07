@@ -29,6 +29,7 @@ public:
 	 */
 	void initVariables();
 
+    ~Controller();
 
 	/**
 	 * method that display the shore and the boat

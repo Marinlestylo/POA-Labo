@@ -28,7 +28,7 @@ void Controller::initVariables() {
     this->people = {mother,father,paul, pierre, julie, jeanne, policeman, thief};
 	turn = 0;
 	leftBank = new Bank("gauche", people);
-	rightBank = new Bank("droite", *(new std::list<Person*>()));
+	rightBank = new Bank("droite", std::list<Person*>());
 	boat = new Boat(leftBank);
 }
 
@@ -168,6 +168,13 @@ bool Controller::endOfGame() const {
         return true;
     }
     return false;
+}
+
+Controller::~Controller() {
+    delete boat;
+    delete leftBank;
+    delete rightBank;
+    people.clear();
 }
 
 
