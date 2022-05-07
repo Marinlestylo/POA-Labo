@@ -24,6 +24,7 @@ public:
 	 Bank* getBank() const;
 
 	 bool isFull() const;
+	 bool isEmpty() const;
 private:
     Bank* currentBank;
 	 static const std::string RIVER;

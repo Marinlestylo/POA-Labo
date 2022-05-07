@@ -50,3 +50,7 @@ bool Boat::isDockedOnthisBank(Bank* bank) const {
 bool Boat::isFull() const {
 	return Container::getPeople()->size() == 2;
 }
+
+bool Boat::isEmpty() const {
+    return Container::getPeople()->empty();
+}

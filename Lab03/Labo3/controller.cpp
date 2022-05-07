@@ -22,7 +22,7 @@ void Controller::initVariables() {
     Boy* paul = new Boy("paul", *father, *mother);
     Boy* pierre = new Boy("pierre", *father, *mother);
     Girl* julie = new Girl("julie", *mother, *father);
-    Girl* jeanne =  new Girl("marie-jeanne", *mother, *father);
+    Girl* jeanne =  new Girl("jeanne", *mother, *father);
     Driver * policeman = new Driver("policier");
     Thief * thief = new Thief("voleur", *policeman);
     this->people = {mother,father,paul, pierre, julie, jeanne, policeman, thief};
@@ -77,11 +77,10 @@ void Controller::parseInput(std::string input) {
 				break;
 		}
 		// On check maintenant les inputs plus "complexes"
-	} else if (checkInputWithParam(input, "e ")) {
-		//embark();
-	} else if (checkInputWithParam(input, "d ")){
-		//disembark();
-		std::cout << "d" << std::endl;
+	} else if (Person* person = checkInputWithParam(input, "e ")) {
+        embark(person);
+	} else if (Person* person = checkInputWithParam(input, "d ")){
+		disembark(person);
 	} else{
 		std::cout << ERROR_MESSAGE << std::endl;
 	}
@@ -118,33 +117,58 @@ void Controller::printMenuLine(const std::string& command, const std::string& in
 	std::cout << std::setw(8) << std::left << command << ": " << info << std::endl;
 }
 
-bool Controller::compareStringToPerson(const std::string& s) {
+Person* Controller::compareStringToPerson(const std::string& s) {
 	for (Person* p: people) {
 		if (p->getName() == s){
-			embark(p);
-			return true;
+            return p;
 		}
 	}
-	return false;
+	return nullptr;
 }
 
-bool Controller::checkInputWithParam(const std::string& input,
+Person* Controller::checkInputWithParam(const std::string& input,
 												 const std::string& command) {
-	std::string a = input.substr(0, 2);
-	return a == command &&
-				compareStringToPerson(input.substr(2));
+    std::string a = input.substr(0, 2);
+    if (a == command) {
+        return compareStringToPerson(input.substr(2));;
+
+    }
+    return nullptr;
 }
 
 void Controller::embark(Person* p) {
 	if(boat->isFull()){
 		std::cout << "Le bateau est déjà plein" << std::endl;
 	}else if(boat->getBank()->isMember(p)){
-		boat->addPerson(p);
-		boat->getBank()->removePerson(p);
-		if(!(boat->getBank()->isContainerSafe() && boat->isContainerSafe())){
-			boat->removePerson(p);
-			boat->getBank()->removePerson(p);
-		}
-	}
+        changeLocation(p, *boat, *boat->getBank());
+    }
 }
+
+void Controller::disembark(Person *p) {
+    if(boat->isEmpty()){
+        std::cout << "Le bateau est déjà vide" << std::endl;
+    }else if(boat->isMember(p)){
+        changeLocation(p, *boat->getBank(), *boat);
+    }
+    endOfGame();
+}
+
+void Controller::changeLocation(Person *p, Container& toAdd, Container& toRemove) {
+    toAdd.addPerson(p);
+    toRemove.removePerson(p);
+    if(!(toAdd.isContainerSafe() && toRemove.isContainerSafe())){
+        toAdd.removePerson(p);
+        toRemove.addPerson(p);
+    }
+}
+
+bool Controller::endOfGame() const {
+    if (boat->isEmpty() && leftBank->isEmpty()) {
+        std::cout << "Vous avez gagné !" << std::endl;
+        return true;
+    }
+    return false;
+}
+
+
 

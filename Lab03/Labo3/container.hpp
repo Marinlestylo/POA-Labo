@@ -29,8 +29,8 @@ public:
 	 void addPerson(Person* p);
 
 	 void removePerson(Person* p);
-
-	 bool isMember(Person* p) const;
+     bool isEmpty() const;
+     bool isMember(Person* p) const;
 
 	 bool isContainerSafe();
 

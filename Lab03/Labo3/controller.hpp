@@ -88,14 +88,17 @@ public:
 	void userInput();
 
 	void embark(Person* p);
+	void disembark(Person* p);
 
 private:
 	void printMenuLine(const std::string& command, const std::string& info);
 
-	bool checkInputWithParam(const std::string& input, const std::string& command);
+	Person* checkInputWithParam(const std::string& input, const std::string&
+    command);
 
-	bool compareStringToPerson(const std::string& s);
-
+	Person* compareStringToPerson(const std::string& s);
+    void changeLocation(Person* p, Container& toAdd, Container& addFrom);
+    bool endOfGame() const;
 	int turn;
 	Bank* leftBank, * rightBank;
 	Boat* boat;

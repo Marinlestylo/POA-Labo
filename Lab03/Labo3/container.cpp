@@ -55,3 +55,7 @@ bool Container::isContainerSafe() {
 	}
 	return true;
 }
+
+bool Container::isEmpty() const {
+    return people.empty();
+}

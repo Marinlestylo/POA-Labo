@@ -2,6 +2,7 @@
 // Created by Alexandre Jaquier on 05.05.2022.
 //
 
+#include <iostream>
 #include "thief.hpp"
 
 Thief::Thief(const std::string& name, Person& goodWith) : Person(name) {
@@ -14,7 +15,7 @@ Thief::Thief(const std::string& name, Person& goodWith) : Person(name) {
  * @return
  */
 bool Thief::isSafe(const std::list<Person *> &people) {
-    if (people.empty()) {
+    if (people.size() == 1) {
         return true;
     }
 
@@ -23,7 +24,7 @@ bool Thief::isSafe(const std::list<Person *> &people) {
             return true;
         }
     }
-    getErrorMessage();
+    std::cout << getErrorMessage() << std::endl;
     return false;
 }
 
