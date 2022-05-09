@@ -1,7 +1,3 @@
-//
-// Created by Alexandre Jaquier on 05.05.2022.
-//
-
 #ifndef LABO3_DEPENDENTPERSON_HPP
 #define LABO3_DEPENDENTPERSON_HPP
 
@@ -16,7 +12,7 @@ public:
     bool isSafe(const std::list<Person *> &people) override;
     virtual std::string getErrorMessage() = 0;
 private:
-    Person* goodWith;
+    Person* dependsOn;
     Person* badWith;
 };
 

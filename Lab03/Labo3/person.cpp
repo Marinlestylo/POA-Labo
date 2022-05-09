@@ -1,10 +1,6 @@
-//
-// Created by Jonathan on 14.04.2022.
-//
-
 #include "person.hpp"
 
-Person::Person(const std::string& name) {
+Person::Person(const std::string &name) {
     this->name = name;
 }
 

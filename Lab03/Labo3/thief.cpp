@@ -1,12 +1,8 @@
-//
-// Created by Alexandre Jaquier on 05.05.2022.
-//
-
 #include <iostream>
 #include "thief.hpp"
 
 Thief::Thief(const std::string& name, Person& goodWith) : Person(name) {
-    this->goodWith = &goodWith;
+    this->dependsOn = &goodWith;
 }
 
 /**
@@ -20,7 +16,7 @@ bool Thief::isSafe(const std::list<Person *> &people) {
     }
 
     for (auto person : people) {
-        if (person == this->goodWith) {
+        if (person == this->dependsOn) {
             return true;
         }
     }

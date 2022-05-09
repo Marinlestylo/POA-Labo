@@ -1,7 +1,3 @@
-//
-// Created by Jonathan on 14.04.2022.
-//
-
 #ifndef LABO3_CONTAINER_HPP
 #define LABO3_CONTAINER_HPP
 
@@ -12,35 +8,35 @@
 
 class Container {
 public:
-    Container(std::string name, std::list<Person*> people);
+    Container(std::string name, std::list<Person *> people);
 
-    Person* contains(Person* person);
-    /**
-     * Destructeur virtuel pure.
-     */
     virtual ~Container() = default;
 
-	 virtual void showContainer() const;
+    virtual void showContainer() const;
 
-	 const std::string & getName() const;
+    std::string getPeopleNames() const;
 
-	 void emptyContainer();
+    const std::string &getName() const;
 
-	 void addPerson(Person* p);
+    void emptyContainer();
 
-	 void removePerson(Person* p);
-     bool isEmpty() const;
-     bool isMember(Person* p) const;
+    void addPerson(Person *p);
 
-	 bool isContainerSafe();
+    void removePerson(Person *p);
+
+    bool isEmpty() const;
+
+    bool isMember(Person *p) const;
+
+    bool isContainerSafe();
 
 protected:
-	std::list<Person*>* getPeople() const;
+    std::list<Person *> *getPeople() const;
 
 private:
 
     std::string name;
-    std::list<Person*> people;
+    std::list<Person *> people;
 };
 
 

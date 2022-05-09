@@ -1,7 +1,3 @@
-//
-// Created by Jonathan on 14.04.2022.
-//
-
 #ifndef LABO3_BOAT_HPP
 #define LABO3_BOAT_HPP
 
@@ -16,18 +12,13 @@ public:
 
 	 bool isDockedOnthisBank(Bank* bank) const;
 
-    /**
-     * method that print the boat on the screen and all the people on the boat
-     */
-	 void showContainer() const override;
-
+     void showContainer() const override;
 	 Bank* getBank() const;
 
 	 bool isFull() const;
-	 bool isEmpty() const;
 private:
     Bank* currentBank;
-	 static const std::string RIVER;
+    static const std::string RIVER;
 };
 
 

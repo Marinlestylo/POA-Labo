@@ -1,7 +1,3 @@
-//
-// Created by Alexandre Jaquier on 05.05.2022.
-//
-
 #ifndef LABO3_THIEF_HPP
 #define LABO3_THIEF_HPP
 
@@ -15,7 +11,7 @@ public:
 
     std::string getErrorMessage();
 private:
-    Person* goodWith;
+    Person* dependsOn;
 };
 
 

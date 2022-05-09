@@ -1,11 +1,8 @@
-//
-// Created by Jonathan on 14.04.2022.
-//
-
 #ifndef LABO3_CONTROLLER_HPP
 #define LABO3_CONTROLLER_HPP
 
 #include <string>
+#include <list>
 #include "container.hpp"
 #include "bank.hpp"
 #include "person.hpp"
@@ -15,7 +12,6 @@
 #include "driver.hpp"
 #include "thief.hpp"
 #include "boat.hpp"
-#include <list>
 
 class Controller {
 public:
@@ -29,7 +25,12 @@ public:
 	 */
 	void initVariables();
 
+    /**
+     * destructeur de la classe Controller
+     */
     ~Controller();
+
+    void run();
 
 	/**
 	 * method that display the shore and the boat

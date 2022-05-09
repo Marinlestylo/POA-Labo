@@ -1,7 +1,3 @@
-//
-// Created by Alexandre Jaquier on 06.05.2022.
-//
-
 #ifndef LABO3_DRIVER_HPP
 #define LABO3_DRIVER_HPP
 

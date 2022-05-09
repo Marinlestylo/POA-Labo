@@ -3,7 +3,5 @@
 
 int main() {
     Controller c;
-    while(1){
-        c.userInput();
-    }
+    c.run();
 }

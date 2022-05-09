@@ -1,13 +1,9 @@
-//
-// Created by Alexandre Jaquier on 05.05.2022.
-//
-
 #include <iostream>
 #include "dependentPerson.hpp"
 
 DependentPerson::DependentPerson(const std::string &name, Person& goodWith,
                                  Person& badWith) : Person(name) {
-    this->goodWith = &goodWith;
+    this->dependsOn = &goodWith;
     this->badWith = &badWith;
 }
 
@@ -19,7 +15,7 @@ DependentPerson::DependentPerson(const std::string &name, Person& goodWith,
 bool DependentPerson::isSafe(const std::list<Person *> &people) {
     bool isSafe = true;
     for (auto &person : people) {
-        if (person == this->goodWith) {
+        if (person == this->dependsOn) {
             isSafe = true;
             break;
         }else if(person == this->badWith) {

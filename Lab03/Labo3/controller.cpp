@@ -1,7 +1,3 @@
-//
-// Created by Jonathan on 14.04.2022.
-//
-
 #include "controller.hpp"
 #include <iostream>
 #include <iomanip>
@@ -14,6 +10,16 @@ const std::string Controller::SEPARATOR =
 
 Controller::Controller() {
 	initVariables();
+}
+
+Controller::~Controller() {
+    delete boat;
+    delete leftBank;
+    delete rightBank;
+    for(Person* p : people){
+        delete p;
+    }
+    people.clear();
 }
 
 void Controller::initVariables() {
@@ -48,6 +54,12 @@ void Controller::showMenu() {
 
 void Controller::showBoard() {
 
+}
+
+void Controller::run() {
+    while(true){
+        userInput();
+    }
 }
 
 void Controller::parseInput(std::string input) {
@@ -170,12 +182,7 @@ bool Controller::endOfGame() const {
     return false;
 }
 
-Controller::~Controller() {
-    delete boat;
-    delete leftBank;
-    delete rightBank;
-    people.clear();
-}
+
 
 
 
