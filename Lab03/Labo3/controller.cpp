@@ -40,7 +40,7 @@ void Controller::initVariables() {
     gameRunning = true;
 }
 
-void Controller::showMenu() {
+void Controller::showMenu() const {
 	printMenuLine("p", "afficher");
 	printMenuLine("e <nom>", "embarquer <nom>");
 	printMenuLine("d <nom>", "debarquer <nom>");
@@ -90,7 +90,7 @@ void Controller::parseInput(const std::string& input) {
     display();
 }
 
-void Controller::display() {
+void Controller::display() const {
 	std::cout << std::endl << SEPARATOR << std::endl;
     leftBank->toStream(std::cout);
 	std::cout << std::endl;
@@ -121,7 +121,7 @@ void Controller::printMenuLine(const std::string& command, const std::string& in
 	std::cout << std::setw(8) << std::left << command << ": " << info << std::endl;
 }
 
-Person* Controller::compareStringToPerson(const std::string& s) {
+Person* Controller::compareStringToPerson(const std::string& s) const {
 	for (Person* p: people) {
 		if (p->getName() == s){
             return p;

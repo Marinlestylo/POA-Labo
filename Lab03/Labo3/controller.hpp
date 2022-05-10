@@ -58,12 +58,12 @@ private:
     /**
     * Méthode permettant d'afficher l'état du jeu
     */
-    void display();
+    void display() const;
 
     /**
      * Méthode permettant d'afficher le menu
     */
-    void showMenu();
+    void showMenu() const;
 
     /**
      * Méthode permettant de parser les commandes du joueur
@@ -94,7 +94,7 @@ private:
      * @param s le string à convertir
      * @return le personnage correspondant au string
      */
-    Person *compareStringToPerson(const std::string &s);
+    Person *compareStringToPerson(const std::string &s) const;
 
     /**
      * Méthode permettant de changer un personnage de container
