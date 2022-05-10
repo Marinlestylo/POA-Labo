@@ -101,6 +101,8 @@ private:
 	Person* compareStringToPerson(const std::string& s);
     void changeLocation(Person* p, Container& toAdd, Container& addFrom);
     bool endOfGame() const;
+
+
 	int turn;
 	Bank* leftBank, * rightBank;
 	Boat* boat;

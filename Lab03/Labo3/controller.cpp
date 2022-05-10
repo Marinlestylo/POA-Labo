@@ -59,6 +59,7 @@ void Controller::showBoard() {
 void Controller::run() {
     while(true){
         userInput();
+		  nextTurn();
     }
 }
 
@@ -120,7 +121,7 @@ void Controller::reset() {
 
 void Controller::userInput() {
 	std::string input;
-	std::cout << "Veuillez entrer votre input :" << std::endl;
+	std::cout << "Tour " << turn << " : Veuillez entrer votre input :" << std::endl;
 	getline(std::cin, input);
 	parseInput(input);
 }
