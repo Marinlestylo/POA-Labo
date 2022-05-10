@@ -21,16 +21,14 @@ public:
 	explicit Controller();
 
 	/**
-	 * Crée le bateau, les deux rives ainsi que tous les personnages.
+	 * destructeur de la classe Controller
 	 */
-	void initVariables();
+	~Controller();
 
-    /**
-     * destructeur de la classe Controller
-     */
-    ~Controller();
-
-    void run();
+	/**
+	 * 
+	 */
+	void run();
 
 	/**
 	 * method that display the shore and the boat
@@ -80,17 +78,29 @@ public:
 	void userInput();
 
 	void embark(Person* p);
+
 	void disembark(Person* p);
-    static void showError(const std::string& errorMsg);
+
+	static void showError(const std::string& errorMsg);
 
 private:
+
+	/**
+	 * Crée le bateau, les deux rives ainsi que tous les personnages.
+	 */
+
+	void initVariables();
+
 	void printMenuLine(const std::string& command, const std::string& info);
+
 	Person* checkInputWithParam(const std::string& input, const std::string&
-    command);
+	command);
 
 	Person* compareStringToPerson(const std::string& s);
-    void changeLocation(Person* p, Container& toAdd, Container& addFrom);
-    bool endOfGame() const;
+
+	void changeLocation(Person* p, Container& toAdd, Container& addFrom);
+
+	bool endOfGame() const;
 
 
 	int turn;
