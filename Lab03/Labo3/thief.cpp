@@ -1,5 +1,6 @@
-#include <iostream>
 #include "thief.hpp"
+
+const std::string Thief::ERROR_MESSAGE = "voleur sans policier";
 
 Thief::Thief(const std::string& name, Person& goodWith) : Person(name) {
     this->dependsOn = &goodWith;
@@ -20,10 +21,9 @@ bool Thief::isSafe(const std::list<Person *> &people) {
             return true;
         }
     }
-    std::cout << getErrorMessage() << std::endl;
     return false;
 }
 
 std::string Thief::getErrorMessage() {
-    return "voleur sans policier";
+    return Thief::ERROR_MESSAGE;
 }

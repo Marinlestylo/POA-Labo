@@ -8,6 +8,7 @@ class Driver : public Person {
 public:
     explicit Driver(const std::string & name);
     bool canDrive() override;
+    std::string getErrorMessage() override;
 };
 
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include "container.hpp"
+#include "controller.hpp"
 
 Container::Container(std::string name, std::list<Person *> people) : name(std::move(name)), people(std::move(people)) {}
 
@@ -46,6 +47,7 @@ bool Container::isMember(Person* p) const {
 bool Container::isContainerSafe() {
 	for(Person* p : people){
 		if(!p->isSafe(people)){
+            Controller::showError(p->getErrorMessage());
 			return false;
 		}
 	}

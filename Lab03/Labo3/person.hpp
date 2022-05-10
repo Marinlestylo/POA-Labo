@@ -11,6 +11,7 @@ public:
     virtual bool canDrive();
     const std::string& getName();
     virtual bool isSafe(const std::list<Person*>& people);
+    virtual std::string getErrorMessage() = 0;
 
 private:
     std::string name;

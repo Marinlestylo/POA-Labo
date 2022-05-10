@@ -52,24 +52,21 @@ void Controller::showMenu() {
 	printMenuLine("h", "menu");
 }
 
-void Controller::showBoard() {
-
-}
-
 void Controller::run() {
     while(true){
         userInput();
-		  nextTurn();
     }
 }
 
 void Controller::parseInput(std::string input) {
 	// On check d'abord tous les inputs de longueur 1
+
+    //TODO ne pas next turn quand on print le board 
 	if (input.size() == 1) {
 		switch (input[0]) {
 			case 'p':
 				display();
-				break;
+                return;
 			case 'q':
 				std::cout << "Au revoir";
 				exit(0);
@@ -97,10 +94,11 @@ void Controller::parseInput(std::string input) {
 	} else{
 		std::cout << ERROR_MESSAGE << std::endl;
 	}
+    display();
 }
 
 void Controller::display() {
-	std::cout << SEPARATOR << std::endl;
+	std::cout << std::endl << SEPARATOR << std::endl;
 	leftBank->showContainer();
 	std::cout << std::endl;
 	boat->showContainer();
@@ -121,7 +119,7 @@ void Controller::reset() {
 
 void Controller::userInput() {
 	std::string input;
-	std::cout << "Tour " << turn << " : Veuillez entrer votre input :" << std::endl;
+	std::cout << turn << "> ";
 	getline(std::cin, input);
 	parseInput(input);
 }
@@ -181,6 +179,10 @@ bool Controller::endOfGame() const {
         return true;
     }
     return false;
+}
+
+void Controller::showError(const std::string& errorMsg) {
+    std::cout << errorMsg << std::endl;
 }
 
 

@@ -11,6 +11,7 @@ public:
 
     std::string getErrorMessage();
 private:
+    static const std::string ERROR_MESSAGE;
     Person* dependsOn;
 };
 

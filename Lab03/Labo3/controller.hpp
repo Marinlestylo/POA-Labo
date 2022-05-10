@@ -74,16 +74,6 @@ public:
 	void reset();
 
 	/**
-	 * Affiche l'état du jeu
-	 */
-	void showBoard();
-
-	/**
-	 * Lance la boucle de jeu
-	 */
-	void gameLoop();
-
-	/**
 	 * Récupère l'input du joueur
 	 * @return input du joueur
 	 */
@@ -91,10 +81,10 @@ public:
 
 	void embark(Person* p);
 	void disembark(Person* p);
+    static void showError(const std::string& errorMsg);
 
 private:
 	void printMenuLine(const std::string& command, const std::string& info);
-
 	Person* checkInputWithParam(const std::string& input, const std::string&
     command);
 
