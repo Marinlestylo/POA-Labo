@@ -2,8 +2,8 @@
 
 const std::string Girl::ERROR_MESSAGE = "fille avec son pere sans sa mere";
 
-Girl::Girl(const std::string &name, Person &goodWith, Person &badWith) :
-DependentPerson(name,goodWith,badWith) {
+Girl::Girl(const std::string &name, Person &dependsOn, Person &badWith) :
+DependentPerson(name,dependsOn,badWith) {
 
 }
 

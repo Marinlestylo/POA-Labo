@@ -4,15 +4,34 @@
 
 #include "person.hpp"
 
+/**
+ * Classe représentant un voleur
+ */
 class Thief : public Person {
 public:
-    Thief(const std::string& name, Person& goodWith);
+    /**
+     * Constructeur de la classe Thief
+     * @param name nom du voleur
+     * @param goodWith Personne avec qui le voleur peut rester
+     */
+    Thief(const std::string &name, Person &goodWith);
+
+    /**
+     * Méthode permettant de savoir si la personne est en sécurité dans un lieu
+     * @param people liste des personnes présentes dans le lieu
+     * @return true si la personne est en sécurité, false sinon
+     */
     bool isSafe(const std::list<Person *> &people) override;
 
-    std::string getErrorMessage();
+    /**
+    * Méthode permettant d'avoir un message d'erreur lié à la personne
+    * @return un message d'erreur
+    */
+    std::string getErrorMessage() override;
+
 private:
     static const std::string ERROR_MESSAGE;
-    Person* dependsOn;
+    Person *dependsOn;
 };
 
 

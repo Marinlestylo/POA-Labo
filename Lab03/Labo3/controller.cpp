@@ -8,6 +8,7 @@ const std::string Controller::SEPARATOR =
 	"------------------------------------------------------------------------------";
 
 
+
 Controller::Controller() {
 	initVariables();
 }
@@ -33,13 +34,10 @@ void Controller::initVariables() {
     Thief * thief = new Thief("voleur", *policeman);
     this->people = {mother,father,paul, pierre, julie, jeanne, policeman, thief};
 	turn = 0;
-	leftBank = new Bank("gauche", people);
-	rightBank = new Bank("droite", std::list<Person*>());
-	boat = new Boat(leftBank);
-}
-
-void Controller::nextTurn() {
-	turn++;
+	leftBank = new Bank("Gauche", people);
+	rightBank = new Bank("Droite", std::list<Person*>());
+	boat = new Boat(*leftBank);
+    gameRunning = true;
 }
 
 void Controller::showMenu() {
@@ -52,58 +50,53 @@ void Controller::showMenu() {
 	printMenuLine("h", "menu");
 }
 
-void Controller::run() {
-    while(true){
+void Controller::nextTurn() {
+    while(gameRunning){
         userInput();
     }
 }
 
-void Controller::parseInput(std::string input) {
-	// On check d'abord tous les inputs de longueur 1
+void Controller::parseInput(const std::string& input) {
+    char command;
+    Person* person = nullptr;
+    if(input.empty() || input.size() > 1 && input[1] != ' ') {
+        std::cout << ERROR_MESSAGE << std::endl;
+        return;
+    } else if(input.size() > 1) {
+        person = compareStringToPerson(input.substr(2));
+        if(person == nullptr) {
+            std::cout << ERROR_MESSAGE  << std::endl;
+            return;
+        }
+    }
+    command = input[0];
 
-    //TODO ne pas next turn quand on print le board 
-	if (input.size() == 1) {
-		switch (input[0]) {
-			case 'p':
-				display();
-                return;
-			case 'q':
-				std::cout << "Au revoir";
-				exit(0);
-			case 'm':
-				if(boat->isDockedOnthisBank(leftBank))
-					boat->moveBoat(rightBank);
-				else
-					boat->moveBoat(leftBank);
-				break;
-			case 'h':
-				showMenu();
-				break;
-			case 'r':
-				reset();
-				break;
-			default:
-				std::cout << ERROR_MESSAGE << std::endl;
-				break;
-		}
-		// On check maintenant les inputs plus "complexes"
-	} else if (Person* person = checkInputWithParam(input, "e ")) {
-        embark(person);
-	} else if (Person* person = checkInputWithParam(input, "d ")){
-		disembark(person);
-	} else{
-		std::cout << ERROR_MESSAGE << std::endl;
-	}
+    switch (command) {
+        case 'p': break;
+        case 'e': embark(*person); ++turn; break;
+        case 'd': disembark(*person);++turn; break;
+        case 'm':
+            if(boat->isDockedOnthisBank(*leftBank))
+                boat->moveBoat(*rightBank);
+            else
+                boat->moveBoat(*leftBank);
+            ++turn;
+            break;
+        case 'r': reset(); break;
+        case 'q': gameRunning = false; break;
+        case 'h': showMenu(); break;
+        default: std::cout << ERROR_MESSAGE;
+    }
     display();
 }
 
 void Controller::display() {
 	std::cout << std::endl << SEPARATOR << std::endl;
-	leftBank->showContainer();
+    leftBank->toStream(std::cout);
 	std::cout << std::endl;
-	boat->showContainer();
+    boat->toStream(std::cout);
 	std::cout << std::endl;
-	rightBank->showContainer();
+    rightBank->toStream(std::cout);
 	std::cout << std::endl << SEPARATOR << std::endl;
 }
 
@@ -112,9 +105,9 @@ void Controller::reset() {
 	leftBank->emptyContainer();
 	boat->emptyContainer();
 	for(Person* p : people){
-		leftBank->addPerson(p);
+		leftBank->addPerson(*p);
 	}
-	boat->moveBoat(leftBank);
+	boat->moveBoat(*leftBank);
 }
 
 void Controller::userInput() {
@@ -137,17 +130,7 @@ Person* Controller::compareStringToPerson(const std::string& s) {
 	return nullptr;
 }
 
-Person* Controller::checkInputWithParam(const std::string& input,
-												 const std::string& command) {
-    std::string a = input.substr(0, 2);
-    if (a == command) {
-        return compareStringToPerson(input.substr(2));;
-
-    }
-    return nullptr;
-}
-
-void Controller::embark(Person* p) {
+void Controller::embark(Person& p) {
 	if(boat->isFull()){
 		std::cout << "Le bateau est déjà plein" << std::endl;
 	}else if(boat->getBank()->isMember(p)){
@@ -155,7 +138,7 @@ void Controller::embark(Person* p) {
     }
 }
 
-void Controller::disembark(Person *p) {
+void Controller::disembark(Person &p) {
     if(boat->isEmpty()){
         std::cout << "Le bateau est déjà vide" << std::endl;
     }else if(boat->isMember(p)){
@@ -164,7 +147,7 @@ void Controller::disembark(Person *p) {
     endOfGame();
 }
 
-void Controller::changeLocation(Person *p, Container& toAdd, Container& toRemove) {
+void Controller::changeLocation(Person &p, Container& toAdd, Container& toRemove) {
     toAdd.addPerson(p);
     toRemove.removePerson(p);
     if(!(toAdd.isContainerSafe() && toRemove.isContainerSafe())){

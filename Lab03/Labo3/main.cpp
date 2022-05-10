@@ -2,5 +2,5 @@
 
 int main() {
     Controller game;
-    game.run();
+    game.nextTurn();
 }

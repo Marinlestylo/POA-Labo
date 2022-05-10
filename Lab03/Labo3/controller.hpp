@@ -15,99 +15,108 @@
 
 class Controller {
 public:
-	/**
-	 * Constructeur par défaut de la classe Controller
-	 */
-	explicit Controller();
+    /**
+     * Constructeur par défaut de la classe Controller
+     */
+    explicit Controller();
 
-	/**
-	 * destructeur de la classe Controller
-	 */
-	~Controller();
+    /**
+     * destructeur de la classe Controller
+     */
+    ~Controller();
 
-	/**
-	 * 
-	 */
-	void run();
+    /**
+     * Méthode permettant de lancer la boucle de jeu
+     */
+    void nextTurn();
 
-	/**
-	 * method that display the shore and the boat
-	 */
-	void display();
-
-	/**
-	 * method that display the menu
-	 * possible inputs:
-	 * p - print the shore and the boat
-	 * e <name> embark person in boat
-	 * d <name> disembark person from boat
-	 * q - quit
-	 * m - move boat
-	 * h - menu
-	 * r - reset
-	*/
-	void showMenu();
-
-	/**
-	 * Incrémente le compteur de tour
-	 */
-	void nextTurn();
-
-	/**
-	 * method that parse the input and call the corresponding method
-	 * possible inputs:
-	 * p - print the shore and the boat
-	 * e <name> embark person in boat
-	 * d <name> disembark person from boat
-	 * q - quit
-	 * m - move boat
-	 * h - menu
-	 * r - reset
-	*/
-	void parseInput(std::string input);
-
-	/**
-	 * Permet de remttre le jeu dans son état initiale afin de le recommencer
-	 */
-	void reset();
-
-	/**
-	 * Récupère l'input du joueur
-	 * @return input du joueur
-	 */
-	void userInput();
-
-	void embark(Person* p);
-
-	void disembark(Person* p);
-
-	static void showError(const std::string& errorMsg);
+    /**
+     * Méthode permettant d'afficher un message d'erreur
+     * @param errorMsg le message d'erreur
+     */
+    static void showError(const std::string &errorMsg);
 
 private:
 
-	/**
-	 * Crée le bateau, les deux rives ainsi que tous les personnages.
-	 */
+    /**
+     * Crée le bateau, les deux rives ainsi que tous les personnages du jeu.
+     */
+    void initVariables();
 
-	void initVariables();
+    /**
+     * Métode permettant d'embarquer un personnage sur le bateau
+     * @param p le personnage à embarquer
+     */
+    void embark(Person &p);
 
-	void printMenuLine(const std::string& command, const std::string& info);
+    /**
+     * Méthode permettant de débarquer un personnage du bateau
+     * @param p le personnage à débarquer
+     */
+    void disembark(Person &p);
 
-	Person* checkInputWithParam(const std::string& input, const std::string&
-	command);
+    /**
+    * Méthode permettant d'afficher l'état du jeu
+    */
+    void display();
 
-	Person* compareStringToPerson(const std::string& s);
+    /**
+     * Méthode permettant d'afficher le menu
+    */
+    void showMenu();
 
-	void changeLocation(Person* p, Container& toAdd, Container& addFrom);
+    /**
+     * Méthode permettant de parser les commandes du joueur
+     * @param input la commande entrée par le joueur
+     */
+    void parseInput(const std::string& input);
 
-	bool endOfGame() const;
+    /**
+     * Permet de remettre le jeu dans son état initiale afin de le recommencer
+     */
+    void reset();
+
+    /**
+     * Méthode permettant de récupérer l'input du joueur
+     * @return input du joueur
+     */
+    void userInput();
+
+    /**
+     * Méthode permettant d'afficher une ligne du menu
+     * @param command nom de la commande
+     * @param info description de la commande
+     */
+    static void printMenuLine(const std::string &command, const std::string &info);
+
+    /**
+     * Méthode permettant de convertir un string en personne
+     * @param s le string à convertir
+     * @return le personnage correspondant au string
+     */
+    Person *compareStringToPerson(const std::string &s);
+
+    /**
+     * Méthode permettant de changer un personnage de container
+     * @param p personnage à changer de place
+     * @param toAdd lieu ou ajouter le personnage
+     * @param addFrom lieu ou enlever le personnage
+     */
+    void changeLocation(Person &p, Container &toAdd, Container &addFrom);
+
+    /**
+     * Méthode permettant de savoir si le jeu est terminé
+     * @return vrai si le jeu est terminé
+     */
+    bool endOfGame() const;
 
 
-	int turn;
-	Bank* leftBank, * rightBank;
-	Boat* boat;
-	std::list<Person*> people;
-	static const std::string ERROR_MESSAGE, SEPARATOR;
+    int turn;
+    bool gameRunning;
+    Bank *leftBank, *rightBank;
+    Boat *boat;
+    std::list<Person *> people;
+    static const std::string ERROR_MESSAGE, SEPARATOR;
 };
 
 

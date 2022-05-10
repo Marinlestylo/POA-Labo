@@ -6,18 +6,20 @@
 
 class Boat : public Container {
 public:
-    explicit Boat(Bank* current);
+    explicit Boat(Bank &current);
 
-    void moveBoat(Bank *bank);
+    void moveBoat(Bank &bank);
 
-	 bool isDockedOnthisBank(Bank* bank) const;
+    bool isDockedOnthisBank(Bank &bank) const;
 
-     void showContainer() const override;
-	 Bank* getBank() const;
+    std::ostream& toStream(std::ostream& os) const override;
 
-	 bool isFull() const;
+    Bank *getBank() const;
+
+    bool isFull() const;
+
 private:
-    Bank* currentBank;
+    Bank *currentBank;
     static const std::string RIVER;
 };
 

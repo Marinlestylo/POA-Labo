@@ -1,13 +1,14 @@
 #include <iostream>
 #include <sstream>
+#include <utility>
 #include "container.hpp"
 #include "controller.hpp"
 
-Container::Container(std::string name, std::list<Person *> people) : name(std::move(name)), people(std::move(people)) {}
+Container::Container(std::string  name, std::list<Person *> people) : name
+(std::move(name)), people(std::move(people)) {}
 
-void Container::showContainer() const {
-    std::cout << getName() << " : " << getPeopleNames() << " ";
-
+std::ostream& Container::toStream(std::ostream& os) const {
+    return os << getName() << " : " << getPeopleNames() << " ";
 }
 
 std::string Container::getPeopleNames() const {
@@ -28,20 +29,20 @@ void Container::emptyContainer() {
 	}
 }
 
-void Container::addPerson(Person* p) {
-	people.push_back(p);
+void Container::addPerson(Person& p) {
+	people.push_back(&p);
 }
 
-void Container::removePerson(Person* p) {
-	people.remove(p);
+void Container::removePerson(Person& p) {
+	people.remove(&p);
 }
 
 std::list<Person*>* Container::getPeople() const {
 	return (std::list<Person*>*) &people;
 }
 
-bool Container::isMember(Person* p) const {
-	return std::find(people.begin(), people.end(), p) != people.end();
+bool Container::isMember(Person& p) const {
+	return std::find(people.begin(), people.end(), &p) != people.end();
 }
 
 bool Container::isContainerSafe() {

@@ -8,11 +8,11 @@
 
 class Container {
 public:
-    Container(std::string name, std::list<Person *> people);
+    Container(std::string  name, std::list<Person *> people);
 
     virtual ~Container() = default;
 
-    virtual void showContainer() const;
+    virtual std::ostream& toStream(std::ostream& os) const;
 
     std::string getPeopleNames() const;
 
@@ -20,13 +20,13 @@ public:
 
     void emptyContainer();
 
-    void addPerson(Person *p);
+    void addPerson(Person &p);
 
-    void removePerson(Person *p);
+    void removePerson(Person &p);
 
     bool isEmpty() const;
 
-    bool isMember(Person *p) const;
+    bool isMember(Person &p) const;
 
     bool isContainerSafe();
 

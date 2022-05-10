@@ -4,10 +4,24 @@
 
 #include "person.hpp"
 #include <algorithm>
-
+/**
+ * Classe représentant un personne dépendante à un autre
+ */
 class DependentPerson : public Person {
 public:
-    DependentPerson(const std::string& name, Person& goodWith, Person& badWith);
+    /**
+     * Constructeur de la classe DependentPerson
+     * @param name nom de la personne
+     * @param dependsOn personne de qui la personne dépend
+     * @param badWith personne avec laquelle elle ne peut pas rester
+     */
+    DependentPerson(const std::string& name, Person& dependsOn, Person& badWith);
+
+    /**
+     * Méthode permettant de savoir si la personne est en sécurité dans un lieu
+     * @param people liste des personnes présentes dans le lieu
+     * @return true si la personne est en sécurité, false sinon
+     */
     bool isSafe(const std::list<Person *> &people) override;
 private:
     Person* dependsOn;

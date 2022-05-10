@@ -1,4 +1,3 @@
-#include <iostream>
 #include "dependentPerson.hpp"
 
 DependentPerson::DependentPerson(const std::string &name, Person& goodWith,
@@ -7,11 +6,6 @@ DependentPerson::DependentPerson(const std::string &name, Person& goodWith,
     this->badWith = &badWith;
 }
 
-/**
- * return true if is with the good person and false if is with the bad person alone
- * @param people list of people
- * @return true if is with the good person and false if is with the bad person alone
- */
 bool DependentPerson::isSafe(const std::list<Person *> &people) {
     bool isSafe = true;
     for (auto &person : people) {
