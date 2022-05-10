@@ -1,23 +1,81 @@
 <?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
 <classDiagram>
   <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="River">
-    <entity entityType="CLASS" id="73673" isAbstract="false" name="Child" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="73672" isAbstract="false" name="Parent" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="73671" isAbstract="false" name="Thief" visibility="PUBLIC">
-      <attribute const="false" defaultValue="" isStatic="false" name="policeman" type="void" visibility="PRIVATE"/>
+    <inheritance id="76123">
+      <child>76069</child>
+      <parent>65686</parent>
+    </inheritance>
+    <entity entityType="CLASS" id="76069" isAbstract="false" name="Driver" visibility="PUBLIC">
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Driver" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="name" type="const_string&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="canDrive" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="getErrorMessage()" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
-    <entity entityType="CLASS" id="73670" isAbstract="false" name="Policeman" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="73669" isAbstract="false" name="Family" visibility="PUBLIC">
-      <attribute const="false" defaultValue="" isStatic="false" name="badWith" type="list&lt;Person&gt;" visibility="PRIVATE"/>
-      <attribute const="false" defaultValue="" isStatic="false" name="goodWith" type="list&lt;Person&gt;" visibility="PRIVATE"/>
+    <inheritance id="76068">
+      <child>75284</child>
+      <parent>65686</parent>
+    </inheritance>
+    <inheritance id="76067">
+      <child>73671</child>
+      <parent>65686</parent>
+    </inheritance>
+    <inheritance id="75880">
+      <child>75612</child>
+      <parent>75284</parent>
+    </inheritance>
+    <inheritance id="75879">
+      <child>75283</child>
+      <parent>75284</parent>
+    </inheritance>
+    <entity entityType="CLASS" id="75612" isAbstract="false" name="Girl" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="true" name="ERROR_MESSAGE" type="string" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Girl" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="name" type="const_string&amp;"/>
+        <variable const="false" name="dependsOn" type="Person&amp;"/>
+        <variable const="false" name="badWith" type="Person&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="getErrorMessage" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
-    <entity entityType="CLASS" id="65689" isAbstract="false" name="Controller" visibility="PUBLIC">
-      <attribute const="false" defaultValue="" isStatic="false" name="turn" type="unsigned" visibility="PRIVATE"/>
-      <method isAbstract="false" isStatic="false" name="showMenu" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
-      <method isAbstract="false" isStatic="false" name="display" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
-      <method isAbstract="false" isStatic="false" name="nextTurn" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="75284" isAbstract="false" name="DependantPerson" visibility="PUBLIC">
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="DependantPerson" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="name" type="const_string&amp;"/>
+        <variable const="false" name="dependsOn" type="Person&amp;"/>
+        <variable const="false" name="badWith" type="Person&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="isSafe" returnType="bool" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="people" type="const_list&lt;Person*&gt;&amp;"/>
+      </method>
     </entity>
-    <entity entityType="CLASS" id="65688" isAbstract="false" name="BONK" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="75283" isAbstract="false" name="Boy" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="true" name="attributeERROR_MESSAGE" type="string" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Boy" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="name" type="const_string&amp;"/>
+        <variable const="false" name="dependsOn" type="Person&amp;"/>
+        <variable const="false" name="badWith" type="Person&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="getErrorMessage" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
+    <entity entityType="CLASS" id="65685" isAbstract="true" name="Container" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="true" isStatic="false" name="Container" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="p" type="int"/>
+      </method>
+      <method isAbstract="true" isStatic="false" name="method" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
+    <entity entityType="CLASS" id="65686" isAbstract="true" name="Person" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="true" isStatic="false" name="Person" returnType="" view="DEFAULT" visibility="PUBLIC"/>
+      <method is-constructor="true" isAbstract="true" isStatic="false" name="~Person_virtual" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="name" type="const_string&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="canDrive_virtual" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="getName" returnType="const_string&amp;" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="isSafe_virtual" returnType="bool" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="people" type="const_list&lt;Person*&gt;&amp;"/>
+      </method>
+      <method isAbstract="true" isStatic="false" name="getErrorMessage_virtual" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
     <entity entityType="CLASS" id="65687" isAbstract="false" name="Boat" visibility="PUBLIC">
       <method isAbstract="false" isStatic="false" name="canGo" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="move" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
@@ -25,94 +83,244 @@
       <method isAbstract="false" isStatic="false" name="unload" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="isListValid" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
-    <entity entityType="CLASS" id="65686" isAbstract="true" name="Person" visibility="PUBLIC">
-      <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
-      <method isAbstract="true" isStatic="false" name="canDrive" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
-      <method isAbstract="true" isStatic="false" name="canBeWith" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="65688" isAbstract="false" name="Bank" visibility="PUBLIC">
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Bank" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="name" type="const_string&amp;"/>
+        <variable const="false" name="people" type="list&lt;Person*&gt;"/>
+      </method>
     </entity>
-    <entity entityType="CLASS" id="65685" isAbstract="true" name="Container" visibility="PUBLIC">
-      <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
+    <entity entityType="CLASS" id="65689" isAbstract="false" name="Controller" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="turn" type="unsigned" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="gameRunning" type="bool" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="true" name="ERROR_MESSAGE" type="const_string" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="true" name="SEPARATOR" type="const_string" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Controller" returnType="" view="DEFAULT" visibility="PUBLIC"/>
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="~Controller" returnType="" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="nextTurn" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="true" name="showError" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="initVariables" returnType="void" view="DEFAULT" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="false" name="embark" returnType="void" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="p" type="Person&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="disembark" returnType="void" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="p" type="Person&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="display_const" returnType="void" view="DEFAULT" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="false" name="showMenu_const" returnType="void" view="DEFAULT" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="false" name="parseInput" returnType="void" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="input" type="const_string&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="reset" returnType="void" view="DEFAULT" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="false" name="userInput" returnType="void" view="DEFAULT" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="true" name="printMenuLine" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="command" type="const_string&amp;"/>
+        <variable const="false" name="info" type="const_string&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="compareStringToPerson_const" returnType="Person*" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="s" type="const_string&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="changeLocation" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="p" type="Person&amp;"/>
+        <variable const="false" name="toAdd" type="Container&amp;"/>
+        <variable const="false" name="addFrom" type="Container&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="endOfGame_const" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
+    <entity entityType="CLASS" id="73669" isAbstract="false" name="Family" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="badWith" type="list&lt;Person&gt;" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="goodWith" type="list&lt;Person&gt;" visibility="PRIVATE"/>
+    </entity>
+    <entity entityType="CLASS" id="73670" isAbstract="false" name="Policeman" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="73671" isAbstract="false" name="Thief" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="true" name="ERROR_MESSAGE" type="string" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Thief" returnType="" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="name" type="const_string&amp;"/>
+        <variable const="false" name="goodWith" type="Person&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="getErrorMessage" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
+    <entity entityType="CLASS" id="73672" isAbstract="false" name="Parent" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="73673" isAbstract="false" name="Child" visibility="PUBLIC"/>
   </diagramElements>
   <umlView grid="10" name="Main view" open="true">
-    <componentView color="-2079" componentID="65685" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <relationView color="-12566464" relationId="75879">
+      <line>
+        <point>
+          <x>1251</x>
+          <y>431</y>
+        </point>
+        <point>
+          <x>1251</x>
+          <y>401</y>
+        </point>
+        <point>
+          <x>1351</x>
+          <y>401</y>
+        </point>
+        <point>
+          <x>1351</x>
+          <y>346</y>
+        </point>
+      </line>
+    </relationView>
+    <relationView color="-12566464" relationId="75880">
+      <line>
+        <point>
+          <x>1681</x>
+          <y>431</y>
+        </point>
+        <point>
+          <x>1681</x>
+          <y>401</y>
+        </point>
+        <point>
+          <x>1351</x>
+          <y>401</y>
+        </point>
+        <point>
+          <x>1351</x>
+          <y>346</y>
+        </point>
+      </line>
+    </relationView>
+    <relationView color="-12566464" relationId="76067">
+      <line>
+        <point>
+          <x>1831</x>
+          <y>261</y>
+        </point>
+        <point>
+          <x>1831</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1421</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1421</x>
+          <y>201</y>
+        </point>
+      </line>
+    </relationView>
+    <relationView color="-12566464" relationId="76068">
+      <line>
+        <point>
+          <x>1351</x>
+          <y>261</y>
+        </point>
+        <point>
+          <x>1351</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1421</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1421</x>
+          <y>201</y>
+        </point>
+      </line>
+    </relationView>
+    <relationView color="-12566464" relationId="76123">
+      <line>
+        <point>
+          <x>2111</x>
+          <y>261</y>
+        </point>
+        <point>
+          <x>2111</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1421</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1421</x>
+          <y>201</y>
+        </point>
+      </line>
+    </relationView>
+    <componentView color="-2079" componentID="73671" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>230</x>
-        <y>80</y>
-        <w>150</w>
-        <h>70</h>
+        <x>1680</x>
+        <y>260</y>
+        <w>300</w>
+        <h>100</h>
       </geometry>
     </componentView>
-    <componentView color="-2079" componentID="65686" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="65689" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>960</x>
-        <y>150</y>
-        <w>150</w>
-        <h>100</h>
+        <x>570</x>
+        <y>40</y>
+        <w>460</w>
+        <h>355</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="65688" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>230</x>
+        <y>210</y>
+        <w>320</w>
+        <h>70</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="65687" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>150</x>
+        <x>60</x>
         <y>210</y>
         <w>150</w>
         <h>130</h>
       </geometry>
     </componentView>
-    <componentView color="-2079" componentID="65688" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="65686" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>320</x>
-        <y>210</y>
-        <w>150</w>
-        <h>55</h>
+        <x>1240</x>
+        <y>40</y>
+        <w>360</w>
+        <h>160</h>
       </geometry>
     </componentView>
-    <componentView color="-2079" componentID="65689" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="65685" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>500</x>
-        <y>120</y>
+        <x>230</x>
+        <y>80</y>
         <w>150</w>
-        <h>115</h>
+        <h>100</h>
       </geometry>
     </componentView>
-    <componentView color="-2079" componentID="73669" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="75283" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>770</x>
-        <y>300</y>
-        <w>200</w>
+        <x>1050</x>
+        <y>430</y>
+        <w>400</w>
+        <h>100</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="75284" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>1100</x>
+        <y>260</y>
+        <w>490</w>
         <h>85</h>
       </geometry>
     </componentView>
-    <componentView color="-2079" componentID="73670" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="75612" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>1080</x>
-        <y>290</y>
-        <w>150</w>
-        <h>55</h>
+        <x>1480</x>
+        <y>430</y>
+        <w>400</w>
+        <h>100</h>
       </geometry>
     </componentView>
-    <componentView color="-2079" componentID="73671" displayAttributes="true" displayDefault="true" displayMethods="true">
+    <componentView color="-2079" componentID="76069" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>1250</x>
-        <y>290</y>
-        <w>150</w>
-        <h>70</h>
-      </geometry>
-    </componentView>
-    <componentView color="-2079" componentID="73672" displayAttributes="true" displayDefault="true" displayMethods="true">
-      <geometry>
-        <x>650</x>
-        <y>470</y>
-        <w>150</w>
-        <h>55</h>
-      </geometry>
-    </componentView>
-    <componentView color="-2079" componentID="73673" displayAttributes="true" displayDefault="true" displayMethods="true">
-      <geometry>
-        <x>930</x>
-        <y>470</y>
-        <w>150</w>
-        <h>55</h>
+        <x>2000</x>
+        <y>260</y>
+        <w>220</w>
+        <h>100</h>
       </geometry>
     </componentView>
   </umlView>
