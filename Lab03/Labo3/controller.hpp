@@ -65,6 +65,8 @@ private:
      */
     void disembark(Person *p);
 
+    void moveBoat();
+
     /**
     * Méthode permettant d'afficher l'état du jeu
     */

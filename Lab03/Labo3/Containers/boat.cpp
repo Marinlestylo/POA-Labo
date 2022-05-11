@@ -21,7 +21,7 @@ std::ostream &Boat::toStream(std::ostream &os) const {
     return os;
 }
 
-void Boat::moveBoat(Bank &bank) {
+bool Boat::moveBoat(Bank &bank) {
     bool hasDriver = false;
     for (Person *p: *getPeople()) {
         if (p->canDrive()) {
@@ -30,10 +30,10 @@ void Boat::moveBoat(Bank &bank) {
         }
     }
     if (!hasDriver) {
-        Controller::showError("Il n'y a pas de conducteur dans le bateau");
-        return;
+        return false;
     }
     currentBank = &bank;
+    return true;
 }
 
 bool Boat::isDockedOnthisBank(Bank &bank) const {

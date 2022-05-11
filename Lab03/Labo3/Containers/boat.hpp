@@ -8,7 +8,7 @@ class Boat : public Container {
 public:
     explicit Boat(Bank &current);
 
-    void moveBoat(Bank &bank);
+    bool moveBoat(Bank &bank);
 
     bool isDockedOnthisBank(Bank &bank) const;
 
