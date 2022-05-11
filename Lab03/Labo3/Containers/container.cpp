@@ -3,6 +3,7 @@
 #include <utility>
 #include "container.hpp"
 #include "../controller.hpp"
+#include "../Characters/person.hpp"
 
 Container::Container(std::string name, std::list<Person *>& people) : name
 (std::move(name)), people(people) {}
@@ -51,7 +52,7 @@ bool Container::isMember(const Person& p) const {
 
 bool Container::isContainerSafe() {
 	for(Person* p : people){
-		if(!p->isSafe(people)){
+		if(!p->isSafe(*this)){
             Controller::showError(p->getErrorMessage());
 			return false;
 		}
@@ -65,5 +66,17 @@ bool Container::isEmpty() const {
 
 bool Container::isFull() const {
     return false;
+}
+
+std::list<Person *>::const_iterator Container::begin() const {
+    return people.cbegin();
+}
+
+std::list<Person *>::const_iterator Container::end() const {
+    return people.cend();
+}
+
+int Container::size() const {
+    return people.size();
 }
 

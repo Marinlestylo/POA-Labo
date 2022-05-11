@@ -4,6 +4,7 @@
 #include <list>
 #include "string"
 
+class Container;
 /**
  * Classe représentant une personne
  * @author Friedli Jonathan
@@ -38,7 +39,7 @@ public:
      * @param people liste des personnes présentes dans le lieu
      * @return true si la personne est en sécurité, false sinon
      */
-    virtual bool isSafe(const std::list<Person*>& people) const;
+    virtual bool isSafe(const Container& container) const;
 
     /**
      * Méthode permettant d'avoir un message d'erreur lié à la personne

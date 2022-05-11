@@ -1,18 +1,19 @@
 #include "dependentPerson.hpp"
+#include "../Containers/container.hpp"
 
-DependentPerson::DependentPerson(const std::string &name, Person& goodWith,
+DependentPerson::DependentPerson(const std::string &name, Person& dependsOn,
                                  Person& badWith) : Person(name) {
-    this->dependsOn = &goodWith;
+    this->dependsOn = &dependsOn;
     this->badWith = &badWith;
 }
 
-bool DependentPerson::isSafe(const std::list<Person *> &people) const{
+bool DependentPerson::isSafe(const Container& container) const{
     bool isSafe = true;
-    for (auto &person : people) {
-        if (person == this->dependsOn) {
+    for (auto it = container.begin(); it != container.end(); ++it) {
+        if (*it == this->dependsOn) {
             isSafe = true;
             break;
-        }else if(person == this->badWith) {
+        }else if(*it == this->badWith) {
             isSafe = false;
         }
     }

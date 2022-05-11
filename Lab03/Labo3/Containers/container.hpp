@@ -1,11 +1,12 @@
 #ifndef LABO3_CONTAINER_HPP
 #define LABO3_CONTAINER_HPP
 
-#include "../Characters/person.hpp"
+
 #include <string>
 #include <algorithm>
 #include <list>
 
+class Person;
 class Container {
 public:
     Container(std::string name, std::list<Person *>& people);
@@ -17,6 +18,8 @@ public:
     std::string getPeopleNames() const;
 
     const std::string &getName() const;
+
+    int size() const;
 
     void emptyContainer();
 
@@ -41,6 +44,10 @@ public:
     bool isMember(const Person &p) const;
 
     bool isContainerSafe();
+
+    std::list<Person*>::const_iterator begin() const;
+
+    std::list<Person*>::const_iterator end() const;
 
 protected:
     std::list<Person *> *getPeople() const;

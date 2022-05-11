@@ -71,7 +71,7 @@ void Controller::parseInput(const std::string& input) {
 
     switch (command) {
         case DISPLAY: display();break;
-        case EMBARK: embark(person); break;
+        case EMBARK: embark(person);break;
         case DISEMBARK: disembark(person); break;
         case MOVE:
             if(boat->isDockedOnthisBank(*leftBank))

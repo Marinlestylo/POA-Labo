@@ -22,7 +22,7 @@ public:
      * @param people liste des personnes présentes dans le lieu
      * @return true si la personne est en sécurité, false sinon
      */
-    bool isSafe(const std::list<Person *> &people) const override;
+    bool isSafe(const Container& container) const override;
 private:
     Person* dependsOn;
     Person* badWith;

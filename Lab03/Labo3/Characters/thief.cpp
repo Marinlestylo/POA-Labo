@@ -1,4 +1,5 @@
 #include "thief.hpp"
+#include "../Containers/container.hpp"
 
 const std::string Thief::ERROR_MESSAGE = "voleur sans policier";
 
@@ -11,13 +12,12 @@ Thief::Thief(const std::string& name, Person& goodWith) : Person(name) {
  * @param people
  * @return
  */
-bool Thief::isSafe(const std::list<Person *> &people) const{
-    if (people.size() == 1) {
+bool Thief::isSafe(const Container& container) const{
+    if(container.size() == 1){
         return true;
     }
-
-    for (auto person : people) {
-        if (person == this->dependsOn) {
+    for (auto it = container.begin(); it != container.end(); ++it) {
+        if (*it == this->dependsOn) {
             return true;
         }
     }

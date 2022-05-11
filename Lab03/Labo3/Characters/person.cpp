@@ -1,5 +1,5 @@
 #include "person.hpp"
-
+#include "../Containers/container.hpp"
 Person::Person(const std::string &name) {
     this->name = name;
 }
@@ -12,6 +12,6 @@ const std::string &Person::getName() {
     return name;
 }
 
-bool Person::isSafe(const std::list<Person *> &people) const{
+bool Person::isSafe(const Container& container) const{
     return true;
 }
