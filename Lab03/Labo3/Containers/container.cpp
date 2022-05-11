@@ -39,10 +39,6 @@ void Container::removePerson(const Person &p) {
     people.remove(&p);
 }
 
-std::list<const Person *> *Container::getPeople() const {
-    return (std::list<const Person *> *) &people;
-}
-
 bool Container::isMember(const Person &p) const {
     return std::find(people.begin(), people.end(), &p) != people.end();
 }

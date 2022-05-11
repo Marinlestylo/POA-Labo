@@ -116,15 +116,7 @@ public:
      */
     std::list<const Person *>::const_iterator end() const;
 
-protected:
-    /**
-     * Méthode permettant de connaître les personnes se trouvant dans le container
-     * @return la liste de personnes se trouvant dans le container
-     */
-    std::list<const Person *> *getPeople() const;
-
 private:
-
     const std::string name;
     std::list<const Person *> people;
 };

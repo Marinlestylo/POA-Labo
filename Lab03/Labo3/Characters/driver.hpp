@@ -1,7 +1,6 @@
 #ifndef LABO3_DRIVER_HPP
 #define LABO3_DRIVER_HPP
 
-
 #include "person.hpp"
 
 /**

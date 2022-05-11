@@ -21,8 +21,9 @@ std::ostream &Boat::toStream(std::ostream &os) const {
 
 bool Boat::moveBoat(const Bank &bank) {
     bool hasDriver = false;
-    for (const Person *p: *getPeople()) {
-        if (p->canDrive()) {
+    auto end = Container::end();
+    for(auto it = Container::begin(); it != end; ++it) {
+        if ((*it)->canDrive()) {
             hasDriver = true;
             break;
         }
@@ -39,7 +40,7 @@ bool Boat::isDockedOnthisBank(const Bank &bank) const {
 }
 
 bool Boat::isFull() const {
-    return getPeople()->size() >= MAX_CAPACITY;
+    return Container::size() >= MAX_CAPACITY;
 }
 
 bool Boat::isOnBank(const Person &person) const {

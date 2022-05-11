@@ -1,7 +1,6 @@
 #ifndef LABO3_DEPENDENTPERSON_HPP
 #define LABO3_DEPENDENTPERSON_HPP
 
-
 #include "person.hpp"
 #include <algorithm>
 
