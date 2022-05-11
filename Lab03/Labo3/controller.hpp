@@ -30,6 +30,12 @@ public:
      */
     void operator=(const Controller&) = delete;
 
+	 /**
+	  * Impossibilité d'utiliser le constructeur de copie
+	  * @param other
+	  */
+	 Controller(const Controller& other) = delete;
+
     /**
      * destructeur de la classe Controller
      */

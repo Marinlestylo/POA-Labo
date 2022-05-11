@@ -19,7 +19,6 @@ Controller::~Controller() {
     for (const Person *p: people) {
         delete p;
     }
-    people.clear();
 }
 
 void Controller::initVariables() {
