@@ -16,11 +16,12 @@ public:
 
     Bank *getBank() const;
 
-    bool isFull() const;
+    bool isFull() const override;
 
 private:
     Bank *currentBank;
     static const std::string RIVER;
+    static const int MAX_CAPACITY = 2;
 };
 
 

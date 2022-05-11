@@ -21,6 +21,11 @@ public:
     explicit Controller();
 
     /**
+     * Opérateur d'affectation de la classe Controller
+     */
+    void operator=(const Controller&) = delete;
+
+    /**
      * destructeur de la classe Controller
      */
     ~Controller();
@@ -44,16 +49,21 @@ private:
     void initVariables();
 
     /**
+     * Méthode finissant un tour de jeu
+     */
+    void endTurn();
+
+    /**
      * Métode permettant d'embarquer un personnage sur le bateau
      * @param p le personnage à embarquer
      */
-    void embark(Person &p);
+    void embark(Person *p);
 
     /**
      * Méthode permettant de débarquer un personnage du bateau
      * @param p le personnage à débarquer
      */
-    void disembark(Person &p);
+    void disembark(Person *p);
 
     /**
     * Méthode permettant d'afficher l'état du jeu

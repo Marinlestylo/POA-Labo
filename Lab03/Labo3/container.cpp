@@ -4,8 +4,8 @@
 #include "container.hpp"
 #include "controller.hpp"
 
-Container::Container(std::string  name, std::list<Person *> people) : name
-(std::move(name)), people(std::move(people)) {}
+Container::Container(std::string name, std::list<Person *>& people) : name
+(std::move(name)), people(people) {}
 
 std::ostream& Container::toStream(std::ostream& os) const {
     return os << getName() << " : " << getPeopleNames() << " ";
@@ -24,16 +24,20 @@ const std::string& Container::getName() const {
 }
 
 void Container::emptyContainer() {
-	while(!people.empty()){
-		people.pop_front();
-	}
+    people.clear();
 }
 
 void Container::addPerson(Person& p) {
+    if(isFull()){
+        throw std::runtime_error("le container est plein");
+    }
 	people.push_back(&p);
 }
 
 void Container::removePerson(Person& p) {
+    if(people.empty()){
+        throw new std::runtime_error("Le container est vide");
+    }
 	people.remove(&p);
 }
 
@@ -57,5 +61,9 @@ bool Container::isContainerSafe() {
 
 bool Container::isEmpty() const {
     return people.empty();
+}
+
+bool Container::isFull() const {
+    return false;
 }
 

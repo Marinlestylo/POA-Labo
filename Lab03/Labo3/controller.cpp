@@ -35,7 +35,7 @@ void Controller::initVariables() {
     this->people = {mother,father,paul, pierre, julie, jeanne, policeman, thief};
 	turn = 0;
 	leftBank = new Bank("Gauche", people);
-	rightBank = new Bank("Droite", std::list<Person*>());
+	rightBank = new Bank("Droite", std::list<Person*>() = {});
 	boat = new Boat(*leftBank);
     gameRunning = true;
 }
@@ -59,34 +59,34 @@ void Controller::nextTurn() {
 void Controller::parseInput(const std::string& input) {
     char command;
     Person* person = nullptr;
-    if(input.empty() || input.size() > 1 && input[1] != ' ') {
-        std::cout << ERROR_MESSAGE << std::endl;
+    if(input.empty()) {
+        showError(ERROR_MESSAGE);
         return;
-    } else if(input.size() > 1) {
+    }
+    if(input.size() > 1 && input[1] == ' ') {
         person = compareStringToPerson(input.substr(2));
-        if(person == nullptr) {
-            std::cout << ERROR_MESSAGE  << std::endl;
-            return;
-        }
     }
     command = input[0];
 
     switch (command) {
-        case 'p': break;
-        case 'e': embark(*person); ++turn; break;
-        case 'd': disembark(*person);++turn; break;
+        case 'p': display();break;
+        case 'e': embark(person); break;
+        case 'd': disembark(person); break;
         case 'm':
             if(boat->isDockedOnthisBank(*leftBank))
                 boat->moveBoat(*rightBank);
             else
                 boat->moveBoat(*leftBank);
-            ++turn;
             break;
         case 'r': reset(); break;
         case 'q': gameRunning = false; break;
         case 'h': showMenu(); break;
-        default: std::cout << ERROR_MESSAGE;
+        default : showError(ERROR_MESSAGE);
     }
+}
+
+void Controller::endTurn(){
+    ++turn;
     display();
 }
 
@@ -130,19 +130,23 @@ Person* Controller::compareStringToPerson(const std::string& s) const {
 	return nullptr;
 }
 
-void Controller::embark(Person& p) {
-	if(boat->isFull()){
-		std::cout << "Le bateau est déjà plein" << std::endl;
-	}else if(boat->getBank()->isMember(p)){
-        changeLocation(p, *boat, *boat->getBank());
+void Controller::embark(Person* p) {
+	if(boat->isFull() || !p) {
+        showError("Error: Bateau est plein ou personne n'as pas été trouvée");
+	}else if(boat->getBank()->isMember(*p)){
+        changeLocation(*p, *boat, *boat->getBank());
+    }else{
+        showError("Error: Personne n'est pas sur la rive");
     }
 }
 
-void Controller::disembark(Person &p) {
+void Controller::disembark(Person* p) {
     if(boat->isEmpty()){
-        std::cout << "Le bateau est déjà vide" << std::endl;
-    }else if(boat->isMember(p)){
-        changeLocation(p, *boat->getBank(), *boat);
+        showError("Error: Le bateau est déjà vide");
+    }else if(boat->isMember(*p)){
+        changeLocation(*p, *boat->getBank(), *boat);
+    } else{
+        showError("Error: Personne n'est pas dans le bateau");
     }
     endOfGame();
 }
@@ -153,6 +157,8 @@ void Controller::changeLocation(Person &p, Container& toAdd, Container& toRemove
     if(!(toAdd.isContainerSafe() && toRemove.isContainerSafe())){
         toAdd.removePerson(p);
         toRemove.addPerson(p);
+    } else{
+        endTurn();
     }
 }
 

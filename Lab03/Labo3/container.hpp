@@ -8,7 +8,7 @@
 
 class Container {
 public:
-    Container(std::string  name, std::list<Person *> people);
+    Container(std::string name, std::list<Person *>& people);
 
     virtual ~Container() = default;
 
@@ -20,11 +20,23 @@ public:
 
     void emptyContainer();
 
+    /**
+     * Ajoute un personnage au container
+     * @throw std::runtime_error si le container est plein
+     * @param p personnage à ajouter
+     */
     void addPerson(Person &p);
 
+    /**
+     * Enlève un personne du container
+     * @throw std::runtime_error si le container est vide
+     * @param p personnage à enlever
+     */
     void removePerson(Person &p);
 
     bool isEmpty() const;
+
+    virtual bool isFull() const;
 
     bool isMember(Person &p) const;
 

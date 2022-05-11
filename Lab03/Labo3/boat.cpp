@@ -1,21 +1,22 @@
 #include <iostream>
 #include <sstream>
 #include "boat.hpp"
+#include "controller.hpp"
 
 const std::string Boat::RIVER =
         "==============================================================================";
 
-Boat::Boat(Bank &current) : Container("Bateau", std::list<Person *>()),
-                            currentBank(&current) {}
+Boat::Boat(Bank &current) : Container("Bateau",
+                                      std::list<Person*>() = {}),currentBank(&current) {}
 
 
-std::ostream& Boat::toStream(std::ostream& os) const {
-    if (currentBank->getName() == "droite")
+std::ostream &Boat::toStream(std::ostream &os) const {
+    if (currentBank->getName() == "Droite")
         os << std::endl << RIVER << std::endl;
 
-    os << Container::getName() << " : " <<  "< " << Container::getPeopleNames() <<
-    " >";
-    if (currentBank->getName() == "gauche")
+    os << Container::getName() << " : " << "< " << Container::getPeopleNames() <<
+       ">";
+    if (currentBank->getName() == "Gauche")
         std::cout << std::endl << RIVER << std::endl;
     return os;
 }
@@ -29,7 +30,7 @@ void Boat::moveBoat(Bank &bank) {
         }
     }
     if (!hasDriver) {
-        std::cout << "Il n'y a pas de conducteur dans le bateau" << std::endl;
+        Controller::showError("Il n'y a pas de conducteur dans le bateau");
         return;
     }
     currentBank = &bank;
@@ -45,5 +46,5 @@ bool Boat::isDockedOnthisBank(Bank &bank) const {
 }
 
 bool Boat::isFull() const {
-    return Container::getPeople()->size() == 2;
+    return Container::getPeople()->size() == MAX_CAPACITY;
 }

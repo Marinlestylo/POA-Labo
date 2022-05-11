@@ -12,7 +12,7 @@ public:
      * @param name nom de la rive
      * @param people personne se trouvant sur la rive
      */
-    Bank(const std::string& name, std::list<Person *> people);
+    Bank(std::string name, std::list<Person *> people);
 };
 
 
