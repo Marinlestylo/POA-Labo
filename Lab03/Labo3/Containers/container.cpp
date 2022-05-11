@@ -5,8 +5,7 @@
 #include "../controller.hpp"
 #include "../Characters/person.hpp"
 
-Container::Container(std::string name, std::list<Person *>& people) : name
-(std::move(name)), people(people) {}
+Container::Container(const std::string& name) : name(name) {}
 
 std::ostream& Container::toStream(std::ostream& os) const {
     return os << getName() << " : " << getPeopleNames() << " ";
@@ -28,22 +27,22 @@ void Container::emptyContainer() {
     people.clear();
 }
 
-void Container::addPerson(Person& p) {
+void Container::addPerson(const Person& p) {
     if(isFull()){
         throw std::runtime_error("le container est plein");
     }
 	people.push_back(&p);
 }
 
-void Container::removePerson(Person& p) {
+void Container::removePerson(const Person& p) {
     if(people.empty()){
         throw new std::runtime_error("Le container est vide");
     }
 	people.remove(&p);
 }
 
-std::list<Person*>* Container::getPeople() const {
-	return (std::list<Person*>*) &people;
+std::list<const Person*>* Container::getPeople() const {
+	return (std::list<const Person*>*) &people;
 }
 
 bool Container::isMember(const Person& p) const {
@@ -51,7 +50,7 @@ bool Container::isMember(const Person& p) const {
 }
 
 bool Container::isContainerSafe() {
-	for(Person* p : people){
+	for(const Person* p : people){
 		if(!p->isSafe(*this)){
             Controller::showError(p->getErrorMessage());
 			return false;
@@ -68,15 +67,23 @@ bool Container::isFull() const {
     return false;
 }
 
-std::list<Person *>::const_iterator Container::begin() const {
+std::list<const Person *>::const_iterator Container::begin() const {
     return people.cbegin();
 }
 
-std::list<Person *>::const_iterator Container::end() const {
+std::list<const Person *>::const_iterator Container::end() const {
     return people.cend();
 }
 
-int Container::size() const {
+unsigned Container::size() const {
     return people.size();
+}
+
+void Container::addAll(const std::list<const Person*> & peopleToAdd){
+    for(const Person* p : peopleToAdd){
+        if(isFull())
+            throw std::runtime_error("le container est plein");
+        this->people.push_back(p);
+    }
 }
 

@@ -2,10 +2,6 @@
 
 Driver::Driver(const std::string &name) : Person(name) {}
 
-bool Driver::canDrive() {
+bool Driver::canDrive() const{
     return true;
-}
-
-std::string Driver::getErrorMessage() {
-    return "";
 }

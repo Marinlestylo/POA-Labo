@@ -9,7 +9,7 @@
 class Person;
 class Container {
 public:
-    Container(std::string name, std::list<Person *>& people);
+    Container(const std::string& name);
 
     virtual ~Container() = default;
 
@@ -19,7 +19,7 @@ public:
 
     const std::string &getName() const;
 
-    int size() const;
+    unsigned size() const;
 
     void emptyContainer();
 
@@ -28,14 +28,16 @@ public:
      * @throw std::runtime_error si le container est plein
      * @param p personnage à ajouter
      */
-    void addPerson(Person &p);
+    void addPerson(const Person &p);
+
+    void addAll(const std::list<const Person*> & people);
 
     /**
      * Enlève un personne du container
      * @throw std::runtime_error si le container est vide
      * @param p personnage à enlever
      */
-    void removePerson(Person &p);
+    void removePerson(const Person &p);
 
     bool isEmpty() const;
 
@@ -45,17 +47,17 @@ public:
 
     bool isContainerSafe();
 
-    std::list<Person*>::const_iterator begin() const;
+    std::list<const Person*>::const_iterator begin() const;
 
-    std::list<Person*>::const_iterator end() const;
+    std::list<const Person*>::const_iterator end() const;
 
 protected:
-    std::list<Person *> *getPeople() const;
+    std::list<const Person *> *getPeople() const;
 
 private:
 
-    std::string name;
-    std::list<Person *> people;
+    const std::string name;
+    std::list<const Person *> people;
 };
 
 

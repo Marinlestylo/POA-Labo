@@ -6,11 +6,11 @@
 
 class Boat : public Container {
 public:
-    explicit Boat(Bank &current);
+    explicit Boat(const Bank &current);
 
     bool moveBoat(Bank &bank);
 
-    bool isDockedOnthisBank(Bank &bank) const;
+    bool isDockedOnthisBank(const Bank &bank) const;
 
     std::ostream &toStream(std::ostream &os) const override;
 
@@ -19,7 +19,7 @@ public:
     bool isFull() const override;
 
 private:
-    Bank *currentBank;
+    const Bank *currentBank;
     static const std::string RIVER;
     static const int MAX_CAPACITY = 2;
 };

@@ -15,7 +15,8 @@ public:
      * @param dependsOn personne de qui la personne dépend
      * @param badWith personne avec laquelle elle ne peut pas rester
      */
-    DependentPerson(const std::string& name, Person& dependsOn, Person& badWith);
+    DependentPerson(const std::string& name, const Person& dependsOn,const Person&
+    badWith);
 
     /**
      * Méthode permettant de savoir si la personne est en sécurité dans un lieu
@@ -24,8 +25,8 @@ public:
      */
     bool isSafe(const Container& container) const override;
 private:
-    Person* dependsOn;
-    Person* badWith;
+    const Person* dependsOn;
+    const Person* badWith;
 };
 
 

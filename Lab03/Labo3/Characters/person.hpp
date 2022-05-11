@@ -22,17 +22,18 @@ public:
      * Destructeur de la classe Person
      */
     virtual ~Person() = default;
+
     /**
      * Méthode permettant de savoir si la personne peut conduire
      * @return true si la personne peut conduire, false sinon
      */
-    virtual bool canDrive();
+    virtual bool canDrive() const;
 
     /**
      * Méthode permettant de connaitre le nom de la personne
      * @return le nom de la personne
      */
-    const std::string& getName();
+    const std::string& getName() const;
 
     /**
      * Méthode permettant de savoir si la personne est en sécurité dans un lieu
@@ -45,10 +46,11 @@ public:
      * Méthode permettant d'avoir un message d'erreur lié à la personne
      * @return un message d'erreur
      */
-    virtual std::string getErrorMessage() = 0;
+    virtual const std::string& getErrorMessage() const;
 
 private:
-    std::string name;
+    const std::string name;
+    static const std::string ERROR_MESSAGE;
 };
 
 

@@ -5,9 +5,7 @@
 const std::string Boat::RIVER =
         "==============================================================================";
 
-Boat::Boat(Bank &current) : Container("Bateau",
-                                      std::list<Person *>() = {}),
-                            currentBank(&current) {}
+Boat::Boat(const Bank &current) : Container("Bateau"),currentBank(&current) {}
 
 
 std::ostream &Boat::toStream(std::ostream &os) const {
@@ -23,7 +21,7 @@ std::ostream &Boat::toStream(std::ostream &os) const {
 
 bool Boat::moveBoat(Bank &bank) {
     bool hasDriver = false;
-    for (Person *p: *getPeople()) {
+    for (const Person *p: *getPeople()) {
         if (p->canDrive()) {
             hasDriver = true;
             break;
@@ -36,7 +34,7 @@ bool Boat::moveBoat(Bank &bank) {
     return true;
 }
 
-bool Boat::isDockedOnthisBank(Bank &bank) const {
+bool Boat::isDockedOnthisBank(const Bank &bank) const {
     return &bank == currentBank;
 }
 

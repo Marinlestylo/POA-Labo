@@ -17,13 +17,13 @@ public:
      * @param dependsOn personne dont la personne dépend
      * @param badWith personne avec laquelle elle ne peut pas rester
      */
-    Girl(const std::string& name,Person& dependsOn, Person& badWith);
+    Girl(const std::string& name,const Person& dependsOn, const Person& badWith);
 
     /**
      * Méthode permettant d'avoir un message d'erreur lié à la personne
      * @return un message d'erreur
      */
-    std::string getErrorMessage() override;
+    const std::string& getErrorMessage()const override;
 private:
     static const std::string ERROR_MESSAGE;
 };

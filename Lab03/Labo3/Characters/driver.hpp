@@ -21,13 +21,7 @@ public:
      * Méthode permettant de savoir si la personne peut conduire
      * @return true si la personne peut conduire, false sinon
      */
-    bool canDrive() override;
-
-    /**
-     * Méthode permettant d'avoir un message d'erreur lié à la personne
-     * @return un message d'erreur
-     */
-    std::string getErrorMessage() override;
+    bool canDrive() const override;
 };
 
 

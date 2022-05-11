@@ -1,8 +1,8 @@
 #include "dependentPerson.hpp"
 #include "../Containers/container.hpp"
 
-DependentPerson::DependentPerson(const std::string &name, Person& dependsOn,
-                                 Person& badWith) : Person(name) {
+DependentPerson::DependentPerson(const std::string &name, const Person& dependsOn,
+                                 const Person& badWith) : Person(name) {
     this->dependsOn = &dependsOn;
     this->badWith = &badWith;
 }
