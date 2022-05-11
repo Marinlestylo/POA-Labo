@@ -15,7 +15,7 @@ public:
      * Constructeur de la classe Driver
      * @param name nom du conducteur
      */
-    explicit Driver(const std::string & name);
+    explicit Driver(const std::string &name);
 
     /**
      * Méthode permettant de savoir si la personne peut conduire

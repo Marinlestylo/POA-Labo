@@ -3,7 +3,7 @@
 
 const std::string Thief::ERROR_MESSAGE = "voleur sans policier";
 
-Thief::Thief(const std::string& name, const Person& goodWith) : Person(name) {
+Thief::Thief(const std::string &name, const Person &goodWith) : Person(name) {
     this->dependsOn = &goodWith;
 }
 
@@ -12,8 +12,8 @@ Thief::Thief(const std::string& name, const Person& goodWith) : Person(name) {
  * @param people
  * @return
  */
-bool Thief::isSafe(const Container& container) const{
-    if(container.size() == 1){
+bool Thief::isSafe(const Container &container) const {
+    if (container.size() == 1) {
         return true;
     }
     for (auto it = container.begin(); it != container.end(); ++it) {
@@ -24,6 +24,6 @@ bool Thief::isSafe(const Container& container) const{
     return false;
 }
 
-const std::string& Thief::getErrorMessage() const {
+const std::string &Thief::getErrorMessage() const {
     return ERROR_MESSAGE;
 }

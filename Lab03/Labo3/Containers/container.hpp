@@ -1,19 +1,19 @@
 #ifndef LABO3_CONTAINER_HPP
 #define LABO3_CONTAINER_HPP
 
-
 #include <string>
 #include <algorithm>
 #include <list>
 
 class Person;
+
 class Container {
 public:
-    Container(const std::string& name);
+    Container(const std::string &name);
 
     virtual ~Container() = default;
 
-    virtual std::ostream& toStream(std::ostream& os) const;
+    virtual std::ostream &toStream(std::ostream &os) const;
 
     std::string getPeopleNames() const;
 
@@ -30,7 +30,7 @@ public:
      */
     void addPerson(const Person &p);
 
-    void addAll(const std::list<const Person*> & people);
+    void addAll(const std::list<const Person *> &people);
 
     /**
      * Enlève un personne du container
@@ -47,9 +47,9 @@ public:
 
     bool isContainerSafe();
 
-    std::list<const Person*>::const_iterator begin() const;
+    std::list<const Person *>::const_iterator begin() const;
 
-    std::list<const Person*>::const_iterator end() const;
+    std::list<const Person *>::const_iterator end() const;
 
 protected:
     std::list<const Person *> *getPeople() const;

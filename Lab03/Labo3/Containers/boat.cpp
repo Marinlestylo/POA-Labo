@@ -5,7 +5,7 @@
 const std::string Boat::RIVER =
         "==============================================================================";
 
-Boat::Boat(const Bank &current) : Container("Bateau"),currentBank(&current) {}
+Boat::Boat(const Bank &current) : Container("Bateau"), currentBank(&current) {}
 
 
 std::ostream &Boat::toStream(std::ostream &os) const {

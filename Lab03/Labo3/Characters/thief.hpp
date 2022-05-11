@@ -21,13 +21,13 @@ public:
      * @param people liste des personnes présentes dans le lieu
      * @return true si la personne est en sécurité, false sinon
      */
-    bool isSafe(const Container& container) const override;
+    bool isSafe(const Container &container) const override;
 
     /**
     * Méthode permettant d'avoir un message d'erreur lié à la personne
     * @return un message d'erreur
     */
-    const std::string& getErrorMessage() const override;
+    const std::string &getErrorMessage() const override;
 
 private:
     static const std::string ERROR_MESSAGE;

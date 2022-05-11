@@ -4,6 +4,7 @@
 
 #include "person.hpp"
 #include <algorithm>
+
 /**
  * Classe représentant un personne dépendante à un autre
  */
@@ -15,7 +16,7 @@ public:
      * @param dependsOn personne de qui la personne dépend
      * @param badWith personne avec laquelle elle ne peut pas rester
      */
-    DependentPerson(const std::string& name, const Person& dependsOn,const Person&
+    DependentPerson(const std::string &name, const Person &dependsOn, const Person &
     badWith);
 
     /**
@@ -23,10 +24,11 @@ public:
      * @param people liste des personnes présentes dans le lieu
      * @return true si la personne est en sécurité, false sinon
      */
-    bool isSafe(const Container& container) const override;
+    bool isSafe(const Container &container) const override;
+
 private:
-    const Person* dependsOn;
-    const Person* badWith;
+    const Person *dependsOn;
+    const Person *badWith;
 };
 
 

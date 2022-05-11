@@ -1,62 +1,60 @@
 #include <iostream>
 #include <sstream>
-#include <utility>
 #include "container.hpp"
 #include "../controller.hpp"
-#include "../Characters/person.hpp"
 
-Container::Container(const std::string& name) : name(name) {}
+Container::Container(const std::string &name) : name(name) {}
 
-std::ostream& Container::toStream(std::ostream& os) const {
+std::ostream &Container::toStream(std::ostream &os) const {
     return os << getName() << " : " << getPeopleNames() << " ";
 }
 
 std::string Container::getPeopleNames() const {
     std::stringstream ss;
-    for (auto &person : people) {
+    for (auto &person: people) {
         ss << person->getName() << " ";
     }
     return ss.str();
 }
 
-const std::string& Container::getName() const {
-	return name;
+const std::string &Container::getName() const {
+    return name;
 }
 
 void Container::emptyContainer() {
     people.clear();
 }
 
-void Container::addPerson(const Person& p) {
-    if(isFull()){
+void Container::addPerson(const Person &p) {
+    if (isFull()) {
         throw std::runtime_error("le container est plein");
     }
-	people.push_back(&p);
+    people.push_back(&p);
 }
 
-void Container::removePerson(const Person& p) {
-    if(people.empty()){
+void Container::removePerson(const Person &p) {
+    if (people.empty()) {
         throw new std::runtime_error("Le container est vide");
     }
-	people.remove(&p);
+    people.remove(&p);
 }
 
-std::list<const Person*>* Container::getPeople() const {
-	return (std::list<const Person*>*) &people;
+std::list<const Person *> *Container::getPeople() const {
+    return (std::list<const Person *> *) &people;
 }
 
-bool Container::isMember(const Person& p) const {
-	return std::find(people.begin(), people.end(), &p) != people.end();
+bool Container::isMember(const Person &p) const {
+    return std::find(people.begin(), people.end(), &p) != people.end();
 }
 
 bool Container::isContainerSafe() {
-	for(const Person* p : people){
-		if(!p->isSafe(*this)){
+    for (const Person *p: people) {
+        if (!p->isSafe(*this)) {
             Controller::showError(p->getErrorMessage());
-			return false;
-		}
-	}
-	return true;
+            return false;
+        }
+    }
+    return true;
 }
 
 bool Container::isEmpty() const {
@@ -79,9 +77,9 @@ unsigned Container::size() const {
     return people.size();
 }
 
-void Container::addAll(const std::list<const Person*> & peopleToAdd){
-    for(const Person* p : peopleToAdd){
-        if(isFull())
+void Container::addAll(const std::list<const Person *> &peopleToAdd) {
+    for (const Person *p: peopleToAdd) {
+        if (isFull())
             throw std::runtime_error("le container est plein");
         this->people.push_back(p);
     }
