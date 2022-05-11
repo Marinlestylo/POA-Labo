@@ -1,7 +1,7 @@
 #ifndef LABO3_CONTAINER_HPP
 #define LABO3_CONTAINER_HPP
 
-#include "person.hpp"
+#include "../Characters/person.hpp"
 #include <string>
 #include <algorithm>
 #include <list>
@@ -38,7 +38,7 @@ public:
 
     virtual bool isFull() const;
 
-    bool isMember(Person &p) const;
+    bool isMember(const Person &p) const;
 
     bool isContainerSafe();
 

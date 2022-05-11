@@ -12,6 +12,6 @@ const std::string &Person::getName() {
     return name;
 }
 
-bool Person::isSafe(const std::list<Person *> &people) {
+bool Person::isSafe(const std::list<Person *> &people) const{
     return true;
 }

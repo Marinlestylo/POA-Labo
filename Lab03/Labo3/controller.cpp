@@ -40,14 +40,15 @@ void Controller::initVariables() {
     gameRunning = true;
 }
 
-void Controller::showMenu() const {
-	printMenuLine("p", "afficher");
-	printMenuLine("e <nom>", "embarquer <nom>");
-	printMenuLine("d <nom>", "debarquer <nom>");
-	printMenuLine("m", "deplacer bateau");
-	printMenuLine("r", "reinitialiser");
-	printMenuLine("q", "quitter");
-	printMenuLine("h", "menu");
+void Controller::showMenu() {
+    std::cout<< std::endl;
+	printMenuLine(DISPLAY, "afficher");
+	printMenuLine(EMBARK, "embarquer", " <nom>");
+	printMenuLine(DISEMBARK, "debarquer", " <nom>");
+	printMenuLine(MOVE, "deplacer bateau");
+	printMenuLine(RESET, "reinitialiser");
+	printMenuLine(EXIT, "quitter");
+	printMenuLine(HELP, "menu");
 }
 
 void Controller::nextTurn() {
@@ -69,18 +70,18 @@ void Controller::parseInput(const std::string& input) {
     command = input[0];
 
     switch (command) {
-        case 'p': display();break;
-        case 'e': embark(person); break;
-        case 'd': disembark(person); break;
-        case 'm':
+        case DISPLAY: display();break;
+        case EMBARK: embark(person); break;
+        case DISEMBARK: disembark(person); break;
+        case MOVE:
             if(boat->isDockedOnthisBank(*leftBank))
                 boat->moveBoat(*rightBank);
             else
                 boat->moveBoat(*leftBank);
             break;
-        case 'r': reset(); break;
-        case 'q': gameRunning = false; break;
-        case 'h': showMenu(); break;
+        case RESET: reset(); break;
+        case EXIT: gameRunning = false; break;
+        case HELP: showMenu(); break;
         default : showError(ERROR_MESSAGE);
     }
 }
@@ -117,8 +118,10 @@ void Controller::userInput() {
 	parseInput(input);
 }
 
-void Controller::printMenuLine(const std::string& command, const std::string& info) {
-	std::cout << std::setw(8) << std::left << command << ": " << info << std::endl;
+void Controller::printMenuLine(const char command, const std::string& info, const
+std::string& argument) {
+	std::cout << command << " "<<  std::setw(8) << std::left  << argument <<
+    ": " << info << " " << argument << std::endl;
 }
 
 Person* Controller::compareStringToPerson(const std::string& s) const {
@@ -133,8 +136,9 @@ Person* Controller::compareStringToPerson(const std::string& s) const {
 void Controller::embark(Person* p) {
 	if(boat->isFull() || !p) {
         showError("Error: Bateau est plein ou personne n'as pas été trouvée");
-	}else if(boat->getBank()->isMember(*p)){
-        changeLocation(*p, *boat, *boat->getBank());
+	}else if(boat->isOnBank(*p)){
+        Bank* bank = boat->isDockedOnthisBank(*leftBank) ? leftBank : rightBank;
+        changeLocation(*p, *boat, *bank);
     }else{
         showError("Error: Personne n'est pas sur la rive");
     }
@@ -144,7 +148,8 @@ void Controller::disembark(Person* p) {
     if(boat->isEmpty()){
         showError("Error: Le bateau est déjà vide");
     }else if(boat->isMember(*p)){
-        changeLocation(*p, *boat->getBank(), *boat);
+        Bank* bank = boat->isDockedOnthisBank(*leftBank) ? leftBank : rightBank;
+        changeLocation(*p, *bank, *boat);
     } else{
         showError("Error: Personne n'est pas dans le bateau");
     }

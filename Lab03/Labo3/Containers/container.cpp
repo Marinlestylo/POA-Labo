@@ -2,7 +2,7 @@
 #include <sstream>
 #include <utility>
 #include "container.hpp"
-#include "controller.hpp"
+#include "../controller.hpp"
 
 Container::Container(std::string name, std::list<Person *>& people) : name
 (std::move(name)), people(people) {}
@@ -45,7 +45,7 @@ std::list<Person*>* Container::getPeople() const {
 	return (std::list<Person*>*) &people;
 }
 
-bool Container::isMember(Person& p) const {
+bool Container::isMember(const Person& p) const {
 	return std::find(people.begin(), people.end(), &p) != people.end();
 }
 

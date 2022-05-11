@@ -12,9 +12,9 @@ public:
 
     bool isDockedOnthisBank(Bank &bank) const;
 
-    std::ostream& toStream(std::ostream& os) const override;
+    std::ostream &toStream(std::ostream &os) const override;
 
-    Bank *getBank() const;
+    bool isOnBank(const Person& person) const;
 
     bool isFull() const override;
 

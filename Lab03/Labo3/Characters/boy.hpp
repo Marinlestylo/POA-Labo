@@ -14,8 +14,10 @@ public:
      * @param dependsOn personne dont il dépend
      * @param badWith personne avec qui il ne peut pas rester
      */
-    Boy(const std::string& name, Person& dependsOn, Person& badWith);
+    Boy(const std::string &name, Person &dependsOn, Person &badWith);
+
     std::string getErrorMessage() override;
+
 private:
     static const std::string ERROR_MESSAGE;
 };

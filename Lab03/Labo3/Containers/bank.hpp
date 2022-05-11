@@ -2,6 +2,7 @@
 #define LABO3_BANK_HPP
 
 #include "container.hpp"
+
 /**
  * Classe représentant une rive de la rivière
  */
@@ -12,7 +13,7 @@ public:
      * @param name nom de la rive
      * @param people personne se trouvant sur la rive
      */
-    Bank(std::string name, std::list<Person *> people);
+    Bank(const std::string &name, std::list<Person *> people);
 };
 
 

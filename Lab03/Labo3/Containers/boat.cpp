@@ -1,13 +1,13 @@
 #include <iostream>
-#include <sstream>
 #include "boat.hpp"
-#include "controller.hpp"
+#include "../controller.hpp"
 
 const std::string Boat::RIVER =
         "==============================================================================";
 
 Boat::Boat(Bank &current) : Container("Bateau",
-                                      std::list<Person*>() = {}),currentBank(&current) {}
+                                      std::list<Person *>() = {}),
+                            currentBank(&current) {}
 
 
 std::ostream &Boat::toStream(std::ostream &os) const {
@@ -34,11 +34,6 @@ void Boat::moveBoat(Bank &bank) {
         return;
     }
     currentBank = &bank;
-
-}
-
-Bank *Boat::getBank() const {
-    return currentBank;
 }
 
 bool Boat::isDockedOnthisBank(Bank &bank) const {
@@ -47,4 +42,8 @@ bool Boat::isDockedOnthisBank(Bank &bank) const {
 
 bool Boat::isFull() const {
     return getPeople()->size() >= MAX_CAPACITY;
+}
+
+bool Boat::isOnBank(const Person &person) const {
+    return currentBank->isMember(person);
 }

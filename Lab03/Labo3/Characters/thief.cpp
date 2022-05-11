@@ -11,7 +11,7 @@ Thief::Thief(const std::string& name, Person& goodWith) : Person(name) {
  * @param people
  * @return
  */
-bool Thief::isSafe(const std::list<Person *> &people) {
+bool Thief::isSafe(const std::list<Person *> &people) const{
     if (people.size() == 1) {
         return true;
     }

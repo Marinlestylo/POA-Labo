@@ -3,22 +3,22 @@
 
 #include <string>
 #include <list>
-#include "container.hpp"
-#include "bank.hpp"
-#include "person.hpp"
-#include "boy.hpp"
-#include "girl.hpp"
-#include "dependentPerson.hpp"
-#include "driver.hpp"
-#include "thief.hpp"
-#include "boat.hpp"
+#include "Containers/container.hpp"
+#include "Containers/bank.hpp"
+#include "Characters/person.hpp"
+#include "Characters/boy.hpp"
+#include "Characters/girl.hpp"
+#include "Characters/dependentPerson.hpp"
+#include "Characters/driver.hpp"
+#include "Characters/thief.hpp"
+#include "Containers/boat.hpp"
 
 class Controller {
 public:
     /**
      * Constructeur par défaut de la classe Controller
      */
-    explicit Controller();
+    Controller();
 
     /**
      * Opérateur d'affectation de la classe Controller
@@ -71,11 +71,6 @@ private:
     void display() const;
 
     /**
-     * Méthode permettant d'afficher le menu
-    */
-    void showMenu() const;
-
-    /**
      * Méthode permettant de parser les commandes du joueur
      * @param input la commande entrée par le joueur
      */
@@ -93,11 +88,17 @@ private:
     void userInput();
 
     /**
+    * Méthode permettant d'afficher le menu
+    */
+    static void showMenu() ;
+
+    /**
      * Méthode permettant d'afficher une ligne du menu
      * @param command nom de la commande
      * @param info description de la commande
      */
-    static void printMenuLine(const std::string &command, const std::string &info);
+    static void printMenuLine(const char command, const std::string &info, const
+    std::string &argument = "");
 
     /**
      * Méthode permettant de convertir un string en personne
@@ -127,6 +128,8 @@ private:
     Boat *boat;
     std::list<Person *> people;
     static const std::string ERROR_MESSAGE, SEPARATOR;
+    static const char DISPLAY = 'p', EMBARK = 'e', DISEMBARK = 'd', MOVE = 'm' ,
+    RESET ='r',EXIT = 'q', HELP = 'h';
 };
 
 

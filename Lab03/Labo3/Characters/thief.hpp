@@ -21,7 +21,7 @@ public:
      * @param people liste des personnes présentes dans le lieu
      * @return true si la personne est en sécurité, false sinon
      */
-    bool isSafe(const std::list<Person *> &people) override;
+    bool isSafe(const std::list<Person *> &people) const override;
 
     /**
     * Méthode permettant d'avoir un message d'erreur lié à la personne
