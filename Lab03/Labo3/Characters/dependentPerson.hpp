@@ -6,7 +6,7 @@
 #include <algorithm>
 
 /**
- * Classe représentant un personne dépendante à un autre
+ * Classe représentant une personne dépendante de deux autre
  * @author Friedli Jonathan
  * @author Jaquier Alexandre
  */

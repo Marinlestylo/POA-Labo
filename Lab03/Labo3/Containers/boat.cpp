@@ -19,7 +19,7 @@ std::ostream &Boat::toStream(std::ostream &os) const {
     return os;
 }
 
-bool Boat::moveBoat(Bank &bank) {
+bool Boat::moveBoat(const Bank &bank) {
     bool hasDriver = false;
     for (const Person *p: *getPeople()) {
         if (p->canDrive()) {

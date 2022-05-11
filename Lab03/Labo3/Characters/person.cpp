@@ -20,5 +20,5 @@ bool Person::isSafe(const Container &container) const {
 }
 
 const std::string &Person::getErrorMessage() const {
-    return "";
+    return ERROR_MESSAGE;
 }

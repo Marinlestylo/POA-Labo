@@ -47,7 +47,7 @@ bool Container::isMember(const Person &p) const {
     return std::find(people.begin(), people.end(), &p) != people.end();
 }
 
-bool Container::isContainerSafe() {
+bool Container::isContainerSafe() const {
     for (const Person *p: people) {
         if (!p->isSafe(*this)) {
             Controller::showError(p->getErrorMessage());

@@ -22,7 +22,7 @@ public:
      * @param bank La nouvelle rive
      * @return true si le déplacement a réussi, false sinon
      */
-    bool moveBoat(Bank &bank);
+    bool moveBoat(const Bank &bank);
 
     /**
      * Méthode permettant de savoir sur quelle rive le bateau se trouve

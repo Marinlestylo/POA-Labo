@@ -18,7 +18,7 @@ public:
      * Constructeur de la classe Container
      * @param name Nom du conteneur
      */
-    Container(const std::string &name);
+    explicit Container(const std::string &name);
 
     /**
      * Destructeur de la classe Container
@@ -100,7 +100,7 @@ public:
      * en sécurité
      * @return true si les personnes sont en sécurité, false sinon
      */
-    bool isContainerSafe();
+    bool isContainerSafe() const;
 
     /**
      * Méthode retournant un itérateur constant sur le premier élément de la liste
