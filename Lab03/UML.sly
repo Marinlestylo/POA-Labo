@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
 <classDiagram>
   <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="River">
-    <inheritance id="78019">
-      <child>78007</child>
-      <parent>78005</parent>
-    </inheritance>
-    <inheritance id="78018">
-      <child>78008</child>
-      <parent>78005</parent>
-    </inheritance>
-    <inheritance id="78017">
-      <child>78004</child>
-      <parent>78003</parent>
-    </inheritance>
-    <inheritance id="78015">
-      <child>78006</child>
-      <parent>78004</parent>
-    </inheritance>
-    <inheritance id="78014">
-      <child>78005</child>
-      <parent>78004</parent>
-    </inheritance>
-    <entity entityType="CLASS" id="78008" isAbstract="false" name="Girl" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="78007" isAbstract="false" name="Boy" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="78006" isAbstract="false" name="Thief" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="78005" isAbstract="false" name="Dependant" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="78004" isAbstract="false" name="SemiDependant" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="78003" isAbstract="false" name="Person" visibility="PUBLIC"/>
     <inheritance id="75879">
       <child>75283</child>
       <parent>75284</parent>
@@ -47,13 +21,44 @@
       <child>76069</child>
       <parent>65686</parent>
     </inheritance>
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="79974" name="dépend de &gt;">
+      <role componentId="75284" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>0</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+      <role componentId="65686" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2</min>
+          <max>2</max>
+        </multiplicity>
+      </role>
+    </association>
+    <association aggregation="NONE" direction="BIDIRECTIONAL" id="80139" name="&lt; est sous la surveillance de">
+      <role componentId="73671" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>0</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+      <role componentId="65686" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
     <entity entityType="CLASS" id="73671" isAbstract="false" name="Thief" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="true" name="ERROR_MESSAGE" type="string" visibility="PRIVATE"/>
       <method is-constructor="true" isAbstract="false" isStatic="false" name="Thief" returnType="" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="name" type="const_string&amp;"/>
-        <variable const="false" name="goodWith" type="Person&amp;"/>
+        <variable const="false" name="goodWith" type="const_Person&amp;"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="getErrorMessage" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="isSafe_const" returnType="bool" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="container" type="const_Container&amp;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="getErrorMessage_const" returnType="const_string&amp;" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
     <entity entityType="CLASS" id="65689" isAbstract="false" name="Controller" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="turn" type="unsigned" visibility="PRIVATE"/>
@@ -105,18 +110,19 @@
       <method isAbstract="false" isStatic="false" name="unload" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="isListValid" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
-    <entity entityType="CLASS" id="65686" isAbstract="true" name="Person" visibility="PUBLIC">
+    <entity entityType="CLASS" id="65686" isAbstract="false" name="Person" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
-      <method is-constructor="true" isAbstract="true" isStatic="false" name="Person" returnType="" view="DEFAULT" visibility="PUBLIC"/>
-      <method is-constructor="true" isAbstract="true" isStatic="false" name="~Person_virtual" returnType="" view="DEFAULT" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="true" name="ERROR_MESSAGE" type="string" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Person" returnType="" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="name" type="const_string&amp;"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="canDrive_virtual" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
-      <method isAbstract="false" isStatic="false" name="getName" returnType="const_string&amp;" view="DEFAULT" visibility="PUBLIC"/>
-      <method isAbstract="false" isStatic="false" name="isSafe_virtual" returnType="bool" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="people" type="const_list&lt;Person*&gt;&amp;"/>
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="~Person_virtual" returnType="" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="canDrive_virtual_const" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="getName_const" returnType="const_string&amp;" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="isSafe_virtual_const" returnType="bool" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="container" type="const_Container&amp;"/>
       </method>
-      <method isAbstract="true" isStatic="false" name="getErrorMessage_virtual" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="getErrorMessage_virtual_const" returnType="const_string&amp;" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
     <entity entityType="CLASS" id="65685" isAbstract="true" name="Container" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="name" type="string" visibility="PRIVATE"/>
@@ -129,56 +135,147 @@
       <attribute const="false" defaultValue="" isStatic="true" name="attributeERROR_MESSAGE" type="string" visibility="PRIVATE"/>
       <method is-constructor="true" isAbstract="false" isStatic="false" name="Boy" returnType="" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="name" type="const_string&amp;"/>
-        <variable const="false" name="dependsOn" type="Person&amp;"/>
-        <variable const="false" name="badWith" type="Person&amp;"/>
+        <variable const="false" name="dependsOn" type="const_Person&amp;"/>
+        <variable const="false" name="badWith" type="const_Person&amp;"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="getErrorMessage" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="getErrorMessage_const" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
-    <entity entityType="CLASS" id="75284" isAbstract="false" name="DependantPerson" visibility="PUBLIC">
+    <entity entityType="CLASS" id="75284" isAbstract="false" name="DependentPerson" visibility="PUBLIC">
       <method is-constructor="true" isAbstract="false" isStatic="false" name="DependantPerson" returnType="" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="name" type="const_string&amp;"/>
-        <variable const="false" name="dependsOn" type="Person&amp;"/>
-        <variable const="false" name="badWith" type="Person&amp;"/>
+        <variable const="false" name="dependsOn" type="const_Person&amp;"/>
+        <variable const="false" name="badWith" type="const_Person&amp;"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="isSafe" returnType="bool" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="people" type="const_list&lt;Person*&gt;&amp;"/>
+      <method isAbstract="false" isStatic="false" name="isSafe_const" returnType="bool" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="people" type="const_Container&amp;"/>
       </method>
     </entity>
     <entity entityType="CLASS" id="75612" isAbstract="false" name="Girl" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="true" name="ERROR_MESSAGE" type="string" visibility="PRIVATE"/>
       <method is-constructor="true" isAbstract="false" isStatic="false" name="Girl" returnType="" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="name" type="const_string&amp;"/>
-        <variable const="false" name="dependsOn" type="Person&amp;"/>
-        <variable const="false" name="badWith" type="Person&amp;"/>
+        <variable const="false" name="dependsOn" type="const_Person&amp;"/>
+        <variable const="false" name="badWith" type="const_Person&amp;"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="getErrorMessage" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="getErrorMessage_const" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
     <entity entityType="CLASS" id="76069" isAbstract="false" name="Driver" visibility="PUBLIC">
       <method is-constructor="true" isAbstract="false" isStatic="false" name="Driver" returnType="" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="name" type="const_string&amp;"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="canDrive" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
-      <method isAbstract="false" isStatic="false" name="getErrorMessage()" returnType="string" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="canDrive_const" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
   </diagramElements>
   <umlView grid="10" name="Main view" open="true">
-    <relationView color="-12566464" relationId="76123">
+    <relationView color="-12566464" relationId="80139">
       <line>
         <point>
-          <x>2111</x>
+          <x>1711</x>
           <y>261</y>
         </point>
         <point>
-          <x>2111</x>
-          <y>241</y>
+          <x>1711</x>
+          <y>191</y>
         </point>
         <point>
-          <x>1421</x>
-          <y>241</y>
+          <x>1601</x>
+          <y>191</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>1645</x>
+        <y>171</y>
+        <w>175</w>
+        <h>17</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>1715</x>
+        <y>238</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>1605</x>
+        <y>195</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>1711</x>
+        <y>241</y>
+        <w>21</w>
+        <h>17</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>1605</x>
+        <y>168</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="79974">
+      <line>
+        <point>
+          <x>1181</x>
+          <y>261</y>
         </point>
         <point>
-          <x>1421</x>
+          <x>1181</x>
           <y>201</y>
+        </point>
+        <point>
+          <x>1241</x>
+          <y>201</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>1120</x>
+        <y>179</y>
+        <w>79</w>
+        <h>17</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>1185</x>
+        <y>238</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>1205</x>
+        <y>205</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>1157</x>
+        <y>239</y>
+        <w>21</w>
+        <h>17</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>1227</x>
+        <y>178</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="76123">
+      <line>
+        <point>
+          <x>2191</x>
+          <y>261</y>
+        </point>
+        <point>
+          <x>2191</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1421</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1421</x>
+          <y>216</y>
         </point>
       </line>
     </relationView>
@@ -198,7 +295,7 @@
         </point>
         <point>
           <x>1421</x>
-          <y>201</y>
+          <y>216</y>
         </point>
       </line>
     </relationView>
@@ -218,7 +315,7 @@
         </point>
         <point>
           <x>1421</x>
-          <y>201</y>
+          <y>216</y>
         </point>
       </line>
     </relationView>
@@ -245,11 +342,11 @@
     <relationView color="-12566464" relationId="75879">
       <line>
         <point>
-          <x>1251</x>
+          <x>1161</x>
           <y>431</y>
         </point>
         <point>
-          <x>1251</x>
+          <x>1161</x>
           <y>401</y>
         </point>
         <point>
@@ -264,17 +361,17 @@
     </relationView>
     <componentView color="-2079" componentID="76069" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>2000</x>
+        <x>2080</x>
         <y>260</y>
         <w>220</w>
-        <h>100</h>
+        <h>85</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="75612" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
         <x>1480</x>
         <y>430</y>
-        <w>400</w>
+        <w>470</w>
         <h>100</h>
       </geometry>
     </componentView>
@@ -282,15 +379,15 @@
       <geometry>
         <x>1100</x>
         <y>260</y>
-        <w>490</w>
+        <w>560</w>
         <h>85</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="75283" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>1050</x>
+        <x>960</x>
         <y>430</y>
-        <w>400</w>
+        <w>490</w>
         <h>100</h>
       </geometry>
     </componentView>
@@ -307,7 +404,7 @@
         <x>1240</x>
         <y>40</y>
         <w>360</w>
-        <h>160</h>
+        <h>175</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="65687" displayAttributes="true" displayDefault="true" displayMethods="true">
@@ -338,9 +435,25 @@
       <geometry>
         <x>1680</x>
         <y>260</y>
-        <w>300</w>
-        <h>100</h>
+        <w>340</w>
+        <h>115</h>
       </geometry>
     </componentView>
+    <note color="-2079" content="CI: Une DependantPerson ne peut pas dépendre de elle même">
+      <noteGeometry>
+        <x>1080</x>
+        <y>80</y>
+        <w>122</w>
+        <h>90</h>
+      </noteGeometry>
+    </note>
+    <note color="-2079" content="CI: Un Thief ne peut pas être sous sa propre surveillance">
+      <noteGeometry>
+        <x>1690</x>
+        <y>90</y>
+        <w>100</w>
+        <h>75</h>
+      </noteGeometry>
+    </note>
   </umlView>
 </classDiagram>

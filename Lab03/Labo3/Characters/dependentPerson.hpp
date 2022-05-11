@@ -7,6 +7,8 @@
 
 /**
  * Classe représentant un personne dépendante à un autre
+ * @author Friedli Jonathan
+ * @author Jaquier Alexandre
  */
 class DependentPerson : public Person {
 public:

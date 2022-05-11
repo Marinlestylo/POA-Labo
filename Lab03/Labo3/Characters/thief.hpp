@@ -6,6 +6,8 @@
 
 /**
  * Classe représentant un voleur
+ * @author Friedli Jonathan
+ * @author Jaquier Alexandre
  */
 class Thief : public Person {
 public:

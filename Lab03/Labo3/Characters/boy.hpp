@@ -16,6 +16,10 @@ public:
      */
     Boy(const std::string &name, const Person &dependsOn, const Person &badWith);
 
+	/**
+	 * Méthode permettant d'avoir un message d'erreur lié à la personne
+    * @return un message d'erreur
+	 */
     const std::string &getErrorMessage() const override;
 
 private:
