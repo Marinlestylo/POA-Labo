@@ -46,5 +46,5 @@ bool Boat::isDockedOnthisBank(Bank &bank) const {
 }
 
 bool Boat::isFull() const {
-    return Container::getPeople()->size() == MAX_CAPACITY;
+    return getPeople()->size() >= MAX_CAPACITY;
 }

@@ -8,5 +8,5 @@ DependentPerson(name,dependsOn,badWith) {
 }
 
 std::string Boy::getErrorMessage() {
-    return Boy::ERROR_MESSAGE;
+    return ERROR_MESSAGE;
 }

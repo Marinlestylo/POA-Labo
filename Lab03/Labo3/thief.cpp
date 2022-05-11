@@ -25,5 +25,5 @@ bool Thief::isSafe(const std::list<Person *> &people) {
 }
 
 std::string Thief::getErrorMessage() {
-    return Thief::ERROR_MESSAGE;
+    return ERROR_MESSAGE;
 }
