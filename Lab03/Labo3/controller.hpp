@@ -13,6 +13,11 @@
 #include "Characters/thief.hpp"
 #include "Containers/boat.hpp"
 
+/**
+ * Classe représentant le controller du jeu
+ * @author Friedli Jonathan
+ * @author Jaquier Alexandre
+ */
 class Controller {
 public:
     /**
@@ -36,8 +41,12 @@ public:
      */
     static void showError(const std::string &errorMsg);
 
+    /**
+     * Méthode permettant de gérer le début du jeu
+     */
     void startGame();
 private:
+
     /**
      * Méthode permettant de lancer la boucle de jeu
      */
@@ -65,6 +74,9 @@ private:
      */
     void disembark(const Person *p);
 
+    /**
+     * Méthode permettant de déplacer le bateau de rive
+     */
     void moveBoat();
 
     /**

@@ -5,6 +5,8 @@
 
 /**
  * Classe représentant une rive de la rivière
+ * @author Friedli Jonathan
+ * @author Jaquier Alexandre
  */
 class Bank : public Container {
 public:

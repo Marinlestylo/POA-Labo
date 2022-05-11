@@ -7,11 +7,6 @@ Thief::Thief(const std::string &name, const Person &goodWith) : Person(name) {
     this->dependsOn = &goodWith;
 }
 
-/**
- * return true if the police is with the thief and false otherwise
- * @param people
- * @return
- */
 bool Thief::isSafe(const Container &container) const {
     if (container.size() == 1) {
         return true;

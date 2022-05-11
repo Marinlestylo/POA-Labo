@@ -5,6 +5,8 @@
 
 /**
  * Classe représentant un garcon
+ * @author Friedli Jonathan
+ * @author Jaquier Alexandre
  */
 class Boy : public DependentPerson {
 public:
