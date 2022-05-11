@@ -149,18 +149,18 @@ const Person *Controller::compareStringToPerson(const std::string &s) const {
 
 void Controller::embark(const Person *p) {
     if (boat->isFull() || !p) {
-        showError("Error: Bateau est plein ou personne n'as pas été trouvée");
+        showError("Error: Bateau est plein ou la personne n'a pas ete trouvee");
     } else if (boat->isOnBank(*p)) {
         Bank *bank = boat->isDockedOnthisBank(*leftBank) ? leftBank : rightBank;
         changeLocation(*p, *boat, *bank);
     } else {
-        showError("Error: Personne n'est pas sur la rive");
+        showError("Error: La personne n'est pas sur la rive");
     }
 }
 
 void Controller::disembark(const Person *p) {
     if (boat->isEmpty()) {
-        showError("Error: Le bateau est déjà vide");
+        showError("Error: Le bateau est deja vide");
     } else if (boat->isMember(*p)) {
         Bank *bank = boat->isDockedOnthisBank(*leftBank) ? leftBank : rightBank;
         changeLocation(*p, *bank, *boat);
@@ -184,7 +184,7 @@ void Controller::changeLocation(const Person &p, Container &toAdd, Container
 
 bool Controller::endOfGame() const {
     if (boat->isEmpty() && leftBank->isEmpty()) {
-        std::cout << "Vous avez gagné !" << std::endl;
+        std::cout << "Vous avez gagne !" << std::endl;
         return true;
     }
     return false;
