@@ -22,7 +22,7 @@ public:
 	 * Méthode permettant d'avoir un message d'erreur lié à la personne
     * @return un message d'erreur
 	 */
-    const std::string &getErrorMessage() const override;
+    std::string getErrorMessage() const override;
 
 private:
     static const std::string ERROR_MESSAGE;

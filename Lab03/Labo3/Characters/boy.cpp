@@ -7,6 +7,6 @@ Boy::Boy(const std::string &name, const Person &dependsOn, const Person &badWith
 
 }
 
-const std::string &Boy::getErrorMessage() const {
+std::string Boy::getErrorMessage() const {
     return ERROR_MESSAGE;
 }

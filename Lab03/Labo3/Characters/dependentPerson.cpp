@@ -1,6 +1,8 @@
 #include "dependentPerson.hpp"
 #include "../Containers/container.hpp"
 
+DependentPerson::~DependentPerson() = default;
+
 DependentPerson::DependentPerson(const std::string &name, const Person &dependsOn,
                                  const Person &badWith) : Person(name) {
     this->dependsOn = &dependsOn;

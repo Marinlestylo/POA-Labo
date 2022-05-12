@@ -13,17 +13,18 @@ class Person;
  * @author Jaquier Alexandre
  */
 class Container {
-public:
+protected:
     /**
-     * Constructeur de la classe Container
-     * @param name Nom du conteneur
-     */
+    * Constructeur de la classe Container
+    * @param name Nom du conteneur
+    */
     explicit Container(const std::string &name);
 
+public:
     /**
      * Destructeur de la classe Container
      */
-    virtual ~Container() = default;
+    virtual ~Container() = 0;
 
     /**
      * Méthode permettant de récupérer le container sous forme affichable
@@ -42,7 +43,7 @@ public:
      * Méthode permettant de récupérer le nom du conteneur
      * @return le nom du conteneur
      */
-    const std::string &getName() const;
+    std::string getName() const;
 
     /**
      * Méthode permettant de récupérer la taille

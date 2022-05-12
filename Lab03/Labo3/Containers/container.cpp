@@ -5,6 +5,8 @@
 
 Container::Container(const std::string &name) : name(name) {}
 
+Container::~Container() = default;
+
 std::ostream &Container::toStream(std::ostream &os) const {
     return os << getName() << " : " << getPeopleNames() << " ";
 }
@@ -17,7 +19,7 @@ std::string Container::getPeopleNames() const {
     return ss.str();
 }
 
-const std::string &Container::getName() const {
+std::string Container::getName() const {
     return name;
 }
 

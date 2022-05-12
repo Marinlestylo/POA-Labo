@@ -19,6 +19,6 @@ bool Thief::isSafe(const Container &container) const {
     return false;
 }
 
-const std::string &Thief::getErrorMessage() const {
+std::string Thief::getErrorMessage() const {
     return ERROR_MESSAGE;
 }

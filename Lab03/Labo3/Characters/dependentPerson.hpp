@@ -10,15 +10,21 @@
  * @author Jaquier Alexandre
  */
 class DependentPerson : public Person {
-public:
+protected:
     /**
-     * Constructeur de la classe DependentPerson
-     * @param name nom de la personne
-     * @param dependsOn personne de qui la personne dépend
-     * @param badWith personne avec laquelle elle ne peut pas rester
-     */
+    * Constructeur de la classe DependentPerson
+    * @param name nom de la personne
+    * @param dependsOn personne de qui la personne dépend
+    * @param badWith personne avec laquelle elle ne peut pas rester
+    */
     DependentPerson(const std::string &name, const Person &dependsOn, const Person &
     badWith);
+
+public:
+    /**
+     * Destructeur de la classe DependentPerson
+     */
+    ~DependentPerson() = 0;
 
     /**
      * Méthode permettant de savoir si la personne est en sécurité dans un lieu

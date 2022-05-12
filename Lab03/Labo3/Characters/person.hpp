@@ -11,17 +11,18 @@ class Container;
  * @author Jaquier Alexandre
  */
 class Person {
-public:
+protected:
     /**
-     * Constructeur de la classe Person
-     * @param name nom de la personne
-     */
+    * Constructeur de la classe Person
+    * @param name nom de la personne
+    */
     explicit Person(const std::string& name);
 
+public:
     /**
      * Destructeur de la classe Person
      */
-    virtual ~Person() = default;
+    virtual ~Person() = 0;
 
     /**
      * Méthode permettant de savoir si la personne peut conduire
@@ -33,7 +34,7 @@ public:
      * Méthode permettant de connaitre le nom de la personne
      * @return le nom de la personne
      */
-    const std::string& getName() const;
+    std::string getName() const;
 
     /**
      * Méthode permettant de savoir si la personne est en sécurité dans un lieu
@@ -46,7 +47,7 @@ public:
      * Méthode permettant d'avoir un message d'erreur lié à la personne
      * @return un message d'erreur
      */
-    virtual const std::string& getErrorMessage() const;
+    virtual std::string getErrorMessage() const;
 
 private:
     const std::string name;
