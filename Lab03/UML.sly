@@ -507,7 +507,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>1711</x>
-        <y>241</y>
+        <y>242</y>
         <w>22</w>
         <h>16</h>
       </multipliciteAssociation>
@@ -654,11 +654,11 @@
         </point>
         <point>
           <x>2191</x>
-          <y>241</y>
+          <y>231</y>
         </point>
         <point>
           <x>1421</x>
-          <y>241</y>
+          <y>231</y>
         </point>
         <point>
           <x>1421</x>
@@ -674,11 +674,11 @@
         </point>
         <point>
           <x>1351</x>
-          <y>241</y>
+          <y>231</y>
         </point>
         <point>
           <x>1421</x>
-          <y>241</y>
+          <y>231</y>
         </point>
         <point>
           <x>1421</x>
@@ -694,11 +694,11 @@
         </point>
         <point>
           <x>1831</x>
-          <y>241</y>
+          <y>231</y>
         </point>
         <point>
           <x>1421</x>
-          <y>241</y>
+          <y>231</y>
         </point>
         <point>
           <x>1421</x>
@@ -826,29 +826,23 @@
         <h>115</h>
       </geometry>
     </componentView>
-    <note color="-2079" content="CI: Une DependantPerson ne peut pas dépendre de elle même">
+    <note color="-2079" content="CI: une personne ne peut pas être dans plusieurs container en même temps">
       <noteGeometry>
-        <x>980</x>
-        <y>200</y>
-        <w>170</w>
-        <h>60</h>
-      </noteGeometry>
-    </note>
-    <note color="-2079" content="CI: Un Thief ne peut pas être sous sa la surveillance d'un voleur">
-      <noteGeometry>
-        <x>1740</x>
-        <y>70</y>
-        <w>100</w>
-        <h>90</h>
-      </noteGeometry>
-    </note>
-    <note color="-2079" content="CI: une personne ne doit pas être dans plusieurs container en même temps">
-      <noteGeometry>
-        <x>780</x>
+        <x>810</x>
         <y>80</y>
         <w>170</w>
         <h>60</h>
       </noteGeometry>
+      <noteLine color="-12566464" relationId="65686">
+        <point>
+          <x>981</x>
+          <y>121</y>
+        </point>
+        <point>
+          <x>1241</x>
+          <y>121</y>
+        </point>
+      </noteLine>
     </note>
     <note color="-2079" content="Le constructeur de copie ainsi que l'opérateur d'affectation sont en = delete">
       <noteGeometry>
@@ -865,6 +859,34 @@
         <point>
           <x>1261</x>
           <y>781</y>
+        </point>
+      </noteLine>
+    </note>
+    <note color="-2079" content="CI: Une DependantPerson et Thief ne peuvent dépendre que d'un driver">
+      <noteGeometry>
+        <x>1810</x>
+        <y>70</y>
+        <w>170</w>
+        <h>60</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="75284">
+        <point>
+          <x>1871</x>
+          <y>131</y>
+        </point>
+        <point>
+          <x>1641</x>
+          <y>261</y>
+        </point>
+      </noteLine>
+      <noteLine color="-12566464" relationId="73671">
+        <point>
+          <x>1901</x>
+          <y>131</y>
+        </point>
+        <point>
+          <x>1901</x>
+          <y>261</y>
         </point>
       </noteLine>
     </note>
