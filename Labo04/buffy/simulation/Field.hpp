@@ -5,7 +5,7 @@
 #ifndef BUFFY_FIELD_HPP
 #define BUFFY_FIELD_HPP
 
-#include "humanoids/Humanoid.hpp"
+#include "../humanoids/Humanoid.hpp"
 #include <list>
 
 class Field {

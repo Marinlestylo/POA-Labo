@@ -5,8 +5,8 @@
 #ifndef BUFFY_HUMANOID_HPP
 #define BUFFY_HUMANOID_HPP
 
-#include "../Field.hpp"
-#include "../Action.hpp"
+#include "../simulation/Field.hpp"
+#include "../simulation/Action.hpp"
 
 class Humanoid {
 

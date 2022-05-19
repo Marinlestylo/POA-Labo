@@ -2,6 +2,7 @@
 // Created by Lazar on 19.05.2022.
 //
 
+#include <stdexcept>
 #include "Field.hpp"
 
 using namespace std;
@@ -11,6 +12,9 @@ Field::Field(int gridSize, int nbHumans, int nbVampires) {
 }
 
 void Field::init(int gridSize, int nbHumans, int nbVampires) {
+	if (gridSize <= 0 || nbHumans <= 0 || nbVampires <= 0) {
+		throw runtime_error("Erreur: Les valeurs inserees ne peuvent pas etre nulles ou negatives");
+	}
 	size = gridSize;
 	this->nbHumans = nbHumans;
 	this->nbVampires = nbVampires;

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "simulation/Field.hpp"
 
 int main(int argc, char *argv[]) {
     int val[3];
@@ -12,5 +13,8 @@ int main(int argc, char *argv[]) {
                                         " zombies doivent etre plus grand que 0");
         }
     }
+
+	 Field field = Field(val[0], val[1], val[2]);
+
     return 0;
 }
