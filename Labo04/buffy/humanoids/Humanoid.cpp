@@ -3,16 +3,11 @@
 //
 
 #include "Humanoid.hpp"
-#include "../Field.hpp"
 
-void Humanoid::executeAction(Field field) {
-
+Humanoid::Humanoid(unsigned posX, unsigned posY) : alive(true), posX(posX), posY(posY),
+																	action(nullptr) {
 }
 
-void Humanoid::setAction(Field field) {
-
-}
-
-bool Humanoid::isAlive() {
-	return false;
+bool Humanoid::isAlive() const {
+	return alive;
 }

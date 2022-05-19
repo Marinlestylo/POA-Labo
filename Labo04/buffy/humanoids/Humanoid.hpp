@@ -11,14 +11,22 @@
 class Humanoid {
 
 public:
-	void setAction(Field field);
+	Humanoid(unsigned posX, unsigned posY);
 
-	void executeAction(Field field);
+	virtual ~Humanoid() = default;
 
-	bool isAlive();
+	virtual void setAction(const Field& field) = 0;
+
+	virtual void executeAction(const Field& field) = 0;
+
+	virtual char getIdentifier() = 0;
+
+	bool isAlive() const;
 
 private:
-	Action& action;
+	bool alive;
+	unsigned posX, posY;
+	Action* action;
 };
 
 #endif //BUFFY_HUMANOID_HPP
