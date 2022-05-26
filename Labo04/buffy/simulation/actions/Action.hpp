@@ -5,7 +5,7 @@
 #ifndef BUFFY_ACTION_HPP
 #define BUFFY_ACTION_HPP
 
-#include "Field.hpp"
+#include "../Field.hpp"
 
 class Field;
 

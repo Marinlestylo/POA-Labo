@@ -5,9 +5,9 @@
 #include "Humanoid.hpp"
 
 Humanoid::Humanoid(unsigned posX, unsigned posY) : alive(true), posX(posX), posY(posY),
-																	action(nullptr) {
+                                                   action(nullptr) {
 }
 
 bool Humanoid::isAlive() const {
-	return alive;
+   return alive;
 }

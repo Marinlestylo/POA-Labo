@@ -5,6 +5,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wconversion -Wsign-conversion -pedantic")
 
 add_executable(buffy main.cpp humanoids/Humanoid.hpp humanoids/Buffy.hpp
-        humanoids/Human.hpp humanoids/Vampire.hpp simulation/Action.hpp
+        humanoids/Human.hpp humanoids/Vampire.hpp simulation/actions/Action.hpp
         simulation/Field.hpp simulation/Field.cpp humanoids/Humanoid.cpp
-        humanoids/Human.cpp displayer.cpp displayer.hpp)
+        humanoids/Human.cpp displayers/displayer.cpp displayers/displayer.hpp humanoids/Buffy.cpp humanoids/Vampire.cpp simulation/utils/Utils.hpp simulation/utils/Utils.cpp)

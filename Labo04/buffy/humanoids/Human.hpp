@@ -9,13 +9,13 @@
 
 class Human : public Humanoid {
 public:
-	Human(unsigned int posX, unsigned int posY);
+   Human(unsigned int posX, unsigned int posY);
 
-	void setAction(const Field& field) override;
+   void setAction(const Field& field) override;
 
-	void executeAction(const Field& field) override;
+   void executeAction(const Field& field) override;
 
-	char getIdentifier() override;
+   char getIdentifier() const override;
 
 };
 

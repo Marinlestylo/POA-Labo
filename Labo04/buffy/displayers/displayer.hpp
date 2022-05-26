@@ -6,7 +6,7 @@
 #define BUFFY_DISPLAYER_HPP
 
 
-#include "humanoids/Humanoid.hpp"
+#include "../humanoids/Humanoid.hpp"
 
 class Displayer {
 public:

@@ -15,6 +15,6 @@ void Human::executeAction(const Field& field) {
 
 }
 
-char Human::getIdentifier() {
-	return 'h';
+char Human::getIdentifier() const {
+   return 'h';
 }

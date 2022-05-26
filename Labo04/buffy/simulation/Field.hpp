@@ -8,17 +8,20 @@
 #include "../humanoids/Humanoid.hpp"
 #include <list>
 
+class Humanoid;
+
 class Field {
 public:
-	Field(int gridSize, int nbHumans, int nbVampires);
+   Field(unsigned gridSize, unsigned nbHumans, unsigned nbVampires);
 
-	int nextTurn();
+   ~Field();
+
+   int nextTurn();
 
 private:
-	int turn, size, nbHumans, nbVampires;
-	std::list<Humanoid*> humanoids;
-
-	void init(int gridSize, int nbHumans, int nbVampires);
+   unsigned size;
+   int turn;
+   std::list<Humanoid*> humanoids;
 };
 
 #endif //BUFFY_FIELD_HPP

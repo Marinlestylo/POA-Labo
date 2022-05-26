@@ -8,7 +8,14 @@
 #include "Humanoid.hpp"
 
 class Vampire : public Humanoid {
+public:
+   Vampire(unsigned int posX, unsigned int posY);
 
+   void setAction(const Field& field) override;
+
+   void executeAction(const Field& field) override;
+
+   char getIdentifier() const override;
 };
 
 #endif //BUFFY_VAMPIRE_HPP
