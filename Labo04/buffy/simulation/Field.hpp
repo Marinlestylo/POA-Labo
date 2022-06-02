@@ -11,13 +11,15 @@ class Humanoid;
 
 class Field {
 public:
-   Field(unsigned gridSize, unsigned nbHumans, unsigned nbVampires);
+   Field(unsigned gridSize, unsigned nbVampires, unsigned nbHumans);
 
    ~Field();
 
    int nextTurn();
 
 	unsigned getSize() const;
+
+   int getTurn() const;
 
 	std::list<Humanoid*>::const_iterator begin() const {
 		return humanoids.begin();

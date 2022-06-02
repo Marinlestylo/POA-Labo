@@ -13,3 +13,12 @@ unsigned Utils::Random(unsigned max) {
    return distribution(engine);
 }
 
+DisplayType Utils::getDisplayType(const string& type) {
+   switch (type[0]) {
+      case 'n':
+         return DisplayType::NO_DISPLAY;
+      case 'c':
+      default:
+         return DisplayType::CONSOLE;
+   }
+}

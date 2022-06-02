@@ -11,7 +11,7 @@
 
 using namespace std;
 
-Field::Field(unsigned gridSize, unsigned nbHumans, unsigned nbVampires) {
+Field::Field(unsigned gridSize, unsigned nbVampires, unsigned nbHumans) {
    if (gridSize == 0 || nbHumans == 0 || nbVampires == 0) {
       throw runtime_error("Erreur: Les valeurs inserees ne peuvent pas etre nulles");
    }
@@ -55,4 +55,8 @@ int Field::nextTurn() {
 
 unsigned Field::getSize() const {
 	return size;
+}
+
+int Field::getTurn() const {
+   return turn;
 }

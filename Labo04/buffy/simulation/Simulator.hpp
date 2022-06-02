@@ -12,16 +12,17 @@
 
 class Simulator {
 public:
-	 Simulator(unsigned gridSize, unsigned nbHumans, unsigned nbVampires, const DisplayType& type);
-	 ~Simulator();
+   Simulator(unsigned gridSize, unsigned nbVampires, unsigned nbHumans, const DisplayType& type);
 
-	 void run();
+   ~Simulator();
+
+   void run();
 
 private:
-	Displayer* chooseDisplayer(const DisplayType& type);
+   Displayer* chooseDisplayer(const DisplayType& type);
 
-	const Field field;
-	Displayer* displayer;
+   const Field field;
+   Displayer* displayer;
 };
 
 #endif //BUFFY_SIMULATOR_HPP

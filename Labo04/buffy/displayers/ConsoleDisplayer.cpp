@@ -14,14 +14,18 @@ ConsoleDisplayer::ConsoleDisplayer(unsigned int gridSize, list<Humanoid*>::const
 	}
 }
 
-void ConsoleDisplayer::displayAll() {
-	cout << "╔" << string(gridSize, '-') << "╗" << endl;
-	for (auto& row: grid) {
-		cout << "|";
-		for (auto& humanoid: row) {
-			cout << humanoid;
-		}
-		cout << "|" << endl;
-	}
-	cout << "╚" << string(gridSize, '-') << "╝" << endl;
+void ConsoleDisplayer::displayGrid() {
+   cout << "+" << string(gridSize, '-') << "+" << endl;
+   for (auto& row: grid) {
+      cout << "|";
+      for (auto& humanoid: row) {
+         cout << humanoid;
+      }
+      cout << "|" << endl;
+   }
+   cout << "+" << string(gridSize, '-') << "+" << endl;
+}
+
+void ConsoleDisplayer::displayPrompt(int turn) {
+   cout << "[" << turn << "] q>uit s>tatistics n>ext:  ";
 }

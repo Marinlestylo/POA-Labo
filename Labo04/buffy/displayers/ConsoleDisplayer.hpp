@@ -12,7 +12,8 @@ class ConsoleDisplayer : public Displayer {
 public:
 	ConsoleDisplayer(unsigned gridSize, std::list<Humanoid*>::const_iterator begin,
 						  std::list<Humanoid*>::const_iterator end);
-	void displayAll() override;
+   void displayGrid() override;
+   void displayPrompt(int turn) override;
 private:
 	std::vector<std::vector<char>> grid;
 };

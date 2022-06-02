@@ -13,7 +13,8 @@ public:
 	Displayer(unsigned gridSize, std::list<Humanoid*>::const_iterator begin,
 				 std::list<Humanoid*>::const_iterator end);
 	virtual ~Displayer() = default;
-	virtual void displayAll() = 0;
+   virtual void displayGrid() = 0;
+   virtual void displayPrompt(int turn) = 0;
 protected:
 	const unsigned gridSize;
 	// TODO: iterator const ??
