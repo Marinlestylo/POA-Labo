@@ -7,8 +7,8 @@
 using namespace std;
 
 ConsoleDisplayer::ConsoleDisplayer(unsigned int gridSize, list<Humanoid*>::const_iterator begin,
-											  list<Humanoid*>::const_iterator end)
-	: Displayer(gridSize, begin, end), grid(gridSize, vector<char>(gridSize, ' ')) {
+                                   list<Humanoid*>::const_iterator end)
+   : Displayer(gridSize, begin, end), grid(gridSize, vector<char>(gridSize, ' ')) {
 }
 
 void ConsoleDisplayer::displayGrid() {
@@ -34,4 +34,19 @@ void ConsoleDisplayer::updateGrid() {
    for (auto iter = begin; iter != end; ++iter) {
       grid.at((*iter)->getPosX()).at((*iter)->getPosY()) = (*iter)->getIdentifier();
    }
+}
+
+bool ConsoleDisplayer::getInput(Field& f) {
+   string input;
+   getline(cin, input);
+   if (input == "q") {
+      return true;
+   } else if (input == "s") {
+      cout << "Statistics" << endl; // TODO lancer simulation
+   } else if (input == "n" || input.empty()) {
+      f.nextTurn();
+   } else {
+      cout << "Invalid input" << endl;
+   }
+   return false;
 }

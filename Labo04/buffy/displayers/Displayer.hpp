@@ -10,16 +10,21 @@
 
 class Displayer {
 public:
-	Displayer(unsigned gridSize, std::list<Humanoid*>::const_iterator begin,
-				 std::list<Humanoid*>::const_iterator end);
-	virtual ~Displayer() = default;
+   Displayer(unsigned gridSize, std::list<Humanoid*>::const_iterator begin,
+             std::list<Humanoid*>::const_iterator end);
+
+   virtual ~Displayer() = default;
+
    virtual void displayGrid() = 0;
+
    virtual void displayPrompt(int turn) = 0;
+
+   virtual bool getInput(Field& f) = 0;
 protected:
-	const unsigned gridSize;
-	// TODO: iterator const ??
-	std::list<Humanoid*>::const_iterator begin;
-	std::list<Humanoid*>::const_iterator end;
+   const unsigned gridSize;
+   // TODO: iterator const ??
+   std::list<Humanoid*>::const_iterator begin;
+   std::list<Humanoid*>::const_iterator end;
 };
 
 #endif //BUFFY_DISPLAYER_HPP

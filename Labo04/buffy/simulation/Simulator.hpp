@@ -20,7 +20,6 @@ public:
 
 private:
    Displayer* chooseDisplayer(const DisplayType& type);
-   void getInput();
 
    Field field;
    Displayer* displayer;

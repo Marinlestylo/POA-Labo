@@ -22,7 +22,7 @@ void Simulator::run() {
       if (displayer != nullptr) {
          displayer->displayGrid();
          displayer->displayPrompt(field.getTurn());
-         getInput();
+         ended = displayer->getInput(field);
       } else {
          // TODO : Afficher les statistiques
          cout << "No displayer found" << endl;
@@ -38,20 +38,6 @@ Displayer* Simulator::chooseDisplayer(const DisplayType& type) {
       case CONSOLE:
       default:
          return new ConsoleDisplayer(field.getSize(), field.begin(), field.end());
-   }
-}
-
-void Simulator::getInput() {
-   string input;
-   getline(cin, input);
-   if (input == "q") {
-      ended = true;
-   } else if (input == "s") {
-      cout << "Statistics" << endl; // TODO lancer simulation
-   } else if (input == "n" || input.empty()) {
-      field.nextTurn();
-   } else {
-      cout << "Invalid input" << endl;
    }
 }
 
