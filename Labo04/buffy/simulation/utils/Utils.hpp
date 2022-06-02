@@ -5,8 +5,11 @@
 #ifndef BUFFY_UTILS_HPP
 #define BUFFY_UTILS_HPP
 
+enum DisplayType { CONSOLE, NO_DISPLAY };
+
 class Utils {
 public:
+
    static unsigned Random(unsigned max);
 
    Utils(Utils &other) = delete;

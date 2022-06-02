@@ -12,7 +12,7 @@ class Displayer {
 public:
 	Displayer(unsigned gridSize, std::list<Humanoid*>::const_iterator begin,
 				 std::list<Humanoid*>::const_iterator end);
-	~Displayer() = default;
+	virtual ~Displayer() = default;
 	virtual void displayAll() = 0;
 protected:
 	const unsigned gridSize;
