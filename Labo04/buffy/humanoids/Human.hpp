@@ -13,10 +13,7 @@ public:
 
    void setAction(const Field& field) override;
 
-   void executeAction(const Field& field) override;
-
    char getIdentifier() const override;
-
 };
 
 #endif //BUFFY_HUMAN_HPP

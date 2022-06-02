@@ -3,16 +3,16 @@
 //
 
 #include "Human.hpp"
+#include "../simulation/actions/MoveAction.hpp"
 
 Human::Human(unsigned int posX, unsigned int posY) : Humanoid(posX, posY) {
 }
 
 void Human::setAction(const Field& field) {
+   if (action != nullptr)
+      delete action;
 
-}
-
-void Human::executeAction(const Field& field) {
-
+   action = new MoveAction(this, 1);
 }
 
 char Human::getIdentifier() const {

@@ -11,8 +11,7 @@ enum DisplayType { CONSOLE, NO_DISPLAY };
 
 class Utils {
 public:
-
-   static unsigned Random(unsigned max);
+   static unsigned random(unsigned max = 0);
    static DisplayType getDisplayType(const std::string& type);
    Utils(Utils &other) = delete;
    void operator=(Utils &other) = delete;

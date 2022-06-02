@@ -15,6 +15,8 @@ public:
    void displayGrid() override;
    void displayPrompt(int turn) override;
 private:
+   void updateGrid();
+
 	std::vector<std::vector<char>> grid;
 };
 

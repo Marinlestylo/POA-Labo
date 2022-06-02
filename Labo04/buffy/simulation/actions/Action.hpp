@@ -5,13 +5,12 @@
 #ifndef BUFFY_ACTION_HPP
 #define BUFFY_ACTION_HPP
 
-class Field;
+#include "../Field.hpp"
 
 class Action {
 public:
-	void execute(Field& f);
-
-private:
+	virtual void execute(Field& f) = 0;
+   virtual ~Action() = default;
 };
 
 
