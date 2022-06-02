@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
       }
    }
 
-   Field field = Field(val[0], val[1], val[2]);
+   Field field = Field((unsigned)val[0], (unsigned)val[1], (unsigned)val[2]);
 
    return 0;
 }
