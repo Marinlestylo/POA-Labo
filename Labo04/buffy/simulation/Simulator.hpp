@@ -20,9 +20,11 @@ public:
 
 private:
    Displayer* chooseDisplayer(const DisplayType& type);
+   void getInput();
 
-   const Field field;
+   Field field;
    Displayer* displayer;
+   bool ended;
 };
 
 #endif //BUFFY_SIMULATOR_HPP

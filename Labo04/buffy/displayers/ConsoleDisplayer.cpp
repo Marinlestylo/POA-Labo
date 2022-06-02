@@ -27,5 +27,5 @@ void ConsoleDisplayer::displayGrid() {
 }
 
 void ConsoleDisplayer::displayPrompt(int turn) {
-   cout << "[" << turn << "] q>uit s>tatistics n>ext:  ";
+   cout << "[" << turn << "] q>uit s>tatistics n>ext: ";
 }
