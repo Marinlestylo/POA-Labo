@@ -11,6 +11,10 @@ class Humanoid {
 public:
    Humanoid(unsigned posX, unsigned posY);
 
+	unsigned getPosX() const;
+
+	unsigned getPosY() const;
+
    virtual ~Humanoid() = default;
 
    virtual void setAction(const Field& field) = 0;

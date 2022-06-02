@@ -5,7 +5,6 @@
 #ifndef BUFFY_FIELD_HPP
 #define BUFFY_FIELD_HPP
 
-#include "../humanoids/Humanoid.hpp"
 #include <list>
 
 class Humanoid;
@@ -17,6 +16,14 @@ public:
    ~Field();
 
    int nextTurn();
+
+	std::list<Humanoid*>::const_iterator begin() const {
+		return humanoids.begin();
+	}
+
+	std::list<Humanoid*>::const_iterator end() const {
+		return humanoids.end();
+	}
 
 private:
    unsigned size;

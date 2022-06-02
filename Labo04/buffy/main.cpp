@@ -1,5 +1,6 @@
 #include <iostream>
 #include "simulation/Field.hpp"
+#include "displayers/ConsoleDisplayer.hpp"
 
 int main(int argc, char* argv[]) {
    int val[3];
@@ -16,6 +17,9 @@ int main(int argc, char* argv[]) {
    }
 
    Field field = Field((unsigned)val[0], (unsigned)val[1], (unsigned)val[2]);
+	ConsoleDisplayer displayer(val[0], &field);
+
+	displayer.displayAll();
 
    return 0;
 }

@@ -11,3 +11,11 @@ Humanoid::Humanoid(unsigned posX, unsigned posY) : alive(true), posX(posX), posY
 bool Humanoid::isAlive() const {
    return alive;
 }
+
+unsigned Humanoid::getPosX() const {
+	return posX;
+}
+
+unsigned Humanoid::getPosY() const {
+	return posY;
+}
