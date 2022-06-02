@@ -52,3 +52,7 @@ int Field::nextTurn() {
          ++it;
    return turn++;
 }
+
+unsigned Field::getSize() const {
+	return size;
+}

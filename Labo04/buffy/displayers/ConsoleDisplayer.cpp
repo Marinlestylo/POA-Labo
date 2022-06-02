@@ -7,22 +7,21 @@
 
 using namespace std;
 
-ConsoleDisplayer::ConsoleDisplayer(unsigned int gridSize, const Field* field) :
-	Displayer(gridSize, field), grid(gridSize, vector<char>(gridSize, ' ')){
-
+ConsoleDisplayer::ConsoleDisplayer(const Field* field) :
+	Displayer(field), grid(field->getSize(), vector<char>(field->getSize(), ' ')){
 	for (auto iter : *field) {
 		grid.at(iter->getPosX()).at(iter->getPosY()) = iter->getIdentifier();
 	}
 }
 
 void ConsoleDisplayer::displayAll() {
-	cout << "╔" << string(getGridSize(), '-') << "╗" << endl;
-	for (auto iter : grid) {
+	cout << "╔" << string(field->getSize(), '-') << "╗" << endl;
+	for (auto &row : grid) {
 		cout << "|";
-		for (auto iter2 : iter) {
-			cout << iter2;
+		for (auto &humanoid : row) {
+			cout << humanoid;
 		}
 		cout << "|" << endl;
 	}
-	cout << "╚" << string(getGridSize(), '-') << "╝" << endl;
+	cout << "╚" << string(field->getSize(), '-') << "╝" << endl;
 }

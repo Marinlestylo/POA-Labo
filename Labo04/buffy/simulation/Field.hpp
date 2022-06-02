@@ -17,6 +17,8 @@ public:
 
    int nextTurn();
 
+	unsigned getSize() const;
+
 	std::list<Humanoid*>::const_iterator begin() const {
 		return humanoids.begin();
 	}

@@ -10,10 +10,8 @@
 
 class ConsoleDisplayer : public Displayer {
 public:
-	 ConsoleDisplayer(unsigned int gridSize, const Field &field);
-
-	ConsoleDisplayer(unsigned int gridSize, const Field* field);
-	void displayAll();
+	ConsoleDisplayer(const Field* field);
+	void displayAll() override;
 private:
 	std::vector<std::vector<char>> grid;
 };
