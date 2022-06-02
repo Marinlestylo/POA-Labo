@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
    }
 
    Field field = Field((unsigned)val[0], (unsigned)val[1], (unsigned)val[2]);
-	ConsoleDisplayer displayer(&field);
+	ConsoleDisplayer displayer(field.getSize(),field.begin(), field.end());
 
 	displayer.displayAll();
 

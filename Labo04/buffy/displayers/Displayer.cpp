@@ -3,6 +3,8 @@
 //
 #include "Displayer.hpp"
 
-Displayer::Displayer(const Field* field) : field(field) {
-}
+using namespace std;
 
+Displayer::Displayer(unsigned gridSize, list<Humanoid*>::const_iterator begin,
+							list<Humanoid*>::const_iterator end)
+							: gridSize(gridSize), begin(begin), end(end) {}

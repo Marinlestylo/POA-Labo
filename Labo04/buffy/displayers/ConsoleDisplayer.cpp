@@ -3,25 +3,25 @@
 //
 #include <iostream>
 #include "ConsoleDisplayer.hpp"
-#include "../humanoids/Humanoid.hpp"
 
 using namespace std;
 
-ConsoleDisplayer::ConsoleDisplayer(const Field* field) :
-	Displayer(field), grid(field->getSize(), vector<char>(field->getSize(), ' ')){
-	for (auto iter : *field) {
-		grid.at(iter->getPosX()).at(iter->getPosY()) = iter->getIdentifier();
+ConsoleDisplayer::ConsoleDisplayer(unsigned int gridSize, list<Humanoid*>::const_iterator begin,
+											  list<Humanoid*>::const_iterator end)
+	: Displayer(gridSize, begin, end), grid(gridSize, vector<char>(gridSize, ' ')) {
+	for (auto iter = begin; iter != end; ++iter) {
+		grid.at((*iter)->getPosX()).at((*iter)->getPosY()) = (*iter)->getIdentifier();
 	}
 }
 
 void ConsoleDisplayer::displayAll() {
-	cout << "╔" << string(field->getSize(), '-') << "╗" << endl;
-	for (auto &row : grid) {
+	cout << "╔" << string(gridSize, '-') << "╗" << endl;
+	for (auto& row: grid) {
 		cout << "|";
-		for (auto &humanoid : row) {
+		for (auto& humanoid: row) {
 			cout << humanoid;
 		}
 		cout << "|" << endl;
 	}
-	cout << "╚" << string(field->getSize(), '-') << "╝" << endl;
+	cout << "╚" << string(gridSize, '-') << "╝" << endl;
 }

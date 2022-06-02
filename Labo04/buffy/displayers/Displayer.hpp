@@ -5,15 +5,20 @@
 #ifndef BUFFY_DISPLAYER_HPP
 #define BUFFY_DISPLAYER_HPP
 
-#include "../simulation/Field.hpp"
+#include <list>
+#include "../humanoids/Humanoid.hpp"
 
 class Displayer {
 public:
-	Displayer(const Field* field);
+	Displayer(unsigned gridSize, std::list<Humanoid*>::const_iterator begin,
+				 std::list<Humanoid*>::const_iterator end);
 	~Displayer() = default;
 	virtual void displayAll() = 0;
 protected:
-	const Field* field;
+	const unsigned gridSize;
+	// TODO: iterator const ??
+	std::list<Humanoid*>::const_iterator begin;
+	std::list<Humanoid*>::const_iterator end;
 };
 
 #endif //BUFFY_DISPLAYER_HPP

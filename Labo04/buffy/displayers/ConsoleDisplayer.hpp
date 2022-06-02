@@ -10,7 +10,8 @@
 
 class ConsoleDisplayer : public Displayer {
 public:
-	ConsoleDisplayer(const Field* field);
+	ConsoleDisplayer(unsigned gridSize, std::list<Humanoid*>::const_iterator begin,
+						  std::list<Humanoid*>::const_iterator end);
 	void displayAll() override;
 private:
 	std::vector<std::vector<char>> grid;
