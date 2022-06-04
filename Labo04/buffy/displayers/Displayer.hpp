@@ -10,7 +10,7 @@
 
 class Displayer {
 public:
-   explicit Displayer(unsigned gridSize);
+   Displayer(unsigned width, unsigned height);
 
    virtual ~Displayer() = default;
 
@@ -21,7 +21,7 @@ public:
 
    virtual bool getInput(Field& f) = 0;
 protected:
-   const unsigned gridSize;
+   const unsigned width, height;
 };
 
 #endif //BUFFY_DISPLAYER_HPP

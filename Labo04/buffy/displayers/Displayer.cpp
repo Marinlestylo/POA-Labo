@@ -5,4 +5,4 @@
 
 using namespace std;
 
-Displayer::Displayer(unsigned gridSize) : gridSize(gridSize) {}
+Displayer::Displayer(unsigned width, unsigned height) : width(width), height(height) {}

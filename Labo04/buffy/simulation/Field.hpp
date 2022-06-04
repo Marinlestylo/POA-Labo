@@ -8,27 +8,26 @@
 #include <list>
 
 class Humanoid;
+
 class Vampire;
 
 class Field {
 public:
-   Field(unsigned gridSize, unsigned nbVampires, unsigned nbHumans);
+   Field(unsigned width, unsigned height, unsigned nbVampires, unsigned nbHumans);
 
    ~Field();
 
    int nextTurn();
 
-   void decreasePopulation(char huntedIdentifier);
+   unsigned getWidth() const;
 
-   unsigned getSize() const;
+   unsigned getHeight() const;
 
    int getTurn() const;
 
    unsigned getNbHumans() const;
 
    unsigned getNbVampires() const;
-
-   void addVampire(Vampire* vampire);
 
    Humanoid* getNearestHumanoid(Humanoid* from, char identifier) const;
 
@@ -40,8 +39,12 @@ public:
       return humanoids.end();
    }
 
+   void decreasePopulation(char huntedIdentifier);
+
+   void addVampire(Vampire* vampire);
+
 private:
-   unsigned size, nbVampires, nbHumans;
+   unsigned width, height, nbVampires, nbHumans;
 private:
    int turn;
    std::list<Humanoid*> humanoids;

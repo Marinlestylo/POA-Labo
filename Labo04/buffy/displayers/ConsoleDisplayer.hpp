@@ -10,10 +10,10 @@
 
 class ConsoleDisplayer : public Displayer {
 public:
-   explicit ConsoleDisplayer(unsigned gridSize);
+   ConsoleDisplayer(unsigned width, unsigned height);
 
    void displayGrid(std::list<Humanoid*>::const_iterator begin,
-                         std::list<Humanoid*>::const_iterator end) override;
+                    std::list<Humanoid*>::const_iterator end) override;
 
    void displayPrompt(int turn) override;
 

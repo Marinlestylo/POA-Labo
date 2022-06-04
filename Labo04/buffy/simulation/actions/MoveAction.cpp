@@ -17,7 +17,7 @@ bool MoveAction::setNewPosition(Field& f) {
 
    // TODO : Gérer les déplacements vers les cibles
 
-   auto direction = (Direction) ((int) Utils::random() % (Direction::SIZE));
+   auto direction = (Direction) ((int) Utils::random(Direction::SIZE));
    int newX = 0, newY = 0;
    switch (direction) {
       case LEFT_UP:
@@ -55,7 +55,7 @@ bool MoveAction::setNewPosition(Field& f) {
       case SIZE:
          break;
    }
-   if (newX < 0 || newY < 0 || newX >= (int) f.getSize() || newY >= (int) f.getSize()) {
+   if (newX < 0 || newY < 0 || newX >= (int) f.getWidth() || newY >= (int) f.getHeight()) {
       return false;
    } else {
       actionMaker->setPosX((unsigned) newX);

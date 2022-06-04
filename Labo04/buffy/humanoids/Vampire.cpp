@@ -21,7 +21,7 @@ void Vampire::setAction(const Field& field) {
       if (distance > 1) {
          action = new MoveAction(this, 1);
       } else {
-         if (Utils::random() % 2) {
+         if (Utils::random(2)) {
             action = new KillAction(this, target);
          } else {
             action = new TransformAction(this, target);

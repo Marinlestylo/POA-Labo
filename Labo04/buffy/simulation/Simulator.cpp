@@ -7,10 +7,9 @@
 
 using namespace std;
 
-Simulator::Simulator(unsigned gridSize, unsigned nbVampires, unsigned nbHumans,
-                     const DisplayType& type) : field(gridSize, nbVampires, nbHumans),
-                                                ended(false) {
-   displayer = chooseDisplayer(type);
+Simulator::Simulator(unsigned width, unsigned height, unsigned nbVampires, unsigned nbHumans,
+                     Displayer* displayer) : field(width, height, nbVampires, nbHumans),
+                                             displayer(displayer), ended(false) {
 }
 
 Simulator::~Simulator() {
@@ -27,18 +26,6 @@ void Simulator::run() {
          // TODO : Afficher les statistiques
          cout << "No displayer found" << endl;
       }
-   }
-
-}
-
-// TODO : Ca dégage
-Displayer* Simulator::chooseDisplayer(const DisplayType& type) {
-   switch (type) {
-      case NO_DISPLAY:
-         return nullptr;
-      case CONSOLE:
-      default:
-         return new ConsoleDisplayer(field.getSize());
    }
 }
 

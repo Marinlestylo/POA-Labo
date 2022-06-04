@@ -6,18 +6,12 @@
 #define BUFFY_UTILS_HPP
 
 #include <string>
+#include <random>
 #include "../../humanoids/Humanoid.hpp"
-
-enum DisplayType {
-   CONSOLE, NO_DISPLAY
-};
 
 class Utils {
 public:
-   // TODO: Générateur random pour direction + pourcentage de chance de kill du vampire
-   static unsigned random(unsigned max = 0);
-
-   static DisplayType getDisplayType(const std::string& type);
+   static unsigned random(unsigned max);
 
    static double getEuclideanDistance(Humanoid* from, Humanoid* to);
 

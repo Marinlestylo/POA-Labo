@@ -6,15 +6,15 @@
 
 using namespace std;
 
-ConsoleDisplayer::ConsoleDisplayer(unsigned int gridSize)
-: Displayer(gridSize), grid(gridSize, vector<char>(gridSize, ' ')) {
+ConsoleDisplayer::ConsoleDisplayer(unsigned width, unsigned height)
+   : Displayer(width, height), grid(height, vector<char>(width, ' ')) {
 }
 
 void ConsoleDisplayer::displayGrid(std::list<Humanoid*>::const_iterator begin,
                                    std::list<Humanoid*>::const_iterator end) {
    updateGrid(begin, end);
 
-   cout << "+" << string(gridSize, '-') << "+" << endl;
+   cout << "+" << string(width, '-') << "+" << endl;
    for (auto& row: grid) {
       cout << "|";
       for (auto& humanoid: row) {
@@ -22,19 +22,19 @@ void ConsoleDisplayer::displayGrid(std::list<Humanoid*>::const_iterator begin,
       }
       cout << "|" << endl;
    }
-   cout << "+" << string(gridSize, '-') << "+" << endl;
+   cout << "+" << string(width, '-') << "+" << endl;
 }
 
 void ConsoleDisplayer::updateGrid(std::list<Humanoid*>::const_iterator begin,
                                   std::list<Humanoid*>::const_iterator end) {
-   grid.assign(gridSize, vector<char>(gridSize, ' '));
+   grid.assign(height, vector<char>(width, ' '));
    for (auto iter = begin; iter != end; ++iter) {
-      grid.at((*iter)->getPosX()).at((*iter)->getPosY()) = (*iter)->getIdentifier();
+      grid.at((*iter)->getPosY()).at((*iter)->getPosX()) = (*iter)->getIdentifier();
    }
 }
 
 void ConsoleDisplayer::displayPrompt(int turn) {
-   cout << "[" << turn << "] q>uit s>tatistics n>ext: ";
+   cout << "[" << turn << "] q>uit s>tatistics n>ext:";
 }
 
 bool ConsoleDisplayer::getInput(Field& f) {

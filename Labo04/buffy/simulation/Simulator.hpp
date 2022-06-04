@@ -12,15 +12,14 @@
 
 class Simulator {
 public:
-   Simulator(unsigned gridSize, unsigned nbVampires, unsigned nbHumans, const DisplayType& type);
+   Simulator(unsigned width, unsigned height, unsigned nbVampires, unsigned nbHumans, Displayer*
+   displayer);
 
    ~Simulator();
 
    void run();
 
 private:
-   Displayer* chooseDisplayer(const DisplayType& type);
-
    Field field;
    Displayer* displayer;
    bool ended;

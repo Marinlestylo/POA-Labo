@@ -13,23 +13,21 @@
 
 using namespace std;
 
-Field::Field(unsigned gridSize, unsigned nbVampires, unsigned nbHumans) : size(gridSize),
-                                                                          nbVampires(nbVampires),
-                                                                          nbHumans(nbHumans),
-                                                                          turn(0) {
-   if (gridSize == 0 || nbHumans == 0 || nbVampires == 0) {
+Field::Field(unsigned width, unsigned height, unsigned nbVampires, unsigned nbHumans) : width
+(width), height(height),nbVampires(nbVampires),nbHumans(nbHumans),turn(0) {
+   if (width == 0 || height == 0 || nbHumans == 0 || nbVampires == 0) {
       throw runtime_error("Erreur: Les valeurs inserees ne peuvent pas etre nulles");
    }
 
    for (unsigned i = 0; i < nbHumans; i++) {
-      humanoids.emplace_back(new Human(Utils::random(gridSize), Utils::random(gridSize)));
+      humanoids.emplace_back(new Human(Utils::random(width), Utils::random(height)));
    }
 
    for (unsigned i = 0; i < nbVampires; i++) {
-      humanoids.emplace_back(new Vampire(Utils::random(gridSize), Utils::random(gridSize)));
+      humanoids.emplace_back(new Vampire(Utils::random(width), Utils::random(height)));
    }
 
-   humanoids.emplace_back(new Buffy(Utils::random(gridSize), Utils::random(gridSize)));
+   humanoids.emplace_back(new Buffy(Utils::random(width), Utils::random(height)));
 }
 
 
@@ -56,8 +54,12 @@ int Field::nextTurn() {
    return turn++;
 }
 
-unsigned Field::getSize() const {
-   return size;
+unsigned Field::getWidth() const {
+   return width;
+}
+
+unsigned Field::getHeight() const {
+   return height;
 }
 
 int Field::getTurn() const {
@@ -65,11 +67,11 @@ int Field::getTurn() const {
 }
 
 Humanoid* Field::getNearestHumanoid(Humanoid* from, char identifier) const {
-   int shortestEuclideanDistance = INT_MAX;
+   double shortestEuclideanDistance = INT_MAX;
    Humanoid* nearestHumanoid = nullptr;
    for (auto humanoid: humanoids) {
       if (humanoid->getIdentifier() == identifier) {
-         int euclideanDistance = Utils::getEuclideanDistance(from, humanoid);
+         double euclideanDistance = Utils::getEuclideanDistance(from, humanoid);
          if (euclideanDistance < shortestEuclideanDistance) {
             shortestEuclideanDistance = euclideanDistance;
             nearestHumanoid = humanoid;
