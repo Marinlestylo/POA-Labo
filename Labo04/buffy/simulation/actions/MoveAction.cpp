@@ -2,6 +2,7 @@
 // Created by Lazar on 02.06.2022.
 //
 #include "MoveAction.hpp"
+#include "../Field.hpp"
 #include "../utils/Utils.hpp"
 
 MoveAction::MoveAction(Humanoid* actionMaker, unsigned int step) : Action(actionMaker), step(step) {

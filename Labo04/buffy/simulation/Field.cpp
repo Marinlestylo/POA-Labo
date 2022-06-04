@@ -66,7 +66,7 @@ int Field::getTurn() const {
    return turn;
 }
 
-Humanoid* Field::getNearestHumanoid(Humanoid* from, char identifier) const {
+Humanoid* Field::getNearestHumanoid(Humanoid* from, Humanoid::Identifier identifier) const {
    double shortestEuclideanDistance = INT_MAX;
    Humanoid* nearestHumanoid = nullptr;
    for (auto humanoid: humanoids) {
@@ -94,10 +94,10 @@ void Field::addVampire(Vampire* vampire) {
    nbVampires++;
 }
 
-void Field::decreasePopulation(char huntedIdentifier) {
-   if (huntedIdentifier == 'h') {
+void Field::decreasePopulation(Humanoid::Identifier targetIdentifier) {
+   if (targetIdentifier == Humanoid::Identifier::HUMAN) {
       nbHumans--;
-   } else if (huntedIdentifier == 'V') {
+   } else if (targetIdentifier == Humanoid::Identifier::VAMPIRE) {
       nbVampires--;
    }
 }

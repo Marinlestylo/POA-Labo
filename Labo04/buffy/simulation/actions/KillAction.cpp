@@ -3,6 +3,7 @@
 //
 
 #include "KillAction.hpp"
+#include "../Field.hpp"
 #include "../../humanoids/Humanoid.hpp"
 
 KillAction::KillAction(Humanoid* actionMaker, Humanoid* target)
@@ -12,6 +13,6 @@ KillAction::KillAction(Humanoid* actionMaker, Humanoid* target)
 void KillAction::execute(Field& f) {
    if (target->isAlive()) {
       target->setAlive(false);
-      f.decreasePopulation(actionMaker->getHuntedIdentifier());
+      f.decreasePopulation(target->getIdentifier());
    }
 }

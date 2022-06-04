@@ -2,6 +2,7 @@
 // Created by Lazar on 02.06.2022.
 //
 #include <iostream>
+#include "../simulation/Field.hpp"
 #include "ConsoleDisplayer.hpp"
 
 using namespace std;
@@ -29,7 +30,8 @@ void ConsoleDisplayer::updateGrid(std::list<Humanoid*>::const_iterator begin,
                                   std::list<Humanoid*>::const_iterator end) {
    grid.assign(height, vector<char>(width, ' '));
    for (auto iter = begin; iter != end; ++iter) {
-      grid.at((*iter)->getPosY()).at((*iter)->getPosX()) = (*iter)->getIdentifier();
+      grid.at((*iter)->getPosY()).at((*iter)->getPosX()) =
+         mapIdentifierToSymbol((*iter)->getIdentifier());
    }
 }
 
@@ -51,4 +53,15 @@ bool ConsoleDisplayer::getInput(Field& f) {
       cout << "Invalid input" << endl;
    }
    return false;
+}
+
+char ConsoleDisplayer::mapIdentifierToSymbol(Humanoid::Identifier identifier) {
+   switch (identifier) {
+      case Humanoid::Identifier::HUMAN:
+         return 'h';
+      case Humanoid::Identifier::VAMPIRE:
+         return 'V';
+      case Humanoid::Identifier::BUFFY:
+         return 'B';
+   }
 }

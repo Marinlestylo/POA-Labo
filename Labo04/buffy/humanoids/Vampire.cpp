@@ -2,6 +2,7 @@
 // Created by Lazar on 26.05.2022.
 //
 #include "Vampire.hpp"
+#include "../simulation/Field.hpp"
 #include "../simulation/actions/MoveAction.hpp"
 #include "../simulation/actions/KillAction.hpp"
 #include "../simulation/actions/TransformAction.hpp"
@@ -16,7 +17,7 @@ void Vampire::setAction(const Field& field) {
       action = nullptr;
    }
    if (field.getNbHumans()) {
-      auto target = field.getNearestHumanoid(this, getHuntedIdentifier());
+      auto target = field.getNearestHumanoid(this, Identifier::HUMAN);
       double distance = Utils::getEuclideanDistance(this, target);
       if (distance > 1) {
          action = new MoveAction(this, 1);
@@ -32,10 +33,7 @@ void Vampire::setAction(const Field& field) {
    }
 }
 
-char Vampire::getIdentifier() const {
-   return 'V';
+Humanoid::Identifier Vampire::getIdentifier() const {
+   return Humanoid::VAMPIRE;
 }
 
-char Vampire::getHuntedIdentifier() const {
-   return 'h';
-}

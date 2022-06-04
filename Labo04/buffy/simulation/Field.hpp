@@ -7,9 +7,8 @@
 
 #include <list>
 
-class Humanoid;
-
-class Vampire;
+#include "../humanoids/Humanoid.hpp"
+#include "../humanoids/Vampire.hpp"
 
 class Field {
 public:
@@ -29,7 +28,7 @@ public:
 
    unsigned getNbVampires() const;
 
-   Humanoid* getNearestHumanoid(Humanoid* from, char identifier) const;
+   Humanoid* getNearestHumanoid(Humanoid* from, Humanoid::Identifier identifier) const;
 
    std::list<Humanoid*>::const_iterator begin() const {
       return humanoids.begin();
@@ -39,7 +38,7 @@ public:
       return humanoids.end();
    }
 
-   void decreasePopulation(char huntedIdentifier);
+   void decreasePopulation(Humanoid::Identifier targetIdentifier);
 
    void addVampire(Vampire* vampire);
 

@@ -3,8 +3,7 @@
 //
 
 #include "TransformAction.hpp"
-#include "../../humanoids/Humanoid.hpp"
-#include "../../humanoids/Vampire.hpp"
+#include "../Field.hpp"
 
 TransformAction::TransformAction(Humanoid* actionMaker, Humanoid* target) : Action(actionMaker),
                                                                             target(target) {
@@ -13,7 +12,7 @@ TransformAction::TransformAction(Humanoid* actionMaker, Humanoid* target) : Acti
 void TransformAction::execute(Field& f) {
    if (target->isAlive()) {
       target->setAlive(false);
-      f.decreasePopulation(actionMaker->getHuntedIdentifier());
+      f.decreasePopulation(target->getIdentifier());
       f.addVampire(new Vampire(target->getPosX(), target->getPosY()));
    }
 }

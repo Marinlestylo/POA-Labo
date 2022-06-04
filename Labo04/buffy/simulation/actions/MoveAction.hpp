@@ -6,7 +6,6 @@
 #define BUFFY_MOVEACTION_HPP
 
 #include "Action.hpp"
-#include "../../humanoids/Humanoid.hpp"
 
 class MoveAction : public Action {
 public:

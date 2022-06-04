@@ -20,8 +20,11 @@ public:
    bool getInput(Field& f) override;
 
 private:
+   static char mapIdentifierToSymbol(Humanoid::Identifier identifier) ;
+
    void updateGrid(std::list<Humanoid*>::const_iterator begin,
                    std::list<Humanoid*>::const_iterator end);
+
 
    std::vector<std::vector<char>> grid;
 };

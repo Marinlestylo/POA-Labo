@@ -2,6 +2,7 @@
 // Created by Lazar on 26.05.2022.
 //
 #include "Buffy.hpp"
+#include "../simulation/Field.hpp"
 #include "../simulation/actions/MoveAction.hpp"
 #include "../simulation/actions/KillAction.hpp"
 #include "../simulation/utils/Utils.hpp"
@@ -16,7 +17,7 @@ void Buffy::setAction(const Field& field) {
       action = nullptr;
    }
    if (field.getNbVampires()) {
-      auto target = field.getNearestHumanoid(this, getHuntedIdentifier());
+      auto target = field.getNearestHumanoid(this, Identifier::VAMPIRE);
       double distance = Utils::getEuclideanDistance(this, target);
       if (distance > 1) {
          action = new MoveAction(this, 1);
@@ -28,11 +29,7 @@ void Buffy::setAction(const Field& field) {
    }
 }
 
-char Buffy::getIdentifier() const {
-   return 'B';
-}
-
-char Buffy::getHuntedIdentifier() const {
-   return 'V';
+Humanoid::Identifier Buffy::getIdentifier() const {
+   return Humanoid::BUFFY;
 }
 

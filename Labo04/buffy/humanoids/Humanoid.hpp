@@ -1,7 +1,6 @@
 //
 // Created by Lazar on 19.05.2022.
 //
-
 #ifndef BUFFY_HUMANOID_HPP
 #define BUFFY_HUMANOID_HPP
 
@@ -9,6 +8,12 @@
 
 class Humanoid {
 public:
+   enum Identifier {
+      HUMAN,
+      VAMPIRE,
+      BUFFY
+   };
+
    Humanoid(unsigned posX, unsigned posY);
 
    virtual ~Humanoid() = default;
@@ -21,19 +26,15 @@ public:
 
    void setPosY(unsigned posY);
 
-   void executeAction(Field& field);
+   bool isAlive() const;
 
    void setAlive(bool alive);
 
-   bool isAlive() const;
+   void executeAction(Field& field);
 
    virtual void setAction(const Field& field) = 0;
 
-   // TODO: Utilisation d'enum protected pour cette merde ??
-
-   virtual char getIdentifier() const = 0;
-
-   virtual char getHuntedIdentifier() const = 0;
+   virtual Identifier getIdentifier() const = 0;
 
 protected:
    Action* action;

@@ -1,7 +1,6 @@
 //
 // Created by Lazar on 19.05.2022.
 //
-
 #ifndef BUFFY_HUMAN_HPP
 #define BUFFY_HUMAN_HPP
 
@@ -13,9 +12,7 @@ public:
 
    void setAction(const Field& field) override;
 
-   char getIdentifier() const override;
-
-   char getHuntedIdentifier() const override;
+   Identifier getIdentifier() const override;
 };
 
 #endif //BUFFY_HUMAN_HPP

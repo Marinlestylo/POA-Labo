@@ -5,7 +5,6 @@
 #ifndef BUFFY_TRANSFORMACTION_HPP
 #define BUFFY_TRANSFORMACTION_HPP
 
-
 #include "Action.hpp"
 
 class TransformAction : public Action {
