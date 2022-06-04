@@ -11,15 +11,15 @@ class Humanoid;
 
 class Action {
 public:
-   explicit Action(Humanoid* actionMaker);
+   Action(Humanoid* actionMaker, Humanoid* target);
 
    virtual void execute(Field& f) = 0;
 
    virtual ~Action() = default;
 
 protected:
-   // TODO: Ajouter un humanoid target
    Humanoid* actionMaker;
+   Humanoid* target;
 };
 
 

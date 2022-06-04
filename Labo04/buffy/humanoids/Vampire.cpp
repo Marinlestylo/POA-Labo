@@ -20,7 +20,7 @@ void Vampire::setAction(const Field& field) {
       auto target = field.getNearestHumanoid(this, Identifier::HUMAN);
       double distance = Utils::getEuclideanDistance(this, target);
       if (distance > 1) {
-         action = new MoveAction(this, 1);
+         action = new MoveAction(this, nullptr, 1);
       } else {
          if (Utils::random(2)) {
             action = new KillAction(this, target);
@@ -29,7 +29,7 @@ void Vampire::setAction(const Field& field) {
          }
       }
    } else {
-      action = new MoveAction(this, 0);
+      action = new MoveAction(this, nullptr, 0);
    }
 }
 

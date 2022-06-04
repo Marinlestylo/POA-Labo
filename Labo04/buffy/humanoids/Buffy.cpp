@@ -20,12 +20,12 @@ void Buffy::setAction(const Field& field) {
       auto target = field.getNearestHumanoid(this, Identifier::VAMPIRE);
       double distance = Utils::getEuclideanDistance(this, target);
       if (distance > 1) {
-         action = new MoveAction(this, 1);
+         action = new MoveAction(this, nullptr, 2);
       } else {
          action = new KillAction(this, target);
       }
    } else {
-      action = new MoveAction(this, 2);
+      action = new MoveAction(this, nullptr, 1);
    }
 }
 

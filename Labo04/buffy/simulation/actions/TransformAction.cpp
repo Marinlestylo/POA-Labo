@@ -5,8 +5,8 @@
 #include "TransformAction.hpp"
 #include "../Field.hpp"
 
-TransformAction::TransformAction(Humanoid* actionMaker, Humanoid* target) : Action(actionMaker),
-                                                                            target(target) {
+TransformAction::TransformAction(Humanoid* actionMaker, Humanoid* target)
+   : Action(actionMaker, target) {
 }
 
 void TransformAction::execute(Field& f) {

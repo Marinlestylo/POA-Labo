@@ -9,7 +9,7 @@
 
 class MoveAction : public Action {
 public:
-   MoveAction(Humanoid* actionMaker, unsigned step);
+   MoveAction(Humanoid* actionMaker, Humanoid* target, unsigned step);
    void execute(Field& f) override;
 
 private:

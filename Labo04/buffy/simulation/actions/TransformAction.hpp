@@ -11,9 +11,6 @@ class TransformAction : public Action {
 public:
     TransformAction(Humanoid* actionMaker, Humanoid* target);
     void execute(Field& f) override;
-
-private:
-   Humanoid* target;
 };
 
 

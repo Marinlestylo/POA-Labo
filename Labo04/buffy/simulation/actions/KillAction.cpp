@@ -6,8 +6,7 @@
 #include "../Field.hpp"
 #include "../../humanoids/Humanoid.hpp"
 
-KillAction::KillAction(Humanoid* actionMaker, Humanoid* target)
-                                                      : Action(actionMaker), target(target) {
+KillAction::KillAction(Humanoid* actionMaker, Humanoid* target) : Action(actionMaker, target) {
 }
 
 void KillAction::execute(Field& f) {

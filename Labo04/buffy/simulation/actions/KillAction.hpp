@@ -12,9 +12,6 @@ public:
    KillAction(Humanoid* actionMaker, Humanoid* target);
 
    void execute(Field& f) override;
-
-private:
-   Humanoid* target;
 };
 
 
