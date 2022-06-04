@@ -22,3 +22,8 @@ DisplayType Utils::getDisplayType(const string& type) {
          return DisplayType::CONSOLE;
    }
 }
+
+int Utils::getEuclideanDistance(Humanoid* from, Humanoid* to) {
+   return (int)(round(hypot(abs(double(from->getPosX() - to->getPosX())), abs
+      (double(from->getPosY() - to->getPosY())))));
+}

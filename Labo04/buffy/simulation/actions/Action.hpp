@@ -9,8 +9,14 @@
 
 class Action {
 public:
-	virtual void execute(Field& f) = 0;
+   explicit Action(Humanoid* actionMaker);
+
+   virtual void execute(Field& f) = 0;
+
    virtual ~Action() = default;
+
+protected:
+   Humanoid* actionMaker;
 };
 
 

@@ -12,6 +12,10 @@ bool Humanoid::isAlive() const {
    return alive;
 }
 
+void Humanoid::setAlive(bool alive) {
+   this->alive = alive;
+}
+
 unsigned Humanoid::getPosX() const {
    return posX;
 }
@@ -29,5 +33,12 @@ void Humanoid::setPosY(unsigned int posY) {
 }
 
 void Humanoid::executeAction(Field& field) {
-   action->execute(field);
+   if (action != nullptr && alive) {
+      action->execute(field);
+   }
+}
+
+// TODO : A refactor
+char Humanoid::getHuntedIdentifier() const {
+   return 'X';
 }

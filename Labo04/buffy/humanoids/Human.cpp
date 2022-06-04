@@ -9,9 +9,10 @@ Human::Human(unsigned int posX, unsigned int posY) : Humanoid(posX, posY) {
 }
 
 void Human::setAction(const Field& field) {
-   if (action != nullptr)
+   if (action != nullptr) {
       delete action;
-
+      action = nullptr;
+   }
    action = new MoveAction(this, 1);
 }
 

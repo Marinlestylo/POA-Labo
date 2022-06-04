@@ -10,6 +10,7 @@
 
 class Displayer {
 public:
+   // TODO : On ne peut pas stocker l'itérateur de début et de fin de la liste dans le constructeur
    Displayer(unsigned gridSize, std::list<Humanoid*>::const_iterator begin,
              std::list<Humanoid*>::const_iterator end);
 

@@ -11,6 +11,8 @@ class Vampire : public Humanoid {
 public:
    Vampire(unsigned int posX, unsigned int posY);
 
+   char getHuntedIdentifier() const;
+
    void setAction(const Field& field) override;
 
    char getIdentifier() const override;

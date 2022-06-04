@@ -4,8 +4,7 @@
 #include "MoveAction.hpp"
 #include "../utils/Utils.hpp"
 
-MoveAction::MoveAction(Humanoid* actionMaker, unsigned step) : actionMaker(actionMaker),
-                                                               step(step) {
+MoveAction::MoveAction(Humanoid* actionMaker, unsigned int step) : Action(actionMaker), step(step) {
 }
 
 void MoveAction::execute(Field& f) {

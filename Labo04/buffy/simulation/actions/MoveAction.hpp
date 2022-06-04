@@ -27,8 +27,6 @@ private:
    };
 
    bool setNewPosition(Field& f);
-
-   Humanoid* actionMaker;
    unsigned step;
 };
 

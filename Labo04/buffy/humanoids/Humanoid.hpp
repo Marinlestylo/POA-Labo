@@ -13,6 +13,8 @@ public:
 
    virtual ~Humanoid() = default;
 
+   char getHuntedIdentifier() const;
+
    unsigned getPosX() const;
 
    unsigned getPosY() const;
@@ -23,11 +25,15 @@ public:
 
    void executeAction(Field& field);
 
-   virtual void setAction(const Field& field) = 0;
-
-   virtual char getIdentifier() const = 0;
+   void setAlive(bool alive);
 
    bool isAlive() const;
+
+   virtual void setAction(const Field& field) = 0;
+
+   // TODO: Utilisation d'enum protected pour cette merde ??
+
+   virtual char getIdentifier() const = 0;
 
 protected:
    Action* action;

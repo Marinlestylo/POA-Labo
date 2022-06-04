@@ -17,20 +17,27 @@ public:
 
    int nextTurn();
 
-	unsigned getSize() const;
+   void decreasePopulation(char huntedIdentifier);
+
+   unsigned getSize() const;
 
    int getTurn() const;
 
-	std::list<Humanoid*>::const_iterator begin() const {
-		return humanoids.begin();
-	}
+   unsigned int getNbHumans() const;
 
-	std::list<Humanoid*>::const_iterator end() const {
-		return humanoids.end();
-	}
+   Humanoid* getNearestHumanoid(Humanoid* from, char identifier) const;
+
+   std::list<Humanoid*>::const_iterator begin() const {
+      return humanoids.begin();
+   }
+
+   std::list<Humanoid*>::const_iterator end() const {
+      return humanoids.end();
+   }
 
 private:
-   unsigned size;
+   unsigned size, nbVampires, nbHumans;
+private:
    int turn;
    std::list<Humanoid*> humanoids;
 };
