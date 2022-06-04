@@ -11,7 +11,7 @@ class Buffy : public Humanoid {
 public:
    Buffy(unsigned int posX, unsigned int posY);
 
-   char getHuntedIdentifier() const;
+   char getHuntedIdentifier() const override;
 
    void setAction(const Field& field) override;
 

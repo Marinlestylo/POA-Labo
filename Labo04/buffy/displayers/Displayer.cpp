@@ -5,6 +5,4 @@
 
 using namespace std;
 
-Displayer::Displayer(unsigned gridSize, list<Humanoid*>::const_iterator begin,
-							list<Humanoid*>::const_iterator end)
-							: gridSize(gridSize), begin(begin), end(end) {}
+Displayer::Displayer(unsigned gridSize) : gridSize(gridSize) {}

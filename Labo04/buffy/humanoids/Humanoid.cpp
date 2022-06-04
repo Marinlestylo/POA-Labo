@@ -33,12 +33,7 @@ void Humanoid::setPosY(unsigned int posY) {
 }
 
 void Humanoid::executeAction(Field& field) {
-   if (action != nullptr && alive) {
+   if (action != nullptr) {
       action->execute(field);
    }
-}
-
-// TODO : A refactor
-char Humanoid::getHuntedIdentifier() const {
-   return 'X';
 }

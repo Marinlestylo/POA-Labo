@@ -8,6 +8,7 @@
 #include <list>
 
 class Humanoid;
+class Vampire;
 
 class Field {
 public:
@@ -23,7 +24,11 @@ public:
 
    int getTurn() const;
 
-   unsigned int getNbHumans() const;
+   unsigned getNbHumans() const;
+
+   unsigned getNbVampires() const;
+
+   void addVampire(Vampire* vampire);
 
    Humanoid* getNearestHumanoid(Humanoid* from, char identifier) const;
 

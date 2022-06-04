@@ -16,6 +16,7 @@ public:
    virtual ~Action() = default;
 
 protected:
+   // TODO: Ajouter un humanoid target
    Humanoid* actionMaker;
 };
 

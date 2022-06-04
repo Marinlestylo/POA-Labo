@@ -14,6 +14,9 @@ void MoveAction::execute(Field& f) {
 }
 
 bool MoveAction::setNewPosition(Field& f) {
+
+   // TODO : Gérer les déplacements vers les cibles
+
    auto direction = (Direction) ((int) Utils::random() % (Direction::SIZE));
    int newX = 0, newY = 0;
    switch (direction) {

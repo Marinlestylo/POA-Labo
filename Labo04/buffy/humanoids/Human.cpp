@@ -19,3 +19,7 @@ void Human::setAction(const Field& field) {
 char Human::getIdentifier() const {
    return 'h';
 }
+
+char Human::getHuntedIdentifier() const {
+   return 'h';
+}

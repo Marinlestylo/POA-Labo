@@ -49,8 +49,8 @@ int Field::nextTurn() {
    // Enlever les humanoides tués
    for (auto it = humanoids.begin(); it != humanoids.end();)
       if (!(*it)->isAlive()) {
-         it = humanoids.erase(it); // suppression de l’élément dans la liste
          delete *it; // destruction de l’humanoide référencé
+         it = humanoids.erase(it); // suppression de l’élément dans la liste
       } else
          ++it;
    return turn++;
@@ -81,6 +81,15 @@ Humanoid* Field::getNearestHumanoid(Humanoid* from, char identifier) const {
 
 unsigned Field::getNbHumans() const {
    return nbHumans;
+}
+
+unsigned Field::getNbVampires() const {
+   return nbVampires;
+}
+
+void Field::addVampire(Vampire* vampire) {
+   humanoids.emplace_back(vampire);
+   nbVampires++;
 }
 
 void Field::decreasePopulation(char huntedIdentifier) {

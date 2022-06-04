@@ -14,11 +14,12 @@ enum DisplayType {
 
 class Utils {
 public:
+   // TODO: Générateur random pour direction + pourcentage de chance de kill du vampire
    static unsigned random(unsigned max = 0);
 
    static DisplayType getDisplayType(const std::string& type);
 
-   static int getEuclideanDistance(Humanoid* from, Humanoid* to);
+   static double getEuclideanDistance(Humanoid* from, Humanoid* to);
 
    Utils(Utils& other) = delete;
 

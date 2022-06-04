@@ -14,6 +14,8 @@ public:
    void setAction(const Field& field) override;
 
    char getIdentifier() const override;
+
+   char getHuntedIdentifier() const override;
 };
 
 #endif //BUFFY_HUMAN_HPP

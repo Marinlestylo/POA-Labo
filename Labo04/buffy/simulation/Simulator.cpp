@@ -20,7 +20,7 @@ Simulator::~Simulator() {
 void Simulator::run() {
    while (!ended) {
       if (displayer != nullptr) {
-         displayer->displayGrid();
+         displayer->displayGrid(field.begin(), field.end());
          displayer->displayPrompt(field.getTurn());
          ended = displayer->getInput(field);
       } else {
@@ -31,13 +31,14 @@ void Simulator::run() {
 
 }
 
+// TODO : Ca dégage
 Displayer* Simulator::chooseDisplayer(const DisplayType& type) {
    switch (type) {
       case NO_DISPLAY:
          return nullptr;
       case CONSOLE:
       default:
-         return new ConsoleDisplayer(field.getSize(), field.begin(), field.end());
+         return new ConsoleDisplayer(field.getSize());
    }
 }
 

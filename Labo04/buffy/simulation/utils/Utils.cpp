@@ -13,6 +13,7 @@ unsigned Utils::random(unsigned max) {
    return distribution(engine);
 }
 
+// TODO: Ca dégage
 DisplayType Utils::getDisplayType(const string& type) {
    switch (type[0]) {
       case 'n':
@@ -23,7 +24,8 @@ DisplayType Utils::getDisplayType(const string& type) {
    }
 }
 
-int Utils::getEuclideanDistance(Humanoid* from, Humanoid* to) {
-   return (int)(round(hypot(abs(double(from->getPosX() - to->getPosX())), abs
-      (double(from->getPosY() - to->getPosY())))));
+double Utils::getEuclideanDistance(Humanoid* from, Humanoid* to) {
+   // TODO : Gros gros refactor de cette immondice
+   return (round(hypot(abs(double((int)from->getPosX() - (int)to->getPosX())), abs
+      (double((int)from->getPosY() - (int)to->getPosY())))));
 }
