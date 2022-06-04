@@ -5,7 +5,7 @@
 #include "Human.hpp"
 #include "../simulation/actions/MoveAction.hpp"
 
-Human::Human(unsigned int posX, unsigned int posY) : Humanoid(posX, posY) {
+Human::Human(int x, int y) : Humanoid(x, y) {
 }
 
 void Human::setAction(const Field& field) {

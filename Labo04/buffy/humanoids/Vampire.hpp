@@ -8,7 +8,7 @@
 
 class Vampire : public Humanoid {
 public:
-   Vampire(unsigned int posX, unsigned int posY);
+   Vampire(int x, int y);
 
    void setAction(const Field& field) override;
 

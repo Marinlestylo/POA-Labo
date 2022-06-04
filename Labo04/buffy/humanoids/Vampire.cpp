@@ -8,7 +8,7 @@
 #include "../simulation/actions/TransformAction.hpp"
 #include "../simulation/utils/Utils.hpp"
 
-Vampire::Vampire(unsigned int posX, unsigned int posY) : Humanoid(posX, posY) {
+Vampire::Vampire(int x, int y) : Humanoid(x, y) {
 }
 
 void Vampire::setAction(const Field& field) {
@@ -17,10 +17,10 @@ void Vampire::setAction(const Field& field) {
       action = nullptr;
    }
    if (field.getNbHumans()) {
-      auto target = field.getNearestHumanoid(this, Identifier::HUMAN);
-      double distance = Utils::getEuclideanDistance(this, target);
+      auto target = field.getNearestHumanoid(getPosition(), Identifier::HUMAN);
+      int distance = Position::getEuclideanDistance(getPosition(), target->getPosition());
       if (distance > 1) {
-         action = new MoveAction(this, nullptr, 1);
+         action = new MoveAction(this, target, 1);
       } else {
          if (Utils::random(2)) {
             action = new KillAction(this, target);

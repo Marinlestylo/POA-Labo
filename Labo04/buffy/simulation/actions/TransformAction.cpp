@@ -13,6 +13,6 @@ void TransformAction::execute(Field& f) {
    if (target->isAlive()) {
       target->setAlive(false);
       f.decreasePopulation(target->getIdentifier());
-      f.addVampire(new Vampire(target->getPosX(), target->getPosY()));
+      f.addVampire(new Vampire(target->getPosition().getX(), target->getPosition().getY()));
    }
 }

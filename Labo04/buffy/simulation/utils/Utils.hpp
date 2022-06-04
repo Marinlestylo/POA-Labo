@@ -13,8 +13,6 @@ class Utils {
 public:
    static unsigned random(unsigned max);
 
-   static double getEuclideanDistance(Humanoid* from, Humanoid* to);
-
    Utils(Utils& other) = delete;
 
    void operator=(Utils& other) = delete;

@@ -5,6 +5,7 @@
 #define BUFFY_HUMANOID_HPP
 
 #include "../simulation/actions/Action.hpp"
+#include "../simulation/utils/Position.hpp"
 
 class Humanoid {
 public:
@@ -14,17 +15,11 @@ public:
       BUFFY
    };
 
-   Humanoid(unsigned posX, unsigned posY);
+   Humanoid(int x, int y);
 
    virtual ~Humanoid() = default;
 
-   unsigned getPosX() const;
-
-   unsigned getPosY() const;
-
-   void setPosX(unsigned posX);
-
-   void setPosY(unsigned posY);
+   Position& getPosition();
 
    bool isAlive() const;
 
@@ -40,7 +35,7 @@ protected:
    Action* action;
 private:
    bool alive;
-   unsigned posX, posY;
+   Position position;
 };
 
 #endif //BUFFY_HUMANOID_HPP

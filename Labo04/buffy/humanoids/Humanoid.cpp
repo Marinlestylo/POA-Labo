@@ -4,9 +4,9 @@
 
 #include "Humanoid.hpp"
 
-Humanoid::Humanoid(unsigned posX, unsigned posY) : action(nullptr), alive(true), posX(posX),
-                                                   posY(posY) {
+Humanoid::Humanoid(int x, int y) : action(nullptr), alive(true), position(x, y) {
 }
+
 
 bool Humanoid::isAlive() const {
    return alive;
@@ -16,20 +16,8 @@ void Humanoid::setAlive(bool alive) {
    this->alive = alive;
 }
 
-unsigned Humanoid::getPosX() const {
-   return posX;
-}
-
-unsigned Humanoid::getPosY() const {
-   return posY;
-}
-
-void Humanoid::setPosX(unsigned int posX) {
-   this->posX = posX;
-}
-
-void Humanoid::setPosY(unsigned int posY) {
-   this->posY = posY;
+Position& Humanoid::getPosition() {
+   return position;
 }
 
 void Humanoid::executeAction(Field& field) {

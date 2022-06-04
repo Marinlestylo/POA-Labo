@@ -30,7 +30,7 @@ void ConsoleDisplayer::updateGrid(std::list<Humanoid*>::const_iterator begin,
                                   std::list<Humanoid*>::const_iterator end) {
    grid.assign(height, vector<char>(width, ' '));
    for (auto iter = begin; iter != end; ++iter) {
-      grid.at((*iter)->getPosY()).at((*iter)->getPosX()) =
+      grid.at((*iter)->getPosition().getY()).at((*iter)->getPosition().getX()) =
          mapIdentifierToSymbol((*iter)->getIdentifier());
    }
 }

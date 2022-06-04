@@ -28,7 +28,7 @@ public:
 
    unsigned getNbVampires() const;
 
-   Humanoid* getNearestHumanoid(Humanoid* from, Humanoid::Identifier identifier) const;
+   Humanoid* getNearestHumanoid(Position& from, Humanoid::Identifier identifier) const;
 
    std::list<Humanoid*>::const_iterator begin() const {
       return humanoids.begin();

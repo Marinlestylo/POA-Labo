@@ -8,7 +8,7 @@
 
 class Buffy : public Humanoid {
 public:
-   Buffy(unsigned int posX, unsigned int posY);
+   Buffy(int x, int y);
 
    void setAction(const Field& field) override;
 

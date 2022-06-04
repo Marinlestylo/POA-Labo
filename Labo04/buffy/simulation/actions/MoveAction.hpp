@@ -10,22 +10,10 @@
 class MoveAction : public Action {
 public:
    MoveAction(Humanoid* actionMaker, Humanoid* target, unsigned step);
+
    void execute(Field& f) override;
 
 private:
-   enum Direction {
-      LEFT_UP,
-      UP,
-      RIGHT_UP,
-      LEFT,
-      RIGHT,
-      LEFT_DOWN,
-      DOWN,
-      RIGHT_DOWN,
-      SIZE
-   };
-
-   bool setNewPosition(Field& f);
    unsigned step;
 };
 

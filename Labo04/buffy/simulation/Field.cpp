@@ -66,12 +66,12 @@ int Field::getTurn() const {
    return turn;
 }
 
-Humanoid* Field::getNearestHumanoid(Humanoid* from, Humanoid::Identifier identifier) const {
-   double shortestEuclideanDistance = INT_MAX;
+Humanoid* Field::getNearestHumanoid(Position& from, Humanoid::Identifier identifier) const {
+   int shortestEuclideanDistance = INT_MAX;
    Humanoid* nearestHumanoid = nullptr;
    for (auto humanoid: humanoids) {
       if (humanoid->getIdentifier() == identifier) {
-         double euclideanDistance = Utils::getEuclideanDistance(from, humanoid);
+         int euclideanDistance = Position::getEuclideanDistance(from, humanoid->getPosition());
          if (euclideanDistance < shortestEuclideanDistance) {
             shortestEuclideanDistance = euclideanDistance;
             nearestHumanoid = humanoid;
