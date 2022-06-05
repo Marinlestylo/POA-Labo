@@ -17,7 +17,7 @@ public:
 
    Humanoid(int x, int y);
 
-   virtual ~Humanoid() = default;
+   virtual ~Humanoid();
 
    Position& getPosition();
 

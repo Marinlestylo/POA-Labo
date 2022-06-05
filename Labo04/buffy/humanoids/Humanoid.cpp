@@ -7,6 +7,9 @@
 Humanoid::Humanoid(int x, int y) : action(nullptr), alive(true), position(x, y) {
 }
 
+Humanoid::~Humanoid() {
+	delete action;
+}
 
 bool Humanoid::isAlive() const {
    return alive;

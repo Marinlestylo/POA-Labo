@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include <cmath>
+#include <climits>
 
 #include "Field.hpp"
 #include "../humanoids/Human.hpp"
