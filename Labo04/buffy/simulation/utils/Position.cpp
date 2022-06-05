@@ -49,21 +49,22 @@ void Position::setRandomPosition(int maxX, int maxY) {
 }
 
 void Position::setDirectedPosition(Position& target, int step, int maxX, int maxY) {
-   int newX, newY;
+   int newX = x, newY = y;
 
-   int dirX = target.getX() - x;
-   int dirY = target.getY() - y;
+   for (int i = 0; i < step; i++) {
+      int dirX = target.getX() - newX;
+      int dirY = target.getY() - newY;
 
-   dirX = dirX == 0 ? 0 : dirX / (abs(dirX));
-   dirY = dirY == 0 ? 0 : dirY / (abs(dirY));
+      dirX = dirX == 0 ? 0 : dirX / (abs(dirX));
+      dirY = dirY == 0 ? 0 : dirY / (abs(dirY));
 
-   newX = x + dirX * step;
-   newX < 0 ? newX = 0 : newX;
-   newX >= maxX ? newX = maxX - 1 : newX;
-
-   newY = y + dirY * step;
+      newX += dirX;
+      newY += dirY;
+   }
    newY < 0 ? newY = 0 : newY;
    newY >= maxY ? newY = maxY - 1 : newY;
+   newX < 0 ? newX = 0 : newX;
+   newX >= maxX ? newX = maxX - 1 : newX;
 
    x = newX;
    y = newY;
