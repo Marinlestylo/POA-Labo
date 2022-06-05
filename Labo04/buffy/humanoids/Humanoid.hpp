@@ -1,7 +1,7 @@
 #ifndef BUFFY_HUMANOID_HPP
 #define BUFFY_HUMANOID_HPP
 
-#include "../simulation/actions/Action.hpp"
+#include "../actions/Action.hpp"
 #include "../simulation/utils/Position.hpp"
 
 /**

@@ -6,8 +6,8 @@
 
 #include "Buffy.hpp"
 #include "../simulation/Field.hpp"
-#include "../simulation/actions/MoveAction.hpp"
-#include "../simulation/actions/KillAction.hpp"
+#include "../actions/MoveAction.hpp"
+#include "../actions/KillAction.hpp"
 
 Buffy::Buffy(int x, int y) : Humanoid(x, y) {
 }

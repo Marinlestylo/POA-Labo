@@ -6,9 +6,9 @@
 
 #include "Vampire.hpp"
 #include "../simulation/Field.hpp"
-#include "../simulation/actions/MoveAction.hpp"
-#include "../simulation/actions/KillAction.hpp"
-#include "../simulation/actions/TransformAction.hpp"
+#include "../actions/MoveAction.hpp"
+#include "../actions/KillAction.hpp"
+#include "../actions/TransformAction.hpp"
 #include "../simulation/utils/Random.hpp"
 
 Vampire::Vampire(int x, int y) : Humanoid(x, y) {

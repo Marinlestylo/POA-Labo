@@ -5,7 +5,7 @@
  */
 
 #include "Human.hpp"
-#include "../simulation/actions/MoveAction.hpp"
+#include "../actions/MoveAction.hpp"
 
 Human::Human(int x, int y) : Humanoid(x, y) {
 }

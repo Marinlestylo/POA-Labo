@@ -5,7 +5,7 @@
  */
 
 #include "TransformAction.hpp"
-#include "../Field.hpp"
+#include "../simulation/Field.hpp"
 
 TransformAction::TransformAction(Humanoid* actionMaker, Humanoid* target)
    : Action(actionMaker, target) {

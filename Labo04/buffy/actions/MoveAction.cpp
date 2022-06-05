@@ -5,7 +5,7 @@
  */
 
 #include "MoveAction.hpp"
-#include "../Field.hpp"
+#include "../simulation/Field.hpp"
 
 // TODO : Refactor currentX & currentY + les casts
 
