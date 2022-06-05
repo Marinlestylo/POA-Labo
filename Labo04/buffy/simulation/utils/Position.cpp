@@ -61,10 +61,10 @@ void Position::setDirectedPosition(Position& target, int step, int maxX, int max
       newX += dirX;
       newY += dirY;
    }
-   newY < 0 ? newY = 0 : newY;
-   newY >= maxY ? newY = maxY - 1 : newY;
-   newX < 0 ? newX = 0 : newX;
-   newX >= maxX ? newX = maxX - 1 : newX;
+//   newY < 0 ? newY = 0 : newY;
+//   newY >= maxY ? newY = maxY - 1 : newY;
+//   newX < 0 ? newX = 0 : newX;
+//   newX >= maxX ? newX = maxX - 1 : newX;
 
    x = newX;
    y = newY;

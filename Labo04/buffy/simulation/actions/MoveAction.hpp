@@ -14,6 +14,7 @@ public:
    void execute(Field& f) override;
 
 private:
+   int currentX, currentY;
    unsigned step;
 };
 
