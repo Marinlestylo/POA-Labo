@@ -1,6 +1,8 @@
-//
-// Created by Lazar on 19.05.2022.
-//
+/**
+ * Classe représentant un humain
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 
 #include "Human.hpp"
 #include "../simulation/actions/MoveAction.hpp"
@@ -19,4 +21,3 @@ void Human::setAction(const Field& field) {
 Humanoid::Identifier Human::getIdentifier() const {
    return Humanoid::HUMAN;
 }
-

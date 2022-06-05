@@ -1,14 +1,12 @@
-//
-// Created by Lazar on 04.06.2022.
-//
+/**
+ * Classe représentant une position dans le field
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 
 #include <cmath>
-#include "Position.hpp"
 #include "Direction.hpp"
-#include "Utils.hpp"
-
-Position::Position(int x, int y) : x(x), y(y) {
-}
+#include "Random.hpp"
 
 int Position::getEuclideanDistance(Position& from, Position& to) {
    double first = abs((from.getX() - to.getX()));
@@ -16,27 +14,22 @@ int Position::getEuclideanDistance(Position& from, Position& to) {
    return int(round(hypot(first, second)));
 }
 
-int Position::getX() const {
-   return x;
+Position::Position(int x, int y) : x(x), y(y) {
 }
 
-void Position::setX(int x) {
-   this->x = x;
+int Position::getX() const {
+   return x;
 }
 
 int Position::getY() const {
    return y;
 }
 
-void Position::setY(int y) {
-   this->y = y;
-}
-
 void Position::setRandomPosition(int maxX, int maxY) {
    bool correctlySetted = false;
    int newX, newY;
    while (!correctlySetted) {
-      auto& direction = Direction::get(Utils::random(Direction::size()));
+      auto& direction = Direction::get(Random::random(Direction::size()));
       newX = x + direction.getX();
       newY = y + direction.getY();
 
@@ -48,7 +41,7 @@ void Position::setRandomPosition(int maxX, int maxY) {
    }
 }
 
-void Position::setDirectedPosition(Position& target, int step, int maxX, int maxY) {
+void Position::setDirectedPosition(Position& target, int step) {
    int newX = x, newY = y;
 
    for (int i = 0; i < step; i++) {
@@ -61,11 +54,6 @@ void Position::setDirectedPosition(Position& target, int step, int maxX, int max
       newX += dirX;
       newY += dirY;
    }
-//   newY < 0 ? newY = 0 : newY;
-//   newY >= maxY ? newY = maxY - 1 : newY;
-//   newX < 0 ? newX = 0 : newX;
-//   newX >= maxX ? newX = maxX - 1 : newX;
-
    x = newX;
    y = newY;
 }

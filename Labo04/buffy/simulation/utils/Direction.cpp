@@ -1,6 +1,8 @@
-//
-// Created by Lazar on 04.06.2022.
-//
+/**
+ * Enum représentant les directions possibles d'un humanoïde
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 
 #include <stdexcept>
 #include "Direction.hpp"
@@ -20,21 +22,15 @@ const Direction* Direction::DIRECTIONS[]{
    &LEFT_UP, &UP, &RIGHT_UP, &LEFT, &RIGHT, &LEFT_DOWN, &DOWN, &RIGHT_DOWN
 };
 
-Direction::Direction(int x, int y) {
-   this->x = x;
-   this->y = y;
-   COUNT++;
+const Direction& Direction::get(unsigned index) {
+   if (index >= COUNT) {
+      throw std::out_of_range("Erreur: L'index est trop grand");
+   }
+   return *DIRECTIONS[index];
 }
 
 unsigned Direction::size() {
    return COUNT;
-}
-
-const Direction& Direction::get(unsigned int i) {
-   if (i >= COUNT) {
-      throw std::out_of_range("Erreur: L'indice est trop grand");
-   }
-   return *DIRECTIONS[i];
 }
 
 int Direction::getX() const {
@@ -43,4 +39,10 @@ int Direction::getX() const {
 
 int Direction::getY() const {
    return y;
+}
+
+Direction::Direction(int x, int y) {
+   this->x = x;
+   this->y = y;
+   COUNT++;
 }

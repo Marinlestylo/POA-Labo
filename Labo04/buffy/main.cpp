@@ -1,3 +1,9 @@
+/**
+ * Classe représentant le point d'entrée du programme
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
+
 #include <iostream>
 #include "simulation/Simulator.hpp"
 #include "displayers/ConsoleDisplayer.hpp"

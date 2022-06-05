@@ -1,6 +1,10 @@
-//
-// Created by Lazar on 02.06.2022.
-//
+/**
+ * Classe gérant l'affichage d'une simulation dans une console
+ *
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
+
 #include <iostream>
 #include "../simulation/Field.hpp"
 #include "../simulation/Simulator.hpp"
@@ -15,7 +19,6 @@ ConsoleDisplayer::ConsoleDisplayer(unsigned width, unsigned height)
 void ConsoleDisplayer::displayGrid(std::list<Humanoid*>::const_iterator begin,
                                    std::list<Humanoid*>::const_iterator end) {
    updateGrid(begin, end);
-
    cout << "+" << string(width, '-') << "+" << endl;
    for (auto& row: grid) {
       cout << "|";
@@ -25,15 +28,6 @@ void ConsoleDisplayer::displayGrid(std::list<Humanoid*>::const_iterator begin,
       cout << "|" << endl;
    }
    cout << "+" << string(width, '-') << "+" << endl;
-}
-
-void ConsoleDisplayer::updateGrid(std::list<Humanoid*>::const_iterator begin,
-                                  std::list<Humanoid*>::const_iterator end) {
-   grid.assign(height, vector<char>(width, ' '));
-   for (auto iter = begin; iter != end; ++iter) {
-      grid.at((*iter)->getPosition().getY()).at((*iter)->getPosition().getX()) =
-         mapIdentifierToSymbol((*iter)->getIdentifier());
-   }
 }
 
 void ConsoleDisplayer::displayPrompt(int turn) {
@@ -47,8 +41,8 @@ bool ConsoleDisplayer::getInput(Field& f, Simulator& s) {
       return true;
    } else if (input == "s") {
       cout << "Simulating..." << endl;
-      double average = s.simulate();
-      cout << "For " << s.getNbSimulation() << " simulations : succes rate of " << average * 100
+      double saves = s.simulate();
+      cout << "For " << s.getNbSimulation() << " simulations : succes rate of " << saves * 100
            << "%" << endl;
    } else if (input == "n" || input.empty()) {
       f.nextTurn();
@@ -56,6 +50,15 @@ bool ConsoleDisplayer::getInput(Field& f, Simulator& s) {
       cout << "Invalid input" << endl;
    }
    return false;
+}
+
+void ConsoleDisplayer::updateGrid(std::list<Humanoid*>::const_iterator begin,
+                                  std::list<Humanoid*>::const_iterator end) {
+   grid.assign(height, vector<char>(width, ' '));
+   for (auto iter = begin; iter != end; ++iter) {
+      grid.at((*iter)->getPosition().getY()).at((*iter)->getPosition().getX()) =
+         mapIdentifierToSymbol((*iter)->getIdentifier());
+   }
 }
 
 char ConsoleDisplayer::mapIdentifierToSymbol(Humanoid::Identifier identifier) {

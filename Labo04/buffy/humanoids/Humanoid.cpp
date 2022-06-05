@@ -1,6 +1,8 @@
-//
-// Created by Lazar on 19.05.2022.
-//
+/**
+ * Classe abstraite représentant un humanoïde.
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 
 #include "Humanoid.hpp"
 
@@ -8,7 +10,11 @@ Humanoid::Humanoid(int x, int y) : action(nullptr), alive(true), position(x, y) 
 }
 
 Humanoid::~Humanoid() {
-	delete action;
+   delete action;
+}
+
+Position& Humanoid::getPosition() {
+   return position;
 }
 
 bool Humanoid::isAlive() const {
@@ -17,10 +23,6 @@ bool Humanoid::isAlive() const {
 
 void Humanoid::setAlive(bool alive) {
    this->alive = alive;
-}
-
-Position& Humanoid::getPosition() {
-   return position;
 }
 
 void Humanoid::executeAction(Field& field) {

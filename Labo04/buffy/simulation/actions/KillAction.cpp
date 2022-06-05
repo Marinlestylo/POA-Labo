@@ -1,10 +1,11 @@
-//
-// Created by Lazar on 03.06.2022.
-//
+/**
+ * Classe représentant une action qui tue un humanoïde
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 
 #include "KillAction.hpp"
 #include "../Field.hpp"
-#include "../../humanoids/Humanoid.hpp"
 
 KillAction::KillAction(Humanoid* actionMaker, Humanoid* target) : Action(actionMaker, target) {
 }

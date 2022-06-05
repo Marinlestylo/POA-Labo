@@ -1,6 +1,8 @@
-//
-// Created by Lazar on 03.06.2022.
-//
+/**
+ * Classe représentant une action qui transforme un humanoïde en vampire
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 
 #include "TransformAction.hpp"
 #include "../Field.hpp"

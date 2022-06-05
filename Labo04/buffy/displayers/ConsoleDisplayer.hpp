@@ -1,15 +1,22 @@
-//
-// Created by Lazar on 02.06.2022.
-//
-
 #ifndef BUFFY_CONSOLEDISPLAYER_HPP
 #define BUFFY_CONSOLEDISPLAYER_HPP
 
 #include <vector>
 #include "Displayer.hpp"
 
+/**
+ * Classe gérant l'affichage d'une simulation dans une console
+ *
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 class ConsoleDisplayer : public Displayer {
 public:
+   /**
+    * Constructeur de base
+    * @param width  largeur de la grille
+    * @param height hauteur de la grille
+    */
    ConsoleDisplayer(unsigned width, unsigned height);
 
    void displayGrid(std::list<Humanoid*>::const_iterator begin,
@@ -20,11 +27,20 @@ public:
    bool getInput(Field& f, Simulator& s) override;
 
 private:
-   static char mapIdentifierToSymbol(Humanoid::Identifier identifier) ;
+   /**
+    * Mappe l'identifiant d'un humanoïde à un char
+    * @param identifier Identifiant de l'humanoïde
+    * @return char correspondant à l'identifiant
+    */
+   static char mapIdentifierToSymbol(Humanoid::Identifier identifier);
 
+   /**
+    * Met à jour la grille en itérant sur la liste des humanoïdes
+    * @param begin Itérateur sur le premier élément de la liste des humanoïdes
+    * @param end   Itérateur sur le dernier élément de la liste des humanoïdes
+    */
    void updateGrid(std::list<Humanoid*>::const_iterator begin,
                    std::list<Humanoid*>::const_iterator end);
-
 
    std::vector<std::vector<char>> grid;
 };

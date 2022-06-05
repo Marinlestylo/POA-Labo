@@ -1,34 +1,34 @@
-//
-// Created by Lazar on 19.05.2022.
-//
+/**
+ * Classe représentant le terrain de jeu contenant une liste d'humanoïdes.
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 
 #include <stdexcept>
-#include <cmath>
 #include <climits>
 
 #include "Field.hpp"
 #include "../humanoids/Human.hpp"
-#include "../humanoids/Vampire.hpp"
 #include "../humanoids/Buffy.hpp"
-#include "utils/Utils.hpp"
+#include "utils/Random.hpp"
 
 using namespace std;
 
-Field::Field(unsigned width, unsigned height, unsigned nbVampires, unsigned nbHumans) : width
-(width), height(height),nbVampires(nbVampires),nbHumans(nbHumans),turn(0) {
+Field::Field(unsigned width, unsigned height, unsigned nbVampires, unsigned nbHumans)
+   : width(width), height(height), nbVampires(nbVampires), nbHumans(nbHumans), turn(0) {
    if (width == 0 || height == 0 || nbHumans == 0 || nbVampires == 0) {
       throw runtime_error("Erreur: Les valeurs inserees ne peuvent pas etre nulles");
    }
 
    for (unsigned i = 0; i < nbHumans; i++) {
-      humanoids.emplace_back(new Human(Utils::random(width), Utils::random(height)));
+      humanoids.emplace_back(new Human(Random::random(width), Random::random(height)));
    }
 
    for (unsigned i = 0; i < nbVampires; i++) {
-      humanoids.emplace_back(new Vampire(Utils::random(width), Utils::random(height)));
+      humanoids.emplace_back(new Vampire(Random::random(width), Random::random(height)));
    }
 
-   humanoids.emplace_back(new Buffy(Utils::random(width), Utils::random(height)));
+   humanoids.emplace_back(new Buffy(Random::random(width), Random::random(height)));
 }
 
 
@@ -67,6 +67,14 @@ int Field::getTurn() const {
    return turn;
 }
 
+bool Field::hasHumans() const {
+   return nbHumans > 0;
+}
+
+bool Field::hasVampires() const {
+   return nbVampires > 0;
+}
+
 Humanoid* Field::getNearestHumanoid(Position& from, Humanoid::Identifier identifier) const {
    int shortestEuclideanDistance = INT_MAX;
    Humanoid* nearestHumanoid = nullptr;
@@ -82,17 +90,12 @@ Humanoid* Field::getNearestHumanoid(Position& from, Humanoid::Identifier identif
    return nearestHumanoid;
 }
 
-bool Field::hasHumans() const {
-   return nbHumans > 0;
+std::list<Humanoid*>::const_iterator Field::begin() const {
+   return humanoids.begin();
 }
 
-bool Field::hasVampires() const {
-   return nbVampires > 0;
-}
-
-void Field::addVampire(Vampire* vampire) {
-   humanoids.emplace_back(vampire);
-   nbVampires++;
+std::list<Humanoid*>::const_iterator Field::end() const {
+   return humanoids.end();
 }
 
 void Field::decreasePopulation(Humanoid::Identifier targetIdentifier) {
@@ -101,4 +104,9 @@ void Field::decreasePopulation(Humanoid::Identifier targetIdentifier) {
    } else if (targetIdentifier == Humanoid::Identifier::VAMPIRE) {
       nbVampires--;
    }
+}
+
+void Field::addVampire(Vampire* vampire) {
+   humanoids.emplace_back(vampire);
+   nbVampires++;
 }

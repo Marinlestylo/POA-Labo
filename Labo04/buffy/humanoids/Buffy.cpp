@@ -1,11 +1,13 @@
-//
-// Created by Lazar on 26.05.2022.
-//
+/**
+ * Classe représentant Buffy, la chasseuse de vampire !
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
+
 #include "Buffy.hpp"
 #include "../simulation/Field.hpp"
 #include "../simulation/actions/MoveAction.hpp"
 #include "../simulation/actions/KillAction.hpp"
-#include "../simulation/utils/Utils.hpp"
 
 Buffy::Buffy(int x, int y) : Humanoid(x, y) {
 }
@@ -31,4 +33,3 @@ void Buffy::setAction(const Field& field) {
 Humanoid::Identifier Buffy::getIdentifier() const {
    return Humanoid::BUFFY;
 }
-

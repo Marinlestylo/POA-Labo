@@ -1,6 +1,8 @@
-//
-// Created by Lazar on 04.06.2022.
-//
+/**
+ * Classe représentant une action effectuée par un humanoïde
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
 
 #include "Action.hpp"
 

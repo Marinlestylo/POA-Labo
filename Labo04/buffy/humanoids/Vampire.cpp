@@ -1,12 +1,15 @@
-//
-// Created by Lazar on 26.05.2022.
-//
+/**
+ * Classe représentant un vampire
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
+
 #include "Vampire.hpp"
 #include "../simulation/Field.hpp"
 #include "../simulation/actions/MoveAction.hpp"
 #include "../simulation/actions/KillAction.hpp"
 #include "../simulation/actions/TransformAction.hpp"
-#include "../simulation/utils/Utils.hpp"
+#include "../simulation/utils/Random.hpp"
 
 Vampire::Vampire(int x, int y) : Humanoid(x, y) {
 }
@@ -22,7 +25,7 @@ void Vampire::setAction(const Field& field) {
       if (distance > 1) {
          action = new MoveAction(this, target, 1);
       } else {
-         if (Utils::random(2)) {
+         if (Random::random(2)) {
             action = new KillAction(this, target);
          } else {
             action = new TransformAction(this, target);

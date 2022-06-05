@@ -1,6 +1,10 @@
-//
-// Created by Lazar on 02.06.2022.
-//
+/**
+ * Classe abstraite gérant l'affichage d'une simulation
+ *
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
+
 #include "Displayer.hpp"
 
 using namespace std;

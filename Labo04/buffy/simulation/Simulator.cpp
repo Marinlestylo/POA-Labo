@@ -1,17 +1,20 @@
-//
-// Created by Lazar on 02.06.2022.
-//
+/**
+ * Classe contrôlant la simulation du jeu
+ * @author Jonathan Friedli
+ * @author Lazar Pavicevic
+ */
+
 #include "Simulator.hpp"
 
 using namespace std;
 
 Simulator::Simulator(unsigned nbSimulation, unsigned width, unsigned height, unsigned
-nbVampires, unsigned nbHumans,
-                     Displayer& displayer) : nbSimulation(nbSimulation),
-                                             width(width), height(height), nbVampires(nbVampires),
-                                             nbHumans(nbHumans),
-                                             field(width, height, nbVampires, nbHumans),
-                                             displayer(displayer), ended(false) {
+nbVampires, unsigned nbHumans, Displayer& displayer) : nbSimulation(nbSimulation),
+                                                       width(width), height(height),
+                                                       nbVampires(nbVampires),
+                                                       nbHumans(nbHumans),
+                                                       field(width, height, nbVampires, nbHumans),
+                                                       displayer(displayer), ended(false) {
 }
 
 void Simulator::run() {
