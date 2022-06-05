@@ -15,7 +15,7 @@ void Buffy::setAction(const Field& field) {
       delete action;
       action = nullptr;
    }
-   if (field.getNbVampires()) {
+   if (field.hasVampires()) {
       auto target = field.getNearestHumanoid(getPosition(), Identifier::VAMPIRE);
       int distance = Position::getEuclideanDistance(getPosition(), target->getPosition());
       if (distance > 1) {

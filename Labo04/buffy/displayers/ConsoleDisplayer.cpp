@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include "../simulation/Field.hpp"
+#include "../simulation/Simulator.hpp"
 #include "ConsoleDisplayer.hpp"
 
 using namespace std;
@@ -39,14 +40,16 @@ void ConsoleDisplayer::displayPrompt(int turn) {
    cout << "[" << turn << "] q>uit s>tatistics n>ext:";
 }
 
-bool ConsoleDisplayer::getInput(Field& f) {
+bool ConsoleDisplayer::getInput(Field& f, Simulator& s) {
    string input;
    getline(cin, input);
    if (input == "q") {
       return true;
    } else if (input == "s") {
-      // TODO lancer une simulation avec un nouveau field dédié
-      cout << "Statistics" << endl;
+      cout << "Simulating..." << endl;
+      double average = s.simulate();
+      cout << "For " << s.getNbSimulation() << " simulations : succes rate of " << average * 100
+           << "%" << endl;
    } else if (input == "n" || input.empty()) {
       f.nextTurn();
    } else {

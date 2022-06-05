@@ -8,6 +8,8 @@
 #include <list>
 #include "../humanoids/Humanoid.hpp"
 
+class Simulator;
+
 class Displayer {
 public:
    Displayer(unsigned width, unsigned height);
@@ -19,7 +21,7 @@ public:
 
    virtual void displayPrompt(int turn) = 0;
 
-   virtual bool getInput(Field& f) = 0;
+   virtual bool getInput(Field& f, Simulator& s) = 0;
 protected:
    const unsigned width, height;
 };

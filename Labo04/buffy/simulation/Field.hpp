@@ -24,9 +24,9 @@ public:
 
    int getTurn() const;
 
-   unsigned getNbHumans() const;
+   bool hasHumans() const;
 
-   unsigned getNbVampires() const;
+   bool hasVampires() const;
 
    Humanoid* getNearestHumanoid(Position& from, Humanoid::Identifier identifier) const;
 

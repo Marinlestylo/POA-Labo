@@ -16,7 +16,7 @@ void Vampire::setAction(const Field& field) {
       delete action;
       action = nullptr;
    }
-   if (field.getNbHumans()) {
+   if (field.hasHumans()) {
       auto target = field.getNearestHumanoid(getPosition(), Identifier::HUMAN);
       int distance = Position::getEuclideanDistance(getPosition(), target->getPosition());
       if (distance > 1) {

@@ -17,7 +17,7 @@ public:
 
    void displayPrompt(int turn) override;
 
-   bool getInput(Field& f) override;
+   bool getInput(Field& f, Simulator& s) override;
 
 private:
    static char mapIdentifierToSymbol(Humanoid::Identifier identifier) ;

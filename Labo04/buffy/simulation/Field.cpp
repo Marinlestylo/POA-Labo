@@ -81,12 +81,12 @@ Humanoid* Field::getNearestHumanoid(Position& from, Humanoid::Identifier identif
    return nearestHumanoid;
 }
 
-unsigned Field::getNbHumans() const {
-   return nbHumans;
+bool Field::hasHumans() const {
+   return nbHumans > 0;
 }
 
-unsigned Field::getNbVampires() const {
-   return nbVampires;
+bool Field::hasVampires() const {
+   return nbVampires > 0;
 }
 
 void Field::addVampire(Vampire* vampire) {

@@ -3,6 +3,7 @@
 #include "displayers/ConsoleDisplayer.hpp"
 
 #define NB_ARGS 4
+#define NB_SIMULATION 10000
 
 int main(int argc, char* argv[]) {
    unsigned values[NB_ARGS];
@@ -22,7 +23,7 @@ int main(int argc, char* argv[]) {
    unsigned width = values[0], height = values[1], nbVampires = values[2], nbHumans = values[3];
    auto displayer = new ConsoleDisplayer(width, height);
 
-   Simulator simulator(width, height, nbVampires, nbHumans, displayer);
+   Simulator simulator(NB_SIMULATION, width, height, nbVampires, nbHumans, displayer);
    simulator.run();
 
    return EXIT_SUCCESS;
