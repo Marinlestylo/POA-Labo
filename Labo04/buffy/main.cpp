@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
    }
 
    unsigned width = values[0], height = values[1], nbVampires = values[2], nbHumans = values[3];
-   auto displayer = new ConsoleDisplayer(width, height);
+   ConsoleDisplayer displayer(width, height);
 
    Simulator simulator(NB_SIMULATION, width, height, nbVampires, nbHumans, displayer);
    simulator.run();

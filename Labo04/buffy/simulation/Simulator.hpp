@@ -13,21 +13,20 @@
 class Simulator {
 public:
    Simulator(unsigned nbSimulation, unsigned width, unsigned height, unsigned nbVampires, unsigned
-   nbHumans, Displayer*displayer);
+   nbHumans, Displayer& displayer);
 
-   ~Simulator();
+   ~Simulator() = default;
 
    unsigned getNbSimulation() const;
 
    void run();
 
-   double simulate();
+   double simulate() const;
 
 private:
    unsigned nbSimulation, width, height, nbVampires, nbHumans;
    Field field;
-   Field* simulationField;
-   Displayer* displayer;
+   Displayer& displayer;
    bool ended;
 };
 
