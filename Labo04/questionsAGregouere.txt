@@ -1,0 +1,7 @@
+Questions :
+- Dans console displayer, est-ce mieux de faire le truc mapIdentifier ou 
+	juste de faire un tostring chez chaque humanoid ?
+- Pourquoi Buffy ne fait que un step de 1 dans son move une fois qu'il y a 0 vampire ?
+- Factoriser le set action ?
+- Vérifier qu'humain ne donne pas naissance à 2 vampires.
+- Est-ce que le random est ok

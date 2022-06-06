@@ -31,7 +31,7 @@ void ConsoleDisplayer::displayGrid(std::list<Humanoid*>::const_iterator begin,
 }
 
 void ConsoleDisplayer::displayPrompt(int turn) {
-   cout << "[" << turn << "] q>uit s>tatistics n>ext:";
+   cout << "[" << turn << "] q)uit s)tatistics n)ext:" << endl;
 }
 
 bool ConsoleDisplayer::getInput(Field& f, Simulator& s) {
