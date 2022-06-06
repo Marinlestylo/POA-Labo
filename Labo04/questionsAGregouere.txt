@@ -5,3 +5,4 @@ Questions :
 - Factoriser le set action ?
 - Vérifier qu'humain ne donne pas naissance à 2 vampires.
 - Est-ce que le random est ok
+- Dans la classe action, c'est juste de déclarer les classes field et humanoid ?
