@@ -91,7 +91,6 @@ public:
 
 private:
    unsigned width, height, nbVampires, nbHumans;
-private:
    int turn;
    std::list<Humanoid*> humanoids;
 };
