@@ -46,3 +46,7 @@ Direction::Direction(int x, int y) {
    this->y = y;
    COUNT++;
 }
+
+const Direction** Direction::values() {
+	return DIRECTIONS;
+}
