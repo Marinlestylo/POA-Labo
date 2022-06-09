@@ -33,6 +33,10 @@ unsigned Direction::size() {
    return COUNT;
 }
 
+const Direction** Direction::values() {
+   return DIRECTIONS;
+}
+
 int Direction::getX() const {
    return x;
 }
@@ -45,8 +49,4 @@ Direction::Direction(int x, int y) {
    this->x = x;
    this->y = y;
    COUNT++;
-}
-
-const Direction** Direction::values() {
-	return DIRECTIONS;
 }

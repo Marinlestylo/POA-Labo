@@ -38,6 +38,8 @@ private:
     * Constructeur de base privé
     */
    Random() = default;
+
+   static std::mt19937 engine;
 };
 
 #endif //BUFFY_RANDOM_HPP

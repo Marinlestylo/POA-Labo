@@ -22,10 +22,12 @@ public:
     */
    static unsigned size();
 
-	static const Direction** values();
+   /**
+    * @return un tableau de pointeurs sur les directions possibles
+    */
+   static const Direction** values();
 
-
-	/**
+   /**
     * @return la direction sur l'axe des x
     */
    int getX() const;
