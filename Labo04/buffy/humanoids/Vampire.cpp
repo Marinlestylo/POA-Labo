@@ -15,10 +15,7 @@ Vampire::Vampire(int x, int y) : Humanoid(x, y) {
 }
 
 void Vampire::setAction(const Field& field) {
-   if (action != nullptr) {
-      delete action;
-      action = nullptr;
-   }
+   Humanoid::setAction(field);
    if (field.hasHumans()) {
       auto target = field.getNearestHumanoid(getPosition(), Identifier::HUMAN);
       int distance = Position::getEuclideanDistance(getPosition(), target->getPosition());

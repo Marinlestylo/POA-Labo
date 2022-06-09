@@ -30,3 +30,10 @@ void Humanoid::executeAction(Field& field) {
       action->execute(field);
    }
 }
+
+void Humanoid::setAction(const Field& field) {
+   if (action != nullptr) {
+      delete action;
+      action = nullptr;
+   }
+}

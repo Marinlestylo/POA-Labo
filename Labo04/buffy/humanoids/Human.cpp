@@ -11,10 +11,7 @@ Human::Human(int x, int y) : Humanoid(x, y) {
 }
 
 void Human::setAction(const Field& field) {
-   if (action != nullptr) {
-      delete action;
-      action = nullptr;
-   }
+   Humanoid::setAction(field);
    action = new MoveAction(this, nullptr, 1);
 }
 

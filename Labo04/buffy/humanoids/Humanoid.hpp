@@ -60,7 +60,7 @@ public:
     * Définit l'action de l'humanoïde
     * @param field Field sur lequel l'action est définie
     */
-   virtual void setAction(const Field& field) = 0;
+   virtual void setAction(const Field& field);
 
    /**
     * @return l'identifiant de l'humanoïde

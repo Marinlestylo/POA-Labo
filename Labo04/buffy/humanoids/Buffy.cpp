@@ -13,10 +13,7 @@ Buffy::Buffy(int x, int y) : Humanoid(x, y) {
 }
 
 void Buffy::setAction(const Field& field) {
-   if (action != nullptr) {
-      delete action;
-      action = nullptr;
-   }
+   Humanoid::setAction(field);
    if (field.hasVampires()) {
       auto target = field.getNearestHumanoid(getPosition(), Identifier::VAMPIRE);
       int distance = Position::getEuclideanDistance(getPosition(), target->getPosition());
