@@ -12,9 +12,9 @@ public:
     * Retourne la distance euclidienne entre deux positions
     * @param from Position de départ
     * @param to   Position de la destination
-    * @return un entier représentant la distance euclidienne entre deux positions
+    * @return un double représentant la distance euclidienne entre deux positions
     */
-   static int getEuclideanDistance(Position& from, Position& to);
+   static double getEuclideanDistance(Position& from, Position& to);
 
    /**
     * Constructeur de base

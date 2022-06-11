@@ -75,21 +75,6 @@ bool Field::hasVampires() const {
    return nbVampires > 0;
 }
 
-Humanoid* Field::getNearestHumanoid(Position& from, Humanoid::Identifier identifier) const {
-   int shortestEuclideanDistance = INT_MAX;
-   Humanoid* nearestHumanoid = nullptr;
-   for (auto humanoid: humanoids) {
-      if (humanoid->getIdentifier() == identifier) {
-         int euclideanDistance = Position::getEuclideanDistance(from, humanoid->getPosition());
-         if (euclideanDistance < shortestEuclideanDistance) {
-            shortestEuclideanDistance = euclideanDistance;
-            nearestHumanoid = humanoid;
-         }
-      }
-   }
-   return nearestHumanoid;
-}
-
 std::list<Humanoid*>::const_iterator Field::begin() const {
    return humanoids.begin();
 }

@@ -8,10 +8,10 @@
 #include "Direction.hpp"
 #include "Random.hpp"
 
-int Position::getEuclideanDistance(Position& from, Position& to) {
+double Position::getEuclideanDistance(Position& from, Position& to) {
    double first = abs((from.getX() - to.getX()));
    double second = abs((from.getY() - to.getY()));
-   return int(round(hypot(first, second)));
+   return round(hypot(first, second));
 }
 
 Position::Position(int x, int y) : x(x), y(y) {

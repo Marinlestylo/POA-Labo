@@ -2,6 +2,7 @@
 #define BUFFY_FIELD_HPP
 
 #include <list>
+#include <limits>
 #include "../humanoids/Humanoid.hpp"
 #include "../humanoids/Vampire.hpp"
 
@@ -61,11 +62,27 @@ public:
 
    /**
     * Retourne l'humanoïde avec l'identifiant voulu le plus proche de la position donnée
-    * @param from       Position de départ
-    * @param identifier Identifiant de l'humanoïde recherché
+    * @tparam T   Type de l'humanoïde recherché
+    * @param from Position de départ
     * @return l'humanoïde le plus proche de la position donnée
     */
-   Humanoid* getNearestHumanoid(Position& from, Humanoid::Identifier identifier) const;
+   template<typename T>
+   T* getNearestHumanoid(Position& from) const {
+      double shortestEuclideanDistance = std::numeric_limits<double>::max();
+      T* nearestHumanoid = nullptr;
+      T* temp;
+      for (auto humanoid: humanoids) {
+         if ((temp = dynamic_cast<T*>(humanoid)) != nullptr) {
+            double euclideanDistance = Position::getEuclideanDistance(from,
+                                                                      humanoid->getPosition());
+            if (euclideanDistance < shortestEuclideanDistance) {
+               shortestEuclideanDistance = euclideanDistance;
+               nearestHumanoid = temp;
+            }
+         }
+      }
+      return nearestHumanoid;
+   }
 
    /**
     * @return un itérateur sur le premier humanoïde de la liste
