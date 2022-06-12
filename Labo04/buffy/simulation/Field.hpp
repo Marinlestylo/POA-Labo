@@ -95,10 +95,10 @@ public:
    std::list<Humanoid*>::const_iterator end() const;
 
    /**
-    * Réduit le nombre des humanoïdes spécifiés par l'identifiant
-    * @param targetIdentifier Identifiant de la population à réduire
+    * Réduit le nombre des humanoïdes spécifiés
+    * @param target l'humanoïde dont il faut diminuer la population
     */
-   void decreasePopulation(Humanoid::Identifier targetIdentifier);
+   void decreasePopulation(Humanoid* target);
 
    /**
     * Ajoute un vampire à la liste

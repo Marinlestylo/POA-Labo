@@ -83,10 +83,10 @@ std::list<Humanoid*>::const_iterator Field::end() const {
    return humanoids.end();
 }
 
-void Field::decreasePopulation(Humanoid::Identifier targetIdentifier) {
-   if (targetIdentifier == Humanoid::Identifier::HUMAN) {
+void Field::decreasePopulation(Humanoid* target) {
+   if (dynamic_cast<Human*>(target) != nullptr) {
       nbHumans--;
-   } else if (targetIdentifier == Humanoid::Identifier::VAMPIRE) {
+   } else if (dynamic_cast<Vampire*>(target) != nullptr) {
       nbVampires--;
    }
 }

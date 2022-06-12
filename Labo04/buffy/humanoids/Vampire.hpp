@@ -18,8 +18,6 @@ public:
    Vampire(int x, int y);
 
    void setAction(const Field& field) override;
-
-   Identifier getIdentifier() const override;
 };
 
 #endif //BUFFY_VAMPIRE_HPP

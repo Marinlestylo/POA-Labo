@@ -11,23 +11,6 @@
  */
 class Humanoid {
 public:
-
-   /**
-    * Enum représentant les identifiants des humanoïdes.
-    */
-   enum Identifier {
-      HUMAN,
-      VAMPIRE,
-      BUFFY
-   };
-
-   /**
-    * Constructeur de base
-    * @param x Position sur l'axe des x
-    * @param y Position sur l'axe des y
-    */
-   Humanoid(int x, int y);
-
    /**
     * Destructeur par défaut s'assurant de supprimer l'action
     */
@@ -62,12 +45,14 @@ public:
     */
    virtual void setAction(const Field& field);
 
-   /**
-    * @return l'identifiant de l'humanoïde
-    */
-   virtual Identifier getIdentifier() const = 0;
-
 protected:
+   /**
+    * Constructeur de base protected pour rendre humanoïde abstrait
+    * @param x Position sur l'axe des x
+    * @param y Position sur l'axe des y
+    */
+   Humanoid(int x, int y);
+
    Action* action;
 private:
    bool alive;

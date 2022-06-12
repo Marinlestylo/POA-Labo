@@ -27,12 +27,18 @@ public:
    bool getInput(Field& f, Simulator& s) override;
 
 private:
+
    /**
-    * Mappe l'identifiant d'un humanoïde à un char
-    * @param identifier Identifiant de l'humanoïde
-    * @return char correspondant à l'identifiant
+ * Mappe l'espèce d'humanoïde à un char
+ * @param humanoid Identifiant de l'humanoïde
+ * @return char correspondant à l'identifiant
+ */
+   /**
+    * Mappe une espèce d'humanoïde à un char
+    * @param iter Itérateur sur la liste des humanoïdes
+    * @return char correspondant à l'humanoïde
     */
-   static char mapIdentifierToSymbol(Humanoid::Identifier identifier);
+   static char mapToSymbol(std::list<Humanoid*>::const_iterator iter);
 
    /**
     * Met à jour la grille en itérant sur la liste des humanoïdes

@@ -13,6 +13,6 @@ KillAction::KillAction(Humanoid* actionMaker, Humanoid* target) : Action(actionM
 void KillAction::execute(Field& f) {
    if (target->isAlive()) {
       target->setAlive(false);
-      f.decreasePopulation(target->getIdentifier());
+      f.decreasePopulation(target);
    }
 }

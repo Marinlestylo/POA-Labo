@@ -14,7 +14,7 @@ TransformAction::TransformAction(Humanoid* actionMaker, Humanoid* target)
 void TransformAction::execute(Field& f) {
    if (target->isAlive()) {
       target->setAlive(false);
-      f.decreasePopulation(target->getIdentifier());
+      f.decreasePopulation(target);
       f.addVampire(new Vampire(target->getPosition().getX(), target->getPosition().getY()));
    }
 }

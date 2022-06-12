@@ -14,7 +14,3 @@ void Human::setAction(const Field& field) {
    Humanoid::setAction(field);
    action = new MoveAction(this, nullptr, 1);
 }
-
-Humanoid::Identifier Human::getIdentifier() const {
-   return Humanoid::HUMAN;
-}

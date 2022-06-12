@@ -9,6 +9,7 @@
 #include "../simulation/Field.hpp"
 #include "../simulation/Simulator.hpp"
 #include "ConsoleDisplayer.hpp"
+#include "../humanoids/Human.hpp"
 
 using namespace std;
 
@@ -16,8 +17,8 @@ ConsoleDisplayer::ConsoleDisplayer(unsigned width, unsigned height)
    : Displayer(width, height), grid(height, vector<char>(width, ' ')) {
 }
 
-void ConsoleDisplayer::displayGrid(std::list<Humanoid*>::const_iterator begin,
-                                   std::list<Humanoid*>::const_iterator end) {
+void ConsoleDisplayer::displayGrid(list<Humanoid*>::const_iterator begin,
+                                   list<Humanoid*>::const_iterator end) {
    updateGrid(begin, end);
    cout << "+" << string(width, '-') << "+" << endl;
    for (auto& row: grid) {
@@ -52,22 +53,20 @@ bool ConsoleDisplayer::getInput(Field& f, Simulator& s) {
    return false;
 }
 
-void ConsoleDisplayer::updateGrid(std::list<Humanoid*>::const_iterator begin,
-                                  std::list<Humanoid*>::const_iterator end) {
+void ConsoleDisplayer::updateGrid(list<Humanoid*>::const_iterator begin,
+                                  list<Humanoid*>::const_iterator end) {
    grid.assign(height, vector<char>(width, ' '));
    for (auto iter = begin; iter != end; ++iter) {
-      grid.at((*iter)->getPosition().getY()).at((*iter)->getPosition().getX()) =
-         mapIdentifierToSymbol((*iter)->getIdentifier());
+      grid.at((*iter)->getPosition().getY()).at((*iter)->getPosition().getX()) = mapToSymbol(iter);
    }
 }
 
-char ConsoleDisplayer::mapIdentifierToSymbol(Humanoid::Identifier identifier) {
-   switch (identifier) {
-      case Humanoid::Identifier::HUMAN:
-         return 'h';
-      case Humanoid::Identifier::VAMPIRE:
-         return 'V';
-      case Humanoid::Identifier::BUFFY:
-         return 'B';
+char ConsoleDisplayer::mapToSymbol(list<Humanoid*>::const_iterator iter) {
+   if (dynamic_cast<Human*>(*iter) != nullptr) {
+      return 'h';
+   } else if (dynamic_cast<Vampire*>(*iter) != nullptr) {
+      return 'V';
+   } else {
+      return 'B';
    }
 }

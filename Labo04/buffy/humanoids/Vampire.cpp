@@ -34,7 +34,3 @@ void Vampire::setAction(const Field& field) {
    }
 }
 
-Humanoid::Identifier Vampire::getIdentifier() const {
-   return Humanoid::VAMPIRE;
-}
-
