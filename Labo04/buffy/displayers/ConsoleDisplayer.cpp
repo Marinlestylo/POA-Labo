@@ -10,6 +10,7 @@
 #include "../simulation/Simulator.hpp"
 #include "ConsoleDisplayer.hpp"
 #include "../humanoids/Human.hpp"
+#include "utils/termcolor.hpp"
 
 using namespace std;
 
@@ -24,7 +25,8 @@ void ConsoleDisplayer::displayGrid(list<Humanoid*>::const_iterator begin,
    for (auto& row: grid) {
       cout << "|";
       for (auto& humanoid: row) {
-         cout << humanoid;
+         printHumanoid(humanoid);
+         cout << termcolor::reset;
       }
       cout << "|" << endl;
    }
@@ -68,5 +70,21 @@ char ConsoleDisplayer::mapToSymbol(list<Humanoid*>::const_iterator iter) {
       return 'V';
    } else {
       return 'B';
+   }
+}
+
+void ConsoleDisplayer::printHumanoid(char humanoid) {
+   switch (humanoid) {
+      case 'h':
+         cout << termcolor::bright_cyan << humanoid;
+         break;
+      case 'V':
+         cout << termcolor::red << humanoid;
+         break;
+      case 'B':
+         cout << termcolor::yellow << humanoid;
+         break;
+      default:
+         cout << termcolor::white << humanoid;
    }
 }

@@ -40,6 +40,8 @@ private:
     */
    static char mapToSymbol(std::list<Humanoid*>::const_iterator iter);
 
+   static void printHumanoid(char humanoid);
+
    /**
     * Met à jour la grille en itérant sur la liste des humanoïdes
     * @param begin Itérateur sur le premier élément de la liste des humanoïdes
