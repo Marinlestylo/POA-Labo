@@ -11,8 +11,8 @@ KillAction::KillAction(Humanoid& actionMaker, Humanoid* target) : Action(actionM
 }
 
 void KillAction::execute(Field& f) {
-   if (target->isAlive()) {
-      target->setAlive(false);
-      f.decreasePopulation(target);
+   if (getTarget()->isAlive()) {
+      getTarget()->setAlive(false);
+      f.decreasePopulation(getTarget());
    }
 }

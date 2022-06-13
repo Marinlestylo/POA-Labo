@@ -31,10 +31,20 @@ public:
    virtual void execute(Field& field) = 0;
 
 protected:
-   Humanoid& actionMaker;
-   Humanoid* target;
+   /**
+    *
+    * @return une référence de l'humanoïde qui effectue l'action
+    */
+   Humanoid& getActionMaker() const;
+
+   /**
+    * @return un pointeur sur la cible de l'action
+    */
+   Humanoid* getTarget() const;
 
 private:
+   Humanoid& actionMaker;
+   Humanoid* target;
 };
 
 #endif //BUFFY_ACTION_HPP

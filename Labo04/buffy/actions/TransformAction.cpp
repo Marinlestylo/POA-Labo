@@ -12,9 +12,10 @@ TransformAction::TransformAction(Humanoid& actionMaker, Humanoid* target)
 }
 
 void TransformAction::execute(Field& f) {
-   if (target->isAlive()) {
-      target->setAlive(false);
-      f.decreasePopulation(target);
-      f.addVampire(new Vampire(target->getPosition().getX(), target->getPosition().getY()));
+   if (getTarget()->isAlive()) {
+      getTarget()->setAlive(false);
+      f.decreasePopulation(getTarget());
+      f.addVampire(
+         new Vampire(getTarget()->getPosition().getX(), getTarget()->getPosition().getY()));
    }
 }

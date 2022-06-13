@@ -25,6 +25,18 @@ public:
    virtual ~Humanoid();
 
    /**
+    * Désactive le constructeur de copie
+    * @param other humanoïde à copier
+    */
+   Humanoid(const Humanoid& other) = delete;
+
+   /**
+    * Désactive l'opérateur d'affectation
+    * @param other humanoïde à affecter
+    */
+   Humanoid& operator=(const Humanoid& other) = delete;
+
+   /**
     * Retourne la position de l'humanoïde
     * @return une référence sur la position
     */

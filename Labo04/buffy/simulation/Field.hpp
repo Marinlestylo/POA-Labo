@@ -29,6 +29,18 @@ public:
    ~Field();
 
    /**
+    * Désactive le constructeur de copie
+    * @param other field à copier
+    */
+   Field(const Field& other) = delete;
+
+   /**
+    * Désactive l'opérateur d'affectation
+    * @param other field à affecter
+    */
+   Field &operator=(const Field& other) = delete;
+
+   /**
     * Joue un tour et effectue l'affectation des actions, leurs exécutions
     * et la suppression des humanoïdes
     * @return le nombre de tours effectués

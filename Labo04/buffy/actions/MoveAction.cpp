@@ -19,11 +19,11 @@ MoveAction::MoveAction(Humanoid& actionMaker, Humanoid* target, unsigned step)
 
 void MoveAction::execute(Field& f) {
    if (step != 0) {
-      if (target != nullptr) {
+      if (getTarget() != nullptr) {
          Position targetPosition(currentX, currentY);
-         actionMaker.getPosition().setDirectedPosition(targetPosition, (int)step);
+         getActionMaker().getPosition().setDirectedPosition(targetPosition, (int)step);
       } else {
-         actionMaker.getPosition().setRandomPosition((int)f.getWidth(), (int)f.getHeight());
+         getActionMaker().getPosition().setRandomPosition((int)f.getWidth(), (int)f.getHeight());
       }
    }
 }
