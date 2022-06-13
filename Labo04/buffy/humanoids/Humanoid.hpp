@@ -11,6 +11,14 @@
  */
 class Humanoid {
 public:
+
+   /**
+    * Constructeur de base
+    * @param x Position sur l'axe des x
+    * @param y Position sur l'axe des y
+    */
+   Humanoid(int x, int y);
+
    /**
     * Destructeur par défaut s'assurant de supprimer l'action
     */
@@ -45,13 +53,12 @@ public:
     */
    virtual void setAction(const Field& field);
 
-protected:
    /**
-    * Constructeur de base protected pour rendre humanoïde abstrait
-    * @param x Position sur l'axe des x
-    * @param y Position sur l'axe des y
+    * @return un symbole représentant l'humanoïde
     */
-   Humanoid(int x, int y);
+   virtual char getSymbol() const = 0;
+
+protected:
 
    Action* action;
 private:

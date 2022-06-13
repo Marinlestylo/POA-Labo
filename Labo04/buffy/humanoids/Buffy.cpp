@@ -26,3 +26,7 @@ void Buffy::setAction(const Field& field) {
       action = new MoveAction(this, nullptr, 1);
    }
 }
+
+char Buffy::getSymbol() const {
+   return 'B';
+}

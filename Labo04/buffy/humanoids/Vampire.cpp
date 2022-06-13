@@ -34,3 +34,7 @@ void Vampire::setAction(const Field& field) {
    }
 }
 
+char Vampire::getSymbol() const {
+   return 'V';
+}
+

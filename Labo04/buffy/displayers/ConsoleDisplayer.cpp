@@ -57,16 +57,7 @@ void ConsoleDisplayer::updateGrid(list<Humanoid*>::const_iterator begin,
                                   list<Humanoid*>::const_iterator end) {
    grid.assign(height, vector<char>(width, ' '));
    for (auto iter = begin; iter != end; ++iter) {
-      grid.at((*iter)->getPosition().getY()).at((*iter)->getPosition().getX()) = mapToSymbol(iter);
-   }
-}
-
-char ConsoleDisplayer::mapToSymbol(list<Humanoid*>::const_iterator iter) {
-   if (dynamic_cast<Human*>(*iter) != nullptr) {
-      return 'h';
-   } else if (dynamic_cast<Vampire*>(*iter) != nullptr) {
-      return 'V';
-   } else {
-      return 'B';
+      grid.at((*iter)->getPosition().getY()).at(
+         (*iter)->getPosition().getX()) = (*iter)->getSymbol();
    }
 }

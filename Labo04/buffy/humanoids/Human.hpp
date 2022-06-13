@@ -18,6 +18,8 @@ public:
    Human(int x, int y);
 
    void setAction(const Field& field) override;
+
+   char getSymbol() const override;
 };
 
 #endif //BUFFY_HUMAN_HPP

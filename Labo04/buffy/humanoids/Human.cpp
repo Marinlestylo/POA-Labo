@@ -14,3 +14,7 @@ void Human::setAction(const Field& field) {
    Humanoid::setAction(field);
    action = new MoveAction(this, nullptr, 1);
 }
+
+char Human::getSymbol() const {
+   return 'h';
+}
