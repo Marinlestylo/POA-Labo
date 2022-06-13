@@ -16,13 +16,13 @@ public:
     * @param target      la cible de l'action
     * @param step        le nombre de pas possibles
     */
-   MoveAction(Humanoid* actionMaker, Humanoid* target, unsigned step);
+   MoveAction(Humanoid& actionMaker, Humanoid* target, unsigned step);
 
    void execute(Field& f) override;
 
 private:
-   int currentX, currentY;
    unsigned step;
+   int currentX, currentY;
 };
 
 #endif //BUFFY_MOVEACTION_HPP

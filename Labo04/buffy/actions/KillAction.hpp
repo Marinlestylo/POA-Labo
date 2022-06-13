@@ -15,7 +15,7 @@ public:
     * @param actionMaker l'humanoïde qui effectue l'action
     * @param target      la cible de l'action
     */
-   KillAction(Humanoid* actionMaker, Humanoid* target);
+   KillAction(Humanoid& actionMaker, Humanoid* target);
 
    void execute(Field& f) override;
 };

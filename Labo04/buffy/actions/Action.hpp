@@ -17,7 +17,7 @@ public:
     * @param actionMaker l'humanoïde qui effectue l'action
     * @param target      la cible de l'action
     */
-   Action(Humanoid* actionMaker, Humanoid* target);
+   Action(Humanoid& actionMaker, Humanoid* target);
 
    /**
     * Destructeur par défaut
@@ -31,8 +31,10 @@ public:
    virtual void execute(Field& field) = 0;
 
 protected:
-   Humanoid* actionMaker;
+   Humanoid& actionMaker;
    Humanoid* target;
+
+private:
 };
 
 #endif //BUFFY_ACTION_HPP

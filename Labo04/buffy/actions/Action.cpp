@@ -6,5 +6,6 @@
 
 #include "Action.hpp"
 
-Action::Action(Humanoid* actionMaker, Humanoid* target) : actionMaker(actionMaker), target(target) {
+Action::Action(Humanoid& actionMaker, Humanoid* target) : actionMaker(actionMaker), target
+(target) {
 }
