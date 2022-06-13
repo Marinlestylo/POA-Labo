@@ -21,8 +21,8 @@ bool Humanoid::isAlive() const {
    return alive;
 }
 
-void Humanoid::setAlive(bool alive) {
-   this->alive = alive;
+void Humanoid::setAlive(bool isAlive) {
+   this->alive = isAlive;
 }
 
 void Humanoid::executeAction(Field& field) {
@@ -38,10 +38,6 @@ void Humanoid::setAction(const Field& field) {
    }
 }
 
-Action* Humanoid::getAction() const {
-   return action;
-}
-
-void Humanoid::setAction(Action* action) {
-   this->action = action;
+void Humanoid::setAction(Action* newAction) {
+   this->action = newAction;
 }

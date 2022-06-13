@@ -37,9 +37,9 @@ public:
 
    /**
     * Définit l'état de l'huanoïde
-    * @param alive nouvel état de l'humanoïde
+    * @param isAlive nouvel état de l'humanoïde
     */
-   void setAlive(bool alive);
+   void setAlive(bool isAlive);
 
    /**
     * Exécute l'action de l'humanoïde
@@ -59,16 +59,12 @@ public:
    virtual char getSymbol() const = 0;
 
 protected:
-   /**
-    * @return getter pour l'action
-    */
-   Action* getAction() const;
 
    /**
-    * Setter protected pour définir l'attribut action
-    * @param action nouvelle action
+    * Setter protected pour définir l'attribut newAction
+    * @param newAction nouvelle newAction
     */
-   void setAction(Action* action);
+   void setAction(Action* newAction);
 
 private:
    Action* action;

@@ -5,7 +5,6 @@
  */
 
 #include <stdexcept>
-#include <climits>
 
 #include "Field.hpp"
 #include "../humanoids/Human.hpp"
@@ -21,14 +20,14 @@ Field::Field(unsigned width, unsigned height, unsigned nbVampires, unsigned nbHu
    }
 
    for (unsigned i = 0; i < nbHumans; i++) {
-      humanoids.emplace_back(new Human(Random::random(width), Random::random(height)));
+      humanoids.emplace_back(new Human((int)Random::random(width), (int)Random::random(height)));
    }
 
    for (unsigned i = 0; i < nbVampires; i++) {
-      humanoids.emplace_back(new Vampire(Random::random(width), Random::random(height)));
+      humanoids.emplace_back(new Vampire((int)Random::random(width), (int)Random::random(height)));
    }
 
-   humanoids.emplace_back(new Buffy(Random::random(width), Random::random(height)));
+   humanoids.emplace_back(new Buffy((int)Random::random(width), (int)Random::random(height)));
 }
 
 

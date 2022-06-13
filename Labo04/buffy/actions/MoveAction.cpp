@@ -24,9 +24,9 @@ void MoveAction::execute(Field& f) {
    if (step != 0) {
       if (target != nullptr) {
          Position targetPosition(currentX, currentY);
-         actionMaker->getPosition().setDirectedPosition(targetPosition, step);
+         actionMaker->getPosition().setDirectedPosition(targetPosition, (int)step);
       } else {
-         actionMaker->getPosition().setRandomPosition(f.getWidth(), f.getHeight());
+         actionMaker->getPosition().setRandomPosition((int)f.getWidth(), (int)f.getHeight());
       }
    }
 }

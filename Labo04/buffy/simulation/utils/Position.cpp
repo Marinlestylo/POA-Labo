@@ -41,7 +41,7 @@ void Position::setRandomPosition(int maxX, int maxY) {
    }
 
    auto& direction = isRestricted
-                     ? *possibleDirections[Random::random(possibleDirections.size())]
+                     ? *possibleDirections[Random::random((unsigned)possibleDirections.size())]
                      : Direction::get(Random::random(Direction::size()));
    x += direction.getX();
    y += direction.getY();

@@ -9,7 +9,6 @@
 #include "../simulation/Field.hpp"
 #include "../simulation/Simulator.hpp"
 #include "ConsoleDisplayer.hpp"
-#include "../humanoids/Human.hpp"
 
 using namespace std;
 
@@ -57,7 +56,7 @@ void ConsoleDisplayer::updateGrid(list<Humanoid*>::const_iterator begin,
                                   list<Humanoid*>::const_iterator end) {
    grid.assign(getHeight(), vector<char>(getWidth(), ' '));
    for (auto iter = begin; iter != end; ++iter) {
-      grid.at((*iter)->getPosition().getY()).at(
-         (*iter)->getPosition().getX()) = (*iter)->getSymbol();
+      grid.at((size_t)(*iter)->getPosition().getY())
+         .at((size_t)(*iter)->getPosition().getX()) = (*iter)->getSymbol();
    }
 }
