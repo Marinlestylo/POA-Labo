@@ -21,16 +21,16 @@ void Vampire::setAction(const Field& field) {
       auto target = field.getNearestHumanoid<Human>(getPosition());
       double distance = Position::getEuclideanDistance(getPosition(), target->getPosition());
       if (distance > 1) {
-         action = new MoveAction(this, target, 1);
+         Humanoid::setAction(new MoveAction(this, target, 1));
       } else {
          if (Random::random(2)) {
-            action = new KillAction(this, target);
+            Humanoid::setAction(new KillAction(this, target));
          } else {
-            action = new TransformAction(this, target);
+            Humanoid::setAction(new TransformAction(this, target));
          }
       }
    } else {
-      action = new MoveAction(this, nullptr, 0);
+      Humanoid::setAction(new MoveAction(this, nullptr, 0));
    }
 }
 

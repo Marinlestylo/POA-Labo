@@ -49,6 +49,17 @@ public:
    virtual bool getInput(Field& field, Simulator& simulator) = 0;
 
 protected:
+   /**
+    * @return la largeur de la grille
+    */
+   unsigned getWidth() const;
+
+   /**
+    * @return la hauteur de la grille
+    */
+   unsigned getHeight() const;
+
+private:
    const unsigned width, height;
 };
 

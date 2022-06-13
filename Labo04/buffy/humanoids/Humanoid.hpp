@@ -48,7 +48,7 @@ public:
    void executeAction(Field& field);
 
    /**
-    * Définit l'action de l'humanoïde
+    * Définit l'action de l'humanoïde en fonction du contenu du field
     * @param field Field sur lequel l'action est définie
     */
    virtual void setAction(const Field& field);
@@ -59,9 +59,19 @@ public:
    virtual char getSymbol() const = 0;
 
 protected:
+   /**
+    * @return getter pour l'action
+    */
+   Action* getAction() const;
 
-   Action* action;
+   /**
+    * Setter protected pour définir l'attribut action
+    * @param action nouvelle action
+    */
+   void setAction(Action* action);
+
 private:
+   Action* action;
    bool alive;
    Position position;
 };

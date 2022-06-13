@@ -20,7 +20,7 @@ ConsoleDisplayer::ConsoleDisplayer(unsigned width, unsigned height)
 void ConsoleDisplayer::displayGrid(list<Humanoid*>::const_iterator begin,
                                    list<Humanoid*>::const_iterator end) {
    updateGrid(begin, end);
-   cout << "+" << string(width, '-') << "+" << endl;
+   cout << "+" << string(getWidth(), '-') << "+" << endl;
    for (auto& row: grid) {
       cout << "|";
       for (auto& humanoid: row) {
@@ -28,7 +28,7 @@ void ConsoleDisplayer::displayGrid(list<Humanoid*>::const_iterator begin,
       }
       cout << "|" << endl;
    }
-   cout << "+" << string(width, '-') << "+" << endl;
+   cout << "+" << string(getWidth(), '-') << "+" << endl;
 }
 
 void ConsoleDisplayer::displayPrompt(int turn) {
@@ -55,7 +55,7 @@ bool ConsoleDisplayer::getInput(Field& f, Simulator& s) {
 
 void ConsoleDisplayer::updateGrid(list<Humanoid*>::const_iterator begin,
                                   list<Humanoid*>::const_iterator end) {
-   grid.assign(height, vector<char>(width, ' '));
+   grid.assign(getHeight(), vector<char>(getWidth(), ' '));
    for (auto iter = begin; iter != end; ++iter) {
       grid.at((*iter)->getPosition().getY()).at(
          (*iter)->getPosition().getX()) = (*iter)->getSymbol();

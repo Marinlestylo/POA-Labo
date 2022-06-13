@@ -37,3 +37,11 @@ void Humanoid::setAction(const Field& field) {
       action = nullptr;
    }
 }
+
+Action* Humanoid::getAction() const {
+   return action;
+}
+
+void Humanoid::setAction(Action* action) {
+   this->action = action;
+}
