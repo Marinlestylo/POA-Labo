@@ -61,30 +61,6 @@ public:
    bool hasVampires() const;
 
    /**
-    * Retourne l'humanoïde avec l'identifiant voulu le plus proche de la position donnée
-    * @tparam T   Type de l'humanoïde recherché
-    * @param from Position de départ
-    * @return l'humanoïde le plus proche de la position donnée
-    */
-   template<typename T>
-   T* getNearestHumanoid(Position& from) const {
-      double shortestEuclideanDistance = std::numeric_limits<double>::max();
-      T* nearestHumanoid = nullptr;
-      T* temp;
-      for (auto humanoid: humanoids) {
-         if ((temp = dynamic_cast<T*>(humanoid)) != nullptr) {
-            double euclideanDistance = Position::getEuclideanDistance(from,
-                                                                      humanoid->getPosition());
-            if (euclideanDistance < shortestEuclideanDistance) {
-               shortestEuclideanDistance = euclideanDistance;
-               nearestHumanoid = temp;
-            }
-         }
-      }
-      return nearestHumanoid;
-   }
-
-   /**
     * @return un itérateur sur le premier humanoïde de la liste
     */
    std::list<Humanoid*>::const_iterator begin() const;
@@ -93,6 +69,15 @@ public:
     * @return un itérateur sur le dernier humanoïde de la liste
     */
    std::list<Humanoid*>::const_iterator end() const;
+
+   /**
+    * Retourne l'humanoïde avec l'identifiant voulu le plus proche de la position donnée
+    * @tparam T   Type de l'humanoïde recherché
+    * @param from Position de départ
+    * @return l'humanoïde le plus proche de la position donnée
+    */
+   template<typename T>
+   T* getNearestHumanoid(Position& from) const;
 
    /**
     * Réduit le nombre des humanoïdes spécifiés
@@ -111,5 +96,7 @@ private:
    int turn;
    std::list<Humanoid*> humanoids;
 };
+
+#include "Field_Impl.hpp"
 
 #endif //BUFFY_FIELD_HPP
