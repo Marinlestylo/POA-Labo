@@ -18,13 +18,17 @@ int main(int argc, char* argv[]) {
       throw std::invalid_argument("Usage : buffy <largeur grille> <hauteur grille> <nb vampires>"
                                   " <nb humains>");
    }
-   for (unsigned i = 1; i < NB_ARGS + 1; ++i) {
-      if (std::stoi(argv[i]) <= 0) {
-         throw std::invalid_argument("La taille de la grille, le nombre d'humain et le nombre de"
-                                     " vampires doivent etre plus grand que 0");
-      }
-      values[i - 1] = (unsigned)std::stoi(argv[i]);
+   try{
+       for (unsigned i = 1; i < NB_ARGS + 1; ++i) {
+           if (std::stoi(argv[i]) <= 0) {
+               throw std::invalid_argument("");
+           }
+           values[i - 1] = (unsigned)std::stoi(argv[i]);
+       }
+   }catch (const std::invalid_argument& e){
+       throw std::invalid_argument("Les arguments doivent etre des nombres entiers positifs !");
    }
+
 
    unsigned width = values[0], height = values[1], nbVampires = values[2], nbHumans = values[3];
    ConsoleDisplayer displayer(width, height);
