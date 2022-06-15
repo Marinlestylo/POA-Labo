@@ -1,7 +1,3 @@
-//
-// Created by Lazar on 26.05.2022.
-//
-
 #ifndef BUFFY_RANDOM_HPP
 #define BUFFY_RANDOM_HPP
 

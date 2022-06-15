@@ -7,8 +7,6 @@
 #include "MoveAction.hpp"
 #include "../simulation/Field.hpp"
 
-// TODO : Refactor currentX & currentY + les casts
-
 MoveAction::MoveAction(Humanoid& actionMaker, Humanoid* target, unsigned step)
    : Action(target), actionMaker(actionMaker), step(step), currentX(0), currentY(0) {
    if (target != nullptr) {
