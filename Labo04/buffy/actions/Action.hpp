@@ -20,7 +20,7 @@ public:
    Action(Humanoid& actionMaker, Humanoid* target);
 
    /**
-    * Destructeur par défaut
+    * Destructeur virtuel par défaut
     */
    virtual ~Action() = default;
 
@@ -32,7 +32,6 @@ public:
 
 protected:
    /**
-    *
     * @return une référence de l'humanoïde qui effectue l'action
     */
    Humanoid& getActionMaker() const;

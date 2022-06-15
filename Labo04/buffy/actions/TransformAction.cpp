@@ -15,7 +15,6 @@ void TransformAction::execute(Field& f) {
    if (getTarget()->isAlive()) {
       getTarget()->setAlive(false);
       f.decreasePopulation(getTarget());
-      f.addVampire(
-         new Vampire(getTarget()->getPosition().getX(), getTarget()->getPosition().getY()));
+      f.addVampire(new Vampire(getTarget()->getPosition().getX(), getTarget()->getPosition().getY()));
    }
 }

@@ -22,7 +22,7 @@ public:
    Displayer(unsigned width, unsigned height);
 
    /**
-    * Destructeur par défaut
+    * Destructeur virtuel par défaut
     */
    virtual ~Displayer() = default;
 

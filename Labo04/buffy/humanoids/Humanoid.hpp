@@ -20,7 +20,7 @@ public:
    Humanoid(int x, int y);
 
    /**
-    * Destructeur par défaut s'assurant de supprimer l'action
+    * Destructeur virtual s'assurant de supprimer l'action
     */
    virtual ~Humanoid();
 
