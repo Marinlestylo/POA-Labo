@@ -21,6 +21,7 @@ public:
    void execute(Field& f) override;
 
 private:
+   Humanoid& actionMaker;
    unsigned step;
    int currentX, currentY;
 };

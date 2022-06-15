@@ -12,10 +12,9 @@ class KillAction : public Action {
 public:
    /**
     * Constructeur de base
-    * @param actionMaker l'humanoïde qui effectue l'action
     * @param target      la cible de l'action
     */
-   KillAction(Humanoid& actionMaker, Humanoid* target);
+   explicit KillAction(Humanoid* target);
 
    void execute(Field& f) override;
 };

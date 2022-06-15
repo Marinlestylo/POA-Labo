@@ -24,9 +24,9 @@ void Vampire::setAction(const Field& field) {
          Humanoid::setAction(new MoveAction(*this, target, 1));
       } else {
          if (Random::random(2)) {
-            Humanoid::setAction(new KillAction(*this, target));
+            Humanoid::setAction(new KillAction(target));
          } else {
-            Humanoid::setAction(new TransformAction(*this, target));
+            Humanoid::setAction(new TransformAction(target));
          }
       }
    } else {

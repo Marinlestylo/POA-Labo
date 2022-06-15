@@ -7,8 +7,7 @@
 #include "TransformAction.hpp"
 #include "../simulation/Field.hpp"
 
-TransformAction::TransformAction(Humanoid& actionMaker, Humanoid* target)
-   : Action(actionMaker, target) {
+TransformAction::TransformAction(Humanoid* target) : Action(target) {
 }
 
 void TransformAction::execute(Field& f) {

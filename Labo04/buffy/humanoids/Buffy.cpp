@@ -20,7 +20,7 @@ void Buffy::setAction(const Field& field) {
       if (distance > 1) {
          Humanoid::setAction(new MoveAction(*this, target, 2));
       } else {
-         Humanoid::setAction(new KillAction(*this, target));
+         Humanoid::setAction(new KillAction(target));
       }
    } else {
       Humanoid::setAction(new MoveAction(*this, nullptr, 1));

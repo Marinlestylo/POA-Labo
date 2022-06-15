@@ -6,11 +6,7 @@
 
 #include "Action.hpp"
 
-Action::Action(Humanoid& actionMaker, Humanoid* target) : actionMaker(actionMaker), target(target) {
-}
-
-Humanoid& Action::getActionMaker() const {
-   return actionMaker;
+Action::Action(Humanoid* target) : target(target) {
 }
 
 Humanoid* Action::getTarget() const {

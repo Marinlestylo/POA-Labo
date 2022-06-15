@@ -7,7 +7,7 @@
 #include "KillAction.hpp"
 #include "../simulation/Field.hpp"
 
-KillAction::KillAction(Humanoid& actionMaker, Humanoid* target) : Action(actionMaker, target) {
+KillAction::KillAction(Humanoid* target) : Action(target) {
 }
 
 void KillAction::execute(Field& f) {

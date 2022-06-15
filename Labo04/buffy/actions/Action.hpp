@@ -14,10 +14,9 @@ class Action {
 public:
    /**
     * Constructeur de base
-    * @param actionMaker l'humanoïde qui effectue l'action
     * @param target      la cible de l'action
     */
-   Action(Humanoid& actionMaker, Humanoid* target);
+   explicit Action(Humanoid* target);
 
    /**
     * Destructeur virtuel par défaut
@@ -32,17 +31,11 @@ public:
 
 protected:
    /**
-    * @return une référence de l'humanoïde qui effectue l'action
-    */
-   Humanoid& getActionMaker() const;
-
-   /**
     * @return un pointeur sur la cible de l'action
     */
    Humanoid* getTarget() const;
 
 private:
-   Humanoid& actionMaker;
    Humanoid* target;
 };
 
