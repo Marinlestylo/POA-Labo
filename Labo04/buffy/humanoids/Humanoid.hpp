@@ -71,6 +71,7 @@ public:
    virtual char getSymbol() const = 0;
 
 protected:
+   static const int RANGE = 1;
 
    /**
     * Setter protected pour définir l'attribut newAction

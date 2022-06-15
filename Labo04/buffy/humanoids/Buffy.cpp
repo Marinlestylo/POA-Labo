@@ -17,13 +17,13 @@ void Buffy::setAction(const Field& field) {
    if (field.hasVampires()) {
       auto target = field.getNearestHumanoid<Vampire>(getPosition());
       double distance = Position::getEuclideanDistance(getPosition(), target->getPosition());
-      if (distance > 1) {
+      if (distance > RANGE) {
          Humanoid::setAction(new MoveAction(*this, target, 2));
       } else {
          Humanoid::setAction(new KillAction(target));
       }
    } else {
-      Humanoid::setAction(new MoveAction(*this, nullptr, 1));
+      Humanoid::setAction(new MoveAction(*this, nullptr, RANGE));
    }
 }
 

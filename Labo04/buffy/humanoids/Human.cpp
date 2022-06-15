@@ -12,7 +12,7 @@ Human::Human(int x, int y) : Humanoid(x, y) {
 
 void Human::setAction(const Field& field) {
    Humanoid::setAction(field);
-   Humanoid::setAction(new MoveAction(*this, nullptr, 1));
+   Humanoid::setAction(new MoveAction(*this, nullptr, RANGE));
 }
 
 char Human::getSymbol() const {

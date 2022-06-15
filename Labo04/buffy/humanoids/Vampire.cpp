@@ -20,8 +20,8 @@ void Vampire::setAction(const Field& field) {
    if (field.hasHumans()) {
       auto target = field.getNearestHumanoid<Human>(getPosition());
       double distance = Position::getEuclideanDistance(getPosition(), target->getPosition());
-      if (distance > 1) {
-         Humanoid::setAction(new MoveAction(*this, target, 1));
+      if (distance > RANGE) {
+         Humanoid::setAction(new MoveAction(*this, target, RANGE));
       } else {
          if (Random::random(2)) {
             Humanoid::setAction(new KillAction(target));
@@ -29,8 +29,6 @@ void Vampire::setAction(const Field& field) {
             Humanoid::setAction(new TransformAction(target));
          }
       }
-   } else {
-      Humanoid::setAction(new MoveAction(*this, nullptr, 0));
    }
 }
 
