@@ -21,11 +21,12 @@ int main(int argc, char* argv[]) {
    try{
        for (unsigned i = 1; i < NB_ARGS + 1; ++i) {
            if (std::stoi(argv[i]) <= 0) {
-               throw std::invalid_argument("");
+               throw std::exception();
            }
            values[i - 1] = (unsigned)std::stoi(argv[i]);
        }
-   }catch (const std::invalid_argument& e){
+   }catch (const std::exception&){ // Permet de catch les exceptions de std::stoi
+		// et si la valeur est < 1
        throw std::invalid_argument("Les arguments doivent etre des nombres entiers positifs !");
    }
 
